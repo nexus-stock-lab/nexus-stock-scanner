@@ -28,7 +28,8 @@ jobs:
 
       - name: Run NEXUS scanner
         run: python scanner.py
-
+      - name: Run NEXUS secondary review
+        run: python review.py
       - name: Save scan results
         if: always()
         uses: actions/upload-artifact@v4
