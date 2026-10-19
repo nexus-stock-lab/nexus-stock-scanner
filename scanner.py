@@ -33,7 +33,7 @@ COLUMNS = [
     "symbol", "name", "exchange", "price_date", "close", "low52", "high52",
     "rebound_pct", "drawdown_pct", "ret5_pct", "ret20_pct", "volume_ratio",
     "avg_dollar_volume_20", "ma20", "ma50", "signal", "priority",
-    "liquidity_flag", "price_flag", "fundamentals", "entry_status", "virtual_fill",
+    "liquidity_flag", "price_flag", "history_days", "full_52week_history", "fundamentals", "entry_status", "virtual_fill",
 ]
 
 
@@ -109,6 +109,8 @@ def evaluate(stock, prices):
         "signal": signal, "priority": priority,
         "liquidity_flag": liquidity >= 2_000_000,
         "price_flag": last >= 2,
+        "history_days": len(prices),
+        "full_52week_history": len(prices) >= 240,
         "fundamentals": "未確認", "entry_status": "未判定",
         "virtual_fill": False,
     }
@@ -168,7 +170,7 @@ def main():
     pd.DataFrame(failed, columns=["symbol", "reason"]).to_csv(OUT / "failures.csv", index=False)
     ny = started.astimezone(ZoneInfo("America/New_York"))
     report = {
-        "version": "2.1", "started_utc": started.isoformat(),
+        "version": "2.2", "started_utc": started.isoformat(),
         "started_jst": started.astimezone(ZoneInfo("Asia/Tokyo")).isoformat(),
         "reference_time_jst": "23:45",
         "minutes_after_us_open_at_reference": 75 if ny.dst().total_seconds() else 15,
