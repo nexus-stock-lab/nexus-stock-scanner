@@ -1,5 +1,6 @@
 """NEXUS secondary research triage. No orders or hypothetical fills."""
 import json
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -7,6 +8,9 @@ from zoneinfo import ZoneInfo
 import pandas as pd
 
 OUT = Path('output')
+SPAC_PATTERN = re.compile(r'\b(?:acquisition|blank check|special purpose acquisition|SPAC)\b', re.I)
+MIN_HISTORY = 240
+
 
 
 def review(row):
@@ -19,6 +23,11 @@ def review(row):
         rebound = float(row['rebound_pct'])
         drawdown = float(row['drawdown_pct'])
         date = str(row['price_date'])
+        history = pd.to_numeric(row.get('history_days'), errors='coerce')
+        if pd.isna(history) or history < MIN_HISTORY:
+            reasons.append('52週相当の株価履歴不足または未確認')
+        if SPAC_PATTERN.search(str(row.get('name', ''))):
+            reasons.append('SPAC等の可能性（名称による暫定判定）')
         if price < 2:
             reasons.append('株価2ドル未満')
         if turnover < 2_000_000:
@@ -59,8 +68,11 @@ def main():
     else:
         df = pd.concat([df.drop(columns=['virtual_fill', 'entry_status'], errors='ignore'),
                         df.apply(review, axis=1)], axis=1)
+    if not df.empty:
+        df['review_rank_group'] = (df['secondary_status'] != '二次調査候補').astype(int)
+        df = df.sort_values(['review_rank_group', 'priority'], ascending=[True, False])
     df.to_csv(OUT / 'secondary_review.csv', index=False, encoding='utf-8-sig')
-    top = df.sort_values('priority', ascending=False).head(30) if not df.empty else df
+    top = df.head(30) if not df.empty else df
     top.to_csv(OUT / 'review_top30.csv', index=False, encoding='utf-8-sig')
     now = datetime.now(timezone.utc)
     jst = now.astimezone(ZoneInfo('Asia/Tokyo'))
@@ -73,6 +85,8 @@ def main():
         'secondary_reviewed': len(df),
         'secondary_research_candidates': int((df['secondary_status'] == '二次調査候補').sum()),
         'caution': int((df['secondary_status'] == '要確認（注意あり）').sum()),
+        'history_short_or_unverified': int(df['risk_flags'].fillna('').str.contains('52週相当の株価履歴不足').sum()) if 'risk_flags' in df else 0,
+        'possible_spac': int(df['risk_flags'].fillna('').str.contains('SPAC等の可能性').sum()) if 'risk_flags' in df else 0,
         'confirmed_signal': int((df['signal'] == '反発確認').sum()) if 'signal' in df else 0,
         'early_signal': int((df['signal'] == '反発初動').sum()) if 'signal' in df else 0,
         'hypothetical_entries': 0,
