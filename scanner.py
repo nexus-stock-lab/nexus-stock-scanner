@@ -1,4 +1,4 @@
-"""NEXUS v2.1: broad US-equity research scan; never records hypothetical fills."""
+"""NEXUS v2.3: use completed prior-session daily bars; never records hypothetical fills."""
 import io
 import json
 import logging
@@ -68,6 +68,14 @@ def universe():
 
 
 def evaluate(stock, prices):
+    # Yahoo's current-session daily candle has partial volume before the close.
+    # Exclude all bars dated today in New York, even if a market has already closed.
+    # This deliberately produces a previous-session research scan, NOT a 23:45 fill.
+    ny_today = datetime.now(timezone.utc).astimezone(ZoneInfo("America/New_York")).date()
+    dates = pd.to_datetime(prices.index)
+    if dates.tz is not None:
+        dates = dates.tz_convert("America/New_York")
+    prices = prices.loc[[day.date() < ny_today for day in dates]]
     prices = prices.dropna(subset=["Close", "Low", "High", "Volume"])
     if len(prices) < 55:
         raise ValueError("insufficient_history")
@@ -93,7 +101,7 @@ def evaluate(stock, prices):
     turning = last > float(close.iloc[-2]) and ret5 > 0
     early = near_low and turning and (last <= ma20 * 1.06 or ret20 <= 0.05)
     confirmed = near_low and last > ma20 and ma20 > previous_ma20 and ret20 > 0.05
-    signal = "反発確認" if confirmed else ("反発初動" if early else "none")
+    signal = "åçºç¢ºèª" if confirmed else ("åçºåå" if early else "none")
     priority = round(min(volume_ratio, 4) * 10 + min(max(ret5, 0), 0.2) * 100
                      + max(0, 0.45 - rebound) * 20, 2)
     return {
@@ -111,7 +119,7 @@ def evaluate(stock, prices):
         "price_flag": last >= 2,
         "history_days": len(prices),
         "full_52week_history": len(prices) >= 240,
-        "fundamentals": "未確認", "entry_status": "未判定",
+        "fundamentals": "æªç¢ºèª", "entry_status": "æªå¤å®",
         "virtual_fill": False,
     }
 
@@ -170,15 +178,16 @@ def main():
     pd.DataFrame(failed, columns=["symbol", "reason"]).to_csv(OUT / "failures.csv", index=False)
     ny = started.astimezone(ZoneInfo("America/New_York"))
     report = {
-        "version": "2.2", "started_utc": started.isoformat(),
+        "version": "2.3", "started_utc": started.isoformat(),
         "started_jst": started.astimezone(ZoneInfo("Asia/Tokyo")).isoformat(),
         "reference_time_jst": "23:45",
+        "price_basis": "Completed prior-session daily bars only; current New York calendar day excluded",
         "minutes_after_us_open_at_reference": 75 if ny.dst().total_seconds() else 15,
         "universe": counts, "usable": len(scored), "failed_or_insufficient": len(failed),
         "candidates": len(candidates),
-        "confirmed": int((candidates["signal"] == "反発確認").sum()),
-        "early": int((candidates["signal"] == "反発初動").sum()),
-        "warning": "Approximate common-share filter; may exclude valid stocks or include non-common instruments. Free daily prices may be delayed. Financial review and R:R are unverified. No virtual trades recorded.",
+        "confirmed": int((candidates["signal"] == "åçºç¢ºèª").sum()),
+        "early": int((candidates["signal"] == "åçºåå").sum()),
+        "warning": "Approximate common-share filter; may exclude valid stocks or include non-common instruments. Daily bars for the current NY date are excluded; signals lag at least one session. Free daily prices may be delayed. Financial review and R:R are unverified. No virtual trades recorded.",
     }
     (OUT / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(report, ensure_ascii=False, indent=2))
