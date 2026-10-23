@@ -1,4 +1,3 @@
-
 name: NEXUS Market Scan
 
 on:
@@ -7,13 +6,16 @@ on:
     - cron: '45 14 * * 1-5'
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: nexus-trade-ledger
+  cancel-in-progress: false
 
 jobs:
   scan:
     runs-on: ubuntu-latest
     timeout-minutes: 300
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,10 +30,30 @@ jobs:
 
       - name: Run NEXUS scanner
         run: python scanner.py
+
       - name: Run NEXUS secondary review
         run: python review.py
+
       - name: Run NEXUS trade tracker
         run: python trade_tracker.py
+
+      - name: Persist hypothetical trade ledger
+        if: success()
+        run: |
+          if [ ! -f input/trades.csv ]; then
+            echo "No trade ledger file; nothing to persist."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add input/trades.csv
+          if git diff --cached --quiet; then
+            echo "Trade ledger unchanged."
+          else
+            git commit -m "Persist NEXUS hypothetical trade ledger"
+            git push origin HEAD:main
+          fi
+
       - name: Save scan results
         if: always()
         uses: actions/upload-artifact@v4
