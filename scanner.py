@@ -101,7 +101,7 @@ def evaluate(stock, prices):
     turning = last > float(close.iloc[-2]) and ret5 > 0
     early = near_low and turning and (last <= ma20 * 1.06 or ret20 <= 0.05)
     confirmed = near_low and last > ma20 and ma20 > previous_ma20 and ret20 > 0.05
-    signal = "åçºç¢ºèª" if confirmed else ("åçºåå" if early else "none")
+    signal = "反発確認" if confirmed else ("反発初動" if early else "none")
     priority = round(min(volume_ratio, 4) * 10 + min(max(ret5, 0), 0.2) * 100
                      + max(0, 0.45 - rebound) * 20, 2)
     return {
@@ -119,7 +119,7 @@ def evaluate(stock, prices):
         "price_flag": last >= 2,
         "history_days": len(prices),
         "full_52week_history": len(prices) >= 240,
-        "fundamentals": "æªç¢ºèª", "entry_status": "æªå¤å®",
+        "fundamentals": "未確認", "entry_status": "未判定",
         "virtual_fill": False,
     }
 
@@ -185,8 +185,9 @@ def main():
         "minutes_after_us_open_at_reference": 75 if ny.dst().total_seconds() else 15,
         "universe": counts, "usable": len(scored), "failed_or_insufficient": len(failed),
         "candidates": len(candidates),
-        "confirmed": int((candidates["signal"] == "åçºç¢ºèª").sum()),
-        "early": int((candidates["signal"] == "åçºåå").sum()),
+        "confirmed": int((candidates["signal"] == "反発確認").sum()),
+        "early": int((candidates["signal"] == "反発初動").sum()),
+        
         "warning": "Approximate common-share filter; may exclude valid stocks or include non-common instruments. Daily bars for the current NY date are excluded; signals lag at least one session. Free daily prices may be delayed. Financial review and R:R are unverified. No virtual trades recorded.",
     }
     (OUT / "report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
