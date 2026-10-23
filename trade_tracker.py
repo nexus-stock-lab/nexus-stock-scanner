@@ -67,9 +67,9 @@ def watchlist():
         return df
     # A shortlist is NOT permission to enter. Financial and news checks stay mandatory.
     df['candidate_gate'] = df.apply(lambda r:
-        'è¦åç¢ºèª' if str(r.get('secondary_status', '')) != 'äºæ¬¡èª¿æ»åè£'
-        else 'R:Råæ¤è¨' if str(r.get('plan_status', '')) != 'R:Ræ«å®åæ ¼ï¼è¦ãã£ã¼ãç¢ºèªï¼'
-        else '23:45ä¾¡æ ¼ã»æ±ºç®ã»ä¸è½çç±ã®ç¢ºèªå¾ã¡', axis=1)
+        '要再確認' if str(r.get('secondary_status', '')) != '二次調査候補'
+        else 'R:R再検討' if str(r.get('plan_status', '')) != 'R:R暫定合格（要チャート確認）'
+        else '23:45価格・決算・下落理由の確認待ち', axis=1)
     df['hypothetical_entry_approved'] = False
     df.to_csv(WATCH, index=False, encoding='utf-8-sig')
     return df
@@ -79,7 +79,7 @@ def approved_trades(approvals, existing, watch):
     accepted, rejected = [], []
     existing_ids = set(existing['trade_id']) if not existing.empty else set()
     existing_symbols = set(existing.loc[existing['status'] == 'OPEN', 'symbol']) if not existing.empty else set()
-    eligible = set(watch.loc[watch.get('secondary_status', pd.Series(dtype=str)) == 'äºæ¬¡èª¿æ»åè£', 'symbol']) if not watch.empty else set()
+    eligible = set(watch.loc[watch.get('secondary_status', pd.Series(dtype=str)) == '二次調査候補', 'symbol']) if not watch.empty else set()
     for _, row in approvals.iterrows():
         r = row.to_dict()
         if r['approval'] != 'APPROVED':
@@ -95,26 +95,26 @@ def approved_trades(approvals, existing, watch):
             if when > datetime.now(JST) + timedelta(minutes=5):
                 raise ValueError('future entry')
         except ValueError as e:
-            reason = 'æ¥æä¸æ­£: ' + str(e)
+        reason = '日時が不正'
         entry, stop, target = [finite_positive(r[k]) for k in ('entry_price','stop_price','target_price')]
         if not reason and (entry is None or stop is None or target is None or not stop < entry < target):
-            reason = 'ä¾¡æ ¼ã¾ãã¯æåãã»å©ç¢ºã®é åºãä¸æ­£'
+        reason = '価格または損切り・利確の順序が不正'
         rr = (target - entry) / (entry - stop) if entry and stop and target and stop < entry < target else 0
         if not reason and rr < 1.5:
-            reason = 'R:Rã1.5æªæº'
+        reason = 'R:Rが1.5未満'
         if not reason and (not r['quote_source'].strip() or r['quote_source'].strip().lower() in ('yahoo daily','daily close')):
-            reason = '23:45æç¹ã®ä¾¡æ ¼åºå¸ããªã'
+        reason = '23:45時点の価格出典がない'
         if not reason and symbol not in eligible:
-            reason = 'äºæ¬¡èª¿æ»åè£ã«å­å¨ããªã'
-        if not reason and r['signal'] not in ('åçºç¢ºèª', 'åçºåå'):
-            reason = 'å¤å®åºåãä¸æ­£'
+        reason = '二次調査候補に存在しない'
+        if not reason and r['signal'] not in ('反発確認', '反発初動'):
+        reason = '判定区分が不正'
         if not reason and any(r[k] != 'YES' for k in ('fundamentals_checked','earnings_checked','decline_cause_checked')):
-            reason = 'è²¡åã»æ±ºç®ã»ä¸è½çç±ã®ç¢ºèªãæªå®äº'
+        reason = '財務・決算・下落理由の確認が未完了'
         trade_id = f'{symbol}-{r["entry_time_jst"]}'
         if not reason and (trade_id in existing_ids or symbol in existing_symbols):
-            reason = 'éè¤ç»é²ã¾ãã¯åä¸éæä¿æä¸­'
+        reason = '重複登録または同一銘柄保有中'
         if not reason and len(existing) + len(accepted) >= MAX_TRADES:
-            reason = '30ãã¬ã¼ãã®ä¸é'
+        reason = '30トレードの上限'
         if reason:
             rejected.append({'symbol':symbol,'reason':reason})
             continue
