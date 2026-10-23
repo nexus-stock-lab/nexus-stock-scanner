@@ -30,7 +30,7 @@ jobs:
         run: python scanner.py
       - name: Run NEXUS secondary review
         run: python review.py
-              - name: Run NEXUS trade tracker
+      - name: Run NEXUS trade tracker
         run: python trade_tracker.py
       - name: Save scan results
         if: always()
