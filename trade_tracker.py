@@ -95,26 +95,26 @@ def approved_trades(approvals, existing, watch):
             if when > datetime.now(JST) + timedelta(minutes=5):
                 raise ValueError('future entry')
         except ValueError as e:
-        reason = '日時が不正'
+            reason = '日時が不正'
         entry, stop, target = [finite_positive(r[k]) for k in ('entry_price','stop_price','target_price')]
         if not reason and (entry is None or stop is None or target is None or not stop < entry < target):
-        reason = '価格または損切り・利確の順序が不正'
+            reason = '価格または損切り・利確の順序が不正'
         rr = (target - entry) / (entry - stop) if entry and stop and target and stop < entry < target else 0
         if not reason and rr < 1.5:
-        reason = 'R:Rが1.5未満'
+            reason = 'R:Rが1.5未満'
         if not reason and (not r['quote_source'].strip() or r['quote_source'].strip().lower() in ('yahoo daily','daily close')):
-        reason = '23:45時点の価格出典がない'
+            reason = '23:45時点の価格出典がない'
         if not reason and symbol not in eligible:
-        reason = '二次調査候補に存在しない'
+            reason = '二次調査候補に存在しない'
         if not reason and r['signal'] not in ('反発確認', '反発初動'):
-        reason = '判定区分が不正'
+            reason = '判定区分が不正'
         if not reason and any(r[k] != 'YES' for k in ('fundamentals_checked','earnings_checked','decline_cause_checked')):
-        reason = '財務・決算・下落理由の確認が未完了'
+            reason = '財務・決算・下落理由の確認が未完了'
         trade_id = f'{symbol}-{r["entry_time_jst"]}'
         if not reason and (trade_id in existing_ids or symbol in existing_symbols):
-        reason = '重複登録または同一銘柄保有中'
+            reason = '重複登録または同一銘柄保有中'
         if not reason and len(existing) + len(accepted) >= MAX_TRADES:
-        reason = '30トレードの上限'
+            reason = '30トレードの上限'
         if reason:
             rejected.append({'symbol':symbol,'reason':reason})
             continue
