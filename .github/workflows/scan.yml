@@ -51,6 +51,8 @@ jobs:
             echo "Trade ledger unchanged."
           else
             git commit -m "Persist NEXUS hypothetical trade ledger"
+            git fetch origin main
+            git rebase origin/main
             git push origin HEAD:main
           fi
 
