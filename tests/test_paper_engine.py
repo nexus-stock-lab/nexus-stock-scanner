@@ -12,7 +12,10 @@ def fixture(symbol='TEST'):
            stop_price=90,target_price=120,
            checks={k:dict(status='PASS',source='fixture://official',rationale='test evidence',checked_at=AT) for k in CHECKS})
     q=dict(symbol=symbol,kind='trade',market_time=AT,retrieved_at=AT,price=100,
-           source='fixture',evidence_uri='fixture://raw')
+           source='fixture',evidence_uri='fixture://raw',entry_policy='nexus_asof_60s_v1',
+           decision_time_jst=AT,history_complete=True,sale_conditions_verified=True,
+           latest_valid_trade_verified=True,provider_verified=True)
+    q['retrieved_at']=(instant(AT)+timedelta(minutes=16)).isoformat()
     return p,q
 
 
@@ -42,7 +45,7 @@ class EngineTests(unittest.TestCase):
     def test_duplicate_quote_and_open_symbol(self):
         p,q=fixture(); self.assertFalse(register([], [p],[q,q],NOW)[0])
         rows=self.entry(); p['decision_time_jst']='2026-10-24T23:45:00+09:00'
-        q['market_time']=p['decision_time_jst']; q['retrieved_at']=q['market_time']
+        q['market_time']=p['decision_time_jst']; q['decision_time_jst']=p['decision_time_jst']; q['retrieved_at']=(instant(q['market_time'])+timedelta(minutes=16)).isoformat()
         self.assertEqual(len(register(rows,[p],[q],NOW+timedelta(days=1))[0]),1)
     def test_lifetime_cap(self):
         plans,quotes=zip(*(fixture('T'+str(i)) for i in range(31)))
