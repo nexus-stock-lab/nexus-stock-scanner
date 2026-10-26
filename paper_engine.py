@@ -5,6 +5,8 @@ import math
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from price_policy import POLICY, entry_reference_price
+from historical_probe import timestamp_ns
 
 JST = ZoneInfo('Asia/Tokyo')
 SIGNALS = ('反発確認', '反発初動')
@@ -52,7 +54,7 @@ def register(ledger, plans, quotes, now):
             if not isinstance(symbol, str) or not symbol.strip() or symbol != symbol.strip().upper():
                 raise ValueError('nonempty canonical symbol required')
             at = instant(plan['decision_time_jst'])
-            if (at.hour, at.minute, at.second, at.microsecond) != (23, 45, 0, 0) or at > now:
+            if (at.hour, at.minute, at.second, at.microsecond) != (23, 45, 0, 0) or at > now or timestamp_ns(plan['decision_time_jst']) % 1_000_000_000:
                 raise ValueError('decision must be past 23:45:00 JST')
             trade_id = symbol + '-' + at.isoformat()
             if any(t['trade_id'] == trade_id for t in result):
@@ -63,21 +65,22 @@ def register(ledger, plans, quotes, now):
                 raise ValueError('symbol already open')
             if plan['signal'] not in SIGNALS:
                 raise ValueError('invalid signal')
-            if instant(plan['prepared_at']) > at:
+            if timestamp_ns(plan['prepared_at']) > timestamp_ns(at.isoformat()):
                 raise ValueError('plan prepared after decision time')
             # Checks are evidence-bearing records, never inferred from a positive revenue number.
             for key in CHECKS:
                 check = plan['checks'][key]
                 if check['status'] != 'PASS' or not check['source'] or not check['rationale']:
                     raise ValueError('unverified check: ' + key)
-                if instant(check['checked_at']) > at:
+                if timestamp_ns(check['checked_at']) > timestamp_ns(at.isoformat()):
                     raise ValueError('check completed after decision: ' + key)
             matched = [q for q in quotes if q.get('symbol') == symbol
-                       and instant(q['market_time']) == at]
+                       and q.get('decision_time_jst') is not None
+                       and timestamp_ns(q['decision_time_jst']) == timestamp_ns(at.isoformat())]
             if len(matched) != 1:
-                raise ValueError('one unambiguous exact quote required')
+                raise ValueError('one unambiguous verified as-of quote required')
             q = matched[0]
-            entry = quote_price(q, symbol, at, now)
+            entry = entry_reference_price(q, symbol, at, now)
             stop, target = positive(plan['stop_price']), positive(plan['target_price'])
             if not stop < entry < target:
                 raise ValueError('stop < entry < target required')
@@ -86,6 +89,8 @@ def register(ledger, plans, quotes, now):
                 raise ValueError('R:R below 1.5')
             result.append(dict(trade_id=trade_id, symbol=symbol, signal=plan['signal'],
                                entry_time_jst=at.isoformat(), entry_price=entry,
+                               entry_market_time=q['market_time'], entry_verified_at=q['retrieved_at'],
+                               entry_price_policy=POLICY, registered_at_jst=now.isoformat(),
                                quote_source=q['source'], stop_price=stop, target_price=target,
                                rr_at_entry=rr, deadline_jst=(at + timedelta(days=90)).isoformat(),
                                status='OPEN', exit_time_jst='', exit_price='', exit_reason='',
@@ -195,6 +200,14 @@ def validate_ledger(ledger, now):
             raise ValueError('invalid persisted entry plan')
         if at > now or instant(trade['deadline_jst']) != at + timedelta(days=90):
             raise ValueError('invalid persisted entry time or deadline')
+        if trade.get('entry_price_policy') != POLICY:
+            raise ValueError('persisted entry needs approved policy metadata')
+        entry_reference_price(dict(symbol=symbol,kind='trade',entry_policy=POLICY,decision_time_jst=at.isoformat(),
+                                   market_time=trade['entry_market_time'],retrieved_at=trade['entry_verified_at'],
+                                   history_complete=True,sale_conditions_verified=True,latest_valid_trade_verified=True,
+                                   provider_verified=True,source=trade['quote_source'],evidence_uri=trade['entry_evidence_sha256'],price=entry),symbol,at,now)
+        if not instant(trade['entry_verified_at'])<=instant(trade['registered_at_jst'])<=now:
+            raise ValueError('invalid persisted verification/registration timing')
         if trade['status'] == 'OPEN':
             if symbol in open_symbols:
                 raise ValueError('multiple open positions in one symbol')
@@ -235,7 +248,8 @@ def run(now=None):
     fields = ['trade_id','symbol','signal','entry_time_jst','entry_price','quote_source','stop_price',
               'target_price','rr_at_entry','deadline_jst','status','exit_time_jst','exit_price',
               'exit_reason','return_pct','r_multiple','plan_sha256','entry_evidence_sha256',
-              'tracked_through_jst','exit_evidence_sha256']
+              'tracked_through_jst','exit_evidence_sha256','entry_market_time','entry_verified_at',
+              'entry_price_policy','registered_at_jst']
     buf=StringIO(); writer=csv.DictWriter(buf,fieldnames=fields); writer.writeheader(); writer.writerows(ledger)
     # Evidence is persisted before the ledger; replacement of each file is atomic.
     for dest, value in ((root/'evidence.json',json.dumps(archive,ensure_ascii=False,indent=2)),
@@ -244,15 +258,16 @@ def run(now=None):
     report={'paper_only':True, 'generated_jst':now.isoformat(), 'statistics':statistics(ledger),
             'entry_audit':entries, 'exit_audit':exits,
             'overdue_open_trades':[t['trade_id'] for t in ledger if t['status']=='OPEN' and instant(t['deadline_jst'])<=now],
-            'unimplemented':['Validated exact-trade provider adapter','Automated official financial/news verification',
+            'unimplemented':['Validated historical SIP provider adapter','Automated official financial/news verification',
                              'Approved numeric rules for financial quality and technical stop/target validation',
                              'Scenario deterioration exits and corporate action reconciliation'],
-            'price_status':'No verified exact-price adapter configured; no fallback fills.'}
+            'entry_price_policy':POLICY,
+            'price_status':'Approved 60-second as-of policy implemented; provider verification is pending. No fallback fills.'}
     (out/'trade_report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
     (out/'trade_log.csv').write_text(buf.getvalue(),encoding='utf-8-sig')
     s=report['statistics']['total']
     overdue=len(report['overdue_open_trades'])
-    (out/'summary.md').write_text(f"# NEXUS 仮想検証\n\n登録 {s['registered']}/30・保有 {s['open']}・決済 {s['closed']}・90日期限超過 {overdue}\n\n23:45実約定価格の取得アダプター未接続。未確認データで登録しません。\n\n業績・ニュース・支持線確認の完全自動化は未完成です。\n",encoding='utf-8')
+    (out/'summary.md').write_text(f"# NEXUS 仮想検証\n\n登録 {s['registered']}/30・保有 {s['open']}・決済 {s['closed']}・90日期限超過 {overdue}\n\n23:45以前60秒以内の最終有効取引を基準価格とし、翌0:01以降に照合。API実測は未完了です。\n\n業績・ニュース・支持線確認の完全自動化は未完成です。\n",encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False,indent=2))
 
 if __name__=='__main__':

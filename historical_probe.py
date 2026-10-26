@@ -125,6 +125,8 @@ def main():
     result=probe(args.symbol,decision(args.decision),now,
                  os.getenv('ALPACA_DATA_KEY',''),os.getenv('ALPACA_DATA_SECRET',''))
     result['retrieved_at']=datetime.now(timezone.utc).isoformat()
+    result['entry_policy']='nexus_asof_60s_v1'
+    result['provider_verified']=False
     out=Path('output'); out.mkdir(exist_ok=True)
     content=json.dumps(result,ensure_ascii=False,indent=2)
     name=hashlib.sha256(content.encode()).hexdigest()

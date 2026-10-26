@@ -16,7 +16,7 @@
 
 GitHub Actionsのcronは23:45開始を保証しません。quote_probe.py はYahooの1分足を取得して診断CSVと取得時刻を残します。23:45のラベルがあっても、その分のOHLCから23:45:00の取引価格は検証できません。このデータは正式約定の入力へ接続していません。
 
-現段階のエンジンは厳密な時刻付き取引の証拠のみ受け付けます。これは価格を捏造しないための保留方式であり、既定のNEXUS約定定義として新しく承認されたルールではありません。1分足・直前気配・最終取引を採用する場合は、取得元と許容時差を含む定義の確認が必要です。
+2026-10-27合意：正式判定時刻は23:45固定。23:45以前60秒以内の最後の有効取引を仮想基準価格とし、翌0:01以降に履歴で照合します。確認不能なら登録しません。price_policy.pyでこの方針を実装し、判定時刻と実際の取引時刻・検証時刻を分けて保存します。これは市場注文がその価格で成立した証明ではありません。
 
 ## iPhoneから
 
@@ -28,7 +28,7 @@ GitHub → Actions → NEXUS Market Scan → Run workflow。結果画面のSumma
 
 将来の検証済みアダプターは output/verified_evidence.json に plans / quotes / streams を出力します。現在、そのファイルを生成する本番アダプターはありません。tests/test_paper_engine.py は架空データの契約例です。テストデータは台帳に書き込みません。
 
-planはsymbol、signal（反発確認/反発初動）、decision_time_jst、prepared_at、stop_price、target_price、checksが必要です。checksの各項目はPASS、source、rationale、checked_atが必要で、判定時刻以前に準備されていなければ登録しません。quotesはsymbol、kind=trade、market_time、retrieved_at、price、source、evidence_uriが必要です。出典文字列だけで真実性を保証することはできません。信頼できるアダプターによる生データ保存と検証が必須です。
+planはsymbol、signal（反発確認/反発初動）、decision_time_jst、prepared_at、stop_price、target_price、checksが必要です。checksの各項目はPASS、source、rationale、checked_atが必要で、判定時刻以前に準備されていなければ登録しません。quotesはsymbol、kind=trade、entry_policy=nexus_asof_60s_v1、decision_time_jst、market_time、retrieved_at、price、source、evidence_uriと、history_complete／sale_conditions_verified／latest_valid_trade_verified／provider_verifiedの明示的な検証結果が必要です。出典文字列だけで真実性を保証することはできません。信頼できるアダプターによる生データ保存と検証が必須です。
 
 streamsはtrade_idごとのcoverage_start/end、complete、corporate_actions_clear、source、evidence_uri、tradesを持ちます。completeは欠落がないと検証できる提供元のみが設定してください。空の履歴で決済を作りません。
 
@@ -52,10 +52,18 @@ historical_probe.py は Alpaca Market Data API の歴史的SIP取引をGETで取
 
 環境変数ALPACA_DATA_KEYとALPACA_DATA_SECRETが必要です。キーをチャットやソースへ貼り付けないでください。実アカウントの認証付き取得は未検証で、アカウント利用資格・データ利用規約・アクセス権の確認が必要です。未設定ならネットワーク照会せずMISSING_CREDENTIALSを返します。有料契約は行いません。
 
-診断窓は直前60秒（仮想約定の価格鮮度ルールではありません）。ページをすべて確認できなければINCOMPLETE_PAGINATION、範囲外・順序不正・不正価格はINVALID_RESPONSEです。生の応答をoutput/historical_probe_<sha256>.jsonへ保存し、ログに認証情報は出しません。ナノ秒を保持し、23:45を1ナノ秒でも過ぎた取引を範囲外にします。リダイレクト先へ認証情報を転送しません。
+診断窓は合意済みの直前60秒です。ページをすべて確認できなければINCOMPLETE_PAGINATION、範囲外・順序不正・不正価格はINVALID_RESPONSEです。生の応答をoutput/historical_probe_<sha256>.jsonへ保存し、ログに認証情報は出しません。ナノ秒を保持し、23:45を1ナノ秒でも過ぎた取引を範囲外にします。リダイレクト先へ認証情報を転送しません。
 
-取得できても約定条件・取消・訂正は未検証なので自動合格にしません。verified_evidence.jsonは生成しません。23:45時点の直近実取引を基準価格にする場合の許容経過秒数と、実行可能な約定価格の扱いは別途合意が必要です。
+取得できても約定条件・取消・訂正は未検証なので自動合格にしません。verified_evidence.jsonは生成しません。23:45以前60秒以内の最終有効取引を仮想基準価格とする方針は合意済みです。実行可能な注文価格を保証するものではありません。
 
 出典: https://docs.alpaca.markets/us/docs/market-data-faq / https://docs.alpaca.markets/us/reference/stocktradesingle-1
 
 追加テスト10件、合計24件成功。認証付きAPI実測は未実施です。
+
+## 合意済み価格ポリシーの実装
+
+price_policy.pyはAlpacaの株式約定条件表に基づき、テープ別の分足終値更新対象を有効取引として扱います。奇数単位・参照価格・時間外等を除外し、未知の条件・同時刻の価格競合・履歴取得漏れは保留します。訂正・取消の突合と本番提供元の確認は未完了です。history_candidateはprovider_verified=Falseを返し、そのままでは台帳へ登録できません。
+
+登録時にはentry_time_jst（23:45）、entry_market_time（実際の取引）、entry_verified_at（翌0:01以降）、registered_at_jst（実際の処理時刻）、entry_price_policyを別々に保存します。過去時点へ未確認約定を捏造しません。既存の業績・流動性・損切り・目標の根拠確認とR:R最低1.5は維持します。
+
+単体テスト36件成功。APIの認証付き実測と本番アダプター検証は未実施。mainへの反映は未承認です。
