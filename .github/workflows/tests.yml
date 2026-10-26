@@ -2,6 +2,8 @@ name: Paper engine tests
 on:
   pull_request:
   workflow_dispatch:
+  push:
+    branches: [codex/nexus-paper-engine]
 permissions:
   contents: read
 jobs:
@@ -14,3 +16,46 @@ jobs:
           python-version: '3.11'
       - run: python -m unittest discover -s tests -v
       - run: python -m compileall -q scanner.py review.py paper_engine.py trade_tracker.py quote_probe.py
+  historical-data-probe:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/codex/nexus-paper-engine'
+    needs: test
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Read historical SIP trades (no orders or ledger writes)
+        env:
+          ALPACA_DATA_KEY: ${{ secrets.ALPACA_DATA_KEY }}
+          ALPACA_DATA_SECRET: ${{ secrets.ALPACA_DATA_SECRET }}
+        run: python historical_probe.py --symbol AAPL --decision '2026-10-26T23:45:00+09:00'
+      - name: Report acquisition result separately from fill verification
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          paths = list(Path('output').glob('historical_probe_*.json'))
+          if len(paths) != 1:
+              raise SystemExit('Expected one diagnostic result')
+          result = json.loads(paths[0].read_text())
+          safe = {k: result[k] for k in ('status', 'http_status', 'records', 'latest_market_time', 'retrieved_at') if k in result}
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('## Alpaca historical SIP connection test\n\n')
+              summary.write('AAPL / decision 2026-10-26 23:45 JST / preceding 60 seconds\n\n')
+              summary.write('```json\n' + json.dumps(safe, indent=2) + '\n```\n\n')
+              summary.write('Diagnostic only. No paper fills, orders, X posts, or external notifications. Provider verification remains false.\n')
+          if result.get('status') != 'HISTORY_RECEIVED':
+              raise SystemExit('Historical data acquisition not confirmed; see Summary')
+          PY
+      - name: Preserve diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: alpaca-history-diagnostic
+          path: output/historical_probe_*.json
+          if-no-files-found: warn
+          retention-days: 30
