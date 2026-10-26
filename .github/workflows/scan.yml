@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: nexus-trade-ledger
+  group: nexus-trade-ledger-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -17,45 +17,42 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 300
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run NEXUS scanner
-        run: python scanner.py
-
-      - name: Run NEXUS secondary review
-        run: python review.py
-
-      - name: Run NEXUS trade tracker
+        run: python -m pip install -r requirements.txt
+      - name: Test paper engine
+        run: python -m unittest discover -s tests -v
+      - name: Diagnose price availability (never supplies fills)
+        run: python quote_probe.py
+      - name: Track existing paper positions independently of scanner failures
         run: python trade_tracker.py
-
-      - name: Persist hypothetical trade ledger
+      - name: Persist evidence and ledger on the checked-out branch
         if: success()
+        env:
+          BRANCH: ${{ github.ref_name }}
         run: |
-          if [ ! -f input/trades.csv ]; then
-            echo "No trade ledger file; nothing to persist."
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add input/trades.csv
-          if git diff --cached --quiet; then
-            echo "Trade ledger unchanged."
-          else
-            git commit -m "Persist NEXUS hypothetical trade ledger"
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
+          git add input/trades.csv input/evidence.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Persist NEXUS paper ledger and evidence"
+            git push origin "HEAD:$BRANCH"
           fi
-
+      - name: Run NEXUS scanner (existing selection rules)
+        run: python scanner.py
+      - name: Run NEXUS secondary review
+        run: python review.py
+      - name: Show phone-readable summary
+        if: always()
+        run: |
+          if [ -f output/summary.md ]; then
+            cat output/summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
       - name: Save scan results
         if: always()
         uses: actions/upload-artifact@v4
