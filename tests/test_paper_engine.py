@@ -123,3 +123,26 @@ class EngineTests(unittest.TestCase):
         s=statistics([]); self.assertIsNone(s['total']['win_rate_pct']); self.assertEqual(s['remaining'],30)
 
 if __name__=='__main__': unittest.main()
+
+class NanosecondExitTests(unittest.TestCase):
+    entry = EngineTests.entry
+    stream = EngineTests.stream
+    def test_submicrosecond_trade_order_retained(self):
+        rows=self.entry()
+        stream=self.stream(rows,[95,85])
+        s=next(iter(stream.values()))
+        s['trades'][0].update(market_time='2026-10-23T14:46:00.000000001Z',retrieved_at=NOW.isoformat())
+        s['trades'][1].update(market_time='2026-10-23T14:46:00.000000002Z',retrieved_at=NOW.isoformat())
+        s['coverage_end']='2026-10-23T14:46:00.000000002Z'
+        closed,a=settle(rows,stream,NOW)
+        self.assertEqual(closed[0]['status'],'CLOSED')
+        self.assertEqual(closed[0]['exit_price'],85)
+        self.assertEqual(closed[0]['exit_time_jst'],s['trades'][1]['market_time'])
+        self.assertEqual(closed[0]['tracked_through_jst'],s['coverage_end'])
+    def test_one_nanosecond_outside_coverage_blocks(self):
+        rows=self.entry();stream=self.stream(rows,[85]);s=next(iter(stream.values()))
+        s['trades'][0].update(market_time='2026-10-23T14:46:00.000000001Z',retrieved_at=NOW.isoformat())
+        s['coverage_end']='2026-10-23T14:46:00Z'
+        closed,a=settle(rows,stream,NOW)
+        self.assertEqual(closed[0]['status'],'OPEN')
+        self.assertEqual(a[0]['status'],'BLOCKED')

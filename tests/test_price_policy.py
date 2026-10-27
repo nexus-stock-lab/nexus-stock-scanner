@@ -70,3 +70,21 @@ class PolicyTests(unittest.TestCase):
         with self.assertRaises(ValueError):entry_reference_price(q,'TEST',AT,NOW)
 
 if __name__=='__main__':unittest.main()
+
+class UpdateStateTests(unittest.TestCase):
+    def candidate(self, rows):
+        return history_candidate(history(rows),NOW.isoformat(),'fixture://history')
+    def test_canceled_and_incorrect_prints_are_excluded(self):
+        for state in ('canceled','incorrect'):
+            rows=[dict(t='2026-10-23T14:45:00Z',p=999,c=['@'],z='C',i=2,x='V',u=state),
+                  dict(t='2026-10-23T14:44:59Z',p=100,c=['@'],z='C',i=1,x='V')]
+            self.assertEqual(self.candidate(rows)['price'],100)
+    def test_corrected_print_is_used(self):
+        row=dict(t='2026-10-23T14:45:00Z',p=101,c=['@'],z='C',i=3,x='V',u='corrected')
+        self.assertEqual(self.candidate([row])['price'],101)
+    def test_unknown_update_blocks(self):
+        row=dict(t='2026-10-23T14:45:00Z',p=101,c=['@'],z='C',i=3,x='V',u='unknown')
+        with self.assertRaises(ValueError): self.candidate([row])
+    def test_only_canceled_prints_cannot_supply_a_price(self):
+        row=dict(t='2026-10-23T14:45:00Z',p=101,c=['@'],z='C',i=3,x='V',u='canceled')
+        with self.assertRaises(ValueError): self.candidate([row])
