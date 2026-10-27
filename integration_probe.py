@@ -3,9 +3,24 @@ import json
 import os
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from urllib.error import HTTPError
+from urllib.parse import urlsplit
 from historical_probe import probe, decision
 from market_provider import verified_reference, corporate_state, collect_interval, normalized_stream
 from official_data import collect_financials
+
+
+def sec_error_details(exc):
+    """Expose public SEC endpoint/status, never arbitrary URLs or credentials."""
+    result = {'type': type(exc).__name__}
+    if isinstance(exc, HTTPError):
+        result['http_status'] = exc.code
+        parsed = urlsplit(exc.url)
+        if parsed.scheme == 'https' and parsed.hostname in ('www.sec.gov', 'data.sec.gov'):
+            result['endpoint'] = 'https://' + parsed.hostname + parsed.path
+    elif isinstance(exc, ValueError):
+        result['reason'] = str(exc)
+    return result
 
 
 def main():
@@ -39,7 +54,7 @@ def main():
         result['official_documents_archived']=sum(d['status']=='ARCHIVED_NOT_REVIEWED' for d in f.get('official_documents',[]))
     except Exception as exc:
         result['sec_status']='BLOCKED'
-        result['sec_error']=str(exc) if isinstance(exc,ValueError) else type(exc).__name__
+        result['sec_error']=sec_error_details(exc)
     result['qualitative_review_status']='No automatic PASS; official guidance/decline assertions must be supported by archived sources'
     (out/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2))
     summary='## Read-only NEXUS integration\n\n```json\n'+json.dumps(result,ensure_ascii=False,indent=2)+'\n```\n'
