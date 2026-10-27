@@ -1,7 +1,9 @@
 import copy
+import os
+from unittest.mock import patch
 import unittest
 from historical_probe import decision
-from official_data import extract_financials, quarter_values, accepted_filings
+from official_data import extract_financials, quarter_values, accepted_filings, sec_user_agent
 
 AT=decision('2026-10-23T23:45:00+09:00')
 
@@ -43,3 +45,21 @@ class OfficialDataTests(unittest.TestCase):
         values=quarter_values(units,{'a':{'accepted_at':'2026-02-01T00:00:00Z'},'b':{'accepted_at':'2025-11-01T00:00:00Z'}})
         self.assertEqual(values[0]['val'],130)
         self.assertEqual(values[0]['start'],'2025-10-01')
+
+
+class SecContactTests(unittest.TestCase):
+    def test_missing_contact_blocks_without_inventing_identity(self):
+        with patch.dict(os.environ,{},clear=True),self.assertRaisesRegex(ValueError,'SEC contact not configured'):
+            sec_user_agent()
+
+    def test_declared_contact_is_preserved(self):
+        with patch.dict(os.environ,{'NEXUS_SEC_USER_AGENT':'NEXUS contact@example.org'}):
+            self.assertEqual(sec_user_agent(),'NEXUS contact@example.org')
+
+    def test_header_injection_and_url_only_identity_are_rejected_without_echo(self):
+        for value in ('NEXUS contact@example.org\r\nX-Header: private',
+                      'NEXUS https://github.com/nexus-stock-lab/nexus-stock-scanner'):
+            with self.subTest(value=value),patch.dict(os.environ,{'NEXUS_SEC_USER_AGENT':value}):
+                with self.assertRaises(ValueError) as error:
+                    sec_user_agent()
+                self.assertNotIn(value,str(error.exception))
