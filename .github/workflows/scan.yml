@@ -82,6 +82,7 @@ jobs:
             output/daily_status.json
             output/tracking_status.json
             output/scenario_monitoring.json
+            output/scenario_exit_status.json
             output/plan_status.json
             output/candidates.csv
             output/report.json
