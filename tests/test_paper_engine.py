@@ -8,7 +8,7 @@ NOW=instant(AT)+timedelta(days=1)
 
 
 def fixture(symbol='TEST'):
-    p=dict(symbol=symbol,signal='反発初動',decision_time_jst=AT,prepared_at=AT,
+    p=dict(rules_version='nexus_rules_20261027_v1',symbol=symbol,signal='反発初動',decision_time_jst=AT,prepared_at=AT,
            stop_price=90,target_price=120,
            checks={k:dict(status='PASS',source='fixture://official',rationale='test evidence',checked_at=AT) for k in CHECKS})
     q=dict(symbol=symbol,kind='trade',market_time=AT,retrieved_at=AT,price=100,
@@ -143,6 +143,24 @@ class NanosecondExitTests(unittest.TestCase):
         rows=self.entry();stream=self.stream(rows,[85]);s=next(iter(stream.values()))
         s['trades'][0].update(market_time='2026-10-23T14:46:00.000000001Z',retrieved_at=NOW.isoformat())
         s['coverage_end']='2026-10-23T14:46:00Z'
+        closed,a=settle(rows,stream,NOW)
+        self.assertEqual(closed[0]['status'],'OPEN')
+        self.assertEqual(a[0]['status'],'BLOCKED')
+
+class ScenarioExitTests(unittest.TestCase):
+    entry=EngineTests.entry
+    stream=EngineTests.stream
+    def test_exit_at_first_trade_after_official_confirmation(self):
+        rows=self.entry();stream=self.stream(rows,[105,106,107]);s=next(iter(stream.values()))
+        s['scenario_exit']={'verified':True,'source':'fixture://SEC','evidence_uri':'fixture://filing',
+                            'rationale':'Approved financial quality failed',
+                            'published_at':AT,'checked_at':(instant(AT)+timedelta(minutes=2)).isoformat()}
+        closed,a=settle(rows,stream,NOW)
+        self.assertEqual(closed[0]['exit_reason'],'SCENARIO_DETERIORATION')
+        self.assertEqual(closed[0]['exit_price'],106)
+    def test_unverified_or_future_scenario_blocks(self):
+        rows=self.entry();stream=self.stream(rows,[105]);s=next(iter(stream.values()))
+        s['scenario_exit']={'verified':False}
         closed,a=settle(rows,stream,NOW)
         self.assertEqual(closed[0]['status'],'OPEN')
         self.assertEqual(a[0]['status'],'BLOCKED')
