@@ -4,13 +4,15 @@ on:
   workflow_dispatch:
     inputs:
       phase:
-        description: 'prepare=候補調査 / reconcile=23:45価格照合'
+        description: 'prepare=広域調査 / finalize=正式計画 / reconcile=価格照合 / track=保有追跡'
         type: choice
-        options: [prepare, reconcile]
+        options: [prepare, finalize, reconcile, track]
         default: prepare
   schedule:
     - cron: '0 9 * * 1-5'
+    - cron: '35 14 * * 1-5'
     - cron: '5 15 * * 1-5'
+    - cron: '35 15-21 * * 1-5'
 
 permissions:
   contents: write
@@ -24,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 300
     env:
-      PHASE: ${{ github.event_name == 'schedule' && (github.event.schedule == '5 15 * * 1-5' && 'reconcile' || 'prepare') || inputs.phase }}
+      PHASE: ${{ github.event_name == 'schedule' && (github.event.schedule == '0 9 * * 1-5' && 'prepare' || (github.event.schedule == '35 14 * * 1-5' && 'finalize' || (github.event.schedule == '5 15 * * 1-5' && 'reconcile' || 'track'))) || inputs.phase }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -42,15 +44,11 @@ jobs:
       - name: Secondary research using existing rules
         if: env.PHASE == 'prepare'
         run: python review.py
-      - name: Freeze predecision research
-        if: env.PHASE == 'prepare'
-        run: python daily_runner.py prepare
-      - name: Collect historical reference prices and track ledger
-        if: env.PHASE == 'reconcile'
+      - name: Run approved paper-validation phase
         env:
           ALPACA_DATA_KEY: ${{ secrets.ALPACA_DATA_KEY }}
           ALPACA_DATA_SECRET: ${{ secrets.ALPACA_DATA_SECRET }}
-        run: python daily_runner.py reconcile
+        run: python daily_runner.py "$PHASE"
       - name: Persist research, raw evidence and paper ledger on current branch
         if: success()
         env:
@@ -76,6 +74,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nexus-${{ env.PHASE }}-results
-          path: output/
+          path: |
+            output/summary.md
+            output/trade_report.json
+            output/trade_log.csv
+            output/daily_status.json
+            output/tracking_status.json
+            output/scenario_monitoring.json
+            output/plan_status.json
+            output/candidates.csv
+            output/report.json
+            output/secondary_review.csv
+            output/secondary_report.json
           if-no-files-found: warn
           retention-days: 30
