@@ -88,7 +88,9 @@ GitHubの開始遅延はあり得ます。判定時刻は23:45から変更しま
 
 AlpacaのPaper用キーをGitHub Actions Secrets `ALPACA_DATA_KEY` / `ALPACA_DATA_SECRET` に保存。
 キーをソース・チャット・スクリーンショットへ載せないでください。
-SECへのアクセスが拒否された場合、任意設定 `NEXUS_SEC_USER_AGENT` で正しい連絡先を示すことができます。
+任意のActionsリポジトリ変数 `NEXUS_SEC_USER_AGENT` に、SECへ提示する正しいアプリ名・連絡先を設定できます。
+空欄ならリポジトリURLを含む既定値を使用します。設定だけでSEC接続成功を保証しません。
+接続診断はSECの失敗先とHTTPステータスを公開URLの範囲で記録し、認証情報は出力しません。
 アクセス拒否・未取得は保留し、有料契約・新たな課金設定は行いません。
 
 仕様: https://www.sec.gov/search-filings/edgar-application-programming-interfaces
