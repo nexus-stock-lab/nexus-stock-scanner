@@ -9,7 +9,7 @@ import unittest
 from datetime import timedelta
 from pathlib import Path
 
-from daily_runner import freeze_research, prepare_plans, reconcile, track_positions
+from daily_runner import freeze_research, prepare_plans, reconcile, track_positions, update_scenarios
 from paper_engine import run, digest
 from strategy_rules import VERSION
 from test_strategy_rules import AT, inputs
@@ -82,3 +82,45 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(report['positions'][0]['status'],'BLOCKED')
         with contextlib.redirect_stdout(io.StringIO()):run(now)
         self.assertEqual(json.loads(Path('output/trade_report.json').read_text())['statistics']['total']['open'],1)
+
+    def prepare_impairment(self):
+        checked=AT+timedelta(minutes=2)
+        document={'source':'https://issuer.example/ir/impairment','official_source_verified':True,
+                  'retrieved_at':(AT+timedelta(minutes=1)).isoformat(),'published_at':AT.isoformat(),
+                  'text':'Officially confirmed material impairment'}
+        sha=digest(document)
+        Path('input/official_documents',sha+'.json').write_text(json.dumps(document))
+        review={'symbol':'TEST','rules_version':VERSION,'no_material_business_impairment':{
+                'value':False,'source':document['source'],'evidence_sha256':sha,'excerpt':document['text'],
+                'rationale':'Fixture official confirmation','published_at':document['published_at'],
+                'checked_at':checked.isoformat()}}
+        p=Path('input/official_reviews.json');reviews=json.loads(p.read_text())
+        reviews['impairment']={'TEST':review};p.write_text(json.dumps(reviews))
+        update_scenarios({},AT+timedelta(hours=1),Path('input'))
+
+    def test_official_impairment_exits_at_first_trade_after_confirmation(self):
+        self.enter();self.prepare_impairment();now=AT+timedelta(hours=1)
+        def fetch(symbol,start,end,*args):
+            return {'symbol':symbol,'start':start.isoformat(),'end':end.isoformat(),
+                    'complete':True,'feed':'sip','retrieved_at':now.isoformat(),'pages':[],
+                    'trades':[{'t':(AT+timedelta(minutes=m)).isoformat(),'p':100-m,
+                               'c':['@'],'z':'C','x':'V','i':m} for m in (1,3)]}
+        track_positions(now,fetch_interval=fetch,fetch_corporate=lambda *a:{'clear':True,'pages':[]})
+        with contextlib.redirect_stdout(io.StringIO()):run(now)
+        rows=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
+        self.assertEqual(rows[0]['exit_reason'],'SCENARIO_DETERIORATION')
+        self.assertEqual(rows[0]['exit_price'],'97.0')
+        self.assertEqual(rows[0]['exit_time_jst'],(AT+timedelta(minutes=3)).isoformat())
+
+    def test_late_impairment_evidence_requires_replay_not_later_exit(self):
+        rows=self.enter();self.prepare_impairment()
+        rows[0]['tracked_through_jst']=(AT+timedelta(minutes=10)).isoformat()
+        with Path('input/trades.csv').open('w',newline='') as f:
+            w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+        report=track_positions(AT+timedelta(hours=1),
+            fetch_interval=lambda *a:self.fail('cannot silently use later trades'),
+            fetch_corporate=lambda *a:self.fail('must detect need for historical reconciliation first'))
+        self.assertEqual(report['positions'][0]['status'],'BLOCKED')
+        self.assertIn('historical reconciliation',report['positions'][0]['reason'])
+        with contextlib.redirect_stdout(io.StringIO()):run(AT+timedelta(hours=1))
+        self.assertEqual(json.loads(Path('output/trade_report.json').read_text())['statistics']['total']['closed'],0)
