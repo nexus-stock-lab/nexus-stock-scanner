@@ -48,7 +48,7 @@ jobs:
         env:
           ALPACA_DATA_KEY: ${{ secrets.ALPACA_DATA_KEY }}
           ALPACA_DATA_SECRET: ${{ secrets.ALPACA_DATA_SECRET }}
-          NEXUS_SEC_USER_AGENT: ${{ vars.NEXUS_SEC_USER_AGENT }}
+          NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
         run: python daily_runner.py "$PHASE"
       - name: Persist research, raw evidence and paper ledger on current branch
         if: success()
