@@ -90,8 +90,9 @@ GitHubの開始遅延はあり得ます。判定時刻は23:45から変更しま
 
 AlpacaのPaper用キーをGitHub Actions Secrets `ALPACA_DATA_KEY` / `ALPACA_DATA_SECRET` に保存。
 キーをソース・チャット・スクリーンショットへ載せないでください。
-任意のActionsリポジトリ変数 `NEXUS_SEC_USER_AGENT` に、SECへ提示する正しいアプリ名・連絡先を設定できます。
-空欄ならリポジトリURLを含む既定値を使用します。設定だけでSEC接続成功を保証しません。
+SECへの取得要求に提示するアプリ名と連絡先メールを、ActionsのRepository Secret `NEXUS_SEC_USER_AGENT` に保存してください。
+値は `NEXUS 実際の連絡先メールアドレス` の形式です。メールはこのリポジトリのコードやチャットへ貼りません。GitHubのSecretを優先し、従来の同名Variableも読み取れますが、連絡先をログで隠すためSecretを推奨します。
+空欄・メール形式なし・改行を含む値ならSECへの要求を止め、未設定として保留します。設定だけでSEC接続成功を保証しません。
 接続診断はSECの失敗先とHTTPステータスを公開URLの範囲で記録し、認証情報は出力しません。
 アクセス拒否・未取得は保留し、有料契約・新たな課金設定は行いません。
 
