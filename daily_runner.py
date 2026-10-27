@@ -282,6 +282,9 @@ def update_scenarios(financials, now, root):
         candidates=[e for e in candidates if entered<timestamp_ns(e['checked_at'])<=timestamp_ns(now.isoformat())]
         if candidates:
             event=min(candidates,key=lambda e:timestamp_ns(e['checked_at']))
+            cursor=trade.get('tracked_through_jst') or trade['entry_time_jst']
+            event['requires_historical_reconciliation']=timestamp_ns(event['checked_at'])<timestamp_ns(cursor)
+            event['recorded_at']=now.isoformat()
             events[trade['trade_id']]=event
             audit.append({'trade_id':trade['trade_id'],'status':'VERIFIED_EXIT_TRIGGER',
                           'trigger':event['trigger'],'checked_at':event['checked_at']})
@@ -339,7 +342,9 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
         try:
             start=instant(trade.get('tracked_through_jst') or trade['entry_time_jst'])
             scenario=scenarios.get(trade['trade_id'])
-            if scenario and timestamp_ns(scenario['checked_at'])<timestamp_ns(start.isoformat()):
+            if scenario and (scenario.get('requires_historical_reconciliation') is True or
+                             ('requires_historical_reconciliation' not in scenario and
+                              timestamp_ns(scenario['checked_at'])<timestamp_ns(start.isoformat()))):
                 raise ValueError('Scenario confirmation predates tracking cursor; historical reconciliation required')
             available=now-timedelta(minutes=16)
             if available<=start:
