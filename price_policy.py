@@ -67,6 +67,11 @@ def history_candidate(result, retrieved_at, evidence_uri):
         if previous is not None and stamp>previous:
             raise ValueError('history not descending')
         previous=stamp
+        update = row.get('u')
+        if update in ('canceled', 'incorrect'):
+            continue
+        if update not in (None, 'corrected'):
+            raise ValueError('unknown trade update state')
         tape=row.get('z'); conditions=row.get('c')
         if tape not in ELIGIBLE or not isinstance(conditions,list) or not conditions:
             raise ValueError('missing tape or sale conditions')
@@ -93,5 +98,6 @@ def history_candidate(result, retrieved_at, evidence_uri):
                 price=float(row['p']),source='Alpaca historical SIP',evidence_uri=evidence_uri,
                 history_complete=True,sale_conditions_verified=True,latest_valid_trade_verified=True,
                 provider_verified=False,trade_id=row['i'],exchange=row['x'],tape=row['z'],conditions=row['c'],
+                update_state=row.get('u'),
                 reference_age_seconds=(cutoff-latest)/NANO,
                 warning='Provider smoke test, cancellation/correction reconciliation and live integration remain unverified.')

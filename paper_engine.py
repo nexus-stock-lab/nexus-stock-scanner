@@ -21,6 +21,8 @@ def instant(value):
 
 
 def positive(value):
+    if isinstance(value, bool):
+        raise ValueError('boolean is not a price')
     result = float(value)
     if not math.isfinite(result) or result <= 0:
         raise ValueError('finite positive price required')
@@ -35,9 +37,10 @@ def quote_price(quote, symbol, at, now):
     """Only exact timestamped trades; minute OHLC is deliberately ineligible."""
     if quote.get('symbol') != symbol or quote.get('kind') != 'trade':
         raise ValueError('exact trade evidence required; bars are not ticks')
-    if instant(quote['market_time']) != at or instant(quote['retrieved_at']) > now:
+    stamp = timestamp_ns(at if isinstance(at, str) else at.isoformat())
+    if timestamp_ns(quote['market_time']) != stamp or timestamp_ns(quote['retrieved_at']) > timestamp_ns(now.isoformat()):
         raise ValueError('quote timestamp mismatch or future retrieval')
-    if instant(quote['retrieved_at']) < at:
+    if timestamp_ns(quote['retrieved_at']) < stamp:
         raise ValueError('retrieval precedes market event')
     if not quote.get('source') or not quote.get('evidence_uri'):
         raise ValueError('source and archived evidence required')
@@ -115,35 +118,35 @@ def settle(ledger, streams, now):
             continue
         try:
             stream = streams[trade['trade_id']]
-            start = instant(trade.get('tracked_through_jst') or trade['entry_time_jst'])
-            end = instant(stream['coverage_end'])
-            if stream.get('complete') is not True or instant(stream['coverage_start']) != start or not start < end <= now:
+            start = timestamp_ns(trade.get('tracked_through_jst') or trade['entry_time_jst'])
+            end = timestamp_ns(stream['coverage_end'])
+            if stream.get('complete') is not True or timestamp_ns(stream['coverage_start']) != start or not start < end <= timestamp_ns(now.isoformat()):
                 raise ValueError('incomplete or noncontiguous coverage')
             if not stream.get('source') or not stream.get('evidence_uri'):
                 raise ValueError('coverage evidence required')
             if stream.get('corporate_actions_clear') is not True:
                 raise ValueError('corporate actions require reconciliation')
             events = stream['trades']
-            times = [instant(q['market_time']) for q in events]
+            times = [timestamp_ns(q['market_time']) for q in events]
             if times != sorted(times) or len(set(times)) != len(times):
                 raise ValueError('unordered or ambiguous trade timestamps')
             # Validate all evidence before mutating this trade.
-            prices = [quote_price(q, trade['symbol'], at, now) for q, at in zip(events, times)]
+            prices = [quote_price(q, trade['symbol'], q['market_time'], now) for q in events]
             if any(not start < at <= end for at in times):
                 raise ValueError('event outside coverage')
-            deadline = instant(trade['deadline_jst'])
+            deadline = timestamp_ns(trade['deadline_jst'])
             for q, at, price in zip(events, times, prices):
                 reason = ('STOP' if price <= float(trade['stop_price']) else
                           'TARGET' if price >= float(trade['target_price']) else
                           'MAX_90_DAYS' if at >= deadline else '')
                 if reason:
                     entry = float(trade['entry_price'])
-                    trade.update(status='CLOSED', exit_time_jst=at.isoformat(), exit_price=price,
+                    trade.update(status='CLOSED', exit_time_jst=q['market_time'], exit_price=price,
                                  exit_reason=reason, return_pct=100 * (price / entry - 1),
                                  r_multiple=(price - entry) / (entry - float(trade['stop_price'])),
                                  exit_evidence_sha256=digest(q))
                     break
-            trade['tracked_through_jst'] = end.isoformat()
+            trade['tracked_through_jst'] = stream['coverage_end']
             if trade['status'] == 'OPEN' and end >= deadline:
                 audit.append({'trade_id': trade['trade_id'], 'status': 'AWAITING_VERIFIED_EXIT'})
         except (ValueError, KeyError, TypeError, OverflowError) as exc:
@@ -258,16 +261,16 @@ def run(now=None):
     report={'paper_only':True, 'generated_jst':now.isoformat(), 'statistics':statistics(ledger),
             'entry_audit':entries, 'exit_audit':exits,
             'overdue_open_trades':[t['trade_id'] for t in ledger if t['status']=='OPEN' and instant(t['deadline_jst'])<=now],
-            'unimplemented':['Validated historical SIP provider adapter','Automated official financial/news verification',
+            'unimplemented':['Production entry/exit provider attestation','Automated official financial/news verification',
                              'Approved numeric rules for financial quality and technical stop/target validation',
                              'Scenario deterioration exits and corporate action reconciliation'],
             'entry_price_policy':POLICY,
-            'price_status':'Approved 60-second as-of policy implemented; provider verification is pending. No fallback fills.'}
+            'price_status':'Authenticated SIP history acquisition confirmed. Cancellation/update filtering implemented. Production entry/exit attestation pending. No fallback fills.'}
     (out/'trade_report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
     (out/'trade_log.csv').write_text(buf.getvalue(),encoding='utf-8-sig')
     s=report['statistics']['total']
     overdue=len(report['overdue_open_trades'])
-    (out/'summary.md').write_text(f"# NEXUS 仮想検証\n\n登録 {s['registered']}/30・保有 {s['open']}・決済 {s['closed']}・90日期限超過 {overdue}\n\n23:45以前60秒以内の最終有効取引を基準価格とし、翌0:01以降に照合。API実測は未完了です。\n\n業績・ニュース・支持線確認の完全自動化は未完成です。\n",encoding='utf-8')
+    (out/'summary.md').write_text(f"# NEXUS 仮想検証\n\n登録 {s['registered']}/30・保有 {s['open']}・決済 {s['closed']}・90日期限超過 {overdue}\n\n23:45以前60秒以内の最終有効取引を基準価格とし、翌0:01以降に照合。SIP履歴の認証付き取得は確認済みです。\n\n業績・ニュース・支持線確認の完全自動化は未完成です。\n",encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False,indent=2))
 
 if __name__=='__main__':
