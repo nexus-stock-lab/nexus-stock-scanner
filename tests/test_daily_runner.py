@@ -52,10 +52,10 @@ class RunnerTests(unittest.TestCase):
         (self.out/'secondary_review.csv').write_text('bad')
         self.assertEqual(freeze_research(AT,self.root,self.out),snap)
         result = self.collect()
-        self.assertEqual(result['status'],'BLOCKED_RULES_UNDEFINED')
+        self.assertEqual(result['status'],'NO_VERIFIED_PLANS')
         self.assertEqual(result['prices'][0]['price'],100)
-        self.assertEqual(result['registered'],0)
-        self.assertFalse((self.out/'verified_evidence.json').exists())
+        self.assertIsNone(result['registered'])
+        self.assertEqual(json.loads((self.out/'verified_evidence.json').read_text())['plans'],[])
         self.assertEqual(len(list((self.root/'market_evidence').glob('*.json'))),1)
     def test_no_snapshot_never_backfills(self):
         (self.out/'verified_evidence.json').write_text('{}')
