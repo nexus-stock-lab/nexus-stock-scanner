@@ -24,8 +24,8 @@ def public_json(url):
     if host not in ('www.sec.gov','data.sec.gov'):
         raise ValueError('SEC host required')
     time.sleep(0.2)  # Below SEC's 10 requests/second ceiling, sequential only.
-    request = Request(url, headers={'User-Agent':os.getenv('NEXUS_SEC_USER_AGENT',
-                      'NEXUS paper research https://github.com/nexus-stock-lab/nexus-stock-scanner'),
+    request = Request(url, headers={'User-Agent':os.getenv('NEXUS_SEC_USER_AGENT') or
+                      'NEXUS paper research https://github.com/nexus-stock-lab/nexus-stock-scanner',
                       'Accept':'application/json'})
     with urlopen(request, timeout=15) as response:
         if urlparse(response.url).hostname != host:
@@ -203,8 +203,8 @@ def collect_documents(submissions, cik, at, now, root):
             seen.add(url)
             try:
                 attempts+=1
-                req=Request(url,headers={'User-Agent':os.getenv('NEXUS_SEC_USER_AGENT',
-                            'NEXUS paper research https://github.com/nexus-stock-lab/nexus-stock-scanner')})
+                req=Request(url,headers={'User-Agent':os.getenv('NEXUS_SEC_USER_AGENT') or
+                            'NEXUS paper research https://github.com/nexus-stock-lab/nexus-stock-scanner'})
                 time.sleep(0.2)
                 with urlopen(req,timeout=10) as response:
                     if not response.url.startswith(base):
