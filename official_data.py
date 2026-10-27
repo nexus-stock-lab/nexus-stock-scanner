@@ -5,6 +5,7 @@ Never regards missing words in an SEC filing as proof that risks are absent.
 import hashlib
 import json
 import os
+import re
 import time
 from datetime import date, datetime, timedelta
 from pathlib import Path
@@ -19,13 +20,21 @@ REVENUE_TAGS = ('RevenueFromContractWithCustomerExcludingAssessedTax',
                 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues', 'SalesRevenueNet')
 
 
+def sec_user_agent():
+    """Use the owner's declared contact, never invent an email or log the header."""
+    value=os.getenv('NEXUS_SEC_USER_AGENT','').strip()
+    if (not value or len(value)>500 or '\r' in value or '\n' in value
+            or not re.search(r'[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+',value)):
+        raise ValueError('SEC contact not configured: save app name and contact email as NEXUS_SEC_USER_AGENT Secret')
+    return value
+
+
 def public_json(url):
     host = urlparse(url).hostname
     if host not in ('www.sec.gov','data.sec.gov'):
         raise ValueError('SEC host required')
     time.sleep(0.2)  # Below SEC's 10 requests/second ceiling, sequential only.
-    request = Request(url, headers={'User-Agent':os.getenv('NEXUS_SEC_USER_AGENT') or
-                      'NEXUS paper research https://github.com/nexus-stock-lab/nexus-stock-scanner',
+    request = Request(url, headers={'User-Agent':sec_user_agent(),
                       'Accept':'application/json'})
     with urlopen(request, timeout=15) as response:
         if urlparse(response.url).hostname != host:
@@ -203,8 +212,7 @@ def collect_documents(submissions, cik, at, now, root):
             seen.add(url)
             try:
                 attempts+=1
-                req=Request(url,headers={'User-Agent':os.getenv('NEXUS_SEC_USER_AGENT') or
-                            'NEXUS paper research https://github.com/nexus-stock-lab/nexus-stock-scanner'})
+                req=Request(url,headers={'User-Agent':sec_user_agent()})
                 time.sleep(0.2)
                 with urlopen(req,timeout=10) as response:
                     if not response.url.startswith(base):
