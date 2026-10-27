@@ -113,7 +113,7 @@ def settle(ledger, streams, now):
 
     A gap, bar, or split blocks the position rather than inventing a fill. Streams
     need coverage_start/end and complete=True from a validated provider adapter.
-    This repository deliberately supplies no provider capable of that attestation.
+    The historical SIP adapter supplies this attestation only after validation.
     """
     result, audit = [dict(t) for t in ledger], []
     for trade in result:
