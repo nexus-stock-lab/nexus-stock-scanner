@@ -2,8 +2,15 @@ name: NEXUS Market Scan
 
 on:
   workflow_dispatch:
+    inputs:
+      phase:
+        description: 'prepare=候補調査 / reconcile=23:45価格照合'
+        type: choice
+        options: [prepare, reconcile]
+        default: prepare
   schedule:
-    - cron: '45 14 * * 1-5'
+    - cron: '0 9 * * 1-5'
+    - cron: '5 15 * * 1-5'
 
 permissions:
   contents: write
@@ -16,6 +23,8 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     timeout-minutes: 300
+    env:
+      PHASE: ${{ github.event_name == 'schedule' && (github.event.schedule == '5 15 * * 1-5' && 'reconcile' || 'prepare') || inputs.phase }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -27,37 +36,46 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Test paper engine
         run: python -m unittest discover -s tests -v
-      - name: Diagnose price availability (never supplies fills)
-        run: python quote_probe.py
-      - name: Track existing paper positions independently of scanner failures
-        run: python trade_tracker.py
-      - name: Persist evidence and ledger on the checked-out branch
+      - name: Scan broad universe using existing rules
+        if: env.PHASE == 'prepare'
+        run: python scanner.py
+      - name: Secondary research using existing rules
+        if: env.PHASE == 'prepare'
+        run: python review.py
+      - name: Freeze predecision research
+        if: env.PHASE == 'prepare'
+        run: python daily_runner.py prepare
+      - name: Collect historical reference prices and track ledger
+        if: env.PHASE == 'reconcile'
+        env:
+          ALPACA_DATA_KEY: ${{ secrets.ALPACA_DATA_KEY }}
+          ALPACA_DATA_SECRET: ${{ secrets.ALPACA_DATA_SECRET }}
+        run: python daily_runner.py reconcile
+      - name: Persist research, raw evidence and paper ledger on current branch
         if: success()
         env:
           BRANCH: ${{ github.ref_name }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add input/trades.csv input/evidence.json
+          git add input/
           if ! git diff --cached --quiet; then
-            git commit -m "Persist NEXUS paper ledger and evidence"
+            git commit -m "Persist NEXUS research, market evidence and paper ledger"
             git push origin "HEAD:$BRANCH"
           fi
-      - name: Run NEXUS scanner (existing selection rules)
-        run: python scanner.py
-      - name: Run NEXUS secondary review
-        run: python review.py
-      - name: Show phone-readable summary
+      - name: Show phone-readable result
         if: always()
         run: |
           if [ -f output/summary.md ]; then
             cat output/summary.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'NEXUS処理失敗。候補保存・価格照合・台帳更新の完了は確認できません。ログを確認してください。' >> "$GITHUB_STEP_SUMMARY"
           fi
-      - name: Save scan results
+      - name: Preserve results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: nexus-scan-results
+          name: nexus-${{ env.PHASE }}-results
           path: output/
           if-no-files-found: warn
           retention-days: 30
