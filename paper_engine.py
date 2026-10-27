@@ -7,6 +7,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from price_policy import POLICY, entry_reference_price
 from historical_probe import timestamp_ns
+from strategy_rules import VERSION
 
 JST = ZoneInfo('Asia/Tokyo')
 SIGNALS = ('反発確認', '反発初動')
@@ -66,6 +67,8 @@ def register(ledger, plans, quotes, now):
                 raise ValueError('30 trade lifetime limit')
             if any(t['symbol'] == symbol and t['status'] == 'OPEN' for t in result):
                 raise ValueError('symbol already open')
+            if plan.get('rules_version') != VERSION:
+                raise ValueError('owner-approved strategy version required')
             if plan['signal'] not in SIGNALS:
                 raise ValueError('invalid signal')
             if timestamp_ns(plan['prepared_at']) > timestamp_ns(at.isoformat()):
@@ -90,7 +93,7 @@ def register(ledger, plans, quotes, now):
             rr = (target - entry) / (entry - stop)
             if rr < 1.5:
                 raise ValueError('R:R below 1.5')
-            result.append(dict(trade_id=trade_id, symbol=symbol, signal=plan['signal'],
+            result.append(dict(trade_id=trade_id, symbol=symbol, signal=plan['signal'],rules_version=plan['rules_version'],
                                entry_time_jst=at.isoformat(), entry_price=entry,
                                entry_market_time=q['market_time'], entry_verified_at=q['retrieved_at'],
                                entry_price_policy=POLICY, registered_at_jst=now.isoformat(),
@@ -135,10 +138,19 @@ def settle(ledger, streams, now):
             if any(not start < at <= end for at in times):
                 raise ValueError('event outside coverage')
             deadline = timestamp_ns(trade['deadline_jst'])
+            scenario = stream.get('scenario_exit')
+            scenario_at = None
+            if scenario is not None:
+                if scenario.get('verified') is not True or not scenario.get('source') or not scenario.get('evidence_uri') or not scenario.get('rationale'):
+                    raise ValueError('scenario exit requires verified official evidence')
+                scenario_at = timestamp_ns(scenario['checked_at'])
+                if not timestamp_ns(scenario['published_at']) <= scenario_at <= timestamp_ns(now.isoformat()):
+                    raise ValueError('future or inconsistent scenario evidence')
             for q, at, price in zip(events, times, prices):
                 reason = ('STOP' if price <= float(trade['stop_price']) else
                           'TARGET' if price >= float(trade['target_price']) else
-                          'MAX_90_DAYS' if at >= deadline else '')
+                          'MAX_90_DAYS' if at >= deadline else
+                          'SCENARIO_DETERIORATION' if scenario_at is not None and at >= scenario_at else '')
                 if reason:
                     entry = float(trade['entry_price'])
                     trade.update(status='CLOSED', exit_time_jst=q['market_time'], exit_price=price,
@@ -203,6 +215,8 @@ def validate_ledger(ledger, now):
             raise ValueError('invalid persisted entry plan')
         if at > now or instant(trade['deadline_jst']) != at + timedelta(days=90):
             raise ValueError('invalid persisted entry time or deadline')
+        if trade.get('rules_version') != VERSION:
+            raise ValueError('persisted strategy version mismatch')
         if trade.get('entry_price_policy') != POLICY:
             raise ValueError('persisted entry needs approved policy metadata')
         entry_reference_price(dict(symbol=symbol,kind='trade',entry_policy=POLICY,decision_time_jst=at.isoformat(),
@@ -244,15 +258,28 @@ def run(now=None):
     # Merge evidence by hash; preserve the exact evidence used for every entry and exit.
     for key in ('plans','quotes'):
         archive[key] = merge_unique(archive[key], incoming[key])
-    archive['stream_archive'].extend({'trade_id': key, 'stream': value} for key, value in incoming['streams'].items()
-                                     if digest({'trade_id': key, 'stream': value}) not in {digest(v) for v in archive['stream_archive']})
     ledger, entries = register(ledger, archive['plans'], archive['quotes'], now)
     ledger, exits = settle(ledger, incoming['streams'], now)
+    # The provider inspected every trade. Keep source ranges + full stream hash,
+    # compact statistics and the exact selected exit print permanently in git.
+    # Non-exit raw tick responses are not retained; their source query, count,
+    # and hash allow comparison with a later vendor retrieval (which may revise).
+    archived_streams=[]
+    for tid, stream in incoming['streams'].items():
+        events=stream.get('trades',[])
+        selected={t.get('exit_evidence_sha256') for t in ledger if t['trade_id']==tid and t['status']=='CLOSED'}
+        summary={k:v for k,v in stream.items() if k!='trades'}
+        summary.update(trade_count=len(events),trades_sha256=digest(events),
+                       selected_exit_trades=[q for q in events if digest(q) in selected],
+                       min_price=min((float(q['price']) for q in events),default=None),
+                       max_price=max((float(q['price']) for q in events),default=None))
+        archived_streams.append({'trade_id':tid,'stream':summary})
+    archive['stream_archive']=merge_unique(archive['stream_archive'],archived_streams)
     fields = ['trade_id','symbol','signal','entry_time_jst','entry_price','quote_source','stop_price',
               'target_price','rr_at_entry','deadline_jst','status','exit_time_jst','exit_price',
               'exit_reason','return_pct','r_multiple','plan_sha256','entry_evidence_sha256',
               'tracked_through_jst','exit_evidence_sha256','entry_market_time','entry_verified_at',
-              'entry_price_policy','registered_at_jst']
+              'entry_price_policy','registered_at_jst','rules_version']
     buf=StringIO(); writer=csv.DictWriter(buf,fieldnames=fields); writer.writeheader(); writer.writerows(ledger)
     # Evidence is persisted before the ledger; replacement of each file is atomic.
     for dest, value in ((root/'evidence.json',json.dumps(archive,ensure_ascii=False,indent=2)),
@@ -261,11 +288,12 @@ def run(now=None):
     report={'paper_only':True, 'generated_jst':now.isoformat(), 'statistics':statistics(ledger),
             'entry_audit':entries, 'exit_audit':exits,
             'overdue_open_trades':[t['trade_id'] for t in ledger if t['status']=='OPEN' and instant(t['deadline_jst'])<=now],
-            'unimplemented':['Production entry/exit provider attestation','Automated official financial/news verification',
-                             'Approved numeric rules for financial quality and technical stop/target validation',
-                             'Scenario deterioration exits and corporate action reconciliation'],
+            'limitations':['Official guidance/decline reviews require archived source-backed assertions; missing reviews block entry',
+                           'Corporate actions needing price/share/cash-flow reconciliation block settlement',
+                           'Vendor corrections or corporate-action notices may arrive after retrieval',
+                           'Quotes and results are hypothetical references; no execution or fee/slippage model'],
             'entry_price_policy':POLICY,
-            'price_status':'Authenticated SIP history acquisition confirmed. Cancellation/update filtering implemented. Production entry/exit attestation pending. No fallback fills.'}
+            'price_status':'Authenticated SIP history acquisition confirmed. Cancellation/update filtering implemented. Verified production provider adapter available; official plan evidence required. No fallback fills.'}
     (out/'trade_report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
     (out/'trade_log.csv').write_text(buf.getvalue(),encoding='utf-8-sig')
     s=report['statistics']['total']
