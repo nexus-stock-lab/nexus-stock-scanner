@@ -207,39 +207,87 @@ def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, ca
 
 
 def update_scenarios(financials, now, root):
+    """Keep the earliest verified post-entry deterioration; stale reviews cannot overwrite it."""
     path=root/'trades.csv'
     if not path.exists():
-        return
+        return []
     ledger=list(csv.DictReader(path.read_text(encoding='utf-8-sig').splitlines()))
     event_path=root/'scenario_exits.json'
     events=json.loads(event_path.read_text()) if event_path.exists() else {}
     reviews_path=root/'official_reviews.json'
     reviews=json.loads(reviews_path.read_text()) if reviews_path.exists() else {}
+    audit=[]
     for trade in ledger:
-        if trade['status']!='OPEN' or trade['trade_id'] in events:
+        if trade['status']!='OPEN':
             continue
+        if trade['trade_id'] in events:
+            event=events[trade['trade_id']]
+            audit.append({'trade_id':trade['trade_id'],'status':'VERIFIED_EXIT_TRIGGER',
+                          'trigger':event.get('trigger','EXISTING_VERIFIED_TRIGGER'),'checked_at':event['checked_at']})
+            continue
+        entered=timestamp_ns(trade['entry_time_jst'])
+        candidates=[]
         f=financials.get(trade['symbol'])
-        event=None
-        if f and not f['quality']['pass']:
-            event={'verified':True,'source':f['source'],'evidence_uri':'input/official_evidence/'+f['evidence_sha256']+'.json',
-                   'published_at':f['published_at'],'checked_at':now.isoformat(),
-                   'rationale':'Approved quarterly revenue/operating-income condition no longer passes'}
-        for day, by_symbol in reviews.items():
+        if f and f.get('quality',{}).get('pass') is False:
+            try:
+                if f['symbol']!=trade['symbol']:
+                    raise ValueError('financial identity mismatch')
+                if not timestamp_ns(f['published_at'])<=timestamp_ns(f['checked_at'])<=timestamp_ns(now.isoformat()):
+                    raise ValueError('future or inconsistent financial evidence')
+                sha=f['evidence_sha256']
+                if len(sha)!=64 or any(c not in '0123456789abcdef' for c in sha):
+                    raise ValueError('invalid financial evidence hash')
+                proof=root/'official_evidence'/f'{sha}.json'
+                document=json.loads(proof.read_text())
+                if digest(document)!=sha or document['source']!=f['source']:
+                    raise ValueError('financial evidence provenance mismatch')
+                if timestamp_ns(document['retrieved_at'])>timestamp_ns(now.isoformat()):
+                    raise ValueError('financial source acquired in future')
+                from strategy_rules import financial_quality
+                quality=financial_quality(*(f[k] for k in ('revenue','prior_revenue','operating_income','prior_operating_income')))
+                if quality['pass']:
+                    raise ValueError('financial deterioration flag disagrees with numbers')
+                candidates.append({'verified':True,'source':f['source'],'evidence_uri':str(proof),
+                    'published_at':f['published_at'],'checked_at':now.isoformat(),
+                    'trigger':'QUARTERLY_FINANCIALS',
+                    'rationale':'Approved quarterly revenue/operating-income condition no longer passes'})
+            except (ValueError,KeyError,TypeError,OSError) as exc:
+                audit.append({'trade_id':trade['trade_id'],'status':'UNVERIFIED_FINANCIAL_EXIT','reason':str(exc)})
+        for by_symbol in reviews.values():
             review=by_symbol.get(trade['symbol'],{})
-            record=review.get('guidance_not_lowered')
-            if record and record.get('value') is False and timestamp_ns(record['checked_at'])<=timestamp_ns(now.isoformat()):
+            if review and review.get('symbol')!=trade['symbol']:
+                audit.append({'trade_id':trade['trade_id'],'status':'UNVERIFIED_REVIEW_EXIT','reason':'review identity mismatch'})
+                continue
+            for name, reason in (
+                    ('guidance_not_lowered','Official review confirms revenue guidance lowered'),
+                    ('no_material_business_impairment','Official review confirms material business impairment')):
+                record=review.get(name)
+                if not record or record.get('value') is not False:
+                    continue
                 try:
-                    verify_review_documents(review,root,names=('guidance_not_lowered',))
+                    # Reviews already known before entry must never override a newer event.
+                    if timestamp_ns(record['checked_at'])<=entered:
+                        continue
+                    if review.get('rules_version')!=VERSION:
+                        raise ValueError('review strategy version mismatch')
+                    verify_review_documents(review,root,names=(name,))
                     from strategy_rules import checked
                     checked(record,now,required=False)
-                    event={'verified':True,'source':record['source'],'evidence_uri':'input/official_documents/'+record['evidence_sha256']+'.json',
-                           'published_at':record['published_at'],'checked_at':record['checked_at'],
-                           'rationale':'Official review confirms revenue guidance lowered'}
-                except (ValueError,KeyError,TypeError,OSError):
-                    pass
-        if event and timestamp_ns(event['checked_at'])>timestamp_ns(trade['entry_time_jst']):
+                    candidates.append({'verified':True,'source':record['source'],
+                        'evidence_uri':str(root/'official_documents'/f"{record['evidence_sha256']}.json"),
+                        'published_at':record['published_at'],'checked_at':record['checked_at'],
+                        'trigger':name,'rationale':reason})
+                except (ValueError,KeyError,TypeError,OSError) as exc:
+                    audit.append({'trade_id':trade['trade_id'],'status':'UNVERIFIED_REVIEW_EXIT','reason':str(exc)})
+        candidates=[e for e in candidates if entered<timestamp_ns(e['checked_at'])<=timestamp_ns(now.isoformat())]
+        if candidates:
+            event=min(candidates,key=lambda e:timestamp_ns(e['checked_at']))
             events[trade['trade_id']]=event
+            audit.append({'trade_id':trade['trade_id'],'status':'VERIFIED_EXIT_TRIGGER',
+                          'trigger':event['trigger'],'checked_at':event['checked_at']})
     write_json(event_path,events)
+    write_json(root/'scenario_exit_audit.json',{'generated_at':now.isoformat(),'events':audit})
+    return audit
 
 
 def refresh_scenarios(now, root=Path('input'), out=Path('output')):
@@ -264,7 +312,8 @@ def refresh_scenarios(now, root=Path('input'), out=Path('output')):
                           'guidance_status':'Requires archived official review'})
         except Exception as exc:
             audit.append({'symbol':row['symbol'],'financial_status':'UNVERIFIED','reason':type(exc).__name__})
-    update_scenarios(financials,now,root)
+    exit_audit=update_scenarios(financials,now,root)
+    write_json(out/'scenario_exit_status.json',{'generated_at':now.isoformat(),'events':exit_audit})
     write_json(out/'scenario_monitoring.json',audit)
 
 
@@ -289,6 +338,9 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
             continue
         try:
             start=instant(trade.get('tracked_through_jst') or trade['entry_time_jst'])
+            scenario=scenarios.get(trade['trade_id'])
+            if scenario and timestamp_ns(scenario['checked_at'])<timestamp_ns(start.isoformat()):
+                raise ValueError('Scenario confirmation predates tracking cursor; historical reconciliation required')
             available=now-timedelta(minutes=16)
             if available<=start:
                 report['positions'].append({'trade_id':trade['trade_id'],'status':'AWAITING_DELAYED_DATA'})
@@ -390,6 +442,16 @@ def phone_summary(out=Path('output')):
         lines += ['', '## 保有追跡', '', '|取引|状態|未追跡秒数・理由|','|---|---|---|']
         for item in json.loads(tracking_file.read_text())['positions']:
             lines.append(f"|{item['trade_id']}|{item['status']}|{item.get('reason',item.get('backlog_seconds','—'))}|")
+    scenario_file=out/'scenario_exit_status.json'
+    if scenario_file.exists():
+        lines += ['', '## 業績・事業シナリオの撤退確認', '', '|取引|確認状態|内容|','|---|---|---|']
+        for item in json.loads(scenario_file.read_text())['events']:
+            lines.append(f"|{item['trade_id']}|{item['status']}|{item.get('reason',item.get('trigger','—'))}|")
+    monitoring_file=out/'scenario_monitoring.json'
+    if monitoring_file.exists():
+        lines += ['', '## 保有銘柄の公式資料確認', '', '|銘柄|四半期数値|見通し・未取得理由|','|---|---|---|']
+        for item in json.loads(monitoring_file.read_text()):
+            lines.append(f"|{item['symbol']}|{item['financial_status']}|{item.get('reason',item.get('guidance_status','未確認'))}|")
     lines += ['', '価格候補の取得成功はエントリー合格ではありません。未確認の仮想約定は作りません。', '',
               '実売買・X投稿・外部通知の機能はありません。']
     (out/'summary.md').write_text('\n'.join(lines)+'\n', encoding='utf-8')
