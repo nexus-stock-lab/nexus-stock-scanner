@@ -6,7 +6,7 @@ on:
       phase:
         description: 'prepare=広域調査 / finalize=正式計画 / reconcile=価格照合 / track=保有追跡'
         type: choice
-        options: [prepare, finalize, reconcile, track]
+        options: [prepare, finalize, reconcile, track, gemini_probe]
         default: prepare
   schedule:
     - cron: '0 9 * * 1-5'
@@ -44,14 +44,44 @@ jobs:
       - name: Secondary research using existing rules
         if: env.PHASE == 'prepare'
         run: python review.py
+      - name: Test Gemini on public SEC documents without ledger writes
+        if: env.PHASE == 'gemini_probe'
+        env:
+          NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NEXUS_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.NEXUS_GEMINI_FREE_TIER_CONFIRMED }}
+        run: python gemini_probe.py
       - name: Run approved paper-validation phase
+        if: env.PHASE != 'gemini_probe'
         env:
           ALPACA_DATA_KEY: ${{ secrets.ALPACA_DATA_KEY }}
           ALPACA_DATA_SECRET: ${{ secrets.ALPACA_DATA_SECRET }}
           NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NEXUS_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.NEXUS_GEMINI_FREE_TIER_CONFIRMED }}
+          NEXUS_GEMINI_SHADOW_ENABLED: ${{ vars.NEXUS_GEMINI_SHADOW_ENABLED }}
         run: python daily_runner.py "$PHASE"
+      - name: Persist Gemini request budget even on failure
+        if: always() && (env.PHASE == 'gemini_probe' || vars.NEXUS_GEMINI_SHADOW_ENABLED == 'true')
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python - <<'PY'
+          from pathlib import Path
+          import os, subprocess
+          targets=[Path('input/gemini_usage.json'),Path('input/gemini_reviews')]
+          if os.environ['PHASE']=='gemini_probe': targets += [Path('input/official_documents'),Path('input/official_evidence')]
+          paths=[str(p) for p in targets if p.exists()]
+          if paths: subprocess.run(['git','add','--',*paths],check=True)
+          PY
+          if ! git diff --cached --quiet; then
+            git commit -m "Persist Gemini shadow request budget and public evidence"
+            git push origin "HEAD:$BRANCH"
+          fi
       - name: Persist research, raw evidence and paper ledger on current branch
-        if: success()
+        if: success() && env.PHASE != 'gemini_probe'
         env:
           BRANCH: ${{ github.ref_name }}
         run: |
@@ -77,6 +107,8 @@ jobs:
           name: nexus-${{ env.PHASE }}-results
           path: |
             output/summary.md
+            output/gemini_review_status.json
+            output/gemini_probe.json
             output/trade_report.json
             output/trade_log.csv
             output/daily_status.json
