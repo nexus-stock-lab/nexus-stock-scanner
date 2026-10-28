@@ -108,6 +108,36 @@ def register(ledger, plans, quotes, now):
     return result, audit
 
 
+def scenario_confirmation(scenario, now):
+    if (scenario.get('verified') is not True or not scenario.get('source')
+            or not scenario.get('evidence_uri') or not scenario.get('rationale')):
+        raise ValueError('scenario exit requires verified official evidence')
+    at=timestamp_ns(scenario['checked_at'])
+    if not timestamp_ns(scenario['published_at'])<=at<=timestamp_ns(now.isoformat()):
+        raise ValueError('future or inconsistent scenario evidence')
+    return at
+
+
+def scenario_replay_request(trade, scenario, now):
+    """Restart only an OPEN position with newly received, verified past confirmation."""
+    if scenario is None:
+        return None
+    confirmed=scenario_confirmation(scenario,now)
+    sha=digest(scenario)
+    if trade.get('tracked_scenario_sha256')==sha:
+        return None
+    entered=timestamp_ns(trade['entry_time_jst'])
+    cursor=trade.get('tracked_through_jst') or trade['entry_time_jst']
+    if not entered<confirmed:
+        raise ValueError('scenario confirmation must follow entry')
+    if confirmed<=timestamp_ns(cursor):
+        if trade['status']!='OPEN':
+            raise ValueError('closed trades cannot be replayed')
+        return {'previous_cursor':cursor,'scenario_sha256':sha,
+                'reason':'New verified scenario confirmation falls in previously tracked coverage'}
+    return None
+
+
 def settle(ledger, streams, now):
     """Require continuous provider-attested raw trades, including the exit trade.
 
@@ -122,6 +152,15 @@ def settle(ledger, streams, now):
         try:
             stream = streams[trade['trade_id']]
             start = timestamp_ns(trade.get('tracked_through_jst') or trade['entry_time_jst'])
+            scenario=stream.get('scenario_exit')
+            replay=stream.get('scenario_replay')
+            expected=scenario_replay_request(trade,scenario,now)
+            if expected is not None and replay is None:
+                raise ValueError('historical scenario requires verified replay before settlement')
+            if replay is not None:
+                if expected is None or replay!=expected:
+                    raise ValueError('unverified or repeated scenario replay request')
+                start=timestamp_ns(trade['entry_time_jst'])
             end = timestamp_ns(stream['coverage_end'])
             if stream.get('complete') is not True or timestamp_ns(stream['coverage_start']) != start or not start < end <= timestamp_ns(now.isoformat()):
                 raise ValueError('incomplete or noncontiguous coverage')
@@ -138,14 +177,12 @@ def settle(ledger, streams, now):
             if any(not start < at <= end for at in times):
                 raise ValueError('event outside coverage')
             deadline = timestamp_ns(trade['deadline_jst'])
-            scenario = stream.get('scenario_exit')
-            scenario_at = None
+            scenario_at = scenario_confirmation(scenario,now) if scenario is not None else None
             if scenario is not None:
-                if scenario.get('verified') is not True or not scenario.get('source') or not scenario.get('evidence_uri') or not scenario.get('rationale'):
-                    raise ValueError('scenario exit requires verified official evidence')
-                scenario_at = timestamp_ns(scenario['checked_at'])
-                if not timestamp_ns(scenario['published_at']) <= scenario_at <= timestamp_ns(now.isoformat()):
-                    raise ValueError('future or inconsistent scenario evidence')
+                trade['tracked_scenario_sha256']=digest(scenario)
+            if replay is not None:
+                audit.append({'trade_id':trade['trade_id'],'status':'VERIFIED_SCENARIO_REPLAY',
+                              'previous_cursor':replay['previous_cursor'],'restart':stream['coverage_start']})
             for q, at, price in zip(events, times, prices):
                 reason = ('STOP' if price <= float(trade['stop_price']) else
                           'TARGET' if price >= float(trade['target_price']) else
@@ -215,6 +252,9 @@ def validate_ledger(ledger, now):
             raise ValueError('invalid persisted entry plan')
         if at > now or instant(trade['deadline_jst']) != at + timedelta(days=90):
             raise ValueError('invalid persisted entry time or deadline')
+        marker=trade.get('tracked_scenario_sha256')
+        if marker and (len(marker)!=64 or any(c not in '0123456789abcdef' for c in marker)):
+            raise ValueError('invalid persisted scenario tracking hash')
         if trade.get('rules_version') != VERSION:
             raise ValueError('persisted strategy version mismatch')
         if trade.get('entry_price_policy') != POLICY:
@@ -279,7 +319,7 @@ def run(now=None):
               'target_price','rr_at_entry','deadline_jst','status','exit_time_jst','exit_price',
               'exit_reason','return_pct','r_multiple','plan_sha256','entry_evidence_sha256',
               'tracked_through_jst','exit_evidence_sha256','entry_market_time','entry_verified_at',
-              'entry_price_policy','registered_at_jst','rules_version']
+              'entry_price_policy','registered_at_jst','rules_version','tracked_scenario_sha256']
     buf=StringIO(); writer=csv.DictWriter(buf,fieldnames=fields); writer.writeheader(); writer.writerows(ledger)
     # Evidence is persisted before the ledger; replacement of each file is atomic.
     for dest, value in ((root/'evidence.json',json.dumps(archive,ensure_ascii=False,indent=2)),
