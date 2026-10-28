@@ -11,7 +11,7 @@ from pathlib import Path
 
 from historical_probe import probe, timestamp_ns
 from market_calendar import JST, latest_due_decision, next_decision, session_at
-from paper_engine import digest, run, settle, instant, validate_ledger
+from paper_engine import digest, run, settle, instant, validate_ledger, scenario_replay_request
 from price_policy import history_candidate
 from strategy_rules import VERSION, build_plan
 from official_data import collect_financials, public_json, verify_review_documents
@@ -342,10 +342,9 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
         try:
             start=instant(trade.get('tracked_through_jst') or trade['entry_time_jst'])
             scenario=scenarios.get(trade['trade_id'])
-            if scenario and (scenario.get('requires_historical_reconciliation') is True or
-                             ('requires_historical_reconciliation' not in scenario and
-                              timestamp_ns(scenario['checked_at'])<timestamp_ns(start.isoformat()))):
-                raise ValueError('Scenario confirmation predates tracking cursor; historical reconciliation required')
+            replay=scenario_replay_request(trade,scenario,now)
+            if replay is not None:
+                start=instant(trade['entry_time_jst'])
             available=now-timedelta(minutes=16)
             if available<=start:
                 report['positions'].append({'trade_id':trade['trade_id'],'status':'AWAITING_DELAYED_DATA'})
@@ -388,6 +387,8 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
                 write_json(proof_path,proof)
                 events.extend(stream['trades']);chunks.append(str(proof_path));cursor=end;limit-=1;used+=1
                 trial={**stream,'coverage_start':start.isoformat(),'trades':events}
+                if replay is not None:
+                    trial['scenario_replay']=replay
                 if trade['trade_id'] in scenarios:
                     trial['scenario_exit']=scenarios[trade['trade_id']]
                 closed,audit=settle([trade],{trade['trade_id']:trial},now)
@@ -400,10 +401,13 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
                 incoming['streams'][trade['trade_id']]={'coverage_start':start.isoformat(),'coverage_end':cursor.isoformat(),
                     'complete':True,'corporate_actions_clear':True,'source':'Alpaca historical SIP',
                     'evidence_uri':','.join(chunks),'trades':events}
+                if replay is not None:
+                    incoming['streams'][trade['trade_id']]['scenario_replay']=replay
                 if trade['trade_id'] in scenarios:
                     incoming['streams'][trade['trade_id']]['scenario_exit']=scenarios[trade['trade_id']]
             report['positions'].append({'trade_id':trade['trade_id'],'status':'HISTORY_READY',
-                                        'tracked_through':cursor.isoformat(),'backlog_seconds':max(0,(available-cursor).total_seconds())})
+                                        'tracked_through':cursor.isoformat(),'backlog_seconds':max(0,(available-cursor).total_seconds()),
+                                        'scenario_replay':replay is not None})
         except Exception as exc:
             # Raw HTTP error bodies/headers are deliberately excluded from logs.
             report['positions'].append({'trade_id':trade['trade_id'],'status':'BLOCKED',
@@ -446,7 +450,7 @@ def phone_summary(out=Path('output')):
     if tracking_file.exists():
         lines += ['', '## 保有追跡', '', '|取引|状態|未追跡秒数・理由|','|---|---|---|']
         for item in json.loads(tracking_file.read_text())['positions']:
-            lines.append(f"|{item['trade_id']}|{item['status']}|{item.get('reason',item.get('backlog_seconds','—'))}|")
+            lines.append(f"|{item['trade_id']}|{item['status']}|{item.get('reason',('履歴を再検証中 / ' if item.get('scenario_replay') else '')+str(item.get('backlog_seconds','—')))}|")
     scenario_file=out/'scenario_exit_status.json'
     if scenario_file.exists():
         lines += ['', '## 業績・事業シナリオの撤退確認', '', '|取引|確認状態|内容|','|---|---|---|']
