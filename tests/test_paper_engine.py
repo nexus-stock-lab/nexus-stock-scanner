@@ -164,3 +164,57 @@ class ScenarioExitTests(unittest.TestCase):
         closed,a=settle(rows,stream,NOW)
         self.assertEqual(closed[0]['status'],'OPEN')
         self.assertEqual(a[0]['status'],'BLOCKED')
+
+class ScenarioReplayTests(unittest.TestCase):
+    entry=EngineTests.entry
+    stream=EngineTests.stream
+
+    def replay_case(self):
+        from paper_engine import scenario_replay_request
+        rows=self.entry()
+        rows[0]['tracked_through_jst']=(instant(AT)+timedelta(minutes=10)).isoformat()
+        stream=self.stream(rows,[99,98,97]);s=next(iter(stream.values()))
+        s['scenario_exit']={'verified':True,'source':'fixture://SEC','evidence_uri':'fixture://archived-filing',
+                            'rationale':'Official impairment confirmation','published_at':AT,
+                            'checked_at':(instant(AT)+timedelta(minutes=2)).isoformat()}
+        s['scenario_replay']=scenario_replay_request(rows[0],s['scenario_exit'],NOW)
+        return rows,stream,s
+
+    def test_replay_requires_exact_previous_cursor_and_evidence_hash(self):
+        for field,value in (('previous_cursor',AT),('scenario_sha256','0'*64)):
+            rows,stream,s=self.replay_case();s['scenario_replay'][field]=value
+            after,audit=settle(rows,stream,NOW)
+            self.assertEqual(after,rows)
+            self.assertEqual(audit[0]['status'],'BLOCKED')
+
+    def test_no_replay_proof_cannot_settle_at_later_convenient_price(self):
+        rows,stream,s=self.replay_case();s.pop('scenario_replay')
+        s['coverage_start']=rows[0]['tracked_through_jst']
+        s['coverage_end']=(instant(AT)+timedelta(minutes=11)).isoformat()
+        s['trades'][0]['market_time']=s['coverage_end'];s['trades'][0]['retrieved_at']=NOW.isoformat()
+        s['trades']=s['trades'][:1]
+        after,audit=settle(rows,stream,NOW)
+        self.assertEqual(after,rows)
+        self.assertIn('requires verified replay',audit[0]['reason'])
+
+    def test_replay_incomplete_history_does_not_change_marker_or_cursor(self):
+        rows,stream,s=self.replay_case();s['complete']=False
+        after,audit=settle(rows,stream,NOW)
+        self.assertEqual(after,rows)
+        self.assertEqual(audit[0]['status'],'BLOCKED')
+
+    def test_new_confirmation_at_cursor_boundary_replays_exact_timestamp(self):
+        from paper_engine import scenario_replay_request
+        rows,stream,s=self.replay_case()
+        rows[0]['tracked_through_jst']=(instant(AT)+timedelta(minutes=2)).isoformat()
+        s['scenario_replay']=scenario_replay_request(rows[0],s['scenario_exit'],NOW)
+        after,audit=settle(rows,stream,NOW)
+        self.assertEqual(after[0]['exit_price'],98)
+        self.assertEqual(audit[0]['status'],'VERIFIED_SCENARIO_REPLAY')
+
+    def test_closed_trade_is_never_reopened(self):
+        rows,stream,s=self.replay_case()
+        closed,_=settle(rows,stream,NOW)
+        after,audit=settle(closed,stream,NOW)
+        self.assertEqual(after,closed)
+        self.assertEqual(audit,[])
