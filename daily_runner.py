@@ -461,6 +461,12 @@ def phone_summary(out=Path('output')):
         lines += ['', '## 保有銘柄の公式資料確認', '', '|銘柄|四半期数値|見通し・未取得理由|','|---|---|---|']
         for item in json.loads(monitoring_file.read_text()):
             lines.append(f"|{item['symbol']}|{item['financial_status']}|{item.get('reason',item.get('guidance_status','未確認'))}|")
+    ai_file=out/'gemini_review_status.json'
+    if ai_file.exists():
+        ai=json.loads(ai_file.read_text())
+        lines += ['', '## Gemini文章判定（検証専用・登録へ未接続）', '',
+                  f"状態: {ai['status']} / 検証回答 {len([r for r in ai['results'] if r['status']=='SHADOW_RESPONSE_VALIDATED'])}件 / 未確認・保留 {ai['deferred_or_unreviewed']}件",
+                  'AI回答だけでは合格にしません。公式レビュー・仮想台帳への自動反映は無効です。']
     lines += ['', '価格候補の取得成功はエントリー合格ではありません。未確認の仮想約定は作りません。', '',
               '実売買・X投稿・外部通知の機能はありません。']
     (out/'summary.md').write_text('\n'.join(lines)+'\n', encoding='utf-8')
@@ -476,7 +482,10 @@ def main():
     Path('input/market_evidence').mkdir(parents=True, exist_ok=True)
     (Path('output')/'verified_evidence.json').unlink(missing_ok=True)
     if args.phase == 'prepare':
-        freeze_research(now,collect_official=True)
+        research=freeze_research(now,collect_official=True)
+        from gemini_review import shadow_reviews
+        shadow_reviews(research,datetime.now(JST),Path('input'),Path('output'),
+                       enabled=os.getenv('NEXUS_GEMINI_SHADOW_ENABLED')=='true')
         prepare_plans(datetime.now(JST))
     elif args.phase == 'finalize':
         prepare_plans(now)
