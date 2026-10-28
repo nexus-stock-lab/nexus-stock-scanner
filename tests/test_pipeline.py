@@ -112,19 +112,65 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(rows[0]['exit_price'],'97.0')
         self.assertEqual(rows[0]['exit_time_jst'],(AT+timedelta(minutes=3)).isoformat())
 
-    def test_late_impairment_evidence_requires_replay_not_later_exit(self):
+    def late_impairment(self):
         rows=self.enter()
         rows[0]['tracked_through_jst']=(AT+timedelta(minutes=10)).isoformat()
         with Path('input/trades.csv').open('w',newline='') as f:
             w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
         self.prepare_impairment()
-        report=track_positions(AT+timedelta(hours=1),
-            fetch_interval=lambda *a:self.fail('cannot silently use later trades'),
-            fetch_corporate=lambda *a:self.fail('must detect need for historical reconciliation first'))
+        return rows
+
+    def test_late_impairment_replays_to_first_confirmed_trade(self):
+        self.late_impairment();now=AT+timedelta(hours=1);starts=[]
+        def fetch(symbol,start,end,*args):
+            starts.append(start)
+            return {'symbol':symbol,'start':start.isoformat(),'end':end.isoformat(),
+                    'complete':True,'feed':'sip','retrieved_at':now.isoformat(),'pages':[],
+                    'trades':[{'t':(AT+timedelta(minutes=m)).isoformat(),'p':100-m,
+                               'c':['@'],'z':'C','x':'V','i':m} for m in (1,3)]}
+        report=track_positions(now,fetch_interval=fetch,fetch_corporate=lambda *a:{'clear':True,'pages':[]})
+        self.assertEqual(starts[0],AT)
+        self.assertTrue(report['positions'][0]['scenario_replay'])
+        with contextlib.redirect_stdout(io.StringIO()):run(now);run(now)
+        rows=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
+        self.assertEqual(rows[0]['exit_price'],'97.0')
+        self.assertEqual(rows[0]['exit_time_jst'],(AT+timedelta(minutes=3)).isoformat())
+        self.assertEqual(rows[0]['exit_reason'],'SCENARIO_DETERIORATION')
+        archived=json.loads(Path('input/evidence.json').read_text())['stream_archive']
+        self.assertTrue(any('scenario_replay' in r['stream'] for r in archived))
+
+    def test_late_impairment_missing_history_keeps_original_cursor(self):
+        rows=self.late_impairment();old_cursor=rows[0]['tracked_through_jst'];now=AT+timedelta(hours=1)
+        def broken(*args):raise ValueError('incomplete pagination fixture')
+        report=track_positions(now,fetch_interval=broken,fetch_corporate=lambda *a:{'clear':True,'pages':[]})
         self.assertEqual(report['positions'][0]['status'],'BLOCKED')
-        self.assertIn('historical reconciliation',report['positions'][0]['reason'])
-        with contextlib.redirect_stdout(io.StringIO()):run(AT+timedelta(hours=1))
-        self.assertEqual(json.loads(Path('output/trade_report.json').read_text())['statistics']['total']['closed'],0)
+        with contextlib.redirect_stdout(io.StringIO()):run(now)
+        row=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))[0]
+        self.assertEqual(row['status'],'OPEN');self.assertEqual(row['tracked_through_jst'],old_cursor)
+
+    def test_bounded_replay_resumes_without_restarting_again(self):
+        self.late_impairment();now=AT+timedelta(hours=1)
+        def empty(symbol,start,end,*args):
+            return {'symbol':symbol,'start':start.isoformat(),'end':end.isoformat(),
+                    'complete':True,'feed':'sip','retrieved_at':now.isoformat(),'pages':[],'trades':[]}
+        from unittest.mock import patch
+        with patch.dict(os.environ,{'NEXUS_TRACK_CHUNKS_PER_RUN':'1'}):
+            track_positions(now,fetch_interval=empty,fetch_corporate=lambda *a:{'clear':True,'pages':[]})
+            with contextlib.redirect_stdout(io.StringIO()):run(now)
+            row=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))[0]
+            self.assertEqual(row['tracked_through_jst'],(AT+timedelta(minutes=5)).isoformat())
+            self.assertEqual(len(row['tracked_scenario_sha256']),64)
+            starts=[]
+            def first(symbol,start,end,*args):
+                starts.append(start)
+                return {**empty(symbol,start,end,*args),'trades':[{
+                    't':(AT+timedelta(minutes=6)).isoformat(),'p':99,'c':['@'],'z':'C','x':'V','i':6}]}
+            report=track_positions(now,fetch_interval=first,fetch_corporate=lambda *a:{'clear':True,'pages':[]})
+            self.assertEqual(starts[0],AT+timedelta(minutes=5))
+            self.assertFalse(report['positions'][0]['scenario_replay'])
+            with contextlib.redirect_stdout(io.StringIO()):run(now)
+        row=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))[0]
+        self.assertEqual(row['exit_price'],'99.0')
 
     def test_known_impairment_survives_intervals_with_no_trades(self):
         self.enter();self.prepare_impairment()
