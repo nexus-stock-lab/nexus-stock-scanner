@@ -6,7 +6,7 @@ on:
       phase:
         description: 'prepare=広域調査 / finalize=正式計画 / reconcile=価格照合 / track=保有追跡'
         type: choice
-        options: [prepare, finalize, reconcile, track, gemini_probe, ir_probe]
+        options: [prepare, finalize, reconcile, track, gemini_probe, ir_probe, gemini_ir_probe]
         default: prepare
   schedule:
     - cron: '0 9 * * 1-5'
@@ -46,18 +46,23 @@ jobs:
         run: python review.py
       - name: Test Gemini on public SEC documents without ledger writes
         timeout-minutes: 10
-        if: env.PHASE == 'gemini_probe'
+        if: env.PHASE == 'gemini_probe' || env.PHASE == 'gemini_ir_probe'
         env:
           NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NEXUS_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.NEXUS_GEMINI_FREE_TIER_CONFIRMED }}
-        run: python gemini_probe.py
+        run: |
+          if [ "$PHASE" = 'gemini_ir_probe' ]; then
+            python gemini_probe.py --symbol APLD --include-ir
+          else
+            python gemini_probe.py
+          fi
       - name: Collect official IR without AI or ledger writes
         if: env.PHASE == 'ir_probe'
         timeout-minutes: 10
         run: python issuer_ir.py
       - name: Run approved paper-validation phase
-        if: env.PHASE != 'gemini_probe' && env.PHASE != 'ir_probe'
+        if: env.PHASE != 'gemini_probe' && env.PHASE != 'gemini_ir_probe' && env.PHASE != 'ir_probe'
         env:
           ALPACA_DATA_KEY: ${{ secrets.ALPACA_DATA_KEY }}
           ALPACA_DATA_SECRET: ${{ secrets.ALPACA_DATA_SECRET }}
@@ -67,7 +72,7 @@ jobs:
           NEXUS_GEMINI_SHADOW_ENABLED: ${{ vars.NEXUS_GEMINI_SHADOW_ENABLED }}
         run: python daily_runner.py "$PHASE"
       - name: Persist Gemini request budget even on failure
-        if: always() && (env.PHASE == 'gemini_probe' || vars.NEXUS_GEMINI_SHADOW_ENABLED == 'true')
+        if: always() && (env.PHASE == 'gemini_probe' || env.PHASE == 'gemini_ir_probe' || vars.NEXUS_GEMINI_SHADOW_ENABLED == 'true')
         env:
           BRANCH: ${{ github.ref_name }}
         run: |
@@ -77,7 +82,7 @@ jobs:
           from pathlib import Path
           import os, subprocess
           targets=[Path('input/gemini_usage.json'),Path('input/gemini_reviews')]
-          if os.environ['PHASE']=='gemini_probe': targets += [Path('input/official_documents'),Path('input/official_evidence')]
+          if os.environ['PHASE'] in ('gemini_probe','gemini_ir_probe'): targets += [Path('input/official_documents'),Path('input/official_evidence'),Path('input/issuer_ir_sources')]
           paths=[str(p) for p in targets if p.exists()]
           if paths: subprocess.run(['git','add','--',*paths],check=True)
           PY
@@ -86,7 +91,7 @@ jobs:
             git push origin "HEAD:$BRANCH"
           fi
       - name: Persist research, raw evidence and paper ledger on current branch
-        if: success() && env.PHASE != 'gemini_probe'
+        if: success() && env.PHASE != 'gemini_probe' && env.PHASE != 'gemini_ir_probe'
         env:
           BRANCH: ${{ github.ref_name }}
         run: |
