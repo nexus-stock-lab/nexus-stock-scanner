@@ -6,7 +6,7 @@ on:
       phase:
         description: 'prepare=広域調査 / finalize=正式計画 / reconcile=価格照合 / track=保有追跡'
         type: choice
-        options: [prepare, finalize, reconcile, track, gemini_probe]
+        options: [prepare, finalize, reconcile, track, gemini_probe, ir_probe]
         default: prepare
   schedule:
     - cron: '0 9 * * 1-5'
@@ -52,8 +52,12 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           NEXUS_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.NEXUS_GEMINI_FREE_TIER_CONFIRMED }}
         run: python gemini_probe.py
+      - name: Collect official IR without AI or ledger writes
+        if: env.PHASE == 'ir_probe'
+        timeout-minutes: 10
+        run: python issuer_ir.py
       - name: Run approved paper-validation phase
-        if: env.PHASE != 'gemini_probe'
+        if: env.PHASE != 'gemini_probe' && env.PHASE != 'ir_probe'
         env:
           ALPACA_DATA_KEY: ${{ secrets.ALPACA_DATA_KEY }}
           ALPACA_DATA_SECRET: ${{ secrets.ALPACA_DATA_SECRET }}
@@ -110,6 +114,8 @@ jobs:
             output/summary.md
             output/gemini_review_status.json
             output/gemini_probe.json
+            output/issuer_ir_probe.json
+            output/issuer_ir_status.json
             output/trade_report.json
             output/trade_log.csv
             output/daily_status.json
