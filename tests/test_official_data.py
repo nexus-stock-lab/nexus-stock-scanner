@@ -63,3 +63,24 @@ class SecContactTests(unittest.TestCase):
                 with self.assertRaises(ValueError) as error:
                     sec_user_agent()
                 self.assertNotIn(value,str(error.exception))
+
+
+class SourceOnlyAcquisitionTests(unittest.TestCase):
+    def test_document_only_acquisition_never_manufactures_financial_quality(self):
+        import tempfile
+        from pathlib import Path
+        from unittest.mock import patch
+        from official_data import collect_company_documents
+        from historical_probe import decision
+        at=decision('2026-10-29T23:45:00+09:00')
+        values={'https://www.sec.gov/files/company_tickers.json':{'0':{'ticker':'APLD','cik_str':1144879}},
+                'https://data.sec.gov/submissions/CIK0001144879.json':{'cik':1144879,'filings':{'recent':{
+                    'accessionNumber':[],'acceptanceDateTime':[],'form':[],'reportDate':[]}}}}
+        with tempfile.TemporaryDirectory() as directory,patch('official_data.collect_documents',return_value=[]):
+            result=collect_company_documents('APLD',at,at,Path(directory),fetch=values.__getitem__)
+            self.assertEqual(result['financial_status'],'NOT_EVALUATED_SOURCE_REVIEW_ONLY')
+            self.assertNotIn('quality',result);self.assertNotIn('revenue',result)
+            self.assertEqual(result['cik'],'0001144879')
+            values['https://data.sec.gov/submissions/CIK0001144879.json']['cik']=320193
+            with self.assertRaisesRegex(ValueError,'SEC entity mismatch'):
+                collect_company_documents('APLD',at,at,Path(directory),fetch=values.__getitem__)
