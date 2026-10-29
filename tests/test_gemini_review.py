@@ -339,13 +339,14 @@ class GeminiSafetyTests(unittest.TestCase):
             reply={'request_sha256':'1'*64,'assessment':assessment()}
             with patch.dict(os.environ,{'GEMINI_API_KEY':'fixture','NEXUS_GEMINI_FREE_TIER_CONFIRMED':'true'},clear=True), \
                  patch('gemini_probe.connectivity_check',side_effect=AssertionError('no duplicate request')), \
-                 patch('gemini_probe.collect_financials',return_value=self.financials), \
+                 patch('gemini_probe.collect_company_documents',return_value=self.financials), \
                  patch('issuer_ir.collect_issuer_ir',return_value={'documents':[],'audit':[]}), \
                  patch('gemini_probe.public_bundle',return_value=self.bundle), \
                  patch('gemini_probe.review_one',return_value=reply):
                 with contextlib.redirect_stdout(io.StringIO()):gemini_probe.main('AAPL',True)
             result=json.loads(Path('output/gemini_probe.json').read_text())
             self.assertEqual(result['connection']['status'],'NOT_SEPARATELY_PROBED')
+            self.assertEqual(result['financial_status'],'NOT_EVALUATED_SOURCE_REVIEW_ONLY')
             self.assertEqual(result['status'],'VALIDATED_SHADOW_RESPONSE_RECEIVED')
             self.assertFalse(result['semantic_verified']);self.assertFalse(result['may_register'])
             self.assertEqual(result['paper_fills_created'],0)
