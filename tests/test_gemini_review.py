@@ -12,7 +12,7 @@ from urllib.error import HTTPError
 
 from historical_probe import decision
 from paper_engine import digest
-from gemini_review import (MODEL,ENDPOINT,NAMES,public_bundle,validate_assessment,request_assessment,
+from gemini_review import (MODEL,ENDPOINT,NAMES,MAX_CONTEXT_BYTES,public_bundle,validate_assessment,request_assessment,
                            review_one,shadow_reviews,connectivity_check,ReviewBlocked,strict_json)
 
 AT=decision('2026-10-29T23:45:00+09:00');NOW=AT-timedelta(hours=1)
@@ -124,9 +124,19 @@ class GeminiSafetyTests(unittest.TestCase):
 
     def test_oversize_source_is_held_not_truncated(self):
         f=copy.deepcopy(self.financials);d=json.loads(next((self.root/'official_documents').glob('*.json')).read_text())
-        d['text']='x'*500_001;sha=digest(d);(self.root/'official_documents'/f'{sha}.json').write_text(json.dumps(d))
+        d['text']='x'*(MAX_CONTEXT_BYTES+1);sha=digest(d);(self.root/'official_documents'/f'{sha}.json').write_text(json.dumps(d))
         f['official_documents'][0]['evidence_sha256']=sha
         with self.assertRaisesRegex(ReviewBlocked,'NO_TRUNCATION'):public_bundle('AAPL',f,AT,NOW,self.root)
+
+    def test_full_long_report_is_preserved_when_within_context_budget(self):
+        f=copy.deepcopy(self.financials)
+        d=json.loads(next((self.root/'official_documents').glob('*.json')).read_text())
+        d['text']='x'*600_000
+        sha=digest(d);(self.root/'official_documents'/f'{sha}.json').write_text(json.dumps(d))
+        f['official_documents'][0]['evidence_sha256']=sha
+        bundle=public_bundle('AAPL',f,AT,NOW,self.root)
+        self.assertEqual(bundle['documents'][0]['text'],d['text'])
+        self.assertEqual(len(bundle['documents'][0]['text']),600_000)
 
     def test_ir_documents_require_verified_issuer_registry_and_exact_provenance(self):
         from issuer_ir import archive,publication
