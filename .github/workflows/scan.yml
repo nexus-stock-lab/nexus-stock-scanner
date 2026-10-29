@@ -45,6 +45,7 @@ jobs:
         if: env.PHASE == 'prepare'
         run: python review.py
       - name: Test Gemini on public SEC documents without ledger writes
+        timeout-minutes: 10
         if: env.PHASE == 'gemini_probe'
         env:
           NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
