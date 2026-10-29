@@ -13,7 +13,7 @@ from urllib.error import HTTPError
 from historical_probe import decision
 from paper_engine import digest
 from gemini_review import (MODEL,ENDPOINT,NAMES,public_bundle,validate_assessment,request_assessment,
-                           review_one,shadow_reviews,ReviewBlocked,strict_json)
+                           review_one,shadow_reviews,connectivity_check,ReviewBlocked,strict_json)
 
 AT=decision('2026-10-29T23:45:00+09:00');NOW=AT-timedelta(hours=1)
 TEXT='Official revenue guidance is reaffirmed. Earnings will be released on November 12, 2026.'
@@ -263,6 +263,50 @@ class GeminiSafetyTests(unittest.TestCase):
         plans=prepare_plans(NOW,self.root,self.out)
         self.assertEqual(plans['plans'],[])
         self.assertIn('evidence missing',plans['audit'][0]['reason'])
+
+    def test_tiny_connectivity_request_has_no_documents_and_shares_review_budget(self):
+        def transport(req,timeout):
+            payload=json.loads(req.data)
+            self.assertEqual(timeout,120)
+            self.assertNotIn('documents',payload['input'])
+            self.assertNotIn('fixture-key',json.dumps(payload))
+            self.assertFalse(payload['store'])
+            return Response({'model':MODEL,'status':'completed','steps':[{'type':'model_output',
+                'content':[{'type':'text','text':'{"status":"READY"}'}]}]})
+        r=connectivity_check(NOW,self.root,'fixture-key',True,transport)
+        self.assertEqual(r['status'],'AUTHENTICATED_GENERATION_VERIFIED')
+        self.assertFalse(r['may_register']);self.assertFalse(r['semantic_verified'])
+        with self.assertRaisesRegex(ReviewBlocked,'RATE_BUDGET'):
+            review_one(self.bundle,NOW,self.root,'fixture-key',True,self.requester)
+        review_one(self.bundle,NOW+timedelta(seconds=8),self.root,'fixture-key',True,self.requester)
+        budget=json.loads((self.root/'gemini_usage.json').read_text())
+        self.assertEqual(sum(map(len,budget['days'].values())),2)
+
+    def test_connectivity_failure_counts_and_never_implies_authentication_success(self):
+        def transport(*args,**kwargs):raise TimeoutError('fixture-secret')
+        with self.assertRaisesRegex(ReviewBlocked,'^GEMINI_TIMEOUT_UNVERIFIED$'):
+            connectivity_check(NOW,self.root,'fixture',True,transport)
+        budget=json.loads((self.root/'gemini_usage.json').read_text())
+        self.assertEqual(sum(map(len,budget['days'].values())),1)
+        for name in ('official_reviews.json','gemini_reviews','trades.csv'):
+            self.assertFalse((self.root/name).exists())
+
+    def test_probe_does_not_fetch_sec_when_minimal_generation_fails(self):
+        import contextlib
+        import gemini_probe
+        old=os.getcwd()
+        try:
+            os.chdir(self.temp.name)
+            with patch.dict(os.environ,{'GEMINI_API_KEY':'fixture','NEXUS_GEMINI_FREE_TIER_CONFIRMED':'true'},clear=True), \
+                 patch('gemini_probe.connectivity_check',side_effect=ReviewBlocked('GEMINI_HTTP_503')), \
+                 patch('gemini_probe.collect_financials',side_effect=AssertionError('no SEC request')):
+                with contextlib.redirect_stdout(io.StringIO()),self.assertRaises(SystemExit):gemini_probe.main()
+            result=json.loads(Path('output/gemini_probe.json').read_text())
+            self.assertEqual(result['stage'],'CONNECTIVITY_ONLY')
+            self.assertNotIn('connection',result)
+            self.assertEqual(result['reason'],'GEMINI_HTTP_503')
+            self.assertEqual(result['paper_fills_created'],0)
+        finally:os.chdir(old)
 
     def test_probe_without_key_cannot_collect_or_register(self):
         import contextlib
