@@ -330,6 +330,27 @@ class GeminiSafetyTests(unittest.TestCase):
             self.assertEqual(result['paper_fills_created'],0)
         finally:os.chdir(old)
 
+    def test_ir_probe_uses_direct_generation_without_claiming_preflight_success(self):
+        import contextlib
+        import gemini_probe
+        old=os.getcwd()
+        try:
+            os.chdir(self.temp.name)
+            reply={'request_sha256':'1'*64,'assessment':assessment()}
+            with patch.dict(os.environ,{'GEMINI_API_KEY':'fixture','NEXUS_GEMINI_FREE_TIER_CONFIRMED':'true'},clear=True), \
+                 patch('gemini_probe.connectivity_check',side_effect=AssertionError('no duplicate request')), \
+                 patch('gemini_probe.collect_financials',return_value=self.financials), \
+                 patch('issuer_ir.collect_issuer_ir',return_value={'documents':[],'audit':[]}), \
+                 patch('gemini_probe.public_bundle',return_value=self.bundle), \
+                 patch('gemini_probe.review_one',return_value=reply):
+                with contextlib.redirect_stdout(io.StringIO()):gemini_probe.main('AAPL',True)
+            result=json.loads(Path('output/gemini_probe.json').read_text())
+            self.assertEqual(result['connection']['status'],'NOT_SEPARATELY_PROBED')
+            self.assertEqual(result['status'],'VALIDATED_SHADOW_RESPONSE_RECEIVED')
+            self.assertFalse(result['semantic_verified']);self.assertFalse(result['may_register'])
+            self.assertEqual(result['paper_fills_created'],0)
+        finally:os.chdir(old)
+
     def test_probe_without_key_cannot_collect_or_register(self):
         import contextlib
         import gemini_probe
