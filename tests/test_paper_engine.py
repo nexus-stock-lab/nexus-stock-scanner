@@ -95,6 +95,57 @@ class EngineTests(unittest.TestCase):
             finally:
                 os.chdir(previous)
 
+    def test_thirty_trade_campaign_persists_closes_and_never_reopens_capacity(self):
+        """Acceptance path: 30 lifetime entries, both signals, three exits, CSV restart."""
+        import contextlib, csv, io, json, os, tempfile
+        from pathlib import Path
+        from paper_engine import run
+        previous=os.getcwd()
+        with tempfile.TemporaryDirectory() as directory:
+            try:
+                os.chdir(directory);Path('output').mkdir()
+                plans=[];quotes=[]
+                for i in range(30):
+                    p,q=fixture('TEST'+str(i))
+                    p['signal']='反発確認' if i%2 else '反発初動'
+                    plans.append(p);quotes.append(q)
+                incoming=Path('output/verified_evidence.json')
+                incoming.write_text(json.dumps(dict(plans=plans,quotes=quotes,streams={})))
+                with contextlib.redirect_stdout(io.StringIO()):run(NOW)
+                rows=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
+                self.assertEqual(len(rows),30)
+                self.assertTrue(all(r['status']=='OPEN' for r in rows))
+                streams={};finish=instant(rows[0]['deadline_jst'])+timedelta(hours=1)
+                for i,row in enumerate(rows):
+                    price=(125,85,105)[i%3]
+                    at=instant(row['deadline_jst']) if i%3==2 else instant(AT)+timedelta(minutes=1)
+                    stream=self.stream([row],[price],[at])[row['trade_id']]
+                    stream['trades'][0]['symbol']=row['symbol']
+                    streams[row['trade_id']]=stream
+                incoming.write_text(json.dumps(dict(plans=[],quotes=[],streams=streams)))
+                with contextlib.redirect_stdout(io.StringIO()):run(finish);run(finish)
+                report=json.loads(Path('output/trade_report.json').read_text())
+                stats=report['statistics'];total=stats['total']
+                self.assertTrue(stats['complete']);self.assertEqual(stats['remaining'],0)
+                self.assertEqual((total['registered'],total['closed'],total['open']),(30,30,0))
+                self.assertEqual((total['wins'],total['losses']),(20,10))
+                self.assertAlmostEqual(total['expectancy_r'],0.5)
+                self.assertAlmostEqual(total['mean_return_pct'],5)
+                for value in stats['by_signal'].values():
+                    self.assertEqual((value['registered'],value['closed']),(15,15))
+                    self.assertAlmostEqual(value['expectancy_r'],0.5)
+                closed=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
+                for reason in ('TARGET','STOP','MAX_90_DAYS'):
+                    self.assertEqual(sum(r['exit_reason']==reason for r in closed),10)
+                # Closing trades must not free a lifetime slot. A restart must not duplicate entries.
+                p,q=fixture('EXTRA')
+                incoming.write_text(json.dumps(dict(plans=[p],quotes=[q],streams={})))
+                with contextlib.redirect_stdout(io.StringIO()):run(finish)
+                after=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
+                self.assertEqual(after,closed)
+                self.assertEqual(json.loads(Path('output/trade_report.json').read_text())['entry_audit'][-1]['status'],'BLOCKED')
+            finally:os.chdir(previous)
+
     def test_repeated_identical_evidence_deduplicated(self):
         p,q=fixture()
         self.assertEqual(merge_unique([], [q,q]),[q])
