@@ -148,21 +148,22 @@ class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self,*args,**kwargs):raise ReviewBlocked('GEMINI_REDIRECT_REJECTED')
 
 
-def request_assessment(bundle,key,transport=None):
+def post_json(payload,key,transport=None):
+    """Fixed destination, no redirect/storage/tools; never return raw error bodies."""
     if not key or len(key)>256 or any(ord(c)<33 or ord(c)>126 for c in key):
         raise ReviewBlocked('GEMINI_KEY_MISSING_OR_INVALID')
-    payload={'model':MODEL,'input':INSTRUCTIONS+'\nPUBLIC_SOURCE_DATA:\n'+json.dumps(bundle,ensure_ascii=False),
-             'store':False,'stream':False,'background':False,
-             'generation_config':{'max_output_tokens':4096,'thinking_level':'low'},
-             'response_format':{'type':'text','mime_type':'application/json','schema':SCHEMA}}
     req=Request(ENDPOINT,data=json.dumps(payload).encode(),method='POST',
                 headers={'x-goog-api-key':key,'Content-Type':'application/json'})
     try:
-        with (transport or build_opener(NoRedirect()).open)(req,timeout=45) as response:
+        with (transport or build_opener(NoRedirect()).open)(req,timeout=120) as response:
             if response.url!=ENDPOINT:raise ReviewBlocked('GEMINI_ENDPOINT_MISMATCH')
             raw=response.read(256_001)
     except HTTPError as exc:raise ReviewBlocked(f'GEMINI_HTTP_{int(exc.code)}') from None
-    except (URLError,TimeoutError,OSError):raise ReviewBlocked('GEMINI_NETWORK_UNVERIFIED') from None
+    except TimeoutError:raise ReviewBlocked('GEMINI_TIMEOUT_UNVERIFIED') from None
+    except URLError as exc:
+        code='GEMINI_TIMEOUT_UNVERIFIED' if isinstance(exc.reason,TimeoutError) else 'GEMINI_NETWORK_UNVERIFIED'
+        raise ReviewBlocked(code) from None
+    except OSError:raise ReviewBlocked('GEMINI_NETWORK_UNVERIFIED') from None
     if len(raw)>256_000:raise ReviewBlocked('GEMINI_RESPONSE_TOO_LARGE')
     outer=strict_json(raw)
     if not isinstance(outer,dict):raise ReviewBlocked('GEMINI_RESPONSE_SCHEMA_INVALID')
@@ -178,8 +179,50 @@ def request_assessment(bundle,key,transport=None):
                 if not isinstance(part,dict) or part.get('type')!='text' or not isinstance(part.get('text'),str):raise ReviewBlocked('GEMINI_UNEXPECTED_OUTPUT')
                 texts.append(part.get('text',''))
     if len(texts)!=1:raise ReviewBlocked('GEMINI_AMBIGUOUS_OUTPUT')
-    result=validate_assessment(strict_json(texts[0]),bundle)
-    return {**result,'provider_response_sha256':digest(outer)}
+    return strict_json(texts[0]),digest(outer)
+
+
+def request_assessment(bundle,key,transport=None):
+    payload={'model':MODEL,'input':INSTRUCTIONS+'\nPUBLIC_SOURCE_DATA:\n'+json.dumps(bundle,ensure_ascii=False),
+             'store':False,'stream':False,'background':False,
+             'generation_config':{'max_output_tokens':4096,'thinking_level':'low'},
+             'response_format':{'type':'text','mime_type':'application/json','schema':SCHEMA}}
+    value,response_sha=post_json(payload,key,transport)
+    result=validate_assessment(value,bundle)
+    return {**result,'provider_response_sha256':response_sha}
+
+
+def reserve_request(root,now,request_sha):
+    """One shared durable budget for diagnostics and document reviews."""
+    budget_path=root/'gemini_usage.json'
+    budget=strict_json(budget_path.read_text()) if budget_path.exists() else {'days':{}}
+    day=now.astimezone(ZoneInfo('America/Los_Angeles')).date().isoformat()
+    attempts=budget['days'].get(day,[])
+    if not isinstance(attempts,list) or len(attempts)>=DAILY_REQUEST_LIMIT:
+        raise ReviewBlocked('DAILY_REVIEW_BUDGET_DEFERRED')
+    if attempts and timestamp_ns(now.isoformat())-timestamp_ns(attempts[-1]['at'])<7_000_000_000:
+        raise ReviewBlocked('RATE_BUDGET_DEFERRED')
+    attempts.append({'at':now.isoformat(),'request_sha256':request_sha})
+    budget['days'][day]=attempts
+    write_json(budget_path,budget)
+
+
+def connectivity_check(now,root,key,free_tier_confirmed,transport=None):
+    """Tiny generation, no documents/accounts; success is NOT a research clearance."""
+    if free_tier_confirmed is not True:raise ReviewBlocked('FREE_TIER_NOT_CONFIRMED')
+    if not key:raise ReviewBlocked('GEMINI_KEY_MISSING_OR_INVALID')
+    payload={'model':MODEL,'input':'Connection test only. Return {"status":"READY"}.',
+             'store':False,'stream':False,'background':False,
+             'generation_config':{'max_output_tokens':128,'thinking_level':'low'},
+             'response_format':{'type':'text','mime_type':'application/json','schema':{
+                 'type':'object','properties':{'status':{'type':'string','enum':['READY']}},
+                 'required':['status'],'additionalProperties':False}}}
+    request_sha=digest({'kind':'connectivity_only','payload':payload})
+    reserve_request(root,now,request_sha)
+    value,response_sha=post_json(payload,key,transport)
+    if value!={'status':'READY'}:raise ReviewBlocked('GEMINI_CONNECTION_RESPONSE_INVALID')
+    return {'status':'AUTHENTICATED_GENERATION_VERIFIED','model':MODEL,
+            'provider_response_sha256':response_sha,'semantic_verified':False,'may_register':False}
 
 
 def review_one(bundle,now,root,key,free_tier_confirmed,requester=request_assessment,
@@ -198,17 +241,7 @@ def review_one(bundle,now,root,key,free_tier_confirmed,requester=request_assessm
     # 429 is held immediately: the free project quota may be exhausted.
     attempt_at=now
     for retry in range(3):
-        budget_path=root/'gemini_usage.json'
-        budget=strict_json(budget_path.read_text()) if budget_path.exists() else {'days':{}}
-        day=attempt_at.astimezone(ZoneInfo('America/Los_Angeles')).date().isoformat()
-        attempts=budget['days'].get(day,[])
-        if not isinstance(attempts,list) or len(attempts)>=DAILY_REQUEST_LIMIT:
-            raise ReviewBlocked('DAILY_REVIEW_BUDGET_DEFERRED')
-        if attempts and timestamp_ns(attempt_at.isoformat())-timestamp_ns(attempts[-1]['at'])<7_000_000_000:
-            raise ReviewBlocked('RATE_BUDGET_DEFERRED')
-        attempts.append({'at':attempt_at.isoformat(),'request_sha256':request_sha})
-        budget['days'][day]=attempts
-        write_json(budget_path,budget)
+        reserve_request(root,attempt_at,request_sha)
         try:
             response=requester(bundle,key)
             break
