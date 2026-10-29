@@ -47,6 +47,7 @@ def freeze_research(now, root=Path('input'), out=Path('output'), collect_officia
     value['market_data'] = {}
     value['financials'] = {}
     value['financial_audit'] = []
+    value['issuer_ir'] = {}
     eligible = [r for r in rows if r.get('secondary_status')=='二次調査候補']
     for row in eligible:
         bars_path=out/'daily_bars'/(digest_symbol(row['symbol'])+'.json')
@@ -74,7 +75,11 @@ def freeze_research(now, root=Path('input'), out=Path('output'), collect_officia
                     value['financials'][row['symbol']]=collect_financials(row['symbol'],at,collected,root,ticker_map=mapping)
                 except Exception as exc:
                     value['financial_audit'].append({'symbol':row['symbol'],'status':'UNVERIFIED','reason':type(exc).__name__})
+                from issuer_ir import collect_issuer_ir
+                value['issuer_ir'][row['symbol']]=collect_issuer_ir(row['symbol'],at,datetime.now(JST),root)
     if collect_official:
+        write_json(out/'issuer_ir_status.json',{'mode':'IR_RESEARCH_ONLY','may_register':False,
+                   'results':list(value['issuer_ir'].values())})
         update_scenarios(value['financials'],datetime.now(JST),root)
     value['prepared_at']=datetime.now(JST).isoformat() if collect_official else now.isoformat()
     if timestamp_ns(value['prepared_at'])>timestamp_ns(at.isoformat()):
@@ -436,6 +441,12 @@ def phone_summary(out=Path('output')):
         lines.append(f"|{item['symbol']}|{item['status']}|{item.get('price','—')}|{item.get('market_time','—')}|")
     if daily.get('price_diagnostics_deferred'):
         lines += ['', f"診断予算により未取得 {daily['price_diagnostics_deferred']}銘柄。見送り・不合格とは扱いません。"]
+    ir_file=out/'issuer_ir_status.json'
+    if ir_file.exists():
+        ir=json.loads(ir_file.read_text());items=ir.get('results',[])
+        lines += ['', '## 公式IR資料の収集', '',
+                  '資料の取得だけでは判定合格にしません。現在の専用取得先はIREN・APLD・NBISのみです。', '',
+                  f"保存資料 {sum(len(r.get('documents',[])) for r in items)}件・IR取得先未対応 {sum(r.get('status')=='IR_SOURCE_NOT_CONFIGURED' for r in items)}銘柄"]
     plan_file=out/'plan_status.json'
     if plan_file.exists():
         plan_report=json.loads(plan_file.read_text())
