@@ -165,6 +165,22 @@ def collect_financials(symbol, at, now, root=Path('input'), fetch=public_json, t
     return result
 
 
+def collect_company_documents(symbol,at,now,root=Path('input'),fetch=public_json):
+    """Qualitative source acquisition only: NEVER a substitute financial PASS."""
+    mapping=fetch('https://www.sec.gov/files/company_tickers.json')
+    matches=[r for r in mapping.values() if r['ticker'].replace('-','.')==symbol]
+    if len(matches)!=1:raise ValueError('SEC ticker mapping unavailable or ambiguous')
+    cik=f"{int(matches[0]['cik_str']):010d}"
+    url=f'https://data.sec.gov/submissions/CIK{cik}.json'
+    submissions=fetch(url)
+    if int(submissions['cik'])!=int(cik):raise ValueError('SEC entity mismatch')
+    sha=store_json(root,url,{'accepted_filings':accepted_filings(submissions,at),
+                           'raw_response_sha256':digest(submissions)},now.isoformat())
+    return {'symbol':symbol,'cik':cik,'source':url,'submissions_sha256':sha,
+            'financial_status':'NOT_EVALUATED_SOURCE_REVIEW_ONLY',
+            'official_documents':collect_documents(submissions,cik,at,now,root)}
+
+
 def collect_documents(submissions, cik, at, now, root):
     """Archive latest official filings and 99.1 earnings exhibits for review.
 
