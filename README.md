@@ -134,3 +134,12 @@ SECへの取得要求に提示するアプリ名と連絡先メールを、Actio
 仕様: https://www.sec.gov/search-filings/edgar-application-programming-interfaces
  / https://docs.alpaca.markets/us/reference/stocktradesingle-1
  / https://docs.alpaca.markets/us/reference/corporateactions-1
+
+### 接続障害の切り分け
+
+`gemini_probe` はまず企業資料を一切含まない短い生成リクエストを送ります。
+成功して初めて公開SEC資料のレビューへ進みます。接続成功は企業情報の判定合格を意味しません。
+ソケット待機上限は120秒で、タイムアウトとその他の通信エラーを区別して表示します。
+短い診断も共通の日次10回予算に含め、失敗も送信前に記録します。
+文章判定の一時的な500/502/503/504は最大3回まで再試行し、認証エラー・429・通信未確認は保留します。
+正常応答が得られるまでは正式レビューへの自動転記を有効にしません。
