@@ -52,6 +52,8 @@ def main(symbol="AAPL",include_ir=False):
                 semantic_verified=False)
         except Exception as exc:
             result.update(status='HELD',reason=str(exc) if isinstance(exc,ReviewBlocked) else type(exc).__name__)
+            if isinstance(exc,ReviewBlocked) and isinstance(getattr(exc,'context_bytes',None),int):
+                result['source_context_bytes']=exc.context_bytes
     write_json(out/'gemini_probe.json',result)
     summary='# Gemini 公開資料の検証テスト\n\n'
     summary+='仮想登録・決済は行いません。引用一致は内容判断の正しさを保証しません。\n\n```json\n'
