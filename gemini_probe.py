@@ -7,7 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 from market_calendar import JST, next_decision
-from official_data import collect_financials
+from official_data import collect_financials, collect_company_documents
 from gemini_review import public_bundle, review_one, connectivity_check, ReviewBlocked, write_json
 
 
@@ -31,7 +31,11 @@ def main(symbol="AAPL",include_ir=False):
                                       'reason':'The SEC+IR generation request itself must return a validated response.'}
             result['stage']='PUBLIC_DOCUMENT_REVIEW'
             now=datetime.now(JST)
-            financials=collect_financials(symbol,now,now,root)
+            if include_ir:
+                financials=collect_company_documents(symbol,now,now,root)
+                result['financial_status']='NOT_EVALUATED_SOURCE_REVIEW_ONLY'
+            else:
+                financials=collect_financials(symbol,now,now,root)
             observed=datetime.now(JST)
             ir_documents=[]
             if include_ir:
