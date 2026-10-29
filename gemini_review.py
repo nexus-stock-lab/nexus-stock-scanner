@@ -2,6 +2,7 @@
 import json
 import os
 import re
+import random
 import time
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -181,7 +182,8 @@ def request_assessment(bundle,key,transport=None):
     return {**result,'provider_response_sha256':digest(outer)}
 
 
-def review_one(bundle,now,root,key,free_tier_confirmed,requester=request_assessment):
+def review_one(bundle,now,root,key,free_tier_confirmed,requester=request_assessment,
+               *,sleeper=time.sleep,clock=None):
     if free_tier_confirmed is not True:raise ReviewBlocked('FREE_TIER_NOT_CONFIRMED')
     if not key:raise ReviewBlocked('GEMINI_KEY_MISSING_OR_INVALID')
     request_sha=digest({'bundle':bundle,'model':MODEL,'prompt_version':PROMPT_VERSION})
@@ -192,18 +194,32 @@ def review_one(bundle,now,root,key,free_tier_confirmed,requester=request_assessm
         if cached['request_sha256']!=request_sha or cached['result']!=result:
             raise ReviewBlocked('CORRUPT_CACHED_REVIEW')
         return {**cached,'cache_hit':True}
-    budget_path=root/'gemini_usage.json'
-    budget=strict_json(budget_path.read_text()) if budget_path.exists() else {'days':{}}
-    day=now.astimezone(ZoneInfo('America/Los_Angeles')).date().isoformat()
-    attempts=budget['days'].get(day,[])
-    if not isinstance(attempts,list) or len(attempts)>=DAILY_REQUEST_LIMIT:
-        raise ReviewBlocked('DAILY_REVIEW_BUDGET_DEFERRED')
-    if attempts and timestamp_ns(now.isoformat())-timestamp_ns(attempts[-1]['at'])<7_000_000_000:
-        raise ReviewBlocked('RATE_BUDGET_DEFERRED')
-    # Reserve before sending; failures count. Same branch concurrency required by workflow.
-    attempts.append({'at':now.isoformat(),'request_sha256':request_sha});budget['days'][day]=attempts
-    write_json(budget_path,budget)
-    response=requester(bundle,key)
+    # Reserve EACH network attempt before sending. No fallback model or paid upgrade.
+    # 429 is held immediately: the free project quota may be exhausted.
+    attempt_at=now
+    for retry in range(3):
+        budget_path=root/'gemini_usage.json'
+        budget=strict_json(budget_path.read_text()) if budget_path.exists() else {'days':{}}
+        day=attempt_at.astimezone(ZoneInfo('America/Los_Angeles')).date().isoformat()
+        attempts=budget['days'].get(day,[])
+        if not isinstance(attempts,list) or len(attempts)>=DAILY_REQUEST_LIMIT:
+            raise ReviewBlocked('DAILY_REVIEW_BUDGET_DEFERRED')
+        if attempts and timestamp_ns(attempt_at.isoformat())-timestamp_ns(attempts[-1]['at'])<7_000_000_000:
+            raise ReviewBlocked('RATE_BUDGET_DEFERRED')
+        attempts.append({'at':attempt_at.isoformat(),'request_sha256':request_sha})
+        budget['days'][day]=attempts
+        write_json(budget_path,budget)
+        try:
+            response=requester(bundle,key)
+            break
+        except ReviewBlocked as exc:
+            if str(exc) not in ('GEMINI_HTTP_500','GEMINI_HTTP_502','GEMINI_HTTP_503','GEMINI_HTTP_504') or retry==2:
+                raise
+            delay=8*(2**retry)+random.uniform(0,2)
+            sleeper(delay)
+            observed=(clock or (lambda:datetime.now(now.tzinfo)))()
+            # A test/future simulation clock must never move reservations backwards.
+            attempt_at=max(observed,attempt_at+timedelta(seconds=delay))
     result=validate_assessment(response['assessment'],bundle)
     checked=datetime.now(now.tzinfo)
     value={'request_sha256':request_sha,'checked_at':checked.isoformat(),
