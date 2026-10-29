@@ -128,6 +128,28 @@ class GeminiSafetyTests(unittest.TestCase):
         f['official_documents'][0]['evidence_sha256']=sha
         with self.assertRaisesRegex(ReviewBlocked,'NO_TRUNCATION'):public_bundle('AAPL',f,AT,NOW,self.root)
 
+    def test_ir_documents_require_verified_issuer_registry_and_exact_provenance(self):
+        from issuer_ir import archive,publication
+        ir=archive('APLD','https://ir.applieddigital.com/news-events/press-releases/detail/999/fixture',
+                   b'<p>Official fictional public company announcement.</p>',
+                   publication('2026-10-28T12:00:00Z'),AT,NOW,self.root)
+        financials={'symbol':'APLD','cik':'1144879','official_documents':[]}
+        bundle=public_bundle('APLD',financials,AT,NOW,self.root,[ir])
+        self.assertEqual(len(bundle['documents']),1)
+        self.assertNotIn('authority_url',bundle['documents'][0])
+        # IR metadata on a known host must never be reused for a different issuer.
+        wrong={'symbol':'IREN','cik':'1878848','official_documents':[]}
+        with self.assertRaisesRegex(ReviewBlocked,'SOURCE_PROVENANCE_MISMATCH'):
+            public_bundle('IREN',wrong,AT,NOW,self.root,[ir])
+        # SEC document path cannot smuggle an IR source through its independent channel.
+        financials['official_documents']=[ir]
+        with self.assertRaisesRegex(ReviewBlocked,'SOURCE_PROVENANCE_MISMATCH'):
+            public_bundle('APLD',financials,AT,NOW,self.root)
+        financials['official_documents']=[]
+        changed=dict(ir);changed['published_at']='2026-01-01T00:00:00Z'
+        with self.assertRaisesRegex(ReviewBlocked,'SOURCE_PROVENANCE_MISMATCH'):
+            public_bundle('APLD',financials,AT,NOW,self.root,[changed])
+
     def test_empty_and_postdecision_sources_never_sent(self):
         f=copy.deepcopy(self.financials);f['official_documents']=[]
         with self.assertRaises(ReviewBlocked):public_bundle('AAPL',f,AT,NOW,self.root)
