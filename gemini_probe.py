@@ -21,10 +21,14 @@ def main(symbol="AAPL",include_ir=False):
         result['status']='FREE_TIER_NOT_CONFIRMED'
     else:
         try:
-            result['stage']='CONNECTIVITY_ONLY'
-            result['connection']=connectivity_check(now,root,os.environ['GEMINI_API_KEY'],True)
-            # Same project budget includes both calls, with at least seven seconds between them.
-            time.sleep(8)
+            if not include_ir:
+                result['stage']='CONNECTIVITY_ONLY'
+                result['connection']=connectivity_check(now,root,os.environ['GEMINI_API_KEY'],True)
+                # Same project budget includes both calls, with at least seven seconds between them.
+                time.sleep(8)
+            else:
+                result['connection']={'status':'NOT_SEPARATELY_PROBED',
+                                      'reason':'The SEC+IR generation request itself must return a validated response.'}
             result['stage']='PUBLIC_DOCUMENT_REVIEW'
             now=datetime.now(JST)
             financials=collect_financials(symbol,now,now,root)
