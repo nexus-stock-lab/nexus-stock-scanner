@@ -1,12 +1,13 @@
 """Explicit read-only Gemini smoke test. Does not call the paper ledger engine."""
 import json
 import os
+import time
 from datetime import datetime
 from pathlib import Path
 
 from market_calendar import JST, next_decision
 from official_data import collect_financials
-from gemini_review import public_bundle, review_one, ReviewBlocked, write_json
+from gemini_review import public_bundle, review_one, connectivity_check, ReviewBlocked, write_json
 
 
 def main():
@@ -19,6 +20,12 @@ def main():
         result['status']='FREE_TIER_NOT_CONFIRMED'
     else:
         try:
+            result['stage']='CONNECTIVITY_ONLY'
+            result['connection']=connectivity_check(now,root,os.environ['GEMINI_API_KEY'],True)
+            # Same project budget includes both calls, with at least seven seconds between them.
+            time.sleep(8)
+            result['stage']='PUBLIC_DOCUMENT_REVIEW'
+            now=datetime.now(JST)
             financials=collect_financials('AAPL',now,now,root)
             observed=datetime.now(JST)
             bundle=public_bundle('AAPL',financials,next_decision(observed),observed,root)
