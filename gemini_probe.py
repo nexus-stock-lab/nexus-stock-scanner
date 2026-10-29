@@ -1,4 +1,5 @@
 """Explicit read-only Gemini smoke test. Does not call the paper ledger engine."""
+import argparse
 import json
 import os
 import time
@@ -10,7 +11,7 @@ from official_data import collect_financials
 from gemini_review import public_bundle, review_one, connectivity_check, ReviewBlocked, write_json
 
 
-def main():
+def main(symbol="AAPL",include_ir=False):
     root,out=Path('input'),Path('output');out.mkdir(exist_ok=True)
     now=datetime.now(JST)
     result={'mode':'SHADOW_ONLY','paper_fills_created':0,'may_register':False}
@@ -26,11 +27,18 @@ def main():
             time.sleep(8)
             result['stage']='PUBLIC_DOCUMENT_REVIEW'
             now=datetime.now(JST)
-            financials=collect_financials('AAPL',now,now,root)
+            financials=collect_financials(symbol,now,now,root)
             observed=datetime.now(JST)
-            bundle=public_bundle('AAPL',financials,next_decision(observed),observed,root)
+            ir_documents=[]
+            if include_ir:
+                from issuer_ir import collect_issuer_ir
+                ir=collect_issuer_ir(symbol,next_decision(observed),observed,root)
+                result['ir_collection']={'documents':len(ir['documents']),'audit':ir['audit']}
+                ir_documents=ir['documents']
+                observed=datetime.now(JST)
+            bundle=public_bundle(symbol,financials,next_decision(observed),observed,root,ir_documents)
             value=review_one(bundle,observed,root,os.environ['GEMINI_API_KEY'],True)
-            result.update(status='VALIDATED_SHADOW_RESPONSE_RECEIVED',symbol='AAPL',
+            result.update(status='VALIDATED_SHADOW_RESPONSE_RECEIVED',symbol=symbol,
                 document_count=len(bundle['documents']),request_sha256=value['request_sha256'],
                 verdicts={a['name']:a['verdict'] for a in value['assessment']['assertions']},
                 semantic_verified=False)
@@ -45,4 +53,9 @@ def main():
     if result['status']=='HELD':raise SystemExit(1)
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--symbol',default='AAPL')
+    parser.add_argument('--include-ir',action='store_true')
+    args=parser.parse_args()
+    main(args.symbol,args.include_ir)
