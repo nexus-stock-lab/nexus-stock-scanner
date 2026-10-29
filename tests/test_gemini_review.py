@@ -156,6 +156,55 @@ class GeminiSafetyTests(unittest.TestCase):
             review_one(self.bundle,NOW+timedelta(seconds=90),self.root,'fixture',True,lambda *a:self.fail('budget exhausted'))
         self.assertFalse((self.root/'trades.csv').exists());self.assertFalse((self.root/'official_reviews.json').exists())
 
+    def test_transient_failure_retries_are_bounded_and_reserved_before_send(self):
+        calls=[];delays=[]
+        def failing(*args):
+            budget=json.loads((self.root/'gemini_usage.json').read_text())
+            self.assertEqual(sum(map(len,budget['days'].values())),len(calls)+1)
+            calls.append(1)
+            raise ReviewBlocked('GEMINI_HTTP_503')
+        with self.assertRaisesRegex(ReviewBlocked,'GEMINI_HTTP_503'):
+            review_one(self.bundle,NOW,self.root,'fixture',True,failing,
+                       sleeper=delays.append,clock=lambda:NOW)
+        self.assertEqual(len(calls),3)
+        self.assertEqual(len(delays),2)
+        self.assertTrue(8<=delays[0]<=10 and 16<=delays[1]<=18)
+        self.assertFalse((self.root/'gemini_reviews').exists())
+
+    def test_transient_retry_success_is_cached_without_ledger_promotion(self):
+        calls=[]
+        def request(*args):
+            calls.append(1)
+            if len(calls)==1:raise ReviewBlocked('GEMINI_HTTP_503')
+            return self.requester(*args)
+        result=review_one(self.bundle,NOW,self.root,'fixture',True,request,
+                          sleeper=lambda _:None,clock=lambda:NOW)
+        self.assertEqual(len(calls),2)
+        self.assertFalse(result['result']['may_register'])
+        self.assertFalse((self.root/'official_reviews.json').exists())
+        self.assertFalse((self.root/'trades.csv').exists())
+
+    def test_retry_cannot_exceed_daily_budget_or_retry_client_errors(self):
+        for code in ('400','401','403','429'):
+            calls=[]
+            def failing(*args):
+                calls.append(1);raise ReviewBlocked('GEMINI_HTTP_'+code)
+            at=NOW+timedelta(minutes=int(code))
+            with self.assertRaisesRegex(ReviewBlocked,code):
+                review_one(self.bundle,at,self.root,'fixture',True,failing,
+                           sleeper=lambda _:self.fail('must not retry'))
+            self.assertEqual(len(calls),1)
+        # Leave only one daily request available; a transient failure cannot use an 11th.
+        p=self.root/'gemini_usage.json';budget=json.loads(p.read_text())
+        day=next(iter(budget['days']));budget['days'][day]*=2
+        budget['days'][day].append(budget['days'][day][-1]);p.write_text(json.dumps(budget))
+        calls=[]
+        def unavailable(*args):calls.append(1);raise ReviewBlocked('GEMINI_HTTP_503')
+        with self.assertRaisesRegex(ReviewBlocked,'DAILY_REVIEW_BUDGET'):
+            review_one(self.bundle,NOW+timedelta(hours=8),self.root,'fixture',True,unavailable,
+                       sleeper=lambda _:None,clock=lambda:NOW)
+        self.assertEqual(len(calls),1)
+
     def test_network_and_model_failures_never_expose_error_body(self):
         def bad(req,timeout):raise HTTPError(ENDPOINT,401,'fixture-secret',{},io.BytesIO(b'fixture-secret'))
         with self.assertRaises(ReviewBlocked) as error:request_assessment(self.bundle,'fixture-secret',bad)
