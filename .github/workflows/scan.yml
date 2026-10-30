@@ -87,7 +87,7 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import os, subprocess
-          targets=[Path('input/gemini_usage.json'),Path('input/gemini_reviews')]
+          targets=[Path('input/gemini_usage.json'),Path('input/gemini_reviews'),Path('input/gemini_rejections')]
           if os.environ['PHASE'] in ('gemini_probe','gemini_ir_probe'): targets += [Path('input/official_documents'),Path('input/official_evidence'),Path('input/issuer_ir_sources')]
           paths=[str(p) for p in targets if p.exists()]
           if paths: subprocess.run(['git','add','--',*paths],check=True)
