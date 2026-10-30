@@ -16,7 +16,7 @@ from paper_engine import digest
 
 MODEL = 'gemini-3.8-flash'
 ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/interactions'
-PROMPT_VERSION = 'nexus_shadow_20261029_v2'
+PROMPT_VERSION = 'nexus_shadow_20261030_v3'
 NAMES = ('guidance_not_lowered','decline_explanation_verified','no_material_business_impairment','next_earnings')
 MAX_CONTEXT_BYTES = 900_000  # Full-source acquisition budget; no truncation or eligibility change.
 DAILY_REQUEST_LIMIT = 10  # Acquisition budget only, never an entry eligibility rule.
@@ -33,6 +33,10 @@ Return all four assertions as SUPPORTED, CONTRADICTED, or UNKNOWN, with exact ve
    The supplied selection may be incomplete; use UNKNOWN if the scope is inadequate.
 4 next_earnings: an explicitly announced future earnings release date (not an SEC filing date,
    past quarter end, dividend date or estimate); date must be YYYY-MM-DD and cited.
+The date field MUST be the empty string for the first three assertions.
+For next_earnings, date MUST also be the empty string when verdict is UNKNOWN or CONTRADICTED.
+ONLY next_earnings with verdict SUPPORTED may have a non-empty date, an announced future YYYY-MM-DD.
+Do not put a publication date, quarter end, or guidance period into any date field.
 UNKNOWN requires a reason, and may have zero citations. Every other verdict needs citations.
 Each citation references a supplied document id and an exact excerpt, not an invented URL.
 Return only schema JSON. These are provisional machine assessments, never approved trade checks.
@@ -195,7 +199,12 @@ def request_assessment(bundle,key,transport=None):
              'generation_config':{'max_output_tokens':4096,'thinking_level':'low'},
              'response_format':{'type':'text','mime_type':'application/json','schema':SCHEMA}}
     value,response_sha=post_json(payload,key,transport,timeout=300)
-    result=validate_assessment(value,bundle)
+    try:
+        result=validate_assessment(value,bundle)
+    except ReviewBlocked as exc:
+        exc.assessment=value
+        exc.provider_response_sha256=response_sha
+        raise
     return {**result,'provider_response_sha256':response_sha}
 
 
@@ -253,6 +262,16 @@ def review_one(bundle,now,root,key,free_tier_confirmed,requester=request_assessm
             response=requester(bundle,key)
             break
         except ReviewBlocked as exc:
+            if hasattr(exc,'assessment'):
+                rejected={'kind':'REJECTED_SHADOW_RESPONSE','may_register':False,
+                          'checked_at':datetime.now(now.tzinfo).isoformat(),
+                          'reason':str(exc),'request_sha256':request_sha,
+                          'bundle_sha256':digest(bundle),'model':MODEL,'prompt_version':PROMPT_VERSION,
+                          'assessment':exc.assessment,
+                          'provider_response_sha256':exc.provider_response_sha256}
+                sha=digest(rejected)
+                write_json(root/'gemini_rejections'/f'{sha}.json',rejected)
+                exc.rejection_evidence_sha256=sha
             if str(exc) not in ('GEMINI_HTTP_500','GEMINI_HTTP_502','GEMINI_HTTP_503','GEMINI_HTTP_504') or retry==2:
                 raise
             delay=8*(2**retry)+random.uniform(0,2)
