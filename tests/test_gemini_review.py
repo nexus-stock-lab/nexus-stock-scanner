@@ -297,6 +297,29 @@ class GeminiSafetyTests(unittest.TestCase):
         self.assertEqual(plans['plans'],[])
         self.assertIn('evidence missing',plans['audit'][0]['reason'])
 
+    def test_dates_outside_supported_next_earnings_are_rejected(self):
+        for name in NAMES:
+            value=assessment()
+            next(item for item in value['assertions'] if item['name']==name)['date']='2026-11-12'
+            with self.subTest(name=name),self.assertRaisesRegex(ReviewBlocked,'UNEXPECTED_DATE'):
+                validate_assessment(value,self.bundle)
+
+    def test_invalid_model_reply_is_retained_only_as_rejected_untrusted_evidence(self):
+        value=assessment();value['assertions'][0]['date']='2026-11-12'
+        response=Response({'model':MODEL,'status':'completed','steps':[{'type':'model_output',
+                          'content':[{'type':'text','text':json.dumps(value)}]}]})
+        def request(bundle,key):
+            return request_assessment(bundle,key,lambda *args,**kw:response)
+        with self.assertRaisesRegex(ReviewBlocked,'UNEXPECTED_DATE') as error:
+            review_one(self.bundle,NOW,self.root,'fixture',True,request)
+        sha=error.exception.rejection_evidence_sha256
+        record=json.loads((self.root/'gemini_rejections'/f'{sha}.json').read_text())
+        self.assertEqual(record['kind'],'REJECTED_SHADOW_RESPONSE')
+        self.assertEqual(record['assessment'],value)
+        self.assertFalse(record['may_register']);self.assertEqual(digest(record),sha)
+        for name in ('gemini_reviews','official_reviews.json','trades.csv','plans'):
+            self.assertFalse((self.root/name).exists())
+
     def test_tiny_connectivity_request_has_no_documents_and_shares_review_budget(self):
         def transport(req,timeout):
             payload=json.loads(req.data)
