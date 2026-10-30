@@ -59,6 +59,7 @@ class GeminiSafetyTests(unittest.TestCase):
     def test_payload_whitelist_excludes_accounts_environment_and_extra_fields(self):
         sent={}
         def transport(req,timeout):
+            self.assertEqual(timeout,300)
             sent.update(url=req.full_url,headers=dict(req.header_items()),payload=json.loads(req.data))
             return Response({'status':'completed','model':MODEL,'steps':[{'type':'model_output','content':[
                             {'type':'text','text':json.dumps(assessment())}]}]})
