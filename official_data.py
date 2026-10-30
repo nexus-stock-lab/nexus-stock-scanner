@@ -63,7 +63,7 @@ def accepted_filings(submissions, at):
     return result
 
 
-def quarter_values(units, filings):
+def quarter_values(units, filings, relevant_end=None):
     """Use accepted, non-amended consolidated USD facts and derive Q4 as FY-9M."""
     rows=[]
     for row in units:
@@ -85,6 +85,14 @@ def quarter_values(units, filings):
     # Multiple as-of-visible revisions with conflicting values are not silently chosen.
     unique={}
     for row in quarters:
+        # Keep derivation inputs above intact, but unrelated historical
+        # revisions must not invalidate the current comparison. Every possible
+        # prior-year comparator remains in scope and conflicting values in
+        # that scope still block rather than selecting a convenient revision.
+        if relevant_end is not None:
+            age=(date.fromisoformat(relevant_end)-date.fromisoformat(row['end'])).days
+            if age != 0 and not 350 <= age <= 380:
+                continue
         key=(row['start'],row['end'])
         old=unique.get(key)
         if old and old['val']!=row['val']:
@@ -107,11 +115,11 @@ def extract_financials(symbol, facts, submissions, at, checked_at, evidence_sha2
                 raise ValueError('newer official results/amendment require financial reconciliation')
     end=latest['report_date']
     gaap=facts['facts']['us-gaap']
-    operating=quarter_values(gaap['OperatingIncomeLoss']['units']['USD'],filings)
+    operating=quarter_values(gaap['OperatingIncomeLoss']['units']['USD'],filings,end)
     for tag in REVENUE_TAGS:
         if tag not in gaap:
             continue
-        revenue=quarter_values(gaap[tag]['units'].get('USD',[]),filings)
+        revenue=quarter_values(gaap[tag]['units'].get('USD',[]),filings,end)
         current=[r for r in revenue if r['end']==end]
         current_op=[r for r in operating if r['end']==end]
         if len(current)!=1 or len(current_op)!=1 or current[0]['start']!=current_op[0]['start']:
