@@ -39,7 +39,7 @@ jobs:
         run: |
           case "$PHASE" in
             gemini_probe|gemini_ir_probe|ir_probe)
-              python -m pip install "exchange_calendars>=4.5,<5" ;;
+              python -m pip install "exchange_calendars>=4.5,<5" "PyYAML>=6.0,<7" ;;
             *) python -m pip install -r requirements.txt ;;
           esac
       - name: Test paper engine
