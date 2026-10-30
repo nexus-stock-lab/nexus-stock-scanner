@@ -1,0 +1,81 @@
+{
+  "request_sha256": "224c9c561dc651ed1faaf601339a33fb7633f50520856a3a1c92aa49f9b980b5",
+  "checked_at": "2026-10-29T11:21:29.806875+09:00",
+  "provider_response_sha256": "a52c89181835548ec4339b321d467ea8b0d1af81ce8746685e69ee1311a09bd6",
+  "assessment": {
+    "symbol": "AAPL",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not contain explicit numerical revenue guidance, a reaffirmation of guidance, or comparable previous and current official revenue guidance projections.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided SEC filings and press releases do not document or identify an actual stock price decline or provide an explicit explanation attributing such a decline to market, sector, or temporary factors.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents do not provide adequate scope to definitively prove the absence of material business impairments, going-concern doubts, or major accounting issues across the latest period, and absence of keywords cannot be treated as proof.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "There is no explicitly announced future earnings release date provided in the supplied documents.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "result": {
+    "kind": "SHADOW_ONLY",
+    "may_register": false,
+    "semantic_verified": false,
+    "quote_provenance_verified": false,
+    "citation_count": 0,
+    "assessment": {
+      "symbol": "AAPL",
+      "assertions": [
+        {
+          "name": "guidance_not_lowered",
+          "verdict": "UNKNOWN",
+          "rationale": "The provided documents do not contain explicit numerical revenue guidance, a reaffirmation of guidance, or comparable previous and current official revenue guidance projections.",
+          "date": "",
+          "citations": []
+        },
+        {
+          "name": "decline_explanation_verified",
+          "verdict": "UNKNOWN",
+          "rationale": "The provided SEC filings and press releases do not document or identify an actual stock price decline or provide an explicit explanation attributing such a decline to market, sector, or temporary factors.",
+          "date": "",
+          "citations": []
+        },
+        {
+          "name": "no_material_business_impairment",
+          "verdict": "UNKNOWN",
+          "rationale": "The supplied documents do not provide adequate scope to definitively prove the absence of material business impairments, going-concern doubts, or major accounting issues across the latest period, and absence of keywords cannot be treated as proof.",
+          "date": "",
+          "citations": []
+        },
+        {
+          "name": "next_earnings",
+          "verdict": "UNKNOWN",
+          "rationale": "There is no explicitly announced future earnings release date provided in the supplied documents.",
+          "date": "",
+          "citations": []
+        }
+      ]
+    },
+    "bundle_sha256": "9b0277b9784a0cfa1932455a1f767d087390ea9200c830cc3a5e9ca7d252febf",
+    "prompt_version": "nexus_shadow_20261029_v1",
+    "model": "gemini-3.8-flash"
+  }
+}

@@ -2,65 +2,141 @@ name: NEXUS Market Scan
 
 on:
   workflow_dispatch:
+    inputs:
+      phase:
+        description: 'prepare=広域調査 / finalize=正式計画 / reconcile=価格照合 / track=保有追跡'
+        type: choice
+        options: [prepare, finalize, reconcile, track, gemini_probe, ir_probe, gemini_ir_probe]
+        default: prepare
   schedule:
-    - cron: '45 14 * * 1-5'
+    - cron: '0 9 * * 1-5'
+    - cron: '35 14 * * 1-5'
+    - cron: '5 15 * * 1-5'
+    - cron: '35 15-21 * * 1-5'
 
 permissions:
   contents: write
 
 concurrency:
-  group: nexus-trade-ledger
+  group: nexus-trade-ledger-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   scan:
     runs-on: ubuntu-latest
     timeout-minutes: 300
+    env:
+      PHASE: ${{ github.event_name == 'schedule' && (github.event.schedule == '0 9 * * 1-5' && 'prepare' || (github.event.schedule == '35 14 * * 1-5' && 'finalize' || (github.event.schedule == '5 15 * * 1-5' && 'reconcile' || 'track'))) || inputs.phase }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run NEXUS scanner
-        run: python scanner.py
-
-      - name: Run NEXUS secondary review
-        run: python review.py
-
-      - name: Run NEXUS trade tracker
-        run: python trade_tracker.py
-
-      - name: Persist hypothetical trade ledger
-        if: success()
+        timeout-minutes: 10
         run: |
-          if [ ! -f input/trades.csv ]; then
-            echo "No trade ledger file; nothing to persist."
-            exit 0
+          case "$PHASE" in
+            gemini_probe|gemini_ir_probe|ir_probe)
+              python -m pip install "exchange_calendars>=4.5,<5" "PyYAML>=6.0,<7" ;;
+            *) python -m pip install -r requirements.txt ;;
+          esac
+      - name: Test paper engine
+        run: python -m unittest discover -s tests -v
+      - name: Scan broad universe using existing rules
+        if: env.PHASE == 'prepare'
+        run: python scanner.py
+      - name: Secondary research using existing rules
+        if: env.PHASE == 'prepare'
+        run: python review.py
+      - name: Test Gemini on public SEC documents without ledger writes
+        timeout-minutes: 10
+        if: env.PHASE == 'gemini_probe' || env.PHASE == 'gemini_ir_probe'
+        env:
+          NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NEXUS_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.NEXUS_GEMINI_FREE_TIER_CONFIRMED }}
+        run: |
+          if [ "$PHASE" = 'gemini_ir_probe' ]; then
+            python gemini_probe.py --symbol APLD --include-ir
+          else
+            python gemini_probe.py
           fi
+      - name: Collect official IR without AI or ledger writes
+        if: env.PHASE == 'ir_probe'
+        timeout-minutes: 10
+        run: python issuer_ir.py
+      - name: Run approved paper-validation phase
+        if: env.PHASE != 'gemini_probe' && env.PHASE != 'gemini_ir_probe' && env.PHASE != 'ir_probe'
+        env:
+          ALPACA_DATA_KEY: ${{ secrets.ALPACA_DATA_KEY }}
+          ALPACA_DATA_SECRET: ${{ secrets.ALPACA_DATA_SECRET }}
+          NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NEXUS_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.NEXUS_GEMINI_FREE_TIER_CONFIRMED }}
+          NEXUS_GEMINI_SHADOW_ENABLED: ${{ vars.NEXUS_GEMINI_SHADOW_ENABLED }}
+        run: python daily_runner.py "$PHASE"
+      - name: Persist Gemini request budget even on failure
+        if: always() && (env.PHASE == 'gemini_probe' || env.PHASE == 'gemini_ir_probe' || vars.NEXUS_GEMINI_SHADOW_ENABLED == 'true')
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add input/trades.csv
-          if git diff --cached --quiet; then
-            echo "Trade ledger unchanged."
-          else
-            git commit -m "Persist NEXUS hypothetical trade ledger"
-            git fetch origin main
-            git rebase origin/main
-            git push origin HEAD:main
+          python - <<'PY'
+          from pathlib import Path
+          import os, subprocess
+          targets=[Path('input/gemini_usage.json'),Path('input/gemini_reviews'),Path('input/gemini_rejections')]
+          if os.environ['PHASE'] in ('gemini_probe','gemini_ir_probe'): targets += [Path('input/official_documents'),Path('input/official_evidence'),Path('input/issuer_ir_sources')]
+          paths=[str(p) for p in targets if p.exists()]
+          if paths: subprocess.run(['git','add','--',*paths],check=True)
+          PY
+          if ! git diff --cached --quiet; then
+            git commit -m "Persist Gemini shadow request budget and public evidence"
+            git push origin "HEAD:$BRANCH"
           fi
-
-      - name: Save scan results
+      - name: Persist research, raw evidence and paper ledger on current branch
+        if: success() && env.PHASE != 'gemini_probe' && env.PHASE != 'gemini_ir_probe'
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add input/
+          if ! git diff --cached --quiet; then
+            git commit -m "Persist NEXUS research, market evidence and paper ledger"
+            git push origin "HEAD:$BRANCH"
+          fi
+      - name: Show phone-readable result
+        if: always()
+        run: |
+          if [ -f output/summary.md ]; then
+            cat output/summary.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo 'NEXUS処理失敗。候補保存・価格照合・台帳更新の完了は確認できません。ログを確認してください。' >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Preserve results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: nexus-scan-results
-          path: output/
+          name: nexus-${{ env.PHASE }}-results
+          path: |
+            output/summary.md
+            output/gemini_review_status.json
+            output/gemini_probe.json
+            output/issuer_ir_probe.json
+            output/issuer_ir_status.json
+            output/trade_report.json
+            output/trade_log.csv
+            output/daily_status.json
+            output/tracking_status.json
+            output/scenario_monitoring.json
+            output/scenario_exit_status.json
+            output/plan_status.json
+            output/candidates.csv
+            output/report.json
+            output/secondary_review.csv
+            output/secondary_report.json
           if-no-files-found: warn
           retention-days: 30
