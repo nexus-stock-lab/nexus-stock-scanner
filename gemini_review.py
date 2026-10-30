@@ -155,14 +155,14 @@ class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self,*args,**kwargs):raise ReviewBlocked('GEMINI_REDIRECT_REJECTED')
 
 
-def post_json(payload,key,transport=None):
+def post_json(payload,key,transport=None,timeout=120):
     """Fixed destination, no redirect/storage/tools; never return raw error bodies."""
     if not key or len(key)>256 or any(ord(c)<33 or ord(c)>126 for c in key):
         raise ReviewBlocked('GEMINI_KEY_MISSING_OR_INVALID')
     req=Request(ENDPOINT,data=json.dumps(payload).encode(),method='POST',
                 headers={'x-goog-api-key':key,'Content-Type':'application/json'})
     try:
-        with (transport or build_opener(NoRedirect()).open)(req,timeout=120) as response:
+        with (transport or build_opener(NoRedirect()).open)(req,timeout=timeout) as response:
             if response.url!=ENDPOINT:raise ReviewBlocked('GEMINI_ENDPOINT_MISMATCH')
             raw=response.read(256_001)
     except HTTPError as exc:raise ReviewBlocked(f'GEMINI_HTTP_{int(exc.code)}') from None
@@ -194,7 +194,7 @@ def request_assessment(bundle,key,transport=None):
              'store':False,'stream':False,'background':False,
              'generation_config':{'max_output_tokens':4096,'thinking_level':'low'},
              'response_format':{'type':'text','mime_type':'application/json','schema':SCHEMA}}
-    value,response_sha=post_json(payload,key,transport)
+    value,response_sha=post_json(payload,key,transport,timeout=300)
     result=validate_assessment(value,bundle)
     return {**result,'provider_response_sha256':response_sha}
 
