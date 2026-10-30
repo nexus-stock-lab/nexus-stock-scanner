@@ -52,6 +52,8 @@ def main(symbol="AAPL",include_ir=False):
                 semantic_verified=False)
         except Exception as exc:
             result.update(status='HELD',reason=str(exc) if isinstance(exc,ReviewBlocked) else type(exc).__name__)
+            if isinstance(exc,ReviewBlocked) and hasattr(exc,'rejection_evidence_sha256'):
+                result['rejection_evidence_sha256']=exc.rejection_evidence_sha256
             if isinstance(exc,ReviewBlocked) and isinstance(getattr(exc,'context_bytes',None),int):
                 result['source_context_bytes']=exc.context_bytes
     write_json(out/'gemini_probe.json',result)
