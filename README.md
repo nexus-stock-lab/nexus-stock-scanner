@@ -158,3 +158,7 @@ IR資料は発行体・公式ホスト・公表日時・ハッシュを照合し
 - https://ir.applieddigital.com/news-events/press-releases
 - https://www.iren.com/investors/news （公式配布先 iren.gcs-web.com へのリンク）
 - https://nebius.com/newsroom
+
+不適合な構造化回答は `input/gemini_rejections/` に `REJECTED_SHADOW_RESPONSE` として別保存します。
+これは未検証のAI出力で、正式レビュー・計画・台帳へ昇格しません。HTTPエラー本文やキーは保存しません。
+日付を記載できるのは、明示された次回決算日がSUPPORTEDの場合だけです。他の項目・UNKNOWN・CONTRADICTEDでは空文字を要求します。
