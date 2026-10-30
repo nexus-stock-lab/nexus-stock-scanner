@@ -46,6 +46,29 @@ class OfficialDataTests(unittest.TestCase):
         self.assertEqual(values[0]['val'],130)
         self.assertEqual(values[0]['start'],'2025-10-01')
 
+    def test_unrelated_old_revision_does_not_block_current_comparison(self):
+        f=facts()
+        for tag in ('Revenues','OperatingIncomeLoss'):
+            f['facts']['us-gaap'][tag]['units']['USD'].extend([
+                {'start':'2023-04-01','end':'2023-06-30','val':1,'accn':'a','form':'10-Q'},
+                {'start':'2023-04-01','end':'2023-06-30','val':2,'accn':'b','form':'10-Q'}])
+        result=extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+        self.assertEqual(result['revenue'],110)
+        self.assertEqual(result['prior_revenue'],100)
+
+    def test_comparison_year_revision_still_blocks(self):
+        f=facts(); rows=f['facts']['us-gaap']['Revenues']['units']['USD']
+        rows.append({**rows[1],'val':99})
+        with self.assertRaisesRegex(ValueError,'conflicting reported quarter'):
+            extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+
+    def test_scoped_q4_still_uses_nine_month_input(self):
+        units=[{'start':'2025-01-01','end':'2025-12-31','val':450,'accn':'a','form':'10-K'},
+               {'start':'2025-01-01','end':'2025-09-30','val':320,'accn':'b','form':'10-Q'}]
+        values=quarter_values(units,{'a':{'accepted_at':'2026-02-01T00:00:00Z'},
+                                    'b':{'accepted_at':'2025-11-01T00:00:00Z'}},'2025-12-31')
+        self.assertEqual([(r['start'],r['val']) for r in values],[('2025-10-01',130)])
+
 
 class SecContactTests(unittest.TestCase):
     def test_missing_contact_blocks_without_inventing_identity(self):
