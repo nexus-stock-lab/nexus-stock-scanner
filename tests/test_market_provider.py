@@ -41,6 +41,15 @@ class ProviderTests(unittest.TestCase):
               'trades':[row(),row((AT+timedelta(seconds=1)).isoformat(),999,u='canceled'),dict(row((AT+timedelta(seconds=2)).isoformat(),101),i=3)]}
         stream=normalized_stream(data,{'clear':True},'fixture://raw')
         self.assertEqual([q['price'] for q in stream['trades']],[101])
+
+    def test_simultaneous_distinct_actual_prices_are_not_replaced_by_a_chosen_price(self):
+        stamp=(AT+timedelta(seconds=1)).isoformat()
+        first=row(stamp,100);second={**row(stamp,101),'i':2}
+        raw={'symbol':'TEST','start':AT.isoformat(),'end':(AT+timedelta(minutes=1)).isoformat(),
+             'retrieved_at':NOW.isoformat(),'complete':True,'feed':'sip','trades':[first,second,first]}
+        stream=normalized_stream(raw,{'clear':True},'fixture://raw')
+        self.assertEqual([q['price'] for q in stream['trades']],[100,101])
+        self.assertEqual([q['trade_id'] for q in stream['trades']],[1,2])
     def test_reference_verifies_only_regular_session_and_valid_history(self):
         q=verified_reference(history(),NOW.isoformat(),'fixture://raw')
         self.assertTrue(q['provider_verified'])
