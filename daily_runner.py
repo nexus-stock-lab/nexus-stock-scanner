@@ -17,6 +17,7 @@ from strategy_rules import VERSION, build_plan
 from official_data import collect_financials, public_json, verify_review_documents
 from market_provider import verified_reference, corporate_state, collect_interval, normalized_stream
 from review_intake import load_confirmed_review
+from corporate_actions import prepare_split_history, split_replay_request
 
 PENDING = ('Official guidance/decline-cause review where evidence is missing',)
 
@@ -328,7 +329,7 @@ def refresh_scenarios(now, root=Path('input'), out=Path('output')):
     write_json(out/'scenario_monitoring.json',audit)
 
 
-def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=collect_interval, fetch_corporate=corporate_state):
+def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=collect_interval, fetch_corporate=corporate_state, clock=None):
     """Bounded, resumable complete history replay; gaps never advance the cursor."""
     path=root/'trades.csv'
     ledger=list(csv.DictReader(path.read_text(encoding='utf-8-sig').splitlines())) if path.exists() else []
@@ -363,8 +364,11 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
             ca=fetch_corporate(trade['symbol'],instant(trade['entry_time_jst']),available,key,secret)
             ca_path=root/'market_evidence'/f'{digest(ca)}.json'
             write_json(ca_path,ca)
-            if ca['clear'] is not True:
-                raise ValueError('corporate action needs reconciliation; position held without fabricated settlement')
+            observed=clock() if clock else now
+            split=prepare_split_history(ca,trade['symbol'],instant(trade['entry_time_jst']),available,observed,str(ca_path))
+            corporate_replay=split_replay_request(trade,split)
+            if corporate_replay is not None:
+                start=instant(trade['entry_time_jst'])
             events=[]; chunks=[]; cursor=start; used=0
             import exchange_calendars as xcals
             cal=xcals.get_calendar('XNYS',start=str(start.date()-timedelta(days=7)),end=str(available.date()+timedelta(days=7)))
@@ -395,11 +399,16 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
                 write_json(proof_path,proof)
                 events.extend(stream['trades']);chunks.append(str(proof_path));cursor=end;limit-=1;used+=1
                 trial={**stream,'coverage_start':start.isoformat(),'trades':events}
+                if split is not None:
+                    trial['split_history']=split
+                if corporate_replay is not None:
+                    trial['corporate_replay']=corporate_replay
                 if replay is not None:
                     trial['scenario_replay']=replay
                 if trade['trade_id'] in scenarios:
                     trial['scenario_exit']=scenarios[trade['trade_id']]
-                closed,audit=settle([trade],{trade['trade_id']:trial},now)
+                observed=clock() if clock else now
+                closed,audit=settle([trade],{trade['trade_id']:trial},observed)
                 blocked=[a for a in audit if a['status']=='BLOCKED']
                 if blocked:
                     raise ValueError(blocked[0].get('reason',blocked[0]['status']))
@@ -407,15 +416,21 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
                     break
             if cursor>start:
                 incoming['streams'][trade['trade_id']]={'coverage_start':start.isoformat(),'coverage_end':cursor.isoformat(),
-                    'complete':True,'corporate_actions_clear':True,'source':'Alpaca historical SIP',
+                    'complete':True,'corporate_actions_clear':ca['clear'] is True,'source':'Alpaca historical SIP',
                     'evidence_uri':','.join(chunks),'trades':events}
+                if split is not None:
+                    incoming['streams'][trade['trade_id']]['split_history']=split
+                if corporate_replay is not None:
+                    incoming['streams'][trade['trade_id']]['corporate_replay']=corporate_replay
                 if replay is not None:
                     incoming['streams'][trade['trade_id']]['scenario_replay']=replay
                 if trade['trade_id'] in scenarios:
                     incoming['streams'][trade['trade_id']]['scenario_exit']=scenarios[trade['trade_id']]
             report['positions'].append({'trade_id':trade['trade_id'],'status':'HISTORY_READY',
                                         'tracked_through':cursor.isoformat(),'backlog_seconds':max(0,(available-cursor).total_seconds()),
-                                        'scenario_replay':replay is not None})
+                                        'scenario_replay':replay is not None,
+                                        'corporate_replay':corporate_replay is not None,
+                                        'split_adjusted':split is not None})
         except Exception as exc:
             # Raw HTTP error bodies/headers are deliberately excluded from logs.
             report['positions'].append({'trade_id':trade['trade_id'],'status':'BLOCKED',
@@ -462,8 +477,11 @@ def phone_summary(out=Path('output')):
             lines.append(f"|{item.get('symbol','全体')}|{item.get('reason',item['status'])}|")
     tracking_file=out/'tracking_status.json'
     if tracking_file.exists():
+        tracking=json.loads(tracking_file.read_text())['positions']
+        if any(item.get('split_adjusted') for item in tracking):
+            lines += ['', '確認済み分割・併合は登録時の株式単位へ換算して比較します。実際の取引価格は別に保存します。']
         lines += ['', '## 保有追跡', '', '|取引|状態|未追跡秒数・理由|','|---|---|---|']
-        for item in json.loads(tracking_file.read_text())['positions']:
+        for item in tracking:
             lines.append(f"|{item['trade_id']}|{item['status']}|{item.get('reason',('履歴を再検証中 / ' if item.get('scenario_replay') else '')+str(item.get('backlog_seconds','—')))}|")
     scenario_file=out/'scenario_exit_status.json'
     if scenario_file.exists():
@@ -508,7 +526,7 @@ def main():
     else:
         (Path('output')/'verified_evidence.json').unlink(missing_ok=True)
     refresh_scenarios(datetime.now(JST))
-    track_positions(datetime.now(JST))
+    track_positions(datetime.now(JST),clock=lambda:datetime.now(JST))
     run(datetime.now(JST))
     status_path=Path('output/daily_status.json')
     if status_path.exists():
