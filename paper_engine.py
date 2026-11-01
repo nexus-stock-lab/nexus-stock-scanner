@@ -2,6 +2,7 @@
 import hashlib
 import json
 import math
+from itertools import groupby
 from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -180,8 +181,8 @@ def settle(ledger, streams, now):
                 raise ValueError('corporate actions require reconciliation')
             events = stream['trades']
             times = [timestamp_ns(q['market_time']) for q in events]
-            if times != sorted(times) or len(set(times)) != len(times):
-                raise ValueError('unordered or ambiguous trade timestamps')
+            if times != sorted(times):
+                raise ValueError('unordered trade timestamps')
             # Validate all evidence before mutating this trade.
             prices = [quote_price(q, trade['symbol'], q['market_time'], now) for q in events]
             factors=[positive(split_factor(split,q['market_time'])) if split else 1.0 for q in events]
@@ -190,6 +191,22 @@ def settle(ledger, streams, now):
                 raise ValueError('event outside coverage')
             deadline = timestamp_ns(trade['deadline_jst'])
             scenario_at = scenario_confirmation(scenario,now) if scenario is not None else None
+            # Tied timestamps are safe only when every possible ordering has
+            # no exit, or when the observable exit price is identical. Never
+            # choose the best/worst price to manufacture an execution order.
+            selected_exit=None
+            records=zip(events,times,equivalent,prices,factors)
+            for _,group in groupby(records,key=lambda r:r[1]):
+                group=list(group);reasons=[]
+                for q,at,price,raw_price,factor in group:
+                    reasons.append('STOP' if price<=float(trade['stop_price']) else
+                                   'TARGET' if price>=float(trade['target_price']) else
+                                   'MAX_90_DAYS' if at>=deadline else
+                                   'SCENARIO_DETERIORATION' if scenario_at is not None and at>=scenario_at else '')
+                if any(reasons):
+                    if len({r[3] for r in group})!=1:
+                        raise ValueError('ambiguous simultaneous exit price; cursor unchanged')
+                    selected_exit=(*group[0],reasons[0]);break
             if scenario is not None:
                 trade['tracked_scenario_sha256']=digest(scenario)
             if replay is not None:
@@ -200,21 +217,16 @@ def settle(ledger, streams, now):
             if split_replay is not None:
                 audit.append({'trade_id':trade['trade_id'],'status':'VERIFIED_CORPORATE_REPLAY',
                               'previous_cursor':split_replay['previous_cursor'],'restart':stream['coverage_start']})
-            for q, at, price, raw_price, factor in zip(events, times, equivalent, prices, factors):
-                reason = ('STOP' if price <= float(trade['stop_price']) else
-                          'TARGET' if price >= float(trade['target_price']) else
-                          'MAX_90_DAYS' if at >= deadline else
-                          'SCENARIO_DETERIORATION' if scenario_at is not None and at >= scenario_at else '')
-                if reason:
-                    entry = float(trade['entry_price'])
-                    trade.update(status='CLOSED', exit_time_jst=q['market_time'], exit_price=raw_price,
-                                 exit_reason=reason, return_pct=100 * (price / entry - 1),
-                                 r_multiple=(price - entry) / (entry - float(trade['stop_price'])),
-                                 exit_evidence_sha256=digest(q))
-                    if split is not None:
-                        trade.update(exit_equivalent_price=price,exit_share_factor=factor,
-                                     exit_corporate_sha256=split['sha256'])
-                    break
+            if selected_exit is not None:
+                q,at,price,raw_price,factor,reason=selected_exit
+                entry = float(trade['entry_price'])
+                trade.update(status='CLOSED', exit_time_jst=q['market_time'], exit_price=raw_price,
+                             exit_reason=reason, return_pct=100 * (price / entry - 1),
+                             r_multiple=(price - entry) / (entry - float(trade['stop_price'])),
+                             exit_evidence_sha256=digest(q))
+                if split is not None:
+                    trade.update(exit_equivalent_price=price,exit_share_factor=factor,
+                                 exit_corporate_sha256=split['sha256'])
             trade['tracked_through_jst'] = stream['coverage_end']
             if trade['status'] == 'OPEN' and end >= deadline:
                 audit.append({'trade_id': trade['trade_id'], 'status': 'AWAITING_VERIFIED_EXIT'})
