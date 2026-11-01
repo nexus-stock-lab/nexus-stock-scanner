@@ -83,6 +83,15 @@ def checked(record, at, required=True):
             'checked_at':record['checked_at'],'evidence_sha256':record['evidence_sha256']}
 
 
+def quoted_earnings_date(record):
+    day=date.fromisoformat(record['date'])
+    spellings=(day.isoformat(),day.strftime('%B ')+str(day.day)+day.strftime(', %Y'),
+               day.strftime('%b ')+str(day.day)+day.strftime(', %Y'),f'{day.month}/{day.day}/{day.year}')
+    if not any(s in record['excerpt'] for s in spellings):
+        raise ValueError('announced earnings date missing from official quote')
+    return day.isoformat()
+
+
 def build_plan(row, bars, financials, review, at, prepared_at, technical_source):
     """Numeric checks plus separate source-backed qualitative clearances."""
     decision(at.isoformat())
@@ -103,8 +112,8 @@ def build_plan(row, bars, financials, review, at, prepared_at, technical_source)
     guidance = checked(review['guidance_not_lowered'],at)
     decline = checked(review['decline_explanation_verified'],at)
     checked(review['no_material_business_impairment'],at)
-    earning = checked(review['next_earnings'],at,required=False)
-    earnings_date = review['next_earnings']['date']
+    earning = checked(review['next_earnings'],at)
+    earnings_date = quoted_earnings_date(review['next_earnings'])
     if not earnings_clear(earnings_date,at):
         raise ValueError('inside 3-session earnings exclusion window')
     if row['signal'] not in ('反発確認','反発初動'):
