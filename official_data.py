@@ -9,7 +9,7 @@ import re
 import time
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from urllib.request import Request, urlopen
+from urllib.request import Request, HTTPRedirectHandler, build_opener
 from urllib.parse import urlparse
 
 from historical_probe import timestamp_ns
@@ -18,6 +18,21 @@ from strategy_rules import VERSION, financial_quality
 
 REVENUE_TAGS = ('RevenueFromContractWithCustomerExcludingAssessedTax',
                 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues', 'SalesRevenueNet')
+
+
+class NoSecRedirect(HTTPRedirectHandler):
+    def redirect_request(self,*args,**kwargs):
+        return None
+
+
+def sec_open(request,timeout):
+    url=urlparse(request.full_url)
+    if (url.scheme!='https' or url.netloc not in ('www.sec.gov','data.sec.gov')
+            or url.query or url.fragment or request.get_method()!='GET'):
+        raise ValueError('fixed official SEC HTTPS GET required')
+    # Reject before following: a post-redirect hostname check is too late to
+    # prevent the contact-bearing User-Agent from reaching another host.
+    return build_opener(NoSecRedirect()).open(request,timeout=timeout)
 
 
 def sec_user_agent():
@@ -36,7 +51,7 @@ def public_json(url):
     time.sleep(0.2)  # Below SEC's 10 requests/second ceiling, sequential only.
     request = Request(url, headers={'User-Agent':sec_user_agent(),
                       'Accept':'application/json'})
-    with urlopen(request, timeout=15) as response:
+    with sec_open(request, timeout=15) as response:
         if urlparse(response.url).hostname != host:
             raise ValueError('unexpected SEC redirect')
         return json.load(response)
@@ -177,7 +192,7 @@ def collect_financials(symbol, at, now, root=Path('input'), fetch=public_json, t
     ssha=store_json(root,sub_url,{'accepted_filings':{k:v for k,v in accepted.items() if k in selected_accns},
                                 'raw_response_sha256':digest(submissions)},now.isoformat())
     result.update(evidence_sha256=fsha,submissions_sha256=ssha,source=fact_url,cik=cik)
-    result['official_documents']=collect_documents(submissions,cik,at,now,root)
+    result['official_documents']=collect_documents(submissions,cik,at,now,root,symbol=symbol)
     return result
 
 
@@ -194,10 +209,10 @@ def collect_company_documents(symbol,at,now,root=Path('input'),fetch=public_json
                            'raw_response_sha256':digest(submissions)},now.isoformat())
     return {'symbol':symbol,'cik':cik,'source':url,'submissions_sha256':sha,
             'financial_status':'NOT_EVALUATED_SOURCE_REVIEW_ONLY',
-            'official_documents':collect_documents(submissions,cik,at,now,root)}
+            'official_documents':collect_documents(submissions,cik,at,now,root,symbol=symbol)}
 
 
-def collect_documents(submissions, cik, at, now, root):
+def collect_documents(submissions, cik, at, now, root, symbol=None, clock=None):
     """Archive latest official filings and 99.1 earnings exhibits for review.
 
     Source collection is automatic. It does not itself assert guidance, explain
@@ -246,7 +261,7 @@ def collect_documents(submissions, cik, at, now, root):
                 attempts+=1
                 req=Request(url,headers={'User-Agent':sec_user_agent()})
                 time.sleep(0.2)
-                with urlopen(req,timeout=10) as response:
+                with sec_open(req,timeout=10) as response:
                     if not response.url.startswith(base):
                         raise ValueError('unexpected archive redirect')
                     raw=response.read(4_000_001)
@@ -254,8 +269,11 @@ def collect_documents(submissions, cik, at, now, root):
                         raise ValueError('source too large; do not silently truncate')
                 parser=DocumentParser();parser.feed(raw.decode('utf-8',errors='replace'))
                 text=' '.join(' '.join(parser.parts).split())
-                document={'source':url,'published_at':published,'retrieved_at':now.isoformat(),
+                retrieved=clock() if clock else datetime.now(now.tzinfo)
+                document={'source':url,'published_at':published,'retrieved_at':retrieved.isoformat(),
                           'official_source_verified':True,'text':text,'raw_sha256':hashlib.sha256(raw).hexdigest()}
+                document['issuer_cik']=str(int(cik))
+                if symbol is not None:document['issuer_symbol']=symbol
                 sha=digest(document);path=root/'official_documents'/f'{sha}.json'
                 path.parent.mkdir(parents=True,exist_ok=True)
                 path.write_text(json.dumps(document,ensure_ascii=False),encoding='utf-8')
@@ -268,7 +286,7 @@ def collect_documents(submissions, cik, at, now, root):
     return result
 
 
-def verify_review_documents(review, root, names=None):
+def verify_review_documents(review, root, names=None, financials=None):
     """Check archived quotation/provenance; semantic assertions remain explicit."""
     for name in names or ('guidance_not_lowered','decline_explanation_verified','no_material_business_impairment','next_earnings'):
         item=review[name]
@@ -278,6 +296,26 @@ def verify_review_documents(review, root, names=None):
         document=json.loads((root/'official_documents'/f'{sha}.json').read_text())
         if digest(document)!=sha or document['source']!=item['source']:
             raise ValueError('official document provenance mismatch')
+        if financials is not None and financials.get('symbol')!=review['symbol']:
+            raise ValueError('official review financial identity mismatch')
+        if document.get('issuer_symbol',review['symbol'])!=review['symbol']:
+            raise ValueError('official document issuer mismatch')
+        url=urlparse(document['source'])
+        if url.scheme=='https' and url.netloc=='www.sec.gov':
+            match=re.fullmatch(r'/Archives/edgar/data/([1-9][0-9]*)/[0-9]+/[^/]+',url.path)
+            if not match or url.query or url.fragment or '%' in url.path or '..' in url.path:
+                raise ValueError('official SEC document URL invalid')
+            # Existing archives without symbol metadata may be bound using the
+            # current financial packet's independently resolved SEC identity.
+            cik=financials.get('cik') if financials is not None else document.get('issuer_cik')
+            if not cik or int(cik)!=int(match[1]):
+                raise ValueError('official SEC document entity mismatch')
+            if financials is None and document.get('issuer_symbol')!=review['symbol']:
+                raise ValueError('official SEC document issuer not bound')
+        else:
+            from issuer_ir import verify_document
+            if not verify_document(review['symbol'],document):
+                raise ValueError('official issuer IR provenance mismatch')
         if item['excerpt'] not in document['text'] or not item['excerpt'].strip():
             raise ValueError('review excerpt missing from archived document')
         if document.get('published_at')!=item['published_at'] or timestamp_ns(document['published_at'])>timestamp_ns(document['retrieved_at']):
