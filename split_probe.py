@@ -15,7 +15,9 @@ BENCHMARK_SOURCE='https://www.sec.gov/Archives/edgar/data/320193/000032019320000
 SAFE_REASONS={
     'benchmark split not confirmed':'BENCHMARK_SPLIT_NOT_CONFIRMED',
     'benchmark trade not confirmed':'BENCHMARK_TRADE_NOT_CONFIRMED',
-    'split identity or due-bill terms unresolved':'SPLIT_IDENTITY_OR_DUE_BILL_UNRESOLVED',
+    'split identity unresolved':'SPLIT_IDENTITY_UNRESOLVED',
+    'split due-bill calendar incomplete':'SPLIT_DUE_BILL_CALENDAR_INCOMPLETE',
+    'split due-bill date order invalid':'SPLIT_DUE_BILL_CALENDAR_INVALID',
     'complete provider corporate evidence required':'CORPORATE_EVIDENCE_INCOMPLETE',
     'non-split corporate action needs reconciliation':'NON_SPLIT_ACTION_PRESENT',
     'entry-day or out-of-range split needs reconciliation':'SPLIT_DATE_UNRESOLVED',
@@ -38,7 +40,7 @@ def check(root,key,secret,fetch_corporate=corporate_state,fetch_interval=collect
         result['stage']='CORPORATE_VERIFICATION'
         result['corporate_actions_observed']=len(ca.get('actions',[]))
         result['corporate_actions']=[{k:a.get(k) for k in (
-            'kind','id','symbol','ex_date','old_rate','new_rate','due_bill_redemption_date')}
+            'kind','id','symbol','ex_date','old_rate','new_rate','record_date','payable_date','due_bill_redemption_date')}
             for a in ca.get('actions',[])[:20]]
         proof=prepare_split_history(ca,'AAPL',ENTRY,end,clock(),str(path))
         if proof is None or len(proof['events'])!=1:
