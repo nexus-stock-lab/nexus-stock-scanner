@@ -55,7 +55,8 @@ def check(symbols, root=Path('input'), fetch=public_json,
                 'financials':{k:f[k] for k in (
                     'period_end','prior_period_end','revenue','prior_revenue',
                     'operating_income','prior_operating_income','quality',
-                    'evidence_sha256','submissions_sha256','source','cik')},
+                    'evidence_sha256','submissions_sha256','source','cik',
+                    'comparison_basis','comparison_accessions') if k in f},
                 'formal_review_status':'NOT_EVALUATED',
                 'may_register':False})
         except Exception as exc:
