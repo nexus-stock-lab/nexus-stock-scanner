@@ -17,7 +17,7 @@ from strategy_rules import VERSION, build_plan
 from official_data import collect_financials, public_json, verify_review_documents
 from market_provider import verified_reference, corporate_state, collect_interval, normalized_stream
 from review_intake import load_confirmed_review
-from corporate_actions import prepare_split_history, split_replay_request
+from corporate_actions import prepare_corporate_history, split_replay_request
 
 PENDING = ('Official guidance/decline-cause review where evidence is missing',)
 
@@ -195,7 +195,11 @@ def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, ca
                         ca_path=root/'market_evidence'/f'{digest(ca)}.json'
                         write_json(ca_path,ca)
                         if ca.get('clear') is not True:
-                            raise ValueError('corporate-action tracking preflight not clear')
+                            history=prepare_corporate_history(ca,symbol,at,at,
+                                clock() if clock else datetime.now(JST),str(ca_path))
+                            if history is None or history['events']:
+                                raise ValueError('corporate-action tracking preflight not clear')
+                            quote['corporate_history_sha256']=history['sha256']
                         quote['corporate_evidence_uri']=str(ca_path)
                         quotes.append(quote)
                     item.update(status='REFERENCE_OBSERVED', price=quote['price'], market_time=quote['market_time'],
@@ -365,7 +369,7 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
             ca_path=root/'market_evidence'/f'{digest(ca)}.json'
             write_json(ca_path,ca)
             observed=clock() if clock else now
-            split=prepare_split_history(ca,trade['symbol'],instant(trade['entry_time_jst']),available,observed,str(ca_path))
+            split=prepare_corporate_history(ca,trade['symbol'],instant(trade['entry_time_jst']),available,observed,str(ca_path))
             corporate_replay=split_replay_request(trade,split)
             if corporate_replay is not None:
                 start=instant(trade['entry_time_jst'])
@@ -430,7 +434,8 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
                                         'tracked_through':cursor.isoformat(),'backlog_seconds':max(0,(available-cursor).total_seconds()),
                                         'scenario_replay':replay is not None,
                                         'corporate_replay':corporate_replay is not None,
-                                        'split_adjusted':split is not None})
+                                        'split_adjusted':bool(split and split['events']),
+                                        'ordinary_dividends_observed':len(split.get('cash_dividends',[])) if split else 0})
         except Exception as exc:
             # Raw HTTP error bodies/headers are deliberately excluded from logs.
             report['positions'].append({'trade_id':trade['trade_id'],'status':'BLOCKED',
@@ -501,6 +506,13 @@ def phone_summary(out=Path('output')):
                   'AI回答だけでは合格にしません。公式レビュー・仮想台帳への自動反映は無効です。']
     lines += ['', '価格候補の取得成功はエントリー合格ではありません。未確認の仮想約定は作りません。', '',
               '実売買・X投稿・外部通知の機能はありません。']
+    dividends=report.get('declared_dividends',{}).get('positions',[])
+    if dividends:
+        lines += ['', '## 通常配当の別記録（入金未確認）', '',
+                  '宣言された税引前金額を登録時の1単位あたりで記録します。実際の受取額ではなく、勝率・期待値Rへは加えません。', '',
+                  '|銘柄|宣言額USD/登録時単位|入金確認|','|---|---:|---|']
+        for item in dividends:
+            lines.append(f"|{item['symbol']}|{item['declared_gross_usd_per_entry_unit']}|未確認|")
     (out/'summary.md').write_text('\n'.join(lines)+'\n', encoding='utf-8')
 
 
