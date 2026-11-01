@@ -137,6 +137,38 @@ class PipelineTests(unittest.TestCase):
         rows=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
         self.assertEqual(rows[0]['exit_reason'],'TARGET')
 
+    def test_ordinary_cash_dividend_tracks_closes_and_remains_outside_price_return(self):
+        from test_cash_dividends import cash
+        from test_corporate_actions import corporate
+        self.enter();now=AT+timedelta(days=3,minutes=30)
+        def fetch(symbol,start,end,*args):
+            stamp=start+timedelta(seconds=1);price=125 if stamp.date().isoformat()>='2026-10-26' else 100
+            return {'symbol':symbol,'start':start.isoformat(),'end':end.isoformat(),
+                    'complete':True,'feed':'sip','retrieved_at':now.isoformat(),'pages':[],
+                    'trades':[{'t':stamp.isoformat(),'p':price,'c':['@'],'z':'C','x':'V','i':1}]}
+        report=track_positions(now,fetch_interval=fetch,
+                              fetch_corporate=lambda s,e,end,*a:corporate([cash()],end,now))
+        self.assertEqual(report['positions'][0]['status'],'HISTORY_READY')
+        self.assertFalse(report['positions'][0]['split_adjusted'])
+        with contextlib.redirect_stdout(io.StringIO()):run(now);run(now)
+        report=json.loads(Path('output/trade_report.json').read_text())
+        self.assertAlmostEqual(report['statistics']['total']['mean_return_pct'],25)
+        cash_report=json.loads(Path('output/dividend_report.json').read_text())
+        self.assertEqual(cash_report['positions'][0]['declared_gross_usd_per_entry_unit'],'0.25')
+        self.assertFalse(cash_report['payment_verified'])
+
+    def test_verified_ordinary_dividend_on_entry_date_passes_preflight(self):
+        from test_cash_dividends import cash
+        from test_corporate_actions import corporate
+        self.prepare();now=AT+timedelta(minutes=16)
+        status=reconcile(now,fetch_probe=lambda *a:history(),calendar=lambda at:{'open':True},clock=lambda:now,
+            fetch_corporate=lambda s,e,end,*a:corporate([cash(ex='2026-10-23')],end,now))
+        self.assertEqual(status['status'],'VERIFIED_INPUT_READY')
+        with contextlib.redirect_stdout(io.StringIO()):run(now)
+        rows=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
+        self.assertEqual(len(rows),1)
+        self.assertFalse(rows[0].get('dividend_records_json'))
+
     def prepare_impairment(self):
         checked=AT+timedelta(minutes=2)
         document={'source':'https://www.sec.gov/Archives/edgar/data/1/000000000126000002/impairment.htm',
