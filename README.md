@@ -42,6 +42,37 @@ mainへの反映は所有者の確認待ちです。運用台帳は現在0件で
 Geminiの回答は別の `input/gemini_reviews/` に保存し、この正式レビューには転記しません。正式レビューがない銘柄は計画を作らず、理由をSummaryへ出します。
 このため、**完全放置で30トレードが自動的に集まる状態にはまだなっていません。**
 
+### 確認済みレビューと正式計画の接続
+
+`review_intake.py` は `input/review_inbox/YYYY-MM-DD/SYMBOL.json` の確認済みレビューを読み、
+`prepare` / `finalize` で正式計画へ自動接続します。台帳への登録は従来どおり価格照合後だけです。
+これは確認結果を受け渡す機能で、企業情報の意味判断を自動作成する機能ではありません。
+確認内容の作成・精度検証が残っているため、この接続の実装だけで全自動完成とは扱いません。
+
+パケットは以下の項目を持つ、リポジトリの作成者による明示的な確認記録です。
+`CONFIRMED_SOURCE_REVIEW` という文字列だけで内容の正しさを証明するものではありません。
+未検証のAI回答へこの文字列を付け替えてはいけません。Geminiの保存先は読み取りません。
+
+|項目|内容|
+|---|---|
+|kind|CONFIRMED_SOURCE_REVIEW|
+|symbol / rules_version|対象銘柄と承認済み規約の版|
+|decision_time_jst|対象日の23:45。別日への流用は拒否|
+|financial_evidence_sha256|その日の研究スナップショットの数値根拠と完全一致|
+|reviewed_at / reviewer_id|実際の確認時刻と個人情報を含まない確認者ID|
+|assertions|guidance_not_lowered、decline_explanation_verified、no_material_business_impairment、next_earningsの4項目|
+
+各項目は既存の正式レビューと同じ `value / source / evidence_sha256 / excerpt / rationale / published_at / checked_at` を持ち、
+すべて `value=true` が必要です。次回決算日にはさらに `date=YYYY-MM-DD` が必要で、日付が引用中に存在することも照合します。
+本文・引用・公表日時・取得日時・確認日時、SECのCIKまたは登録済み公式IRの発行体を確認します。
+未検証URLへ `official_source_verified=true` と書くだけでは通りません。
+受付済みパケットのハッシュ・確認者ID・確認時刻は、正式計画の `official_review` に保存します。
+不正なパケットがある場合、古い正式レビューへ自動的に戻して合格させることはありません。
+確認済みパケットがない場合のみ、既存の `official_reviews.json` を従来形式として利用します。
+
+SECの資料取得はリダイレクトを追わず、連絡先ヘッダーが転送先へ流れないようにします。
+文書の取得時刻は通信完了後に記録し、要求開始時刻を代用しません。
+
 分割、配当、銘柄変更などの企業行動については自動検知して停止します。
 株数・価格・配当金の自動調整は未実装なので、未調整のまま損益を確定しません。
 取引先の訂正や企業行動通知が後日届く可能性もあります。確認できない90日期限超過はOPENのまま警告します。
