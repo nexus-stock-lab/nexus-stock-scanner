@@ -28,7 +28,8 @@ class ScenarioMonitoringTests(unittest.TestCase):
             w=csv.DictWriter(f,fieldnames=list(self.trade));w.writeheader();w.writerow(self.trade)
 
     def negative_review(self,checked,name='guidance_not_lowered'):
-        document={'source':'https://issuer.example/ir','text':'Revenue guidance lowered. Material impairment.',
+        document={'source':'https://www.sec.gov/Archives/edgar/data/1/000000000126000001/report.htm',
+                  'issuer_symbol':'TEST','issuer_cik':'1','text':'Revenue guidance lowered. Material impairment.',
                   'official_source_verified':True,'retrieved_at':(checked-timedelta(minutes=1)).isoformat(),
                   'published_at':(checked-timedelta(minutes=2)).isoformat()}
         sha=digest(document);folder=self.root/'official_documents';folder.mkdir(exist_ok=True)
