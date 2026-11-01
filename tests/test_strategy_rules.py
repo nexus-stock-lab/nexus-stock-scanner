@@ -19,8 +19,9 @@ def inputs():
             'rationale':'Fixture official review','published_at':stamp,'checked_at':stamp}
     review={'symbol':'TEST','rules_version':VERSION,'financial_evidence_sha256':'b'*64,
             'guidance_not_lowered':dict(record),'decline_explanation_verified':dict(record),
-            'no_material_business_impairment':dict(record),'next_earnings':{**record,'date':'2026-11-10'}}
-    financials={'symbol':'TEST','revenue':110,'prior_revenue':100,'operating_income':-5,
+            'no_material_business_impairment':dict(record),'next_earnings':{**record,'date':'2026-11-10',
+            'excerpt':'confirmed next earnings November 10, 2026'}}
+    financials={'symbol':'TEST','cik':'0000000001','revenue':110,'prior_revenue':100,'operating_income':-5,
                 'prior_operating_income':-10,'evidence_sha256':'b'*64,'checked_at':stamp}
     row={'symbol':'TEST','signal':'反発初動','avg_dollar_volume_20':3_000_000,'close':100}
     return row,bars(),financials,review
@@ -56,6 +57,17 @@ class ApprovedRulesTests(unittest.TestCase):
         self.assertEqual(p['rules_version'],VERSION)
         self.assertEqual(p['signal'],'反発初動')
         self.assertTrue(all(c['status']=='PASS' for c in p['checks'].values()))
+
+    def test_unconfirmed_earnings_date_cannot_pass_even_with_future_date(self):
+        for value in (False,None,'UNKNOWN',1):
+            row,b,f,r=inputs();r['next_earnings']['value']=value
+            with self.subTest(value=value),self.assertRaisesRegex(ValueError,'official assertion not verified'):
+                build_plan(row,b,f,r,AT,(AT-timedelta(minutes=5)).isoformat(),'fixture://frozen-bars')
+
+    def test_date_not_in_official_quote_does_not_pass(self):
+        row,b,f,r=inputs();r['next_earnings']['date']='2026-12-10'
+        with self.assertRaisesRegex(ValueError,'announced earnings date missing'):
+            build_plan(row,b,f,r,AT,(AT-timedelta(minutes=5)).isoformat(),'fixture://frozen-bars')
     def test_unknown_or_false_semantic_review_never_passes(self):
         for name in ('guidance_not_lowered','decline_explanation_verified','no_material_business_impairment'):
             row,b,f,r=inputs();r[name]['value']=False
