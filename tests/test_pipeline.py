@@ -28,13 +28,16 @@ class PipelineTests(unittest.TestCase):
         snapshot=freeze_research(AT-timedelta(hours=1))
         snapshot['market_data']={'TEST':{'symbol':'TEST','retrieved_at':(AT-timedelta(hours=1)).isoformat(),'bars':bars}}
         snapshot['financials']={'TEST':financials}
-        document={'source':'https://issuer.example/ir','official_source_verified':True,
-                  'retrieved_at':(AT-timedelta(hours=2)).isoformat(),'published_at':(AT-timedelta(hours=3)).isoformat(),'text':'confirmed'}
+        document={'source':'https://www.sec.gov/Archives/edgar/data/1/000000000126000001/report.htm',
+                  'issuer_symbol':'TEST','issuer_cik':'1','official_source_verified':True,
+                  'retrieved_at':(AT-timedelta(hours=2)).isoformat(),'published_at':(AT-timedelta(hours=3)).isoformat(),
+                  'text':'confirmed next earnings November 10, 2026'}
         sha=digest(document);Path('input/official_documents').mkdir()
         Path('input/official_documents',sha+'.json').write_text(json.dumps(document))
         for name in ('guidance_not_lowered','decline_explanation_verified','no_material_business_impairment','next_earnings'):
             review[name]['evidence_sha256']=sha
             review[name]['published_at']=document['published_at']
+            review[name]['source']=document['source']
         Path('input/official_reviews.json').write_text(json.dumps({AT.date().isoformat():{'TEST':review}}))
         snapshot['snapshot_sha256']=digest({k:v for k,v in snapshot.items() if k!='snapshot_sha256'})
         Path('input/research/2026-10-23.json').write_text(json.dumps(snapshot))
@@ -75,6 +78,23 @@ class PipelineTests(unittest.TestCase):
         reconcile(now,fetch_probe=lambda *a:history(),calendar=lambda at:{'open':True},clock=lambda:now,fetch_corporate=lambda *a:{'clear':True})
         with contextlib.redirect_stdout(io.StringIO()):run(now)
         self.assertEqual(json.loads(Path('output/trade_report.json').read_text())['statistics']['total']['registered'],0)
+
+    def test_confirmed_inbox_automatically_connects_to_plan_and_invalid_packet_cannot_fallback(self):
+        self.prepare()
+        old=Path('input/official_reviews.json')
+        review=json.loads(old.read_text())[AT.date().isoformat()]['TEST']
+        from review_intake import NAMES
+        packet={'kind':'CONFIRMED_SOURCE_REVIEW','symbol':'TEST','rules_version':VERSION,
+                'decision_time_jst':AT.isoformat(),'financial_evidence_sha256':review['financial_evidence_sha256'],
+                'reviewed_at':review['guidance_not_lowered']['checked_at'],'reviewer_id':'fixture',
+                'assertions':{name:review[name] for name in NAMES}}
+        folder=Path('input/review_inbox')/AT.date().isoformat();folder.mkdir(parents=True)
+        path=folder/'TEST.json';path.write_text(json.dumps(packet))
+        plans=prepare_plans(AT-timedelta(minutes=5))
+        self.assertEqual(len(plans['plans']),1)
+        self.assertEqual(plans['plans'][0]['official_review']['review_packet_sha256'],digest(packet))
+        packet['kind']='SHADOW_ONLY';path.write_text(json.dumps(packet))
+        self.assertFalse(prepare_plans(AT-timedelta(minutes=5))['plans'])
     def test_corporate_action_never_creates_synthetic_exit(self):
         rows=self.enter();now=AT+timedelta(hours=1)
         report=track_positions(now,fetch_interval=lambda *a:self.fail('must not query after unresolved corporate action'),
@@ -85,7 +105,8 @@ class PipelineTests(unittest.TestCase):
 
     def prepare_impairment(self):
         checked=AT+timedelta(minutes=2)
-        document={'source':'https://issuer.example/ir/impairment','official_source_verified':True,
+        document={'source':'https://www.sec.gov/Archives/edgar/data/1/000000000126000002/impairment.htm',
+                  'issuer_symbol':'TEST','issuer_cik':'1','official_source_verified':True,
                   'retrieved_at':(AT+timedelta(minutes=1)).isoformat(),'published_at':AT.isoformat(),
                   'text':'Officially confirmed material impairment'}
         sha=digest(document)
