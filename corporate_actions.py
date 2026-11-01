@@ -2,7 +2,7 @@
 
 Observed prices are never rewritten. Fractional economic units are theoretical;
 this is not a broker quantity, rounding, or cash-in-lieu execution model.
-Cash dividends, due bills and other actions remain blocked.
+Cash dividends, unverified due-bill calendars and other actions remain blocked.
 """
 import hashlib
 import json
@@ -33,6 +33,23 @@ def decimal(value):
 def day(value):
     if not isinstance(value,str) or len(value)!=10:raise ValueError('split ex-date required')
     return date.fromisoformat(value)
+
+
+def split_bill_calendar(row,ex):
+    """Validate published dates without modeling physical share settlement.
+
+    A standard split can retain a due-bill redemption date after ex-date.
+    That date is NOT substituted for the start of the split price basis.
+    """
+    redemption=row.get('due_bill_redemption_date')
+    if not redemption:return None
+    if not row.get('record_date') or not row.get('payable_date'):
+        raise ValueError('split due-bill calendar incomplete')
+    record,paid,redeemed=day(row['record_date']),day(row['payable_date']),day(redemption)
+    if not record<=paid<=ex<=redeemed:
+        raise ValueError('split due-bill date order invalid')
+    return {'record_date':record.isoformat(),'payable_date':paid.isoformat(),
+            'due_bill_redemption_date':redeemed.isoformat()}
 
 
 def prepare_split_history(corporate,symbol,entry,end,now,evidence_uri):
@@ -67,10 +84,11 @@ def prepare_split_history(corporate,symbol,entry,end,now,evidence_uri):
     for row in relevant:
         if row['kind'] not in ('forward_splits','reverse_splits'):
             raise ValueError('non-split corporate action needs reconciliation')
-        if row.get('symbol')!=symbol or row.get('due_bill_redemption_date'):
-            raise ValueError('split identity or due-bill terms unresolved')
+        if row.get('symbol')!=symbol:
+            raise ValueError('split identity unresolved')
         ex=day(row.get('ex_date'))
         if not first<ex<=last:raise ValueError('entry-day or out-of-range split needs reconciliation')
+        bill=split_bill_calendar(row,ex)
         old,new=decimal(row.get('old_rate')),decimal(row.get('new_rate'))
         ratio=new/old
         if ((row['kind']=='forward_splits' and ratio<=1) or
@@ -79,6 +97,7 @@ def prepare_split_history(corporate,symbol,entry,end,now,evidence_uri):
         identifier=str(UUID(row['id']))
         event={'id':identifier,'kind':row['kind'],'ex_date':ex.isoformat(),
                'old_rate':str(old),'new_rate':str(new),'source_action_sha256':sha(row)}
+        if bill is not None:event['due_bill_calendar']=bill
         if identifier in events and events[identifier]!=event:
             raise ValueError('conflicting split announcement')
         events[identifier]=event
@@ -115,6 +134,9 @@ def validate_split_history(proof,trade,end,now):
         if identifier in ids or ex in dates or not first<ex<=last:
             raise ValueError('split event identity or date invalid')
         ids.add(identifier);dates.add(ex)
+        if e.get('due_bill_calendar') is not None:
+            if split_bill_calendar(e['due_bill_calendar'],ex) is None:
+                raise ValueError('split due-bill calendar incomplete')
         ratio=decimal(e['new_rate'])/decimal(e['old_rate'])
         if not ((e['kind']=='forward_splits' and ratio>1) or (e['kind']=='reverse_splits' and ratio<1)):
             raise ValueError('split event direction invalid')
