@@ -103,6 +103,40 @@ class PipelineTests(unittest.TestCase):
         with contextlib.redirect_stdout(io.StringIO()):run(now)
         self.assertEqual(json.loads(Path('output/trade_report.json').read_text())['statistics']['total']['open'],1)
 
+    def test_confirmed_split_tracks_and_preserves_raw_exit_after_restart(self):
+        from test_corporate_actions import action,corporate
+        self.enter();now=AT+timedelta(days=3,minutes=30)
+        def fetch(symbol,start,end,*args):
+            stamp=start+timedelta(seconds=1)
+            price=62.5 if stamp.date().isoformat()>='2026-10-26' else 100
+            return {'symbol':symbol,'start':start.isoformat(),'end':end.isoformat(),
+                    'complete':True,'feed':'sip','retrieved_at':now.isoformat(),'pages':[],
+                    'trades':[{'t':stamp.isoformat(),'p':price,'c':['@'],'z':'C','x':'V','i':1}]}
+        report=track_positions(now,fetch_interval=fetch,
+                              fetch_corporate=lambda s,e,end,*a:corporate([action()],end,now))
+        self.assertEqual(report['positions'][0]['status'],'HISTORY_READY')
+        self.assertTrue(report['positions'][0]['split_adjusted'])
+        with contextlib.redirect_stdout(io.StringIO()):run(now);run(now)
+        rows=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
+        self.assertEqual(rows[0]['exit_reason'],'TARGET')
+        self.assertEqual(float(rows[0]['exit_price']),62.5)
+        self.assertEqual(float(rows[0]['exit_equivalent_price']),125)
+        self.assertEqual(float(rows[0]['exit_share_factor']),2)
+
+    def test_tracking_accepts_actual_retrieval_after_invocation_clock(self):
+        self.enter();started=AT+timedelta(hours=1);observed=started+timedelta(seconds=3)
+        def fetch(symbol,start,end,*args):
+            return {'symbol':symbol,'start':start.isoformat(),'end':end.isoformat(),
+                    'complete':True,'feed':'sip','retrieved_at':observed.isoformat(),'pages':[],
+                    'trades':[{'t':(AT+timedelta(minutes=1)).isoformat(),'p':125,
+                               'c':['@'],'z':'C','x':'V','i':1}]}
+        report=track_positions(started,fetch_interval=fetch,
+                               fetch_corporate=lambda *a:{'clear':True},clock=lambda:observed)
+        self.assertEqual(report['positions'][0]['status'],'HISTORY_READY')
+        with contextlib.redirect_stdout(io.StringIO()):run(observed)
+        rows=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
+        self.assertEqual(rows[0]['exit_reason'],'TARGET')
+
     def prepare_impairment(self):
         checked=AT+timedelta(minutes=2)
         document={'source':'https://www.sec.gov/Archives/edgar/data/1/000000000126000002/impairment.htm',
