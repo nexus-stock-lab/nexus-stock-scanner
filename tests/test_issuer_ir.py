@@ -33,6 +33,18 @@ class IRTests(unittest.TestCase):
         self.assertFalse(r['may_register']);self.assertFalse(r['coverage_complete'])
         self.assertEqual(r['documents'][0]['status'],'ARCHIVED_NOT_REVIEWED')
         self.assertFalse((self.root/'trades.csv').exists())
+
+    def test_formal_review_accepts_registered_ir_and_rejects_other_issuer(self):
+        from official_data import verify_review_documents
+        r=self.run_fixture();item=r['documents'][0];sha=item['evidence_sha256']
+        document=json.loads((self.root/'official_documents'/f'{sha}.json').read_text())
+        record={'source':document['source'],'evidence_sha256':sha,'excerpt':document['text'],
+                'published_at':document['published_at'],'checked_at':NOW.isoformat()}
+        review={'symbol':'APLD','guidance_not_lowered':record}
+        verify_review_documents(review,self.root,names=('guidance_not_lowered',),financials={'symbol':'APLD','cik':'1144879'})
+        review['symbol']='IREN'
+        with self.assertRaises(ValueError):
+            verify_review_documents(review,self.root,names=('guidance_not_lowered',),financials={'symbol':'IREN','cik':'1878848'})
     def test_no_publication_time_never_uses_retrieval_time_as_publication(self):
         r=self.run_fixture(b'<body>Undated news</body>')
         self.assertFalse(r['documents']);self.assertEqual(r['audit'][0]['reason'],'IR_PUBLICATION_TIME_UNKNOWN')
