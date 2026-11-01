@@ -9,7 +9,8 @@ from zoneinfo import ZoneInfo
 from price_policy import POLICY, entry_reference_price
 from historical_probe import timestamp_ns
 from strategy_rules import VERSION
-from corporate_actions import validate_split_history, split_factor, split_replay_request
+from corporate_actions import (validate_corporate_history,split_factor,split_replay_request,
+                               declared_dividend_records,read_dividend_records,dividend_report)
 
 JST = ZoneInfo('Asia/Tokyo')
 SIGNALS = ('反発確認', '反発初動')
@@ -155,7 +156,7 @@ def settle(ledger, streams, now):
             stream = streams[trade['trade_id']]
             split=stream.get('split_history')
             if split is not None:
-                validate_split_history(split,trade,stream['coverage_end'],now)
+                validate_corporate_history(split,trade,stream['coverage_end'],now)
             split_expected=split_replay_request(trade,split)
             split_replay=stream.get('corporate_replay')
             if split_expected!=split_replay:
@@ -207,6 +208,8 @@ def settle(ledger, streams, now):
                     if len({r[3] for r in group})!=1:
                         raise ValueError('ambiguous simultaneous exit price; cursor unchanged')
                     selected_exit=(*group[0],reasons[0]);break
+            holding_until=selected_exit[0]['market_time'] if selected_exit is not None else stream['coverage_end']
+            dividends=declared_dividend_records(split,trade,holding_until)
             if scenario is not None:
                 trade['tracked_scenario_sha256']=digest(scenario)
             if replay is not None:
@@ -228,6 +231,9 @@ def settle(ledger, streams, now):
                     trade.update(exit_equivalent_price=price,exit_share_factor=factor,
                                  exit_corporate_sha256=split['sha256'])
             trade['tracked_through_jst'] = stream['coverage_end']
+            if dividends or trade.get('dividend_records_json') or (split is not None and split.get('cash_dividends')):
+                trade['dividend_records_json']=json.dumps(dividends,ensure_ascii=False,sort_keys=True)
+                trade['dividend_records_sha256']=digest(dividends)
             if trade['status'] == 'OPEN' and end >= deadline:
                 audit.append({'trade_id': trade['trade_id'], 'status': 'AWAITING_VERIFIED_EXIT'})
         except (ValueError, KeyError, TypeError, OverflowError) as exc:
@@ -293,6 +299,7 @@ def validate_ledger(ledger, now):
                 raise ValueError('invalid persisted corporate hash')
         if trade.get('rules_version') != VERSION:
             raise ValueError('persisted strategy version mismatch')
+        read_dividend_records(trade,now)
         if trade.get('entry_price_policy') != POLICY:
             raise ValueError('persisted entry needs approved policy metadata')
         entry_reference_price(dict(symbol=symbol,kind='trade',entry_policy=POLICY,decision_time_jst=at.isoformat(),
@@ -362,7 +369,8 @@ def run(now=None):
               'exit_reason','return_pct','r_multiple','plan_sha256','entry_evidence_sha256',
               'tracked_through_jst','exit_evidence_sha256','entry_market_time','entry_verified_at',
               'entry_price_policy','registered_at_jst','rules_version','tracked_scenario_sha256',
-              'tracked_corporate_sha256','exit_equivalent_price','exit_share_factor','exit_corporate_sha256']
+              'tracked_corporate_sha256','exit_equivalent_price','exit_share_factor','exit_corporate_sha256',
+              'dividend_records_json','dividend_records_sha256']
     buf=StringIO(); writer=csv.DictWriter(buf,fieldnames=fields); writer.writeheader(); writer.writerows(ledger)
     # Evidence is persisted before the ledger; replacement of each file is atomic.
     for dest, value in ((root/'evidence.json',json.dumps(archive,ensure_ascii=False,indent=2)),
@@ -371,13 +379,15 @@ def run(now=None):
     report={'paper_only':True, 'generated_jst':now.isoformat(), 'statistics':statistics(ledger),
             'entry_audit':entries, 'exit_audit':exits,
             'overdue_open_trades':[t['trade_id'] for t in ledger if t['status']=='OPEN' and instant(t['deadline_jst'])<=now],
+            'declared_dividends':dividend_report(ledger,now),
             'limitations':['Official guidance/decline reviews require archived source-backed assertions; missing reviews block entry',
-                           'Verified splits use entry-share economic basis; dividends, unverified due-bill calendars and other unresolved actions block settlement',
+                           'Ordinary domestic USD dividends are declared entitlements only, excluded from price returns and R; unsupported distributions remain held',
                            'Vendor corrections or corporate-action notices may arrive after retrieval',
                            'Quotes and results are hypothetical references; no execution or fee/slippage model'],
             'entry_price_policy':POLICY,
             'price_status':'Authenticated SIP history acquisition confirmed. Cancellation/update filtering implemented. Verified production provider adapter available; official plan evidence required. No fallback fills.'}
     (out/'trade_report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+    (out/'dividend_report.json').write_text(json.dumps(report['declared_dividends'],ensure_ascii=False,indent=2),encoding='utf-8')
     (out/'trade_log.csv').write_text(buf.getvalue(),encoding='utf-8-sig')
     s=report['statistics']['total']
     overdue=len(report['overdue_open_trades'])
