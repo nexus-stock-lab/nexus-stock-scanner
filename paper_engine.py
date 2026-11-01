@@ -8,6 +8,7 @@ from zoneinfo import ZoneInfo
 from price_policy import POLICY, entry_reference_price
 from historical_probe import timestamp_ns
 from strategy_rules import VERSION
+from corporate_actions import validate_split_history, split_factor, split_replay_request
 
 JST = ZoneInfo('Asia/Tokyo')
 SIGNALS = ('反発確認', '反発初動')
@@ -141,7 +142,7 @@ def scenario_replay_request(trade, scenario, now):
 def settle(ledger, streams, now):
     """Require continuous provider-attested raw trades, including the exit trade.
 
-    A gap, bar, or split blocks the position rather than inventing a fill. Streams
+    Gaps, bars and unresolved corporate actions block rather than invent a fill. Streams
     need coverage_start/end and complete=True from a validated provider adapter.
     The historical SIP adapter supplies this attestation only after validation.
     """
@@ -151,6 +152,13 @@ def settle(ledger, streams, now):
             continue
         try:
             stream = streams[trade['trade_id']]
+            split=stream.get('split_history')
+            if split is not None:
+                validate_split_history(split,trade,stream['coverage_end'],now)
+            split_expected=split_replay_request(trade,split)
+            split_replay=stream.get('corporate_replay')
+            if split_expected!=split_replay:
+                raise ValueError('historical split requires verified replay before settlement')
             start = timestamp_ns(trade.get('tracked_through_jst') or trade['entry_time_jst'])
             scenario=stream.get('scenario_exit')
             replay=stream.get('scenario_replay')
@@ -161,12 +169,14 @@ def settle(ledger, streams, now):
                 if expected is None or replay!=expected:
                     raise ValueError('unverified or repeated scenario replay request')
                 start=timestamp_ns(trade['entry_time_jst'])
+            if split_replay is not None:
+                start=timestamp_ns(trade['entry_time_jst'])
             end = timestamp_ns(stream['coverage_end'])
             if stream.get('complete') is not True or timestamp_ns(stream['coverage_start']) != start or not start < end <= timestamp_ns(now.isoformat()):
                 raise ValueError('incomplete or noncontiguous coverage')
             if not stream.get('source') or not stream.get('evidence_uri'):
                 raise ValueError('coverage evidence required')
-            if stream.get('corporate_actions_clear') is not True:
+            if stream.get('corporate_actions_clear') is not True and split is None:
                 raise ValueError('corporate actions require reconciliation')
             events = stream['trades']
             times = [timestamp_ns(q['market_time']) for q in events]
@@ -174,6 +184,8 @@ def settle(ledger, streams, now):
                 raise ValueError('unordered or ambiguous trade timestamps')
             # Validate all evidence before mutating this trade.
             prices = [quote_price(q, trade['symbol'], q['market_time'], now) for q in events]
+            factors=[positive(split_factor(split,q['market_time'])) if split else 1.0 for q in events]
+            equivalent=[positive(price*factor) for price,factor in zip(prices,factors)]
             if any(not start < at <= end for at in times):
                 raise ValueError('event outside coverage')
             deadline = timestamp_ns(trade['deadline_jst'])
@@ -183,17 +195,25 @@ def settle(ledger, streams, now):
             if replay is not None:
                 audit.append({'trade_id':trade['trade_id'],'status':'VERIFIED_SCENARIO_REPLAY',
                               'previous_cursor':replay['previous_cursor'],'restart':stream['coverage_start']})
-            for q, at, price in zip(events, times, prices):
+            if split is not None:
+                trade['tracked_corporate_sha256']=split['history_sha256']
+            if split_replay is not None:
+                audit.append({'trade_id':trade['trade_id'],'status':'VERIFIED_CORPORATE_REPLAY',
+                              'previous_cursor':split_replay['previous_cursor'],'restart':stream['coverage_start']})
+            for q, at, price, raw_price, factor in zip(events, times, equivalent, prices, factors):
                 reason = ('STOP' if price <= float(trade['stop_price']) else
                           'TARGET' if price >= float(trade['target_price']) else
                           'MAX_90_DAYS' if at >= deadline else
                           'SCENARIO_DETERIORATION' if scenario_at is not None and at >= scenario_at else '')
                 if reason:
                     entry = float(trade['entry_price'])
-                    trade.update(status='CLOSED', exit_time_jst=q['market_time'], exit_price=price,
+                    trade.update(status='CLOSED', exit_time_jst=q['market_time'], exit_price=raw_price,
                                  exit_reason=reason, return_pct=100 * (price / entry - 1),
                                  r_multiple=(price - entry) / (entry - float(trade['stop_price'])),
                                  exit_evidence_sha256=digest(q))
+                    if split is not None:
+                        trade.update(exit_equivalent_price=price,exit_share_factor=factor,
+                                     exit_corporate_sha256=split['sha256'])
                     break
             trade['tracked_through_jst'] = stream['coverage_end']
             if trade['status'] == 'OPEN' and end >= deadline:
@@ -255,6 +275,10 @@ def validate_ledger(ledger, now):
         marker=trade.get('tracked_scenario_sha256')
         if marker and (len(marker)!=64 or any(c not in '0123456789abcdef' for c in marker)):
             raise ValueError('invalid persisted scenario tracking hash')
+        for field in ('tracked_corporate_sha256','exit_corporate_sha256'):
+            marker=trade.get(field)
+            if marker and (len(marker)!=64 or any(c not in '0123456789abcdef' for c in marker)):
+                raise ValueError('invalid persisted corporate hash')
         if trade.get('rules_version') != VERSION:
             raise ValueError('persisted strategy version mismatch')
         if trade.get('entry_price_policy') != POLICY:
@@ -274,9 +298,15 @@ def validate_ledger(ledger, now):
                 raise ValueError('invalid tracking cursor')
         else:
             exit_price = positive(trade['exit_price'])
+            factor=positive(trade.get('exit_share_factor') or 1)
+            equivalent=positive(trade.get('exit_equivalent_price') or exit_price)
+            if not math.isclose(equivalent,exit_price*factor,rel_tol=1e-9,abs_tol=1e-8):
+                raise ValueError('corrupt persisted split basis')
+            if (factor!=1 or trade.get('exit_equivalent_price')) and not trade.get('exit_corporate_sha256'):
+                raise ValueError('split exit evidence missing')
             if not at <= instant(trade['exit_time_jst']) <= now:
                 raise ValueError('invalid exit time')
-            expected = {'return_pct':100*(exit_price/entry-1), 'r_multiple':(exit_price-entry)/(entry-stop)}
+            expected = {'return_pct':100*(equivalent/entry-1), 'r_multiple':(equivalent-entry)/(entry-stop)}
             for key, value in expected.items():
                 actual = float(trade[key])
                 if not math.isfinite(actual) or not math.isclose(actual,value,rel_tol=1e-9,abs_tol=1e-8):
@@ -319,7 +349,8 @@ def run(now=None):
               'target_price','rr_at_entry','deadline_jst','status','exit_time_jst','exit_price',
               'exit_reason','return_pct','r_multiple','plan_sha256','entry_evidence_sha256',
               'tracked_through_jst','exit_evidence_sha256','entry_market_time','entry_verified_at',
-              'entry_price_policy','registered_at_jst','rules_version','tracked_scenario_sha256']
+              'entry_price_policy','registered_at_jst','rules_version','tracked_scenario_sha256',
+              'tracked_corporate_sha256','exit_equivalent_price','exit_share_factor','exit_corporate_sha256']
     buf=StringIO(); writer=csv.DictWriter(buf,fieldnames=fields); writer.writeheader(); writer.writerows(ledger)
     # Evidence is persisted before the ledger; replacement of each file is atomic.
     for dest, value in ((root/'evidence.json',json.dumps(archive,ensure_ascii=False,indent=2)),
@@ -329,7 +360,7 @@ def run(now=None):
             'entry_audit':entries, 'exit_audit':exits,
             'overdue_open_trades':[t['trade_id'] for t in ledger if t['status']=='OPEN' and instant(t['deadline_jst'])<=now],
             'limitations':['Official guidance/decline reviews require archived source-backed assertions; missing reviews block entry',
-                           'Corporate actions needing price/share/cash-flow reconciliation block settlement',
+                           'Verified splits use entry-share economic basis; dividends, due bills and other unresolved actions block settlement',
                            'Vendor corrections or corporate-action notices may arrive after retrieval',
                            'Quotes and results are hypothetical references; no execution or fee/slippage model'],
             'entry_price_policy':POLICY,
