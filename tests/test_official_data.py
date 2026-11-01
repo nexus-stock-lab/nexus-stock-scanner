@@ -106,6 +106,39 @@ class OfficialDataTests(unittest.TestCase):
 
 
 class SecContactTests(unittest.TestCase):
+    def test_sec_redirect_is_rejected_before_forwarding_contact_header(self):
+        from official_data import NoSecRedirect,sec_open
+        from urllib.request import Request
+        self.assertIsNone(NoSecRedirect().redirect_request(None,None,302,'Found',{},'https://other.example/'))
+        with patch('official_data.build_opener') as opener:
+            for url in ('http://www.sec.gov/file','https://user:secret@www.sec.gov/file',
+                        'https://www.sec.gov:8443/file','https://data.sec.gov/file?key=secret'):
+                with self.subTest(url=url),self.assertRaises(ValueError):sec_open(Request(url),timeout=1)
+            opener.assert_not_called()
+
+    def test_document_acquisition_records_actual_completion_and_identity(self):
+        import json
+        import tempfile
+        from pathlib import Path
+        from datetime import timedelta
+        from official_data import collect_documents
+        class Response:
+            url='https://www.sec.gov/Archives/edgar/data/1/000000000126000001/report.htm'
+            def read(self,limit):return b'<body>Official source fixture</body>'
+            def __enter__(self):return self
+            def __exit__(self,*args):pass
+        submissions={'filings':{'recent':{'accessionNumber':['0000000001-26-000001'],
+            'acceptanceDateTime':[(AT-timedelta(hours=1)).isoformat()],
+            'form':['10-Q'],'primaryDocument':['report.htm']}}}
+        completed=AT+timedelta(seconds=1)
+        with tempfile.TemporaryDirectory() as d,patch('official_data.sec_user_agent',return_value='fixture'),\
+                patch('official_data.sec_open',return_value=Response()),patch('official_data.time.sleep'):
+            root=Path(d)
+            result=collect_documents(submissions,'1',AT,AT-timedelta(minutes=1),root,
+                                     symbol='TEST',clock=lambda:completed)
+            archive=json.loads((root/'official_documents'/(result[0]['evidence_sha256']+'.json')).read_text())
+            self.assertEqual(archive['retrieved_at'],completed.isoformat())
+            self.assertEqual((archive['issuer_symbol'],archive['issuer_cik']),('TEST','1'))
     def test_missing_contact_blocks_without_inventing_identity(self):
         with patch.dict(os.environ,{},clear=True),self.assertRaisesRegex(ValueError,'SEC contact not configured'):
             sec_user_agent()
