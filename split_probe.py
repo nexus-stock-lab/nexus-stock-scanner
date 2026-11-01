@@ -24,6 +24,14 @@ SAFE_REASONS={
     'corporate action selection mismatch':'CORPORATE_SELECTION_MISMATCH',
     'corporate retrieval time invalid':'CORPORATE_ACQUISITION_TIME_INVALID',
     'benchmark acquisition time invalid':'TRADE_ACQUISITION_TIME_INVALID',
+    'unknown correction state':'TRADE_UPDATE_STATE_UNKNOWN',
+    'missing sale conditions/tape':'TRADE_CONDITIONS_MISSING',
+    'unknown sale condition':'TRADE_CONDITION_UNKNOWN',
+    'missing trade identity':'TRADE_IDENTITY_MISSING',
+    'ambiguous simultaneous trade price':'TRADE_TIMESTAMP_AMBIGUOUS',
+    'conflicting trade identity':'TRADE_IDENTITY_CONFLICT',
+    'history outside coverage':'TRADE_OUTSIDE_COVERAGE',
+    'complete archived SIP history required':'SIP_HISTORY_INCOMPLETE',
 }
 
 
@@ -66,6 +74,7 @@ def check(root,key,secret,fetch_corporate=corporate_state,fetch_interval=collect
                 'equivalent_price':q['price']*factor,'eligible_records':len(stream['trades'])})
         result.update(status='VERIFIED_SPLIT_BASIS',stage='COMPLETE',split_history_sha256=proof['sha256'])
     except Exception as exc:
+        result['error_type']=type(exc).__name__
         result['reason']=('HTTP_'+str(exc.code) if isinstance(exc,HTTPError) else
                           SAFE_REASONS.get(str(exc),'SPLIT_OR_TRADE_EVIDENCE_UNVERIFIED'))
     (root/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
