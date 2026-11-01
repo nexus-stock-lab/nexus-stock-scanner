@@ -158,16 +158,19 @@ def normalized_stream(raw, corporate, evidence_uri):
         if not timestamp_ns(session['open'].isoformat()) <= stamp < timestamp_ns(session['close'].isoformat()):
             continue
         identity=(day,str(row['i']),row['x'],row['z'])
-        if identity in seen and seen[identity] != (stamp,float(row['p'])):
-            raise ValueError('conflicting trade identity')
+        if identity in seen:
+            if seen[identity] != (stamp,float(row['p'])):
+                raise ValueError('conflicting trade identity')
+            continue
         seen[identity]=(stamp,float(row['p']))
-        if stamp in by_time and by_time[stamp]['price']!=float(row['p']):
-            raise ValueError('ambiguous simultaneous trade price')
-        by_time[stamp]={'symbol':raw['symbol'],'kind':'trade','market_time':row['t'],
+        q={'symbol':raw['symbol'],'kind':'trade','market_time':row['t'],
                         'retrieved_at':raw['retrieved_at'],'price':float(row['p']),
                         'source':'Alpaca historical SIP','evidence_uri':evidence_uri,
                         'trade_id':row['i'],'exchange':row['x'],'tape':row['z'],'update_state':row.get('u')}
+        # Preserve every distinct actual print. Settlement decides whether a
+        # same-time group is harmless or makes the exit price unknowable.
+        by_time.setdefault(stamp,[]).append(q)
     return {'coverage_start':raw['start'],'coverage_end':raw['end'],'complete':True,
             'corporate_actions_clear':corporate.get('clear') is True,
             'source':'Alpaca historical SIP','evidence_uri':evidence_uri,
-            'trades':[by_time[t] for t in sorted(by_time)]}
+            'trades':[q for t in sorted(by_time) for q in by_time[t]]}
