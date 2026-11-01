@@ -360,7 +360,7 @@ def run(now=None):
             'entry_audit':entries, 'exit_audit':exits,
             'overdue_open_trades':[t['trade_id'] for t in ledger if t['status']=='OPEN' and instant(t['deadline_jst'])<=now],
             'limitations':['Official guidance/decline reviews require archived source-backed assertions; missing reviews block entry',
-                           'Verified splits use entry-share economic basis; dividends, due bills and other unresolved actions block settlement',
+                           'Verified splits use entry-share economic basis; dividends, unverified due-bill calendars and other unresolved actions block settlement',
                            'Vendor corrections or corporate-action notices may arrive after retrieval',
                            'Quotes and results are hypothetical references; no execution or fee/slippage model'],
             'entry_price_policy':POLICY,
