@@ -104,6 +104,18 @@ class SplitTests(unittest.TestCase):
         p=copy.deepcopy(original);p['events'][0]['new_rate']='99'
         with self.assertRaises(ValueError):validate_split_history(p,self.rows[0],END.isoformat(),NOW)
 
+    def test_published_due_bill_calendar_does_not_move_split_price_basis(self):
+        a={**action(),'record_date':'2026-10-21','payable_date':'2026-10-23',
+           'due_bill_redemption_date':'2026-10-27'}
+        proof=self.proof([a]);validate_split_history(proof,self.rows[0],END.isoformat(),NOW)
+        self.assertEqual(split_factor(proof,'2026-10-26T14:45:00Z'),2)
+        self.assertEqual(proof['events'][0]['due_bill_calendar']['due_bill_redemption_date'],'2026-10-27')
+        rows,_=self.settle(proof,[('2026-10-26T14:45:00Z',50)])
+        self.assertEqual(rows[0]['status'],'OPEN')
+        for changed in ({**a,'payable_date':None},{**a,'record_date':'2026-10-28'},
+                        {**a,'due_bill_redemption_date':'2026-10-25'}):
+            with self.subTest(action=changed),self.assertRaises(ValueError):self.proof([changed])
+
     def test_late_or_corrected_split_requires_replay_and_history_must_not_disappear(self):
         self.rows[0]['tracked_through_jst']='2026-10-27T14:00:00+00:00'
         proof=self.proof();request=split_replay_request(self.rows[0],proof)
