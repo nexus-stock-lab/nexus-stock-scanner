@@ -16,6 +16,7 @@ from price_policy import history_candidate
 from strategy_rules import VERSION, build_plan
 from official_data import collect_financials, public_json, verify_review_documents
 from market_provider import verified_reference, corporate_state, collect_interval, normalized_stream
+from review_intake import load_confirmed_review
 
 PENDING = ('Official guidance/decline-cause review where evidence is missing',)
 
@@ -113,10 +114,12 @@ def prepare_plans(now, root=Path('input'), out=Path('output')):
                 continue
             symbol=row['symbol']
             try:
-                review=reviews.get(at.date().isoformat(),{}).get(symbol)
+                review=load_confirmed_review(symbol,research['financials'].get(symbol,{}),at,now,root)
+                if review is None:
+                    review=reviews.get(at.date().isoformat(),{}).get(symbol)
                 if not review:
                     raise ValueError('official guidance, decline and earnings evidence missing')
-                verify_review_documents(review,root)
+                verify_review_documents(review,root,financials=research['financials'][symbol])
                 md=research['market_data'][symbol]
                 if md['symbol']!=symbol or timestamp_ns(md['retrieved_at'])>timestamp_ns(now.isoformat()):
                     raise ValueError('daily bars provenance mismatch')
