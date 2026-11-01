@@ -116,6 +116,20 @@ class SplitTests(unittest.TestCase):
                         {**a,'due_bill_redemption_date':'2026-10-25'}):
             with self.subTest(action=changed),self.assertRaises(ValueError):self.proof([changed])
 
+    def test_same_time_non_exit_prints_are_preserved_but_ambiguous_exits_hold_atomically(self):
+        proof=self.proof();stamp='2026-10-26T14:45:00Z'
+        rows,audit=self.settle(proof,[(stamp,50),(stamp,51)])
+        self.assertEqual(rows[0]['status'],'OPEN');self.assertFalse(audit)
+        for prices in ((45,50),(61,62)):
+            rows,audit=self.settle(proof,[(stamp,p) for p in prices])
+            self.assertEqual(rows,self.rows)
+            self.assertEqual(audit[0]['status'],'BLOCKED')
+            self.assertNotIn('tracked_corporate_sha256',rows[0])
+        rows,_=self.settle(proof,[(stamp,62.5),(stamp,62.5)])
+        self.assertEqual(rows[0]['exit_price'],62.5)
+        rows,_=self.settle(proof,[('2026-10-23T14:46:00Z',85),(stamp,61),(stamp,62)])
+        self.assertEqual(rows[0]['exit_price'],85)
+
     def test_late_or_corrected_split_requires_replay_and_history_must_not_disappear(self):
         self.rows[0]['tracked_through_jst']='2026-10-27T14:00:00+00:00'
         proof=self.proof();request=split_replay_request(self.rows[0],proof)
