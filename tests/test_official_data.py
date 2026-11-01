@@ -69,6 +69,41 @@ class OfficialDataTests(unittest.TestCase):
                                     'b':{'accepted_at':'2025-11-01T00:00:00Z'}},'2025-12-31')
         self.assertEqual([(r['start'],r['val']) for r in values],[('2025-10-01',130)])
 
+    def test_latest_filing_complete_recast_comparison_uses_same_basis(self):
+        f=facts()
+        for tag,value in (('Revenues',105),('OperatingIncomeLoss',-6)):
+            rows=f['facts']['us-gaap'][tag]['units']['USD']
+            rows.append({**rows[1],'accn':'a','val':value})
+        r=extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+        self.assertEqual((r['prior_revenue'],r['prior_operating_income']),(105,-6))
+        self.assertEqual(r['comparison_basis'],'SAME_LATEST_FILING')
+        self.assertEqual(r['comparison_accessions'],['a'])
+
+    def test_incomplete_recast_does_not_mix_comparison_bases(self):
+        f=facts();rows=f['facts']['us-gaap']['Revenues']['units']['USD']
+        rows.append({**rows[1],'accn':'a','val':105})
+        with self.assertRaisesRegex(ValueError,'conflicting reported quarter'):
+            extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+
+    def test_latest_filing_deterioration_never_falls_back_to_better_old_numbers(self):
+        f=facts()
+        for tag,value in (('Revenues',120),('OperatingIncomeLoss',-4)):
+            rows=f['facts']['us-gaap'][tag]['units']['USD']
+            rows.append({**rows[1],'accn':'a','val':value})
+        r=extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+        self.assertFalse(r['quality']['pass'])
+        self.assertEqual(r['prior_revenue'],120)
+
+    def test_conflict_inside_latest_filing_still_blocks(self):
+        f=facts()
+        for tag in ('Revenues','OperatingIncomeLoss'):
+            rows=f['facts']['us-gaap'][tag]['units']['USD']
+            rows.append({**rows[1],'accn':'a'})
+        rows=f['facts']['us-gaap']['Revenues']['units']['USD']
+        rows.append({**rows[-1],'val':101})
+        with self.assertRaisesRegex(ValueError,'conflicting reported quarter'):
+            extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+
 
 class SecContactTests(unittest.TestCase):
     def test_missing_contact_blocks_without_inventing_identity(self):
