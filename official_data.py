@@ -115,30 +115,38 @@ def extract_financials(symbol, facts, submissions, at, checked_at, evidence_sha2
                 raise ValueError('newer official results/amendment require financial reconciliation')
     end=latest['report_date']
     gaap=facts['facts']['us-gaap']
-    operating=quarter_values(gaap['OperatingIncomeLoss']['units']['USD'],filings,end)
-    for tag in REVENUE_TAGS:
-        if tag not in gaap:
-            continue
-        revenue=quarter_values(gaap[tag]['units'].get('USD',[]),filings,end)
-        current=[r for r in revenue if r['end']==end]
-        current_op=[r for r in operating if r['end']==end]
-        if len(current)!=1 or len(current_op)!=1 or current[0]['start']!=current_op[0]['start']:
-            continue
-        prior=[r for r in revenue if 350<=(date.fromisoformat(end)-date.fromisoformat(r['end'])).days<=380
-               and 350<=(date.fromisoformat(current[0]['start'])-date.fromisoformat(r['start'])).days<=380]
-        if len(prior)!=1:
-            continue
-        old=prior[0]
-        old_op=[r for r in operating if r['start']==old['start'] and r['end']==old['end']]
-        if len(old_op)!=1:
-            continue
-        quality=financial_quality(current[0]['val'],old['val'],current_op[0]['val'],old_op[0]['val'])
-        return {'symbol':symbol,'period_end':end,'prior_period_end':old['end'],
-                'revenue':current[0]['val'],'prior_revenue':old['val'],
-                'operating_income':current_op[0]['val'],'prior_operating_income':old_op[0]['val'],
-                'revenue_tag':tag,'quality':quality,'checked_at':checked_at,
-                'published_at':latest['accepted_at'],'evidence_sha256':evidence_sha256,
-                'rules_version':VERSION}
+    # A complete comparison presented in the latest filing uses that filing's
+    # current comparative basis, including explicit recasts of prior periods.
+    # Never mix a recast revenue with an old-basis operating income. If the four
+    # numbers are not all present there, retain the strict cross-filing check.
+    latest_only={k:v for k,v in filings.items() if v is latest}
+    for basis,scope in (('SAME_LATEST_FILING',latest_only),('UNAMBIGUOUS_CROSS_FILING',filings)):
+        operating=quarter_values(gaap['OperatingIncomeLoss']['units']['USD'],scope,end)
+        for tag in REVENUE_TAGS:
+            if tag not in gaap:
+                continue
+            revenue=quarter_values(gaap[tag]['units'].get('USD',[]),scope,end)
+            current=[r for r in revenue if r['end']==end]
+            current_op=[r for r in operating if r['end']==end]
+            if len(current)!=1 or len(current_op)!=1 or current[0]['start']!=current_op[0]['start']:
+                continue
+            prior=[r for r in revenue if 350<=(date.fromisoformat(end)-date.fromisoformat(r['end'])).days<=380
+                   and 350<=(date.fromisoformat(current[0]['start'])-date.fromisoformat(r['start'])).days<=380]
+            if len(prior)!=1:
+                continue
+            old=prior[0]
+            old_op=[r for r in operating if r['start']==old['start'] and r['end']==old['end']]
+            if len(old_op)!=1:
+                continue
+            selected=(current[0],old,current_op[0],old_op[0])
+            accessions=sorted({a for r in selected for a in r.get('derived_from',[r['accn']])})
+            quality=financial_quality(*(r['val'] for r in selected))
+            return {'symbol':symbol,'period_end':end,'prior_period_end':old['end'],
+                    'revenue':current[0]['val'],'prior_revenue':old['val'],
+                    'operating_income':current_op[0]['val'],'prior_operating_income':old_op[0]['val'],
+                    'revenue_tag':tag,'quality':quality,'checked_at':checked_at,
+                    'published_at':latest['accepted_at'],'evidence_sha256':evidence_sha256,
+                    'comparison_basis':basis,'comparison_accessions':accessions,'rules_version':VERSION}
     raise ValueError('latest report lacks unambiguous comparable quarterly revenue/operating income')
 
 
