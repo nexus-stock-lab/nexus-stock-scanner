@@ -65,7 +65,8 @@ def verified_reference(result, retrieved_at, evidence_uri):
 def corporate_state(symbol, entry, end, key, secret, fetch=get_json):
     """Any potentially effective corporate action requires explicit reconciliation.
 
-    No split-adjusted fills or dividend cash flows are invented. The provider
+    This collector flags actions; the split adapter may reconcile supported splits.
+    No adjusted market prints or dividend cash flows are invented. The provider
     may report actions late; archive the as-observed response and its timestamp.
     """
     entry_day = entry.astimezone(NY).date()
@@ -94,7 +95,9 @@ def corporate_state(symbol, entry, end, key, secret, fetch=get_json):
         token=payload.get('next_page_token')
         if not token:
             return {'clear':not actions,'actions':actions,'pages':pages,'asof':end.isoformat(),
-                    'warning':'Corporate-action publication may lag. Any effective reported action blocks automatic settlement.'}
+                    'complete':True,'source':'https://data.alpaca.markets/v1/corporate-actions',
+                    'retrieved_at':datetime.now(timezone.utc).isoformat(),
+                    'warning':'Corporate-action publication may lag. Reported actions require verified split-basis reconciliation or a hold.'}
         if not isinstance(token,str) or token in tokens:
             raise ValueError('invalid corporate-action page token')
         tokens.add(token);params={**params,'page_token':token}
