@@ -39,7 +39,8 @@ def check(root,key,secret,fetch_corporate=corporate_state,fetch_interval=collect
     clock=clock or (lambda:datetime.now(timezone.utc))
     root=Path(root);root.mkdir(parents=True,exist_ok=True)
     result={'mode':'READ_ONLY_SPLIT_BASIS','paper_fills_created':0,'may_register':False,
-            'benchmark_source':BENCHMARK_SOURCE,'status':'HELD'}
+            'benchmark_source':BENCHMARK_SOURCE,'status':'HELD',
+            'selection_policy':'OBSERVATION_ONLY_NOT_AN_ENTRY_OR_EXIT'}
     try:
         end=AFTER+timedelta(minutes=1)
         result['stage']='CORPORATE_FETCH'
