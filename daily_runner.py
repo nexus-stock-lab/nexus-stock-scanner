@@ -510,9 +510,9 @@ def phone_summary(out=Path('output')):
     if dividends:
         lines += ['', '## 通常配当の別記録（入金未確認）', '',
                   '宣言された税引前金額を登録時の1単位あたりで記録します。実際の受取額ではなく、勝率・期待値Rへは加えません。', '',
-                  '|銘柄|宣言額USD/登録時単位|入金確認|','|---|---:|---|']
+                  '|銘柄|確認済USD小計/登録時単位|通貨未確認件数|入金確認|','|---|---:|---:|---|']
         for item in dividends:
-            lines.append(f"|{item['symbol']}|{item['declared_gross_usd_per_entry_unit']}|未確認|")
+            lines.append(f"|{item['symbol']}|{item['verified_usd_subtotal_per_entry_unit'] or '—'}|{item['currency_unverified_records']}|未確認|")
     (out/'summary.md').write_text('\n'.join(lines)+'\n', encoding='utf-8')
 
 
