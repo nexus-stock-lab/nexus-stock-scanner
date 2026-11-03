@@ -381,7 +381,7 @@ def run(now=None):
             'overdue_open_trades':[t['trade_id'] for t in ledger if t['status']=='OPEN' and instant(t['deadline_jst'])<=now],
             'declared_dividends':dividend_report(ledger,now),
             'limitations':['Official guidance/decline reviews require archived source-backed assertions; missing reviews block entry',
-                           'Ordinary domestic USD dividends are declared entitlements only, excluded from price returns and R; unsupported distributions remain held',
+                           'Ordinary cash dividends are declared entitlements only; unknown currency is not valued as USD; all dividends remain excluded from price returns and R',
                            'Vendor corrections or corporate-action notices may arrive after retrieval',
                            'Quotes and results are hypothetical references; no execution or fee/slippage model'],
             'entry_price_policy':POLICY,
