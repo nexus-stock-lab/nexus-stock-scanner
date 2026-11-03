@@ -1,0 +1,48 @@
+name: NEXUS Review Approval
+on:
+  workflow_dispatch:
+    inputs:
+      review_id:
+        description: '確認した候補の承認ID（64桁）。根拠4項目を確認した場合のみ実行'
+        required: true
+        type: string
+permissions:
+  contents: write
+concurrency:
+  group: nexus-trade-ledger-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  approve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install calendar dependency
+        run: python -m pip install "exchange_calendars>=4.5,<5"
+      - name: Approve the exact reviewed draft
+        env:
+          REVIEW_ID: ${{ inputs.review_id }}
+        run: python approve_review.py
+      - name: Refresh predecision plans without ledger access
+        run: |
+          python - <<'PYTHON'
+          from datetime import datetime
+          from market_calendar import JST
+          from daily_runner import prepare_plans
+          prepare_plans(datetime.now(JST))
+          PYTHON
+      - name: Save approved review on selected branch
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add input/review_inbox input/plans
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record explicit human source review approval'
+            git push
+          fi
+      - name: Explain next step
+        run: |
+          echo '## 確認済みレビューを保存しました' >> "$GITHUB_STEP_SUMMARY"
+          echo '仮想登録はまだ行っていません。23:45前のfinalizeと翌0:01以降の価格照合で、開示更新・価格・R:R等を再確認します。' >> "$GITHUB_STEP_SUMMARY"

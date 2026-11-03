@@ -1,0 +1,81 @@
+{
+  "request_sha256": "f3e9ba9a48275498dcba8acec867d7d04e5424d0596ea6b55bac0cf50dcbd73b",
+  "checked_at": "2026-11-02T05:05:52.430374+09:00",
+  "provider_response_sha256": "cb8e01b4baf34d7f8cae50d58fed3c8ee1ccc212dddcdd5a5389f1766687eb86",
+  "assessment": {
+    "symbol": "APLD",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents do not contain explicit quantitative revenue guidance or reaffirmations/comparisons of official revenue guidance.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "There is no discussion or verification in the provided documents attributing a stock price decline to market, sector, or temporary factors.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The documents provide substantial recent financial disclosures, but do not provide sufficient scope to positively verify the comprehensive absence of material business impairments, going-concern assessments, or guidance cuts across all required facets.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "No future earnings announcement date is explicitly disclosed in the provided documents.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "result": {
+    "kind": "SHADOW_ONLY",
+    "may_register": false,
+    "semantic_verified": false,
+    "quote_provenance_verified": false,
+    "citation_count": 0,
+    "assessment": {
+      "symbol": "APLD",
+      "assertions": [
+        {
+          "name": "guidance_not_lowered",
+          "verdict": "UNKNOWN",
+          "rationale": "The supplied documents do not contain explicit quantitative revenue guidance or reaffirmations/comparisons of official revenue guidance.",
+          "date": "",
+          "citations": []
+        },
+        {
+          "name": "decline_explanation_verified",
+          "verdict": "UNKNOWN",
+          "rationale": "There is no discussion or verification in the provided documents attributing a stock price decline to market, sector, or temporary factors.",
+          "date": "",
+          "citations": []
+        },
+        {
+          "name": "no_material_business_impairment",
+          "verdict": "UNKNOWN",
+          "rationale": "The documents provide substantial recent financial disclosures, but do not provide sufficient scope to positively verify the comprehensive absence of material business impairments, going-concern assessments, or guidance cuts across all required facets.",
+          "date": "",
+          "citations": []
+        },
+        {
+          "name": "next_earnings",
+          "verdict": "UNKNOWN",
+          "rationale": "No future earnings announcement date is explicitly disclosed in the provided documents.",
+          "date": "",
+          "citations": []
+        }
+      ]
+    },
+    "bundle_sha256": "6066ad3cd7ef7c0b982cc40cb929558517e98f37a8a895c55d4bd88e27c7a0d8",
+    "prompt_version": "nexus_shadow_20261030_v3",
+    "model": "gemini-3.8-flash"
+  }
+}

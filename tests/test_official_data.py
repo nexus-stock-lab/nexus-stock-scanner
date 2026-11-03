@@ -1,0 +1,177 @@
+import copy
+import os
+from unittest.mock import patch
+import unittest
+from historical_probe import decision
+from official_data import extract_financials, quarter_values, accepted_filings, sec_user_agent
+
+AT=decision('2026-10-23T23:45:00+09:00')
+
+def filings():
+    return {'filings':{'recent':{'accessionNumber':['a','b','future'],
+           'acceptanceDateTime':['2026-08-01T20:00:00Z','2025-08-01T20:00:00Z','2026-10-23T20:00:00Z'],
+           'form':['10-Q','10-Q','10-Q'],'reportDate':['2026-06-30','2025-06-30','2026-09-30']}}}
+
+def factrows(current,prior):
+    return [{'start':'2026-04-01','end':'2026-06-30','val':current,'accn':'a','form':'10-Q'},
+            {'start':'2025-04-01','end':'2025-06-30','val':prior,'accn':'b','form':'10-Q'}]
+
+def facts():
+    return {'facts':{'us-gaap':{'Revenues':{'units':{'USD':factrows(110,100)}},
+                              'OperatingIncomeLoss':{'units':{'USD':factrows(-5,-10)}}}}}
+
+class OfficialDataTests(unittest.TestCase):
+    def test_asof_accepted_filing_no_future_report(self):
+        self.assertNotIn('future',accepted_filings(filings(),AT))
+        result=extract_financials('TEST',facts(),filings(),AT,AT.isoformat(),'a'*64)
+        self.assertEqual(result['period_end'],'2026-06-30')
+        self.assertTrue(result['quality']['pass'])
+    def test_revenue_not_enough_if_income_deteriorates(self):
+        f=facts();f['facts']['us-gaap']['OperatingIncomeLoss']['units']['USD']=factrows(-15,-10)
+        r=extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+        self.assertFalse(r['quality']['pass'])
+    def test_missing_latest_quarter_never_falls_back_to_old(self):
+        s=filings();s['filings']['recent']['acceptanceDateTime'][2]='2026-10-23T13:00:00Z'
+        with self.assertRaises(ValueError):extract_financials('TEST',facts(),s,AT,AT.isoformat(),'a'*64)
+    def test_cumulative_six_month_fact_not_treated_as_quarter(self):
+        f=facts();f['facts']['us-gaap']['Revenues']['units']['USD'][0]['start']='2026-01-01'
+        with self.assertRaises(ValueError):extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+    def test_conflicting_restatement_blocks(self):
+        f=facts();rows=f['facts']['us-gaap']['Revenues']['units']['USD'];rows.append({**rows[0],'val':111})
+        with self.assertRaises(ValueError):extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+    def test_q4_is_annual_minus_nine_months(self):
+        units=[{'start':'2025-01-01','end':'2025-12-31','val':450,'accn':'a','form':'10-K'},
+               {'start':'2025-01-01','end':'2025-09-30','val':320,'accn':'b','form':'10-Q'}]
+        values=quarter_values(units,{'a':{'accepted_at':'2026-02-01T00:00:00Z'},'b':{'accepted_at':'2025-11-01T00:00:00Z'}})
+        self.assertEqual(values[0]['val'],130)
+        self.assertEqual(values[0]['start'],'2025-10-01')
+
+    def test_unrelated_old_revision_does_not_block_current_comparison(self):
+        f=facts()
+        for tag in ('Revenues','OperatingIncomeLoss'):
+            f['facts']['us-gaap'][tag]['units']['USD'].extend([
+                {'start':'2023-04-01','end':'2023-06-30','val':1,'accn':'a','form':'10-Q'},
+                {'start':'2023-04-01','end':'2023-06-30','val':2,'accn':'b','form':'10-Q'}])
+        result=extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+        self.assertEqual(result['revenue'],110)
+        self.assertEqual(result['prior_revenue'],100)
+
+    def test_comparison_year_revision_still_blocks(self):
+        f=facts(); rows=f['facts']['us-gaap']['Revenues']['units']['USD']
+        rows.append({**rows[1],'val':99})
+        with self.assertRaisesRegex(ValueError,'conflicting reported quarter'):
+            extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+
+    def test_scoped_q4_still_uses_nine_month_input(self):
+        units=[{'start':'2025-01-01','end':'2025-12-31','val':450,'accn':'a','form':'10-K'},
+               {'start':'2025-01-01','end':'2025-09-30','val':320,'accn':'b','form':'10-Q'}]
+        values=quarter_values(units,{'a':{'accepted_at':'2026-02-01T00:00:00Z'},
+                                    'b':{'accepted_at':'2025-11-01T00:00:00Z'}},'2025-12-31')
+        self.assertEqual([(r['start'],r['val']) for r in values],[('2025-10-01',130)])
+
+    def test_latest_filing_complete_recast_comparison_uses_same_basis(self):
+        f=facts()
+        for tag,value in (('Revenues',105),('OperatingIncomeLoss',-6)):
+            rows=f['facts']['us-gaap'][tag]['units']['USD']
+            rows.append({**rows[1],'accn':'a','val':value})
+        r=extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+        self.assertEqual((r['prior_revenue'],r['prior_operating_income']),(105,-6))
+        self.assertEqual(r['comparison_basis'],'SAME_LATEST_FILING')
+        self.assertEqual(r['comparison_accessions'],['a'])
+
+    def test_incomplete_recast_does_not_mix_comparison_bases(self):
+        f=facts();rows=f['facts']['us-gaap']['Revenues']['units']['USD']
+        rows.append({**rows[1],'accn':'a','val':105})
+        with self.assertRaisesRegex(ValueError,'conflicting reported quarter'):
+            extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+
+    def test_latest_filing_deterioration_never_falls_back_to_better_old_numbers(self):
+        f=facts()
+        for tag,value in (('Revenues',120),('OperatingIncomeLoss',-4)):
+            rows=f['facts']['us-gaap'][tag]['units']['USD']
+            rows.append({**rows[1],'accn':'a','val':value})
+        r=extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+        self.assertFalse(r['quality']['pass'])
+        self.assertEqual(r['prior_revenue'],120)
+
+    def test_conflict_inside_latest_filing_still_blocks(self):
+        f=facts()
+        for tag in ('Revenues','OperatingIncomeLoss'):
+            rows=f['facts']['us-gaap'][tag]['units']['USD']
+            rows.append({**rows[1],'accn':'a'})
+        rows=f['facts']['us-gaap']['Revenues']['units']['USD']
+        rows.append({**rows[-1],'val':101})
+        with self.assertRaisesRegex(ValueError,'conflicting reported quarter'):
+            extract_financials('TEST',f,filings(),AT,AT.isoformat(),'a'*64)
+
+
+class SecContactTests(unittest.TestCase):
+    def test_sec_redirect_is_rejected_before_forwarding_contact_header(self):
+        from official_data import NoSecRedirect,sec_open
+        from urllib.request import Request
+        self.assertIsNone(NoSecRedirect().redirect_request(None,None,302,'Found',{},'https://other.example/'))
+        with patch('official_data.build_opener') as opener:
+            for url in ('http://www.sec.gov/file','https://user:secret@www.sec.gov/file',
+                        'https://www.sec.gov:8443/file','https://data.sec.gov/file?key=secret'):
+                with self.subTest(url=url),self.assertRaises(ValueError):sec_open(Request(url),timeout=1)
+            opener.assert_not_called()
+
+    def test_document_acquisition_records_actual_completion_and_identity(self):
+        import json
+        import tempfile
+        from pathlib import Path
+        from datetime import timedelta
+        from official_data import collect_documents
+        class Response:
+            url='https://www.sec.gov/Archives/edgar/data/1/000000000126000001/report.htm'
+            def read(self,limit):return b'<body>Official source fixture</body>'
+            def __enter__(self):return self
+            def __exit__(self,*args):pass
+        submissions={'filings':{'recent':{'accessionNumber':['0000000001-26-000001'],
+            'acceptanceDateTime':[(AT-timedelta(hours=1)).isoformat()],
+            'form':['10-Q'],'primaryDocument':['report.htm']}}}
+        completed=AT+timedelta(seconds=1)
+        with tempfile.TemporaryDirectory() as d,patch('official_data.sec_user_agent',return_value='fixture'),\
+                patch('official_data.sec_open',return_value=Response()),patch('official_data.time.sleep'):
+            root=Path(d)
+            result=collect_documents(submissions,'1',AT,AT-timedelta(minutes=1),root,
+                                     symbol='TEST',clock=lambda:completed)
+            archive=json.loads((root/'official_documents'/(result[0]['evidence_sha256']+'.json')).read_text())
+            self.assertEqual(archive['retrieved_at'],completed.isoformat())
+            self.assertEqual((archive['issuer_symbol'],archive['issuer_cik']),('TEST','1'))
+    def test_missing_contact_blocks_without_inventing_identity(self):
+        with patch.dict(os.environ,{},clear=True),self.assertRaisesRegex(ValueError,'SEC contact not configured'):
+            sec_user_agent()
+
+    def test_declared_contact_is_preserved(self):
+        with patch.dict(os.environ,{'NEXUS_SEC_USER_AGENT':'NEXUS contact@example.org'}):
+            self.assertEqual(sec_user_agent(),'NEXUS contact@example.org')
+
+    def test_header_injection_and_url_only_identity_are_rejected_without_echo(self):
+        for value in ('NEXUS contact@example.org\r\nX-Header: private',
+                      'NEXUS https://github.com/nexus-stock-lab/nexus-stock-scanner'):
+            with self.subTest(value=value),patch.dict(os.environ,{'NEXUS_SEC_USER_AGENT':value}):
+                with self.assertRaises(ValueError) as error:
+                    sec_user_agent()
+                self.assertNotIn(value,str(error.exception))
+
+
+class SourceOnlyAcquisitionTests(unittest.TestCase):
+    def test_document_only_acquisition_never_manufactures_financial_quality(self):
+        import tempfile
+        from pathlib import Path
+        from unittest.mock import patch
+        from official_data import collect_company_documents
+        from historical_probe import decision
+        at=decision('2026-10-29T23:45:00+09:00')
+        values={'https://www.sec.gov/files/company_tickers.json':{'0':{'ticker':'APLD','cik_str':1144879}},
+                'https://data.sec.gov/submissions/CIK0001144879.json':{'cik':1144879,'filings':{'recent':{
+                    'accessionNumber':[],'acceptanceDateTime':[],'form':[],'reportDate':[]}}}}
+        with tempfile.TemporaryDirectory() as directory,patch('official_data.collect_documents',return_value=[]):
+            result=collect_company_documents('APLD',at,at,Path(directory),fetch=values.__getitem__)
+            self.assertEqual(result['financial_status'],'NOT_EVALUATED_SOURCE_REVIEW_ONLY')
+            self.assertNotIn('quality',result);self.assertNotIn('revenue',result)
+            self.assertEqual(result['cik'],'0001144879')
+            values['https://data.sec.gov/submissions/CIK0001144879.json']['cik']=320193
+            with self.assertRaisesRegex(ValueError,'SEC entity mismatch'):
+                collect_company_documents('APLD',at,at,Path(directory),fetch=values.__getitem__)

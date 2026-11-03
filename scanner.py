@@ -1,5 +1,6 @@
 """NEXUS v2.3: use completed prior-session daily bars; never records hypothetical fills."""
 import io
+import hashlib
 import json
 import logging
 import os
@@ -79,6 +80,16 @@ def evaluate(stock, prices):
     prices = prices.dropna(subset=["Close", "Low", "High", "Volume"])
     if len(prices) < 55:
         raise ValueError("insufficient_history")
+    # Preserve the exact prior-session prices used for the approved 20/60 rule.
+    evidence = OUT / "daily_bars"
+    evidence.mkdir(exist_ok=True)
+    envelope = {"symbol": stock.symbol, "source": "Yahoo Finance via yfinance; auto_adjust=True",
+                "retrieved_at": datetime.now(timezone.utc).isoformat(),
+                "bars": [{"date": str(day.date()), "low": float(row["Low"]),
+                          "high": float(row["High"]), "close": float(row["Close"])}
+                         for day, row in prices.iterrows()]}
+    filename = hashlib.sha256(stock.symbol.encode()).hexdigest()+".json"
+    (evidence / filename).write_text(json.dumps(envelope), encoding="utf-8")
     close = prices["Close"].astype(float)
     volume = prices["Volume"].astype(float)
     last = float(close.iloc[-1])
@@ -198,3 +209,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
