@@ -56,6 +56,28 @@ class PipelineTests(unittest.TestCase):
         rows=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
         self.assertEqual(len(rows),1)
         return rows
+    def test_human_approval_to_plan_and_entry(self):
+        from approve_review import approve
+        from review_intake import NAMES
+        self.prepare();root=Path('input')
+        review=json.loads((root/'official_reviews.json').read_text())[AT.date().isoformat()]['TEST']
+        packet={'kind':'CONFIRMED_SOURCE_REVIEW','symbol':'TEST','rules_version':VERSION,
+            'decision_time_jst':AT.isoformat(),'financial_evidence_sha256':review['financial_evidence_sha256'],
+            'reviewed_at':(AT-timedelta(hours=1)).isoformat(),'reviewer_id':'draft',
+            'assertions':{name:review[name] for name in NAMES}}
+        draft={'kind':'SOURCE_REVIEW_DRAFT','packet':packet};key=digest(draft)
+        (root/'review_drafts').mkdir();(root/'review_drafts'/(key+'.json')).write_text(json.dumps(draft))
+        (root/'official_reviews.json').unlink()
+        approve(key,'human-owner',AT-timedelta(minutes=10),root)
+        plans=prepare_plans(AT-timedelta(minutes=5));self.assertEqual(len(plans['plans']),1)
+        now=AT+timedelta(minutes=16)
+        status=reconcile(now,fetch_probe=lambda *a:history(),calendar=lambda at:{'open':True},
+            clock=lambda:now,fetch_corporate=lambda *a:{'clear':True})
+        self.assertEqual(status['status'],'VERIFIED_INPUT_READY')
+        with contextlib.redirect_stdout(io.StringIO()):run(now)
+        rows=list(csv.DictReader((root/'trades.csv').read_text().splitlines()))
+        self.assertEqual(len(rows),1);self.assertEqual(rows[0]['status'],'OPEN')
+
     def test_new_disclosure_blocks_otherwise_valid_entry(self):
         self.prepare();now=AT+timedelta(minutes=16)
         self.sec_mock.return_value={'cik':1,'filings':{'recent':{'accessionNumber':['new'],
