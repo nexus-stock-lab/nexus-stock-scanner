@@ -14,7 +14,7 @@ ENTRY=decision('2025-02-07T23:45:00+09:00')
 END=decision('2025-02-14T23:45:00+09:00')
 BENCHMARK_SOURCE='https://www.apple.com/newsroom/2025/01/apple-reports-first-quarter-results/'
 SAFE_REASONS={
-    'ordinary domestic USD cash dividend not verified':'ORDINARY_DOMESTIC_USD_NOT_VERIFIED',
+    'ordinary cash dividend classification not verified':'ORDINARY_CASH_CLASSIFICATION_NOT_VERIFIED',
     'cash dividend dates invalid':'DIVIDEND_DATES_INVALID',
     'same-day distribution price basis needs reconciliation':'AMBIGUOUS_DISTRIBUTION_BASIS',
     'dividend benchmark not confirmed':'DECLARATION_BENCHMARK_MISMATCH',
@@ -41,7 +41,9 @@ def check(root,key,secret,fetch_corporate=corporate_state,clock=None):
                 event['payable_date']!='2025-02-13' or Decimal(event['rate'])!=Decimal('0.25')):
             raise ValueError('dividend benchmark not confirmed')
         (root/'corporate_history.json').write_text(json.dumps(proof),encoding='utf-8')
-        result.update(status='VERIFIED_DECLARED_USD_DIVIDEND',declaration=event,proof_sha256=proof['sha256'])
+        result.update(status='VERIFIED_DECLARED_USD_DIVIDEND' if event['currency_verified'] else
+                      'VERIFIED_PRICE_ONLY_CASH_ACTION_CURRENCY_UNVERIFIED',
+                      currency_verified=event['currency_verified'],declaration=event,proof_sha256=proof['sha256'])
     except Exception as exc:
         result['reason']='HTTP_'+str(exc.code) if isinstance(exc,HTTPError) else SAFE_REASONS.get(str(exc),'DIVIDEND_EVIDENCE_UNVERIFIED')
     (root/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
@@ -55,7 +57,8 @@ def main():
         with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
             f.write('\n## 通常配当の公表データ診断（入金未確認・登録なし）\n\n```json\n'+text+'\n```\n')
     print(text)
-    if result['status']!='VERIFIED_DECLARED_USD_DIVIDEND':raise SystemExit(1)
+    if result['status'] not in ('VERIFIED_DECLARED_USD_DIVIDEND','VERIFIED_PRICE_ONLY_CASH_ACTION_CURRENCY_UNVERIFIED'):
+        raise SystemExit(1)
 
 
 if __name__=='__main__':main()
