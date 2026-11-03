@@ -67,6 +67,17 @@ class RunnerTests(unittest.TestCase):
         value['rows'][0]['symbol']='CHANGED'
         (self.root/'research'/'2026-10-23.json').write_text(json.dumps(value))
         self.assertEqual(self.collect()['status'],'BLOCKED')
+    def test_changed_financial_or_market_evidence_blocks_before_price_fetch(self):
+        original=freeze_research(AT-timedelta(hours=1),self.root,self.out)
+        for field in ('financials','market_data','issuer_ir'):
+            value=copy.deepcopy(original);value[field]['TEST']={'changed':True}
+            (self.root/'research'/'2026-10-23.json').write_text(json.dumps(value))
+            result=reconcile(AT+timedelta(minutes=16),self.root,self.out,
+                fetch_probe=lambda *a:self.fail('must not fetch altered research'),
+                calendar=lambda at:{'open':True})
+            self.assertEqual(result['status'],'BLOCKED')
+            self.assertFalse((self.out/'verified_evidence.json').exists())
+
     def test_late_snapshot_blocks(self):
         value=freeze_research(AT-timedelta(hours=1),self.root,self.out)
         value['prepared_at']=(AT+timedelta(seconds=1)).isoformat()
