@@ -80,7 +80,7 @@ class DividendTests(unittest.TestCase):
             declared_dividend_records(None,rows[0],END.isoformat())
 
     def test_foreign_special_currency_due_bill_and_missing_flags_are_held(self):
-        changes=[{'foreign':True},{'special':True},{'currency':''},{'currency':'EUR'},
+        changes=[{'foreign':True},{'special':True},{'currency':'EUR'},
                  {'sub_type':'return_of_capital'},{'sub_type':'interest'},
                  {'due_bill_on_date':'2026-10-24'},{'due_bill_off_date':'2026-10-28'},
                  {'rate':0},{'rate':True},{'rate':'NaN'},{'foreign':None},{'special':None},
@@ -128,6 +128,12 @@ class DividendTests(unittest.TestCase):
             self.assertEqual(r['status'],'VERIFIED_DECLARED_USD_DIVIDEND')
             self.assertFalse(r['payment_verified']);self.assertEqual(r['paper_fills_created'],0)
             self.assertFalse(list(Path(d).rglob('trades.csv')))
+            a['currency']=None
+            r=check(d,'fixture','fixture',fetch_corporate=lambda *args:corporate([a],END_BENCHMARK,NOW),clock=lambda:NOW)
+            self.assertEqual(r['status'],'VERIFIED_PRICE_ONLY_CASH_ACTION_CURRENCY_UNVERIFIED')
+            self.assertFalse(r['currency_verified']);self.assertFalse(r['payment_verified'])
+            self.assertEqual(r['paper_fills_created'],0)
+            self.assertFalse(list(Path(d).rglob('trades.csv')))
 
     def test_legacy_split_proof_remains_valid_but_cannot_introduce_cash(self):
         from corporate_actions import LEGACY_VERSION
@@ -138,4 +144,36 @@ class DividendTests(unittest.TestCase):
         proof=self.proof();proof['version']=LEGACY_VERSION
         proof['sha256']=sha({k:v for k,v in proof.items() if k!='sha256'})
         with self.assertRaisesRegex(ValueError,'legacy corporate proof'):
+            validate_corporate_history(proof,self.rows[0],END.isoformat(),NOW)
+
+    def test_unknown_currency_is_price_only_and_never_guessed_or_totalled_as_usd(self):
+        for currency in (None,''):
+            proof=self.proof([{**cash(),'currency':currency}]);rows=self.close(125,proof=proof)
+            self.assertEqual(rows[0]['exit_reason'],'TARGET')
+            self.assertAlmostEqual(rows[0]['return_pct'],25)
+            records=read_dividend_records(rows[0])
+            self.assertIsNone(records[0]['currency'])
+            self.assertFalse(records[0]['currency_verified'])
+            self.assertIsNone(records[0]['declared_gross_usd_per_entry_unit'])
+            report=dividend_report(rows,NOW)['positions'][0]
+            self.assertEqual(report['currency_unverified_records'],1)
+            self.assertIsNone(report['declared_gross_usd_per_entry_unit'])
+            self.assertIsNone(report['verified_usd_subtotal_per_entry_unit'])
+            validate_ledger(rows,NOW)
+        mixed=self.proof([cash(),{**cash(ex='2026-10-27',identifier=3),'currency':None}])
+        rows=self.close(125,'2026-10-27T14:45:00Z',mixed)
+        report=dividend_report(rows,NOW)['positions'][0]
+        self.assertEqual(report['verified_usd_subtotal_per_entry_unit'],'0.25')
+        self.assertIsNone(report['declared_gross_usd_per_entry_unit'])
+
+    def test_unknown_currency_cannot_be_forged_into_usd_value_or_legacy_proof(self):
+        from corporate_actions import LEGACY_USD_VERSION
+        proof=self.proof([{**cash(),'currency':None}]);rows=self.close(proof=proof)
+        for change in ({'declared_gross_usd_per_entry_unit':'0.25'},{'currency_verified':True}):
+            bad=copy.deepcopy(rows);r=json.loads(bad[0]['dividend_records_json']);r[0].update(change)
+            bad[0]['dividend_records_json']=json.dumps(r);bad[0]['dividend_records_sha256']=sha(r)
+            with self.assertRaises(ValueError):validate_ledger(bad,NOW)
+        proof['version']=LEGACY_USD_VERSION
+        proof['sha256']=sha({k:v for k,v in proof.items() if k!='sha256'})
+        with self.assertRaisesRegex(ValueError,'legacy dividend proof'):
             validate_corporate_history(proof,self.rows[0],END.isoformat(),NOW)
