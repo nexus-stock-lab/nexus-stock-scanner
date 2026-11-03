@@ -156,6 +156,9 @@ def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, ca
         research = json.loads(path.read_text())
         if research['kind'] != 'RESEARCH_ONLY' or timestamp_ns(research['prepared_at']) > timestamp_ns(at.isoformat()) or research['decision_time_jst'] != at.isoformat():
             raise ValueError('research was not frozen before decision')
+        if (not research.get('snapshot_sha256') or
+                research['snapshot_sha256']!=digest({k:v for k,v in research.items() if k!='snapshot_sha256'})):
+            raise ValueError('research snapshot proof mismatch')
         if digest(research['rows']) != research['source_sha256']:
             raise ValueError('research snapshot hash mismatch')
         # This is an acquisition diagnostic budget, never an entry eligibility rule.
