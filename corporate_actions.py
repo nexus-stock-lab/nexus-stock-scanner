@@ -2,7 +2,7 @@
 
 Observed prices are never rewritten. Fractional economic units are theoretical;
 this is not a broker quantity, rounding, or cash-in-lieu execution model.
-Ordinary domestic USD dividends are recorded separately, never treated as paid.
+Ordinary cash dividends are separate declarations, never treated as paid.
 Special/foreign distributions and unverified calendars remain blocked.
 """
 import hashlib
@@ -16,7 +16,8 @@ from historical_probe import timestamp_ns
 
 NY=ZoneInfo('America/New_York')
 SOURCE='https://data.alpaca.markets/v1/corporate-actions'
-VERSION='nexus_corporate_basis_v2'
+VERSION='nexus_corporate_basis_v3'
+LEGACY_USD_VERSION='nexus_corporate_basis_v2'
 LEGACY_VERSION='nexus_split_basis_v1'
 
 
@@ -55,14 +56,16 @@ def split_bill_calendar(row,ex):
 
 
 def cash_dividend(row,symbol,first,last):
-    if (row.get('kind')!='cash_dividends' or row.get('symbol')!=symbol or row.get('currency')!='USD' or
+    if (row.get('kind')!='cash_dividends' or row.get('symbol')!=symbol or row.get('currency') not in ('USD',None,'') or
             row.get('foreign') is not False or row.get('special') is not False or
             row.get('sub_type') not in (None,'') or row.get('due_bill_on_date') or row.get('due_bill_off_date')):
-        raise ValueError('ordinary domestic USD cash dividend not verified')
+        raise ValueError('ordinary cash dividend classification not verified')
     ex,record,paid=day(row.get('ex_date')),day(row.get('record_date')),day(row.get('payable_date'))
     if not first<=ex<=last or not ex<=record<=paid:
         raise ValueError('cash dividend dates invalid')
-    return {'kind':'cash_dividends','id':str(UUID(row['id'])),'symbol':symbol,'currency':'USD',
+    currency='USD' if row.get('currency')=='USD' else None
+    return {'kind':'cash_dividends','id':str(UUID(row['id'])),'symbol':symbol,'currency':currency,
+            'currency_verified':currency=='USD',
             'foreign':False,'special':False,'ex_date':ex.isoformat(),'record_date':record.isoformat(),
             'payable_date':paid.isoformat(),'rate':str(decimal(row.get('rate'))),
             'source_action_sha256':sha(row)}
@@ -148,7 +151,7 @@ def prepare_split_history(corporate,symbol,entry,end,now,evidence_uri):
 
 
 def validate_split_history(proof,trade,end,now):
-    if (not isinstance(proof,dict) or proof.get('version') not in (VERSION,LEGACY_VERSION) or
+    if (not isinstance(proof,dict) or proof.get('version') not in (VERSION,LEGACY_USD_VERSION,LEGACY_VERSION) or
             proof.get('symbol')!=trade['symbol'] or
             proof.get('entry_time_jst')!=trade['entry_time_jst'] or
             proof.get('source')!=SOURCE or not proof.get('evidence_uri')):
@@ -163,7 +166,7 @@ def validate_split_history(proof,trade,end,now):
         raise ValueError('split events proof mismatch')
     if proof['version']==LEGACY_VERSION and dividends:
         raise ValueError('legacy corporate proof cannot contain dividends')
-    if proof['version']==VERSION and sha(dividends)!=proof.get('cash_dividends_sha256'):
+    if proof['version'] in (VERSION,LEGACY_USD_VERSION) and sha(dividends)!=proof.get('cash_dividends_sha256'):
         raise ValueError('cash dividend proof mismatch')
     first=datetime.fromisoformat(trade['entry_time_jst']).astimezone(NY).date()
     last=datetime.fromisoformat(proof['coverage_end']).astimezone(NY).date()
@@ -182,6 +185,10 @@ def validate_split_history(proof,trade,end,now):
     dividend_dates=set()
     for e in dividends:
         cash_dividend(e,trade['symbol'],first,last)
+        if proof['version']==LEGACY_USD_VERSION and e.get('currency')!='USD':
+            raise ValueError('legacy dividend proof requires explicit USD')
+        if e.get('currency_verified',e.get('currency')=='USD') is not (e.get('currency')=='USD'):
+            raise ValueError('dividend currency confirmation invalid')
         if e['id']!=str(UUID(e['id'])) or e['id'] in ids or e['ex_date'] in dividend_dates or day(e['ex_date']) in dates:
             raise ValueError('ambiguous dividend identity or price basis')
         ids.add(e['id']);dividend_dates.add(e['ex_date'])
@@ -227,8 +234,9 @@ def declared_dividend_records(proof,trade,until):
         for split in proof['events']:
             if day(split['ex_date'])<ex:
                 factor*=decimal(split['new_rate'])/decimal(split['old_rate']);basis.append(split)
-        records.append({**e,'entry_unit_factor':str(factor),
-            'declared_gross_usd_per_entry_unit':str(decimal(e['rate'])*factor),
+        gross=str(decimal(e['rate'])*factor)
+        records.append({**e,'entry_unit_factor':str(factor),'declared_gross_per_entry_unit':gross,
+            'declared_gross_usd_per_entry_unit':gross if e['currency']=='USD' else None,
             'payment_verified':False,'proof_sha256':proof['sha256'],
             'source':proof['source'],'evidence_uri':proof['evidence_uri'],
             'observed_at':proof['retrieved_at'],'basis_splits':basis})
@@ -263,8 +271,16 @@ def read_dividend_records(trade,now=None):
             factor*=ratio
         if factor!=decimal(r['entry_unit_factor']):
             raise ValueError('persisted dividend split factor invalid')
-        if decimal(r['rate'])*decimal(r['entry_unit_factor'])!=decimal(r['declared_gross_usd_per_entry_unit']):
+        gross=r.get('declared_gross_per_entry_unit',r.get('declared_gross_usd_per_entry_unit'))
+        if decimal(r['rate'])*decimal(r['entry_unit_factor'])!=decimal(gross):
             raise ValueError('persisted dividend calculation invalid')
+        if r.get('currency_verified',r.get('currency')=='USD') is not (r.get('currency')=='USD'):
+            raise ValueError('persisted dividend currency confirmation invalid')
+        if r.get('currency')=='USD':
+            if decimal(r.get('declared_gross_usd_per_entry_unit'))!=decimal(gross):
+                raise ValueError('persisted USD dividend calculation invalid')
+        elif r.get('declared_gross_usd_per_entry_unit') is not None:
+            raise ValueError('unverified currency must not be valued as USD')
         if r.get('source')!=SOURCE or not r.get('evidence_uri') or not isinstance(r.get('proof_sha256'),str) or len(r['proof_sha256'])!=64 or any(c not in '0123456789abcdef' for c in r['proof_sha256']):
             raise ValueError('persisted dividend provenance invalid')
         observed=timestamp_ns(r['observed_at'])
@@ -282,8 +298,12 @@ def dividend_report(ledger,now):
         for r in records:
             observations.append({**r,'status':'PAYABLE_DATE_REACHED_PAYMENT_UNVERIFIED' if day(r['payable_date'])<=today else
                                  'AWAITING_DECLARED_PAYABLE_DATE'})
+        known=[r for r in records if r.get('currency')=='USD'];unknown=len(records)-len(known)
+        subtotal=str(sum((Decimal(r['declared_gross_usd_per_entry_unit']) for r in known),Decimal(0))) if known else None
         positions.append({'trade_id':trade['trade_id'],'symbol':trade['symbol'],
-            'declared_gross_usd_per_entry_unit':str(sum((Decimal(r['declared_gross_usd_per_entry_unit']) for r in records),Decimal(0))),
+            'declared_gross_usd_per_entry_unit':subtotal if not unknown else None,
+            'verified_usd_subtotal_per_entry_unit':subtotal,
+            'currency_unverified_records':unknown,
             'payment_verified':False,'records':observations})
     return {'mode':'DECLARED_ENTITLEMENT_ONLY','included_in_price_return_or_r':False,
             'payment_verified':False,'positions':positions}
