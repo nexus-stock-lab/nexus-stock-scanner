@@ -6,6 +6,7 @@ import json
 import os
 import tempfile
 import unittest
+from unittest.mock import patch
 from datetime import timedelta
 from pathlib import Path
 
@@ -19,6 +20,10 @@ class PipelineTests(unittest.TestCase):
     def setUp(self):
         self.temp=tempfile.TemporaryDirectory();self.old=os.getcwd();os.chdir(self.temp.name)
         Path('output').mkdir();Path('input').mkdir()
+        # Public SEC transport only; the production cutoff check still executes.
+        self.sec=patch('official_data.public_json',return_value={'cik':1,'filings':{'recent':{
+            'accessionNumber':[],'acceptanceDateTime':[],'form':[],'reportDate':[]}}})
+        self.sec_mock=self.sec.start();self.addCleanup(self.sec.stop)
     def tearDown(self):
         os.chdir(self.old);self.temp.cleanup()
     def prepare(self):
@@ -51,6 +56,17 @@ class PipelineTests(unittest.TestCase):
         rows=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))
         self.assertEqual(len(rows),1)
         return rows
+    def test_new_disclosure_blocks_otherwise_valid_entry(self):
+        self.prepare();now=AT+timedelta(minutes=16)
+        self.sec_mock.return_value={'cik':1,'filings':{'recent':{'accessionNumber':['new'],
+            'acceptanceDateTime':[AT.isoformat()],'form':['8-K'],'reportDate':['2026-10-23']}}}
+        status=reconcile(now,fetch_probe=lambda *a:history(),calendar=lambda at:{'open':True},
+            clock=lambda:now,fetch_corporate=lambda *a:{'clear':True})
+        self.assertEqual(status['status'],'NO_VERIFIED_PLANS')
+        self.assertEqual(status['disclosure_checks'][0]['status'],'BLOCKED_NEW_DISCLOSURES')
+        self.assertEqual(json.loads(Path('output/verified_evidence.json').read_text())['plans'],[])
+        self.assertFalse(Path('input/trades.csv').exists())
+
     def test_entry_track_target_statistics_and_replay(self):
         rows=self.enter();now=AT+timedelta(hours=1)
         def fetch(symbol,start,end,*args):
