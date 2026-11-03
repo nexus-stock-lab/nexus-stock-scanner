@@ -17,6 +17,7 @@ from strategy_rules import VERSION, build_plan
 from official_data import collect_financials, public_json, verify_review_documents
 from market_provider import verified_reference, corporate_state, collect_interval, normalized_stream
 from review_intake import load_confirmed_review
+from disclosure_guard import fetch_disclosures
 from corporate_actions import prepare_corporate_history, split_replay_request
 
 PENDING = ('Official guidance/decline-cause review where evidence is missing',)
@@ -136,7 +137,7 @@ def prepare_plans(now, root=Path('input'), out=Path('output')):
     return report
 
 
-def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, calendar=session_at, clock=None, fetch_corporate=corporate_state):
+def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, calendar=session_at, clock=None, fetch_corporate=corporate_state, disclosure_fetcher=fetch_disclosures):
     at = latest_due_decision(now)
     out.mkdir(exist_ok=True, parents=True)
     # Never reuse an earlier invocation's validated evidence file.
@@ -176,6 +177,17 @@ def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, ca
         report['plan_audit']=frozen.get('audit',[]) if frozen else [{'status':'NO_PREDECISION_PLANS'}]
         # Every approved plan is priced; the diagnostic budget only limits the
         # remaining unapproved research candidates, never trade eligibility.
+        report['disclosure_checks']=[]
+        fresh=[]
+        for plan in plans:
+            check=disclosure_fetcher(plan,at,root,clock or (lambda:datetime.now(JST)))
+            report['disclosure_checks'].append({'symbol':plan['symbol'],**check})
+            if check.get('status')=='NO_NEW_SEC_FILINGS_OBSERVED':
+                fresh.append(plan)
+            else:
+                report['plan_audit'].append({'symbol':plan['symbol'],'status':'BLOCKED',
+                                            'reason':check.get('status','DISCLOSURE_CHECK_MISSING')})
+        plans=fresh
         approved={p['symbol'] for p in plans}
         ordered=[r for r in candidates if r['symbol'] in approved]+[r for r in candidates if r['symbol'] not in approved]
         budget = int(os.getenv('NEXUS_PRICE_DIAGNOSTIC_LIMIT', '30'))
