@@ -13,7 +13,7 @@ from historical_probe import probe, timestamp_ns
 from market_calendar import JST, latest_due_decision, next_decision, session_at
 from paper_engine import digest, run, settle, instant, validate_ledger, scenario_replay_request
 from price_policy import history_candidate
-from strategy_rules import VERSION, build_plan
+from strategy_rules import VERSION, build_plan, technical_levels
 from official_data import collect_financials, public_json, verify_review_documents
 from market_provider import verified_reference, corporate_state, collect_interval, normalized_stream
 from review_intake import load_confirmed_review
@@ -56,6 +56,24 @@ def freeze_research(now, root=Path('input'), out=Path('output'), collect_officia
         bars_path=out/'daily_bars'/(digest_symbol(row['symbol'])+'.json')
         if bars_path.exists():
             value['market_data'][row['symbol']]=json.loads(bars_path.read_text())
+    if collect_official and eligible:
+        # A morning/manual run can still have only the penultimate session.
+        # Do not freeze an unusable immutable snapshot and prevent a later retry.
+        ready=[]; rejected=[]
+        for row in eligible:
+            symbol=row['symbol']
+            try:
+                technical_levels(value['market_data'].get(symbol,{}).get('bars',[]),at)
+                ready.append(symbol)
+            except ValueError as exc:
+                rejected.append({'symbol':symbol,'reason':str(exc)})
+        write_json(out/'preparation_status.json',{
+            'decision_time_jst':at.isoformat(),
+            'status':'BAR_HISTORY_READY' if ready else 'NO_COMPLETE_BAR_HISTORY_RETRY_REQUIRED',
+            'ready_symbols':ready,'rejected':rejected,
+            'may_register':False})
+        if not ready:
+            raise ValueError('no candidate has complete prior-session bars; research not frozen; rerun prepare after data is available')
     monitored=list(eligible)
     ledger_path=root/'trades.csv'
     if ledger_path.exists():
@@ -135,6 +153,21 @@ def prepare_plans(now, root=Path('input'), out=Path('output')):
     write_json(root/'plans'/f'{at.date().isoformat()}.json',report)
     write_json(out/'plan_status.json',report)
     return report
+
+
+
+def scheduled_finalize(now, root=Path('input'), out=Path('output')):
+    """A delayed evening schedule must never become tomorrow's plan."""
+    local=now.astimezone(JST)
+    at=local.replace(hour=23,minute=45,second=0,microsecond=0)
+    if local.hour<12:at-=timedelta(days=1)
+    if not at-timedelta(minutes=10)<=local<=at:
+        report={'decision_time_jst':at.isoformat(),'status':'MISSED_PREDECISION_FINALIZE',
+                'observed_at':local.isoformat(),'plans_changed':False,
+                'reason':'Scheduled finalization arrived after decision; no retrospective or next-day plan'}
+        write_json(out/'plan_status.json',report)
+        return report
+    return prepare_plans(now,root,out)
 
 
 def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, calendar=session_at, clock=None, fetch_corporate=corporate_state, disclosure_fetcher=fetch_disclosures):
@@ -547,7 +580,10 @@ def main():
                        enabled=os.getenv('NEXUS_GEMINI_SHADOW_ENABLED')=='true')
         prepare_plans(datetime.now(JST))
     elif args.phase == 'finalize':
-        prepare_plans(now)
+        if os.getenv('NEXUS_EVENT_SCHEDULE')=='35 14 * * 1-5':
+            scheduled_finalize(now)
+        else:
+            prepare_plans(now)
     elif args.phase == 'reconcile':
         reconcile(now)
     else:
