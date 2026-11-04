@@ -1,0 +1,81 @@
+{
+  "status": "HISTORY_RECEIVED",
+  "symbol": "ABG",
+  "decision_time_jst": "2026-11-04T23:45:00+09:00",
+  "window_seconds": 60,
+  "feed": "sip",
+  "complete_pagination": true,
+  "records": 5,
+  "pages": [
+    {
+      "next_page_token": null,
+      "symbol": "ABG",
+      "trades": [
+        {
+          "c": [
+            " ",
+            "I"
+          ],
+          "i": 62879351200307,
+          "p": 206,
+          "s": 1,
+          "t": "2026-11-04T14:44:53.88538045Z",
+          "x": "T",
+          "z": "A"
+        },
+        {
+          "c": [
+            " ",
+            "I"
+          ],
+          "i": 71680123810124,
+          "p": 206,
+          "s": 17,
+          "t": "2026-11-04T14:44:48.256000543Z",
+          "x": "D",
+          "z": "A"
+        },
+        {
+          "c": [
+            " ",
+            "I"
+          ],
+          "i": 71680122245208,
+          "p": 205.7207,
+          "s": 2,
+          "t": "2026-11-04T14:44:35.250980676Z",
+          "x": "D",
+          "z": "A"
+        },
+        {
+          "c": [
+            " ",
+            "I"
+          ],
+          "i": 71680106911564,
+          "p": 205.96,
+          "s": 17,
+          "t": "2026-11-04T14:44:19.908703816Z",
+          "x": "D",
+          "z": "A"
+        },
+        {
+          "c": [
+            " ",
+            "I"
+          ],
+          "i": 71680105138008,
+          "p": 205.8548,
+          "s": 1,
+          "t": "2026-11-04T14:44:05.299491005Z",
+          "x": "D",
+          "z": "A"
+        }
+      ]
+    }
+  ],
+  "latest_market_time": "2026-11-04T14:44:53.88538045Z",
+  "paper_fill_created": false,
+  "warning": "Diagnostic only. Sale conditions, cancellations, corrections and as-of fill policy are not validated.",
+  "retrieved_at": "2026-11-05T00:54:18.364894+09:00"
+}

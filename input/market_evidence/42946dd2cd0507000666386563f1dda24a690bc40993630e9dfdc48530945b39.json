@@ -1,0 +1,45 @@
+{
+  "status": "HISTORY_RECEIVED",
+  "symbol": "MBUU",
+  "decision_time_jst": "2026-11-04T23:45:00+09:00",
+  "window_seconds": 60,
+  "feed": "sip",
+  "complete_pagination": true,
+  "records": 2,
+  "pages": [
+    {
+      "next_page_token": null,
+      "symbol": "MBUU",
+      "trades": [
+        {
+          "c": [
+            "@",
+            "I"
+          ],
+          "i": 22,
+          "p": 24.815,
+          "s": 45,
+          "t": "2026-11-04T14:44:25.637872707Z",
+          "x": "H",
+          "z": "C"
+        },
+        {
+          "c": [
+            "@",
+            "I"
+          ],
+          "i": 21,
+          "p": 24.815,
+          "s": 27,
+          "t": "2026-11-04T14:44:24.219612004Z",
+          "x": "H",
+          "z": "C"
+        }
+      ]
+    }
+  ],
+  "latest_market_time": "2026-11-04T14:44:25.637872707Z",
+  "paper_fill_created": false,
+  "warning": "Diagnostic only. Sale conditions, cancellations, corrections and as-of fill policy are not validated.",
+  "retrieved_at": "2026-11-05T00:54:17.170926+09:00"
+}
