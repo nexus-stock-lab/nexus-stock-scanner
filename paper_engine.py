@@ -297,7 +297,8 @@ def validate_ledger(ledger, now):
             marker=trade.get(field)
             if marker and (len(marker)!=64 or any(c not in '0123456789abcdef' for c in marker)):
                 raise ValueError('invalid persisted corporate hash')
-        if trade.get('rules_version') != VERSION:
+        from strategy_rules import LEGACY_VERSION
+        if trade.get('rules_version') not in (VERSION,LEGACY_VERSION):
             raise ValueError('persisted strategy version mismatch')
         read_dividend_records(trade,now)
         if trade.get('entry_price_policy') != POLICY:
