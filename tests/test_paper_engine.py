@@ -8,7 +8,7 @@ NOW=instant(AT)+timedelta(days=1)
 
 
 def fixture(symbol='TEST'):
-    p=dict(rules_version='nexus_rules_20261027_v1',symbol=symbol,signal='反発初動',decision_time_jst=AT,prepared_at=AT,
+    p=dict(rules_version=__import__('strategy_rules').VERSION,symbol=symbol,signal='反発初動',decision_time_jst=AT,prepared_at=AT,
            stop_price=90,target_price=120,
            checks={k:dict(status='PASS',source='fixture://official',rationale='test evidence',checked_at=AT) for k in CHECKS})
     q=dict(symbol=symbol,kind='trade',market_time=AT,retrieved_at=AT,price=100,

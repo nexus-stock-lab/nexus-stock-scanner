@@ -5,7 +5,8 @@ from zoneinfo import ZoneInfo
 
 from historical_probe import decision, timestamp_ns
 
-VERSION = 'nexus_rules_20261027_v1'
+LEGACY_VERSION = 'nexus_rules_20261027_v1'
+VERSION = 'nexus_rules_20261105_v2'
 NY = ZoneInfo('America/New_York')
 
 
@@ -92,6 +93,33 @@ def quoted_earnings_date(record):
     return day.isoformat()
 
 
+
+def earnings_review(record, at):
+    result=checked(record,at)
+    if record.get('date'):
+        if record.get('next_date_unannounced') is True:
+            raise ValueError('announced date cannot use recent-results exception')
+        if not earnings_clear(quoted_earnings_date(record),at):
+            raise ValueError('inside 3-session earnings exclusion window')
+        return {**result,'policy':'ANNOUNCED_DATE_3_SESSION_EXCLUSION'}
+    if record.get('next_date_unannounced') is not True:
+        raise ValueError('unannounced next earnings needs explicit human confirmation')
+    last=quoted_earnings_date({**record,'date':record.get('last_earnings_date')})
+    age=(at.astimezone(NY).date()-date.fromisoformat(last)).days
+    if not 0<=age<=30:
+        raise ValueError('last announced results outside 30-calendar-day window')
+    if date.fromisoformat(last)>datetime_from_publication(record['published_at']):
+        raise ValueError('last results date is later than its evidence publication')
+    return {**result,'policy':'UNANNOUNCED_NEXT_DATE_LAST_RESULTS_30D',
+            'last_earnings_date':last,'elapsed_calendar_days':age,
+            'next_earnings_date':None}
+
+
+def datetime_from_publication(value):
+    from datetime import datetime
+    return datetime.fromisoformat(value.replace('Z','+00:00')).astimezone(NY).date()
+
+
 def build_plan(row, bars, financials, review, at, prepared_at, technical_source):
     """Numeric checks plus separate source-backed qualitative clearances."""
     decision(at.isoformat())
@@ -112,10 +140,7 @@ def build_plan(row, bars, financials, review, at, prepared_at, technical_source)
     guidance = checked(review['guidance_not_lowered'],at)
     decline = checked(review['decline_explanation_verified'],at)
     checked(review['no_material_business_impairment'],at)
-    earning = checked(review['next_earnings'],at)
-    earnings_date = quoted_earnings_date(review['next_earnings'])
-    if not earnings_clear(earnings_date,at):
-        raise ValueError('inside 3-session earnings exclusion window')
+    earning = earnings_review(review['next_earnings'],at)
     if row['signal'] not in ('反発確認','反発初動'):
         raise ValueError('unrecognized signal')
     if number(row['avg_dollar_volume_20']) < 2_000_000 or number(row['close']) < 2:
