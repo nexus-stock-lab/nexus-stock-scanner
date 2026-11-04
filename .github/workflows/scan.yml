@@ -26,6 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 300
     env:
+      NEXUS_EVENT_SCHEDULE: ${{ github.event.schedule }}
       PHASE: ${{ github.event_name == 'schedule' && (github.event.schedule == '0 9 * * 1-5' && 'prepare' || (github.event.schedule == '35 14 * * 1-5' && 'finalize' || (github.event.schedule == '5 15 * * 1-5' && 'reconcile' || 'track'))) || inputs.phase }}
     steps:
       - uses: actions/checkout@v4
@@ -135,6 +136,7 @@ jobs:
             output/scenario_monitoring.json
             output/scenario_exit_status.json
             output/plan_status.json
+            output/preparation_status.json
             output/candidates.csv
             output/report.json
             output/secondary_review.csv
