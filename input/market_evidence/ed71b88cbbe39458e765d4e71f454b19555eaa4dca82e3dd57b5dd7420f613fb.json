@@ -1,0 +1,69 @@
+{
+  "status": "HISTORY_RECEIVED",
+  "symbol": "CIGI",
+  "decision_time_jst": "2026-11-05T23:45:00+09:00",
+  "window_seconds": 60,
+  "feed": "sip",
+  "complete_pagination": true,
+  "records": 4,
+  "pages": [
+    {
+      "next_page_token": null,
+      "symbol": "CIGI",
+      "trades": [
+        {
+          "c": [
+            "@",
+            "I"
+          ],
+          "i": 3,
+          "p": 99.01,
+          "s": 10,
+          "t": "2026-11-05T14:44:42.158269088Z",
+          "x": "C",
+          "z": "C"
+        },
+        {
+          "c": [
+            "@",
+            "I"
+          ],
+          "i": 2,
+          "p": 99,
+          "s": 90,
+          "t": "2026-11-05T14:44:42.158267754Z",
+          "x": "C",
+          "z": "C"
+        },
+        {
+          "c": [
+            "@",
+            "I"
+          ],
+          "i": 3,
+          "p": 99.01,
+          "s": 10,
+          "t": "2026-11-05T14:44:42.157788133Z",
+          "x": "Y",
+          "z": "C"
+        },
+        {
+          "c": [
+            "@",
+            "I"
+          ],
+          "i": 2,
+          "p": 99,
+          "s": 90,
+          "t": "2026-11-05T14:44:42.157784169Z",
+          "x": "Y",
+          "z": "C"
+        }
+      ]
+    }
+  ],
+  "latest_market_time": "2026-11-05T14:44:42.158269088Z",
+  "paper_fill_created": false,
+  "warning": "Diagnostic only. Sale conditions, cancellations, corrections and as-of fill policy are not validated.",
+  "retrieved_at": "2026-11-06T00:57:16.810468+09:00"
+}

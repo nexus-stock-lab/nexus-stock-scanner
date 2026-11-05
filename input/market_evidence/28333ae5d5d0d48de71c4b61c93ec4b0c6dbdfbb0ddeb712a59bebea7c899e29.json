@@ -1,0 +1,33 @@
+{
+  "status": "HISTORY_RECEIVED",
+  "symbol": "LEN.B",
+  "decision_time_jst": "2026-11-05T23:45:00+09:00",
+  "window_seconds": 60,
+  "feed": "sip",
+  "complete_pagination": true,
+  "records": 1,
+  "pages": [
+    {
+      "next_page_token": null,
+      "symbol": "LEN.B",
+      "trades": [
+        {
+          "c": [
+            " ",
+            "I"
+          ],
+          "i": 52983546067013,
+          "p": 90.42,
+          "s": 20,
+          "t": "2026-11-05T14:44:26.902758694Z",
+          "x": "V",
+          "z": "A"
+        }
+      ]
+    }
+  ],
+  "latest_market_time": "2026-11-05T14:44:26.902758694Z",
+  "paper_fill_created": false,
+  "warning": "Diagnostic only. Sale conditions, cancellations, corrections and as-of fill policy are not validated.",
+  "retrieved_at": "2026-11-06T00:57:19.269302+09:00"
+}
