@@ -1,0 +1,72 @@
+{
+  "kind": "SOURCE_REVIEW_DRAFT",
+  "packet": {
+    "kind": "SOURCE_REVIEW_DRAFT",
+    "symbol": "LOGI",
+    "rules_version": "nexus_rules_20261105_v2",
+    "decision_time_jst": "2026-11-05T23:45:00+09:00",
+    "financial_evidence_sha256": "4d0643d184edf83f34ea40f27814ec83931b16387e9b485b546dba7298c39fac",
+    "reviewed_at": "",
+    "reviewer_id": "",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": true,
+        "source": "https://www.sec.gov/Archives/edgar/data/1032975/000103297526000059/exhibit991q2fy27.htm",
+        "evidence_sha256": "34c743d21ac1dfb13d3134b27f1cf5350f7a8ab75c21ac94adc000256a9ad480",
+        "excerpt": "Sales $1,360 - $1,430 million",
+        "rationale": "2026-07-28のQ1公式発表はFY27通期売上予想を提示せず、Q2売上予想は11.85〜12.20億ドル。今回のQ2実績12.18838億ドルはその範囲内。2026-10-27発表のQ3売上13.60〜14.30億ドルは別四半期の初回正式レンジであり、同一期間の既発表レンジ引下げとは区別する。供給事故によるQ3売上影響の試算は7月の最大2億ドルから今回0.7〜0.8億ドルへ縮小。通期予想がないことを『通期据え置き』とは呼ばない。最新IRニュース一覧は10月28日10-Qを先頭とすることを画面で確認。Q3は前年比-4〜+1%の予想であり減収リスクは残る。比較元: https://ir.logitech.com/news/news-details/2026/Logitech-Announces-Q1-Fiscal-Year-2027-Results/default.aspx",
+        "published_at": "2026-10-27T20:07:31.000Z",
+        "checked_at": "2026-11-05T21:30:06.458551+09:00"
+      },
+      "decline_explanation_verified": {
+        "value": true,
+        "source": "https://www.sec.gov/Archives/edgar/data/1032975/000103297526000059/exhibit991q2fy27.htm",
+        "evidence_sha256": "34c743d21ac1dfb13d3134b27f1cf5350f7a8ab75c21ac94adc000256a9ad480",
+        "excerpt": "approximately $70 to $80 million",
+        "rationale": "下落局面の検討に用いる一時的な事業要因として、供給元半導体工場の6月末事故・操業停止を公式資料で確認。9月に再開、年末までの全面復旧とFY27 Q4での影響おおむね解消を会社が見込む。事故の存在と復旧見通しを一時的要因の根拠として採用する提案であり、株価下落の唯一・最大原因を因果的に証明したものではない。まだ必要供給量に届かず、復旧遅延・機会損失継続のリスクがある。",
+        "published_at": "2026-10-27T20:07:31.000Z",
+        "checked_at": "2026-11-05T21:30:06.458551+09:00"
+      },
+      "no_material_business_impairment": {
+        "value": true,
+        "source": "https://www.sec.gov/Archives/edgar/data/1032975/000103297526000063/logi-20260930.htm",
+        "evidence_sha256": "013b439743061d90ee48db0c1a17cb0890c2a11dc75b529a071ffa7f4bc4e885",
+        "excerpt": "sufficient liquidity to fund our operations for at least the next 12 months",
+        "rationale": "10-Qの流動性・偶発債務・内部統制・リスク要因を読んだ範囲で、恒久的な重大事業毀損を認定する状態ではないと判断する案。会社は少なくとも12か月の運転資金を賄う流動性を見込み、CEO/CFOは開示統制の有効性を結論、係争中案件の解決が財政状態・キャッシュフロー・業績に重大な悪影響を及ぼすとは見込んでいない。Q2営業黒字と現金15.1億ドルも併せて評価。語句の不在を根拠としない。訴訟結果・供給事故・関税・部品価格に関するリスクは残り、無事故・無不正を保証しない。",
+        "published_at": "2026-10-28T20:18:31.000Z",
+        "checked_at": "2026-11-05T21:30:06.458551+09:00"
+      },
+      "next_earnings": {
+        "value": true,
+        "source": "https://www.sec.gov/Archives/edgar/data/1032975/000103297526000059/exhibit991q2fy27.htm",
+        "evidence_sha256": "34c743d21ac1dfb13d3134b27f1cf5350f7a8ab75c21ac94adc000256a9ad480",
+        "excerpt": "October 27, 2026",
+        "rationale": "直近正式決算発表は2026-10-27。NY日付2026-11-05では経過9暦日でv2の0〜30日条件内。公式Events画面でUpcoming EventsがThere are no events scheduledと表示され、最新News画面にも次回決算日公表がないことを確認。次回日程は未公表として扱い、第三者の2027年1月推定日は使わない。正式日程公表後は3米国営業日前〜当日の除外を優先。イベント確認先: https://ir.logitech.com/events-presentations/all-events-presentations/default.aspx",
+        "published_at": "2026-10-27T20:07:31.000Z",
+        "checked_at": "2026-11-05T21:30:06.458551+09:00",
+        "date": "",
+        "next_date_unannounced": true,
+        "last_earnings_date": "2026-10-27"
+      }
+    }
+  },
+  "review_notes": {
+    "status": "UNAPPROVED_PROPOSAL_ONLY",
+    "signal": "反発初動",
+    "reference_price_date": "2026-11-04",
+    "reference_close": 100.12000274658203,
+    "stop_price": 92.69999694824219,
+    "target_price": 113.05999755859375,
+    "rr_at_reference_close": 1.7439332479911163,
+    "rr_1_5_max_price_cent_safe": 100.84,
+    "entry_price_unverified": true,
+    "approval_does_not_register_trade": true,
+    "expires_at": "2026-11-05T23:45:00+09:00",
+    "risks": [
+      "供給事故と株価下落の完全な因果関係は確定していない",
+      "通期売上予想は未公表。Q3の前年比減収予想を見通し据え置きと誤認しない",
+      "会社の復旧見通しは将来予想であり遅延し得る",
+      "23:45の検証済み価格と最終R:R、新規開示・企業行動確認が必要"
+    ]
+  }
+}
