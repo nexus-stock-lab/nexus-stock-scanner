@@ -1,0 +1,44 @@
+{
+  "status": "HISTORY_RECEIVED",
+  "symbol": "TV",
+  "decision_time_jst": "2026-11-06T23:45:00+09:00",
+  "window_seconds": 60,
+  "feed": "sip",
+  "complete_pagination": true,
+  "records": 2,
+  "pages": [
+    {
+      "next_page_token": null,
+      "symbol": "TV",
+      "trades": [
+        {
+          "c": [
+            " ",
+            "I"
+          ],
+          "i": 54083254960706,
+          "p": 2.345,
+          "s": 1,
+          "t": "2026-11-06T14:44:16.00118879Z",
+          "x": "T",
+          "z": "A"
+        },
+        {
+          "c": [
+            " "
+          ],
+          "i": 54083242124854,
+          "p": 2.345,
+          "s": 200,
+          "t": "2026-11-06T14:44:04.105047239Z",
+          "x": "T",
+          "z": "A"
+        }
+      ]
+    }
+  ],
+  "latest_market_time": "2026-11-06T14:44:16.00118879Z",
+  "paper_fill_created": false,
+  "warning": "Diagnostic only. Sale conditions, cancellations, corrections and as-of fill policy are not validated.",
+  "retrieved_at": "2026-11-07T00:47:38.242344+09:00"
+}

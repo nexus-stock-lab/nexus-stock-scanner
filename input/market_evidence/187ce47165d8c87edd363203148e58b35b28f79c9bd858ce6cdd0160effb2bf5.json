@@ -1,0 +1,58 @@
+{
+  "status": "HISTORY_RECEIVED",
+  "symbol": "GOOS",
+  "decision_time_jst": "2026-11-06T23:45:00+09:00",
+  "window_seconds": 60,
+  "feed": "sip",
+  "complete_pagination": true,
+  "records": 3,
+  "pages": [
+    {
+      "next_page_token": null,
+      "symbol": "GOOS",
+      "trades": [
+        {
+          "c": [
+            " ",
+            "4",
+            "B"
+          ],
+          "i": 71679973148999,
+          "p": 9.0772,
+          "s": 100,
+          "t": "2026-11-06T14:44:57.461331858Z",
+          "x": "D",
+          "z": "A"
+        },
+        {
+          "c": [
+            " ",
+            "I"
+          ],
+          "i": 71679972290871,
+          "p": 9.1512,
+          "s": 3,
+          "t": "2026-11-06T14:44:44.527564804Z",
+          "x": "D",
+          "z": "A"
+        },
+        {
+          "c": [
+            " ",
+            "I"
+          ],
+          "i": 54083255096409,
+          "p": 9.16,
+          "s": 70,
+          "t": "2026-11-06T14:44:23.202622517Z",
+          "x": "T",
+          "z": "A"
+        }
+      ]
+    }
+  ],
+  "latest_market_time": "2026-11-06T14:44:57.461331858Z",
+  "paper_fill_created": false,
+  "warning": "Diagnostic only. Sale conditions, cancellations, corrections and as-of fill policy are not validated.",
+  "retrieved_at": "2026-11-07T00:47:37.611413+09:00"
+}
