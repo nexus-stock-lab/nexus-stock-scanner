@@ -115,9 +115,12 @@ def digest_symbol(symbol):
     return hashlib.sha256(symbol.encode()).hexdigest()
 
 
-def prepare_plans(now, root=Path('input'), out=Path('output')):
-    at=next_decision(now)
-    path=root/'research'/f'{at.date().isoformat()}.json'
+def prepare_plans(now, root=Path('input'), out=Path('output'),at=None,rolling=False):
+    from entry_schedule import session_date,plan_path
+    at=at or next_decision(now)
+    if now>at:raise ValueError('cannot prepare a past checkpoint')
+    day=session_date(at) if rolling else at.date().isoformat()
+    path=root/'research'/f'{day}.json'
     report={'decision_time_jst':at.isoformat(),'rules_version':VERSION,'plans':[],'audit':[],
             'prepared_at':now.isoformat()}
     if not path.exists():
@@ -134,8 +137,8 @@ def prepare_plans(now, root=Path('input'), out=Path('output')):
                 continue
             symbol=row['symbol']
             try:
-                review=load_confirmed_review(symbol,research['financials'].get(symbol,{}),at,now,root)
-                if review is None:
+                review=load_confirmed_review(symbol,research['financials'].get(symbol,{}),at,now,root,session_scope=rolling)
+                if review is None and not rolling:
                     review=reviews.get(at.date().isoformat(),{}).get(symbol)
                 if not review:
                     raise ValueError('official guidance, decline and earnings evidence missing')
@@ -150,7 +153,7 @@ def prepare_plans(now, root=Path('input'), out=Path('output')):
                 report['audit'].append({'symbol':symbol,'status':'BLOCKED','reason':str(exc)})
     report['sha256']=digest({k:v for k,v in report.items() if k!='sha256'})
     # Candidate plans may be refreshed before the decision; never after it.
-    write_json(root/'plans'/f'{at.date().isoformat()}.json',report)
+    write_json(plan_path(root,at) if rolling else root/'plans'/f'{at.date().isoformat()}.json',report)
     write_json(out/'plan_status.json',report)
     return report
 
@@ -170,8 +173,9 @@ def scheduled_finalize(now, root=Path('input'), out=Path('output')):
     return prepare_plans(now,root,out)
 
 
-def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, calendar=session_at, clock=None, fetch_corporate=corporate_state, disclosure_fetcher=fetch_disclosures):
-    at = latest_due_decision(now)
+def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, calendar=session_at, clock=None, fetch_corporate=corporate_state, disclosure_fetcher=fetch_disclosures,at=None,rolling=False):
+    from entry_schedule import session_date,plan_path
+    at = at or latest_due_decision(now)
     out.mkdir(exist_ok=True, parents=True)
     # Never reuse an earlier invocation's validated evidence file.
     (out/'verified_evidence.json').unlink(missing_ok=True)
@@ -183,12 +187,13 @@ def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, ca
         if not session['open']:
             report['status'] = 'NON_TRADING_SESSION'
             return report
-        path = root/'research'/f'{at.date().isoformat()}.json'
+        path = root/'research'/f'{session_date(at) if rolling else at.date().isoformat()}.json'
         if not path.exists():
             report['status'] = 'NO_PREDECISION_RESEARCH'
             return report
         research = json.loads(path.read_text())
-        if research['kind'] != 'RESEARCH_ONLY' or timestamp_ns(research['prepared_at']) > timestamp_ns(at.isoformat()) or research['decision_time_jst'] != at.isoformat():
+        same_decision=(session_date(datetime.fromisoformat(research['decision_time_jst']))==session_date(at)) if rolling else research['decision_time_jst']==at.isoformat()
+        if research['kind'] != 'RESEARCH_ONLY' or timestamp_ns(research['prepared_at']) > timestamp_ns(at.isoformat()) or not same_decision:
             raise ValueError('research was not frozen before decision')
         if (not research.get('snapshot_sha256') or
                 research['snapshot_sha256']!=digest({k:v for k,v in research.items() if k!='snapshot_sha256'})):
@@ -198,8 +203,8 @@ def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, ca
         # This is an acquisition diagnostic budget, never an entry eligibility rule.
         candidates = [r for r in research['rows'] if r.get('secondary_status') == '二次調査候補']
         report['research_candidates'] = len(candidates)
-        plan_path=root/'plans'/f'{at.date().isoformat()}.json'
-        frozen=json.loads(plan_path.read_text()) if plan_path.exists() else None
+        frozen_path=plan_path(root,at) if rolling else root/'plans'/f'{at.date().isoformat()}.json'
+        frozen=json.loads(frozen_path.read_text()) if frozen_path.exists() else None
         plans=[]
         if frozen is not None:
             if (frozen.get('rules_version')!=VERSION or frozen['decision_time_jst']!=at.isoformat()
@@ -227,7 +232,7 @@ def reconcile(now, root=Path('input'), out=Path('output'), fetch_probe=probe, ca
         if not 1 <= budget <= 200:
             raise ValueError('diagnostic budget must be 1..200')
         quotes=[]
-        requested=ordered[:max(budget,len(approved))]
+        requested=([r for r in ordered if r['symbol'] in approved] if rolling else ordered[:max(budget,len(approved))])
         for row in requested:
             symbol = row['symbol']
             result = fetch_probe(symbol, at, now, os.getenv('ALPACA_DATA_KEY',''), os.getenv('ALPACA_DATA_SECRET',''))
@@ -500,7 +505,7 @@ def phone_summary(out=Path('output')):
     lines = ['# NEXUS 仮想30トレード', '',
              f"登録 **{total['registered']}/30**・保有 {total['open']}・決済 {total['closed']}", '',
              '**仮想検証のみ。公式根拠・価格の確認がそろった計画だけを登録します。**', '',
-             '正式判定は日本時間23:45。直前60秒以内の最終有効取引を翌0:01以降に照合します。', '',
+             '通常取引中の米国時間9:45〜15:45に1時間ごと判定。事前計画と直前60秒以内の有効取引を、判定から16分以降に照合します。', '',
              'Alpaca SIP認証付き取得は2026-10-27にAAPLで成功。取消・訂正前の取引は除外します。', '',
              f"今回の状態: `{daily.get('status', 'RESEARCH_PREPARED')}`", '',
              '承認済み: 売上前年同期比プラス＋営業利益黒字/改善、決算前3営業日回避、20営業日安値ストップ、60営業日高値目標。公式見通し・下落理由が不明なら保留。', '',
@@ -566,7 +571,7 @@ def phone_summary(out=Path('output')):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('phase', choices=('prepare','finalize','reconcile','track'))
+    parser.add_argument('phase', choices=('prepare','finalize','reconcile','track','cycle'))
     args = parser.parse_args()
     now = datetime.now(JST)
     Path('output').mkdir(exist_ok=True)
@@ -578,7 +583,11 @@ def main():
         from gemini_review import shadow_reviews
         shadow_reviews(research,datetime.now(JST),Path('input'),Path('output'),
                        enabled=os.getenv('NEXUS_GEMINI_SHADOW_ENABLED')=='true')
-        prepare_plans(datetime.now(JST))
+        from rolling_runner import prepare_next
+        prepare_next(datetime.now(JST),clock=lambda:datetime.now(JST))
+    elif args.phase=='cycle':
+        from rolling_runner import cycle
+        cycle(now,clock=lambda:datetime.now(JST))
     elif args.phase == 'finalize':
         if os.getenv('NEXUS_EVENT_SCHEDULE')=='35 14 * * 1-5':
             scheduled_finalize(now)
