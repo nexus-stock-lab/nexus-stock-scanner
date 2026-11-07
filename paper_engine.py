@@ -61,8 +61,12 @@ def register(ledger, plans, quotes, now):
             if not isinstance(symbol, str) or not symbol.strip() or symbol != symbol.strip().upper():
                 raise ValueError('nonempty canonical symbol required')
             at = instant(plan['decision_time_jst'])
-            if (at.hour, at.minute, at.second, at.microsecond) != (23, 45, 0, 0) or at > now or timestamp_ns(plan['decision_time_jst']) % 1_000_000_000:
-                raise ValueError('decision must be past 23:45:00 JST')
+            from historical_probe import decision
+            from market_calendar import session_at
+            from entry_schedule import session_date
+            decision(plan['decision_time_jst'])
+            if at>now or not session_at(at)['open']:
+                raise ValueError('decision must be a past regular-session checkpoint')
             trade_id = symbol + '-' + at.isoformat()
             if any(t['trade_id'] == trade_id for t in result):
                 continue
@@ -70,6 +74,8 @@ def register(ledger, plans, quotes, now):
                 raise ValueError('30 trade lifetime limit')
             if any(t['symbol'] == symbol and t['status'] == 'OPEN' for t in result):
                 raise ValueError('symbol already open')
+            if any(t['symbol']==symbol and session_date(instant(t['entry_time_jst']))==session_date(at) for t in result):
+                raise ValueError('symbol already registered in this US session')
             if plan.get('rules_version') != VERSION:
                 raise ValueError('owner-approved strategy version required')
             if plan['signal'] not in SIGNALS:
@@ -297,8 +303,8 @@ def validate_ledger(ledger, now):
             marker=trade.get(field)
             if marker and (len(marker)!=64 or any(c not in '0123456789abcdef' for c in marker)):
                 raise ValueError('invalid persisted corporate hash')
-        from strategy_rules import LEGACY_VERSION
-        if trade.get('rules_version') not in (VERSION,LEGACY_VERSION):
+        from strategy_rules import LEGACY_VERSION,PREVIOUS_VERSION
+        if trade.get('rules_version') not in (VERSION,LEGACY_VERSION,PREVIOUS_VERSION):
             raise ValueError('persisted strategy version mismatch')
         read_dividend_records(trade,now)
         if trade.get('entry_price_policy') != POLICY:
@@ -333,11 +339,10 @@ def validate_ledger(ledger, now):
                     raise ValueError('corrupt persisted result: '+key)
 
 
-def run(now=None):
+def run(now=None,root=Path('input'),out=Path('output')):
     import csv
     from io import StringIO
     now = now or datetime.now(JST)
-    root, out = Path('input'), Path('output')
     root.mkdir(exist_ok=True); out.mkdir(exist_ok=True)
     path = root/'trades.csv'
     ledger = list(csv.DictReader(path.read_text(encoding='utf-8-sig').splitlines())) if path.exists() else []
@@ -392,7 +397,7 @@ def run(now=None):
     (out/'trade_log.csv').write_text(buf.getvalue(),encoding='utf-8-sig')
     s=report['statistics']['total']
     overdue=len(report['overdue_open_trades'])
-    (out/'summary.md').write_text(f"# NEXUS 仮想検証\n\n登録 {s['registered']}/30・保有 {s['open']}・決済 {s['closed']}・90日期限超過 {overdue}\n\n23:45以前60秒以内の最終有効取引を基準価格とし、翌0:01以降に照合。SIP履歴の認証付き取得は確認済みです。\n\n業績・ニュース・支持線確認の完全自動化は未完成です。\n",encoding='utf-8')
+    (out/'summary.md').write_text(f"# NEXUS 仮想検証\n\n登録 {s['registered']}/30・保有 {s['open']}・決済 {s['closed']}・90日期限超過 {overdue}\n\n通常取引中の毎時45分を判定時刻とし、直前60秒以内の最終有効取引を16分以降に照合。SIP履歴の認証付き取得は確認済みです。\n\n業績・ニュースの根拠付き承認が必要です。\n",encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False,indent=2))
 
 if __name__=='__main__':
