@@ -4,15 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       phase:
-        description: 'prepare=広域調査 / finalize=正式計画 / reconcile=価格照合 / track=保有追跡'
+        description: 'prepare=広域調査 / cycle=時間別判定・照合 / track=保有追跡（finalize/reconcileは旧方式の診断）'
         type: choice
-        options: [prepare, finalize, reconcile, track, gemini_probe, ir_probe, gemini_ir_probe]
+        options: [prepare, cycle, finalize, reconcile, track, gemini_probe, ir_probe, gemini_ir_probe]
         default: prepare
   schedule:
     - cron: '0 9 * * 1-5'
-    - cron: '35 14 * * 1-5'
-    - cron: '5 15 * * 1-5'
-    - cron: '35 15-21 * * 1-5'
+    - cron: '5 13-22 * * 1-5'
 
 permissions:
   contents: write
@@ -27,7 +25,7 @@ jobs:
     timeout-minutes: 300
     env:
       NEXUS_EVENT_SCHEDULE: ${{ github.event.schedule }}
-      PHASE: ${{ github.event_name == 'schedule' && (github.event.schedule == '0 9 * * 1-5' && 'prepare' || (github.event.schedule == '35 14 * * 1-5' && 'finalize' || (github.event.schedule == '5 15 * * 1-5' && 'reconcile' || 'track'))) || inputs.phase }}
+      PHASE: ${{ github.event_name == 'schedule' && (github.event.schedule == '0 9 * * 1-5' && 'prepare' || 'cycle') || inputs.phase }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -137,6 +135,7 @@ jobs:
             output/scenario_exit_status.json
             output/plan_status.json
             output/preparation_status.json
+            output/cycle_status.json
             output/candidates.csv
             output/report.json
             output/secondary_review.csv
