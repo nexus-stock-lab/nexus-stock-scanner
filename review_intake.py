@@ -15,6 +15,7 @@ from strategy_rules import VERSION, checked
 
 NAMES=('guidance_not_lowered','decline_explanation_verified',
        'no_material_business_impairment','next_earnings')
+DELEGATION='owner_20261107_paper_only'
 
 
 def unique_object(pairs):
@@ -25,7 +26,7 @@ def unique_object(pairs):
     return result
 
 
-def load_confirmed_review(symbol,financials,at,now,root=Path('input')):
+def load_confirmed_review(symbol,financials,at,now,root=Path('input'),session_scope=False):
     """Return None if no packet exists; reject invalid packets without fallback.
 
     Writing CONFIRMED_SOURCE_REVIEW is an explicit semantic attestation by the
@@ -34,18 +35,27 @@ def load_confirmed_review(symbol,financials,at,now,root=Path('input')):
     """
     if not isinstance(symbol,str) or not re.fullmatch(r'[A-Z][A-Z0-9.]{0,14}',symbol):
         raise ValueError('review packet symbol invalid')
-    path=root/'review_inbox'/at.date().isoformat()/(symbol+'.json')
+    from entry_schedule import session_date,session_review_covers
+    path=root/'review_inbox'/(session_date(at) if session_scope else at.date().isoformat())/(symbol+'.json')
     if not path.exists():return None
     packet=json.loads(path.read_text(encoding='utf-8'),object_pairs_hook=unique_object)
     required={'kind','symbol','rules_version','decision_time_jst',
               'financial_evidence_sha256','reviewed_at','reviewer_id','assertions'}
-    if not isinstance(packet,dict) or set(packet)!=required:
+    delegated=isinstance(packet,dict) and packet.get('kind')=='DELEGATED_SOURCE_REVIEW'
+    if delegated:required=required|{'delegation_id'}
+    if not isinstance(packet,dict) or set(packet) not in (required,required|{'approval_scope'}):
         raise ValueError('review packet schema invalid')
-    if packet['kind']!='CONFIRMED_SOURCE_REVIEW':
+    if delegated:
+        if packet['delegation_id']!=DELEGATION or packet.get('reviewer_id')!='codex-delegated':
+            raise ValueError('delegated review needs owner authorization and truthful reviewer identity')
+    elif packet['kind']!='CONFIRMED_SOURCE_REVIEW':
         raise ValueError('review packet needs explicit semantic confirmation')
     if packet['symbol']!=symbol or financials.get('symbol')!=symbol:
         raise ValueError('review packet issuer mismatch')
-    if packet['rules_version']!=VERSION or packet['decision_time_jst']!=at.isoformat():
+    scope_ok=session_scope and session_review_covers(packet,at)
+    if packet.get('approval_scope') and not scope_ok:
+        raise ValueError('review packet session scope invalid')
+    if packet['rules_version']!=VERSION or (not scope_ok and packet['decision_time_jst']!=at.isoformat()):
         raise ValueError('review packet decision or rules mismatch')
     if (not re.fullmatch(r'[0-9a-f]{64}',str(packet['financial_evidence_sha256'])) or
             packet['financial_evidence_sha256']!=financials.get('evidence_sha256')):
@@ -68,5 +78,9 @@ def load_confirmed_review(symbol,financials,at,now,root=Path('input')):
             'financial_evidence_sha256':packet['financial_evidence_sha256'],
             **assertions,'review_packet_sha256':digest(packet),
             'reviewer_id':packet['reviewer_id'],'reviewed_at':packet['reviewed_at']}
+    if scope_ok:
+        review.update(approval_scope=packet['approval_scope'],approval_expires_at=packet['decision_time_jst'])
+    if delegated:
+        review.update(review_kind=packet['kind'],delegation_id=packet['delegation_id'])
     verify_review_documents(review,root,financials=financials)
     return review
