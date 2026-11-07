@@ -30,8 +30,8 @@ jobs:
           python - <<'PYTHON'
           from datetime import datetime
           from market_calendar import JST
-          from daily_runner import prepare_plans
-          prepare_plans(datetime.now(JST))
+          from rolling_runner import prepare_next
+          prepare_next(datetime.now(JST),clock=lambda:datetime.now(JST))
           PYTHON
       - name: Save approved review on selected branch
         run: |
@@ -45,4 +45,4 @@ jobs:
       - name: Explain next step
         run: |
           echo '## 確認済みレビューを保存しました' >> "$GITHUB_STEP_SUMMARY"
-          echo '仮想登録はまだ行っていません。23:45前のfinalizeと翌0:01以降の価格照合で、開示更新・価格・R:R等を再確認します。' >> "$GITHUB_STEP_SUMMARY"
+          echo '仮想登録はまだ行っていません。次の通常取引中の毎時45分に向けて計画を準備し、16分以降の価格照合で開示更新・価格・R:R等を確認します。' >> "$GITHUB_STEP_SUMMARY"

@@ -1,4 +1,4 @@
-"""Agreed NEXUS entry reference: latest valid trade in [23:44, 23:45] JST.
+"""NEXUS entry reference: latest valid trade within 60 seconds before checkpoint.
 
 This is a paper reference price, not evidence of an executable market order.
 Provider verification remains explicit and defaults to false in diagnostics.
@@ -26,7 +26,7 @@ def entry_reference_price(quote, symbol, at, now):
         raise ValueError('trade outside approved 60-second window')
     retrieved = timestamp_ns(quote['retrieved_at'])
     if not cutoff+16*60*NANO <= retrieved <= timestamp_ns(now.isoformat()):
-        raise ValueError('verification must be at/after 00:01 and not in future')
+        raise ValueError('verification must be at least 16 minutes after checkpoint and not in future')
     for field in ('history_complete','sale_conditions_verified','latest_valid_trade_verified','provider_verified'):
         if quote.get(field) is not True:
             raise ValueError('unverified entry evidence: '+field)

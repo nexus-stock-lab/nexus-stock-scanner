@@ -38,8 +38,9 @@ def timestamp_ns(value):
 def decision(value):
     timestamp_ns(value)
     dt = datetime.fromisoformat(value).astimezone(JST)
-    if (dt.hour,dt.minute,dt.second,dt.microsecond) != (23,45,0,0) or timestamp_ns(value) % 1_000_000_000:
-        raise ValueError('decision time must be 23:45:00 JST')
+    ny=dt.astimezone(ZoneInfo('America/New_York'))
+    if not (9<=ny.hour<=15 and (dt.minute,dt.second,dt.microsecond)==(45,0,0)) or timestamp_ns(value) % 1_000_000_000:
+        raise ValueError('decision time must be an hourly regular-session checkpoint at minute 45')
     return dt
 
 

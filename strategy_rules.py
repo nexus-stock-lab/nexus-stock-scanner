@@ -6,7 +6,8 @@ from zoneinfo import ZoneInfo
 from historical_probe import decision, timestamp_ns
 
 LEGACY_VERSION = 'nexus_rules_20261027_v1'
-VERSION = 'nexus_rules_20261105_v2'
+PREVIOUS_VERSION = 'nexus_rules_20261105_v2'
+VERSION = 'nexus_rules_20261105_v3'
 NY = ZoneInfo('America/New_York')
 
 
