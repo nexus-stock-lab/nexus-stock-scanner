@@ -1,0 +1,419 @@
+{
+  "kind": "SOURCE_REVIEW_DRAFT",
+  "prepared_at": "2026-11-10T07:19:52+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
+  "target_us_session": "2026-11-10",
+  "rules_version": "nexus_rules_20261105_v3",
+  "may_register": false,
+  "may_auto_promote": false,
+  "current_research_binding_verified": false,
+  "reference_research": {
+    "path": "input/research/2026-11-09.json",
+    "snapshot_sha256": "e82aca098f41a40af3e1b1c4823a715c9e05f87fa15173dd406d6d3576d298a9",
+    "secondary": 117,
+    "financial_obtained": 66,
+    "financial_pass": 32,
+    "financial_failed": 34,
+    "financial_unverified": 51,
+    "complete_daily_histories": 117,
+    "reference_rr_pass": 8,
+    "reference_rr_failed": 24,
+    "prices_are_not_fills": true
+  },
+  "current_blocker": "Morning scanner excludes all current New York date bars even after close. At 2026-11-10 morning JST, NY date is 2026-11-09, so the completed 2026-11-09 bar is excluded. Today's immutable research must not be built from missing previous-session bars. It becomes eligible after NY midnight (14:00 JST in November). Morning manual run 42707740487 was canceled; existing 18:00 JST prepare schedule is unchanged.",
+  "candidates": [
+    {
+      "symbol": "WSC",
+      "signal": "反発確認",
+      "source_review_status": "SEMANTIC_REVIEW_COMPLETED_PENDING_CURRENT_RESEARCH_BINDING",
+      "reference_financials": {
+        "symbol": "WSC",
+        "period_end": "2026-09-30",
+        "prior_period_end": "2025-09-30",
+        "revenue": 601338000,
+        "prior_revenue": 566841000,
+        "operating_income": 126246000,
+        "prior_operating_income": 118806000,
+        "revenue_tag": "Revenues",
+        "quality": {
+          "pass": true,
+          "revenue_growth_pct": 6.085833593547396,
+          "operating_income": 126246000,
+          "prior_operating_income": 118806000
+        },
+        "checked_at": "2026-11-09T19:13:38.748771+09:00",
+        "published_at": "2026-11-05T22:04:54.000Z",
+        "evidence_sha256": "dccb2d0b95bce532cc62040fcbe6db5b1e3625cf06e9ae9a2e8d7e6895542a2a",
+        "comparison_basis": "SAME_LATEST_FILING",
+        "comparison_accessions": [
+          "0001647088-26-000071"
+        ],
+        "rules_version": "nexus_rules_20261105_v3",
+        "submissions_sha256": "a9a09c0509deae15518f2b6ccff375133d7178360f6433e26651577c0839c8ee",
+        "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001647088.json",
+        "cik": "0001647088",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1647088/000164708826000071/wsc-20260930.htm",
+            "evidence_sha256": "f12b244e78867e4efc49f35b76503c562e4558f180a05188421c611d63d5920a",
+            "published_at": "2026-11-05T22:04:54.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1647088/000164708826000069/wsc-20261105.htm",
+            "evidence_sha256": "75db6d829adb5ef24502259e7a67542378f041087e70ee4929845ec1ed3ffe76",
+            "published_at": "2026-11-05T21:14:39.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1647088/000164708826000069/ex991-pressreleasexq32026.htm",
+            "evidence_sha256": "4013960ea1ce5babe337406654df6ee78b13be2fa48c9b71ed349681d9b9aec4",
+            "published_at": "2026-11-05T21:14:39.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1647088/000164708826000063/wsc-20261005.htm",
+            "evidence_sha256": "2d87fd176ce22a27dc7a0e9537cd2c5f5e6704bb304c2806f2c81f3ef6b6fd30",
+            "published_at": "2026-10-07T12:05:20.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "reference_price_date": "2026-11-06",
+      "reference_close": 18.86,
+      "reference_stop": 15.569999694824219,
+      "reference_target": 24.14390454955321,
+      "reference_rr": 1.6060498660868352,
+      "reference_max_rr_1_5_entry": 18.999561636715818,
+      "reference_levels_are_not_current_entry_approval": true,
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1647088/000164708826000069/ex991-pressreleasexq32026.htm",
+          "evidence_sha256": "4013960ea1ce5babe337406654df6ee78b13be2fa48c9b71ed349681d9b9aec4",
+          "excerpt": "raising our 2026 outlook for revenue to $2.340 billion",
+          "published_at": "2026-11-05T21:14:39.000Z",
+          "checked_at": "2026-11-10T07:19:52+09:00",
+          "rationale": "8月6日の同じ2026年通期売上予想23.00億ドルと11月5日の23.40億ドルを比較し、下方修正ではなく引き上げと判断。EBITDAは9.20億ドルを維持。直近IRニュース一覧とSEC提出一覧も確認。営業利益とは区別する。"
+        },
+        "decline_explanation_verified": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1647088/000164708826000071/wsc-20260930.htm",
+          "evidence_sha256": "f12b244e78867e4efc49f35b76503c562e4558f180a05188421c611d63d5920a",
+          "excerpt": "primarily due to lower non-residential construction project starts and increased economic uncertainty.",
+          "published_at": "2026-11-05T22:04:54.000Z",
+          "checked_at": "2026-11-10T07:19:52+09:00",
+          "rationale": "非住宅建設着工の減少と景気不確実性による需要減を10-Qで確認。会社IRは配送・設置増による短期の利益率圧迫も説明。株価下落を業種循環と移行費用で説明できる候補と判断するが、個々の日の株価の因果を証明したものではない。保管用ユニット需要減の長期化はリスク。"
+        },
+        "no_material_business_impairment": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1647088/000164708826000071/wsc-20260930.htm",
+          "evidence_sha256": "f12b244e78867e4efc49f35b76503c562e4558f180a05188421c611d63d5920a",
+          "excerpt": "The Company was in compliance with all debt covenants",
+          "published_at": "2026-11-05T22:04:54.000Z",
+          "checked_at": "2026-11-10T07:19:52+09:00",
+          "rationale": "資金繰り、債務契約、訴訟注記、内部統制と実績を確認。営業CF・営業利益は黒字、会社は今後12カ月の資金需要充足と債務契約順守を表明。訴訟の損失は会社見積もり上重要な悪影響なし。重大毀損を示す開示とは判断しないが、借入34.49億ドル、純負債/調整EBITDA3.7倍、前年同期比EBITDA減と訴訟の不確実性を残す。"
+        },
+        "next_earnings": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1647088/000164708826000069/ex991-pressreleasexq32026.htm",
+          "evidence_sha256": "4013960ea1ce5babe337406654df6ee78b13be2fa48c9b71ed349681d9b9aec4",
+          "excerpt": "November 5, 2026",
+          "published_at": "2026-11-05T21:14:39.000Z",
+          "checked_at": "2026-11-10T07:19:52+09:00",
+          "rationale": "直近正式決算は11月5日。IRの最新リリース、SEC提出一覧、イベント一覧を確認し次回決算の正式日程は未公表。11月10日のBaird会議は決算日として扱わない。NY11月10日は前回正式発表から5暦日で0〜30日例外の範囲。31日目は保留。日程公表時は3米国営業日前〜当日除外を優先。今日の会議による新規開示にも注意。",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-05"
+        }
+      },
+      "latest_ir_checks": [
+        "https://investors.willscot.com/news-releases",
+        "https://investors.willscot.com/financial-information/sec-filings",
+        "https://investors.willscot.com/events-and-presentations/events"
+      ]
+    },
+    {
+      "symbol": "CAVA",
+      "signal": "反発確認",
+      "source_review_status": "SEMANTIC_REVIEW_COMPLETED_PENDING_CURRENT_RESEARCH_BINDING",
+      "reference_financials": {
+        "symbol": "CAVA",
+        "period_end": "2026-10-04",
+        "prior_period_end": "2025-10-05",
+        "revenue": 356436000,
+        "prior_revenue": 292238000,
+        "operating_income": 15001000,
+        "prior_operating_income": 17121000,
+        "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "quality": {
+          "pass": true,
+          "revenue_growth_pct": 21.96771124905044,
+          "operating_income": 15001000,
+          "prior_operating_income": 17121000
+        },
+        "checked_at": "2026-11-09T19:14:54.747888+09:00",
+        "published_at": "2026-11-04T23:05:05.000Z",
+        "evidence_sha256": "98e24a04ec7395610f81b8558580f339b86e7e7afcf657549b566e4de7799680",
+        "comparison_basis": "SAME_LATEST_FILING",
+        "comparison_accessions": [
+          "0001628280-26-070344"
+        ],
+        "rules_version": "nexus_rules_20261105_v3",
+        "submissions_sha256": "dc77de93ca5d38360cf4b4276e0617be2755b3ff6513d79d2c47745a15096998",
+        "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001639438.json",
+        "cik": "0001639438",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1639438/000162828026070344/cava-20261004.htm",
+            "evidence_sha256": "8468a3d826baa37e5dbc289b380b9ba608b0b5a8dc517d306c283d8b5fc3ed0b",
+            "published_at": "2026-11-04T23:05:05.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1639438/000162828026070159/cava-20261104.htm",
+            "evidence_sha256": "c4ae252afed8a6745f39dd8df0b6a7a33fb579555440499ba970059d7bcf6dfc",
+            "published_at": "2026-11-04T21:13:56.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1639438/000162828026062616/cava-20260917.htm",
+            "evidence_sha256": "db110477aa2b7e2f88ed9c29def87f5fcb26a299adcf1f2a8891e7333e9f77dd",
+            "published_at": "2026-09-18T11:04:41.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1639438/000162828026062616/ex991sharebuybackannouncem.htm",
+            "evidence_sha256": "0f2b994938443c172c1a8694dad43e670f63b978cdfed6b7e80f139bc14333d7",
+            "published_at": "2026-09-18T11:04:41.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "reference_price_date": "2026-11-06",
+      "reference_close": 59.15,
+      "reference_stop": 50.33000183105469,
+      "reference_target": 75.64700317382812,
+      "reference_rr": 1.8704089114114664,
+      "reference_max_rr_1_5_entry": 60.45680236816406,
+      "reference_levels_are_not_current_entry_approval": true,
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1639438/000162828026070159/earningsrelease2026q3.htm",
+          "evidence_sha256": "93f75d9dacd19a27a7a76fe8430198a87818f0d70b067c87e0e6d7c94eab6151",
+          "excerpt": "6.0% to 7.0%",
+          "published_at": "2026-11-04T21:13:56.000Z",
+          "checked_at": "2026-11-10T07:19:52+09:00",
+          "rationale": "11月4日の公式決算資料に8月11日との同期間比較表がある。通期既存店売上予想は4.5〜6.5%から6.0〜7.0%へ引き上げ、新規出店数も76〜78へ増加。売上見通し下方修正とは判断しない。利益率とEBITDAの上限縮小、開業費増は別の悪材料として明記し、利益見通し全般が改善したとは扱わない。"
+        },
+        "decline_explanation_verified": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1639438/000162828026070344/cava-20261004.htm",
+          "evidence_sha256": "8468a3d826baa37e5dbc289b380b9ba608b0b5a8dc517d306c283d8b5fc3ed0b",
+          "excerpt": "While no ingredients in our supply chain were implicated",
+          "published_at": "2026-11-04T23:05:05.000Z",
+          "checked_at": "2026-11-10T07:19:52+09:00",
+          "rationale": "10-Qで会社の原材料は原因とされていない一方、Cyclosporaと生鮮食品への懸念が既存店売上に約150bpの下押しを与えたと会社が説明。外食業界への懸念という一時的要因で説明できる反発候補と判断するが、全株価下落の因果を証明したものではない。顧客心理の回復時期は不明、来客数伸びは0.1%で弱く利益率も低下。"
+        },
+        "no_material_business_impairment": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1639438/000162828026070344/cava-20261004.htm",
+          "evidence_sha256": "8468a3d826baa37e5dbc289b380b9ba608b0b5a8dc517d306c283d8b5fc3ed0b",
+          "excerpt": "the Company had no borrowings under the Credit Facility",
+          "published_at": "2026-11-04T23:05:05.000Z",
+          "checked_at": "2026-11-10T07:19:52+09:00",
+          "rationale": "10-Qの資金・負債・訴訟注記を確認。現預金2.979億ドル、借入なし、会社は12カ月の必要資金充足を見込む。訴訟は会社見積もり上重大な影響なし。役員に対する株主代表訴訟は存在するが会社への損害賠償請求ではなく初期段階。食品懸念の長期化と訴訟の不確実性は残る。重大毀損がないという絶対的保証ではない。"
+        },
+        "next_earnings": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1639438/000162828026070159/earningsrelease2026q3.htm",
+          "evidence_sha256": "93f75d9dacd19a27a7a76fe8430198a87818f0d70b067c87e0e6d7c94eab6151",
+          "excerpt": "November 4, 2026",
+          "published_at": "2026-11-04T21:13:56.000Z",
+          "checked_at": "2026-11-10T07:19:52+09:00",
+          "rationale": "直近の正式決算発表は11月4日。最新IRニュースと動的イベント一覧を実際に表示して確認し、次回正式決算日を確認できなかった。NY11月10日は6暦日経過で承認済み0〜30日例外の範囲。推定日は使用せず、正式発表が出た場合は3米国営業日前〜当日除外を優先する。31日目は保留。",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-04"
+        }
+      },
+      "latest_ir_checks": [
+        "https://investor.cava.com/news/default.aspx",
+        "https://investor.cava.com/events-and-presentations/default.aspx"
+      ]
+    }
+  ],
+  "other_priority_research": [
+    {
+      "symbol": "MTRX",
+      "status": "REVIEW_INCOMPLETE",
+      "reason": "FY2027売上見通しの比較と次回決算の最新日程確認が未完了。FY2026の過去の下方修正をFY2027の同期間比較として扱わない。",
+      "sources": [
+        "https://investors.matrixservicecompany.com/news-releases/news-release-details/matrix-service-company-reports-fiscal-year-2027-first-quarter",
+        "https://www.sec.gov/Archives/edgar/data/866273/000086627326000088/mtrx-20260930.htm"
+      ]
+    },
+    {
+      "symbol": "AMRC",
+      "status": "CURRENT_FINANCIAL_DATA_REQUIRED",
+      "reason": "11月9日正式決算日を企業IRで確認。11月9日セッションは決算当日除外。11月10日用には旧6月期数値を流用せず最新結果の照合が必要。",
+      "sources": [
+        "https://ir.ameresco.com/news-events/press-releases/detail/775/ameresco-to-announce-third-quarter-2026-financial-results"
+      ]
+    },
+    {
+      "symbol": "TPB",
+      "status": "CURRENT_FINANCIAL_DATA_REQUIRED",
+      "reason": "11月9日の正式決算説明会を企業IRで確認。11月10日用には旧6月期数値を流用せず最新結果の照合が必要。",
+      "sources": [
+        "https://www.turningpointbrands.com/investor-relations/news/news-details/2026/Turning-Point-Brands-to-Host-Q3-2026-Conference-Call/default.aspx"
+      ]
+    },
+    {
+      "symbol": "ARKO",
+      "status": "REVIEW_INCOMPLETE",
+      "reason": "調整EBITDA予想下限引上げは確認したが、それだけで売上見通し下方修正なしを認定しない。研究データで10-Q本文は未取得、追加確認未完了。",
+      "sources": [
+        "https://www.arkocorp.com/news-events/press-releases/detail/215/arko-corp-reports-third-quarter-2026-results-and-raises"
+      ]
+    },
+    {
+      "symbol": "HUBB",
+      "status": "REVIEW_INCOMPLETE",
+      "reason": "売上増と黒字・最新見通しは確認。株価下落を市場・業種/一時的要因で説明する公式根拠の確認が未完了。",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/48898/000162828026067421/exhibit991_10272026.htm"
+      ]
+    },
+    {
+      "symbol": "IPI",
+      "status": "REVIEW_INCOMPLETE",
+      "reason": "Trio生産見通し引上げは確認。売上見通しの同期間比較と最新IR日程の確認は未完了。生産増だけで売上見通し審査完了としない。",
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1421461/000142146126000026/ex991q32026pressrelease.htm"
+      ]
+    }
+  ],
+  "unreviewed_secondary_symbols": [
+    "FLY",
+    "SERV",
+    "SLVM",
+    "AQN",
+    "PPTA",
+    "ESAB",
+    "PLTK",
+    "XPOF",
+    "WYNN",
+    "PNNT",
+    "SARO",
+    "CSIQ",
+    "GRAB",
+    "STEP",
+    "IRMD",
+    "AEVA",
+    "JOBY",
+    "GPGI",
+    "CNL",
+    "PRKS",
+    "CHTR",
+    "ACRE",
+    "GROY",
+    "BIPC",
+    "FSLR",
+    "LBTYA",
+    "GOOS",
+    "CAR",
+    "KT",
+    "FG",
+    "ASA",
+    "VRTS",
+    "TGLS",
+    "SBGI",
+    "ZVRA",
+    "UIS",
+    "WU",
+    "FNF",
+    "UA",
+    "AU",
+    "UI",
+    "TTWO",
+    "ARQQ",
+    "FOXF",
+    "FOUR",
+    "ATMU",
+    "SPCE",
+    "WD",
+    "IONQ",
+    "LASR",
+    "HGV",
+    "HSY",
+    "CACC",
+    "OGC",
+    "LYFT",
+    "MTA",
+    "NXST",
+    "PLAY",
+    "ASIX",
+    "TPR",
+    "XRAY",
+    "UAA",
+    "AOSL",
+    "GTN",
+    "CARG",
+    "RGTI",
+    "TECX",
+    "ADUR",
+    "CELH",
+    "HLMN",
+    "PRCT",
+    "TU",
+    "AGO",
+    "XPER",
+    "B",
+    "SII",
+    "TWI",
+    "IMVT",
+    "CRTO",
+    "NHI",
+    "BG",
+    "ECVT",
+    "ERII",
+    "AS",
+    "PRM",
+    "SVV",
+    "ENTA",
+    "BBUC",
+    "TRC",
+    "ACHR",
+    "LZB",
+    "LZM",
+    "QBTS",
+    "CNM",
+    "LIF",
+    "RBA",
+    "CWCO",
+    "MMS",
+    "CAE",
+    "TAP",
+    "NVMI",
+    "BLX",
+    "LEU",
+    "FTAI",
+    "AUR",
+    "QCOM",
+    "FLOC",
+    "NXPI",
+    "BAH"
+  ],
+  "production_trades_confirmed": 0,
+  "required_continuation": "After current-session research exists, actually recheck latest SEC and issuer IR disclosures, compare current financial values and complete previous 20/60 bars, and create a NEW DELEGATED_SOURCE_REVIEW with current financial evidence hash and actual completion times only if all four semantic assertions remain supported. Never merely change this draft's kind, rebind old approvals, assume successful price acquisition, manually write the ledger, or backdate a plan. Then run main cycle before checkpoint and verify generated formal plans. Existing 23:45 task must not be changed."
+}
+
