@@ -1,0 +1,23 @@
+{
+  "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+  "published_at": "2026-08-10T19:09:21.000Z",
+  "retrieved_at": "2026-11-10T10:21:45+00:00",
+  "official_source_verified": true,
+  "issuer_cik": "0001286613",
+  "issuer_symbol": "LINC",
+  "text": "we observed changes in the student decision-making process that affected conversion from enrollment to start.\nRevenue 590.0 600.0",
+  "archive_scope": "SELECTED_VERBATIM_EXCERPTS_ONLY",
+  "retrieval_method": "SEC Exhibit 99.1 rendered text through web open/click; corroborated against rendered issuer IR August 10 release. This file is not full HTML and has no raw-HTML digest.",
+  "interpreted_facts": {
+    "fiscal_year": 2026,
+    "revenue_guidance_usd": [
+      590000000,
+      600000000
+    ],
+    "student_start_growth_guidance_pct": [
+      10,
+      14
+    ],
+    "temporary_factor": "申込みから入学への転換率と初日出席率が低下。会社は対策実施と再加速見込みを説明。"
+  }
+}
