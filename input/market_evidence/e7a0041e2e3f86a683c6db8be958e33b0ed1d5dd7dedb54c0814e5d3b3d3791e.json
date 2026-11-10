@@ -1,0 +1,94 @@
+{
+  "status": "HISTORY_RECEIVED",
+  "symbol": "LINC",
+  "decision_time_jst": "2026-11-10T23:45:00+09:00",
+  "window_seconds": 60,
+  "feed": "sip",
+  "complete_pagination": true,
+  "records": 6,
+  "pages": [
+    {
+      "next_page_token": null,
+      "symbol": "LINC",
+      "trades": [
+        {
+          "c": [
+            "@",
+            "4",
+            "I"
+          ],
+          "i": 107,
+          "p": 21.7019,
+          "s": 6,
+          "t": "2026-11-10T14:44:58.003423971Z",
+          "x": "D",
+          "z": "C"
+        },
+        {
+          "c": [
+            "@",
+            "I"
+          ],
+          "i": 7,
+          "p": 21.81,
+          "s": 2,
+          "t": "2026-11-10T14:44:19.531358036Z",
+          "x": "V",
+          "z": "C"
+        },
+        {
+          "c": [
+            "@",
+            "I"
+          ],
+          "i": 106,
+          "p": 21.59,
+          "s": 46,
+          "t": "2026-11-10T14:44:17.812193849Z",
+          "x": "D",
+          "z": "C"
+        },
+        {
+          "c": [
+            "@",
+            "I"
+          ],
+          "i": 105,
+          "p": 21.5424,
+          "s": 15,
+          "t": "2026-11-10T14:44:11.604650432Z",
+          "x": "D",
+          "z": "C"
+        },
+        {
+          "c": [
+            "@",
+            "4",
+            "I"
+          ],
+          "i": 104,
+          "p": 21.6843,
+          "s": 6,
+          "t": "2026-11-10T14:44:09.792386931Z",
+          "x": "D",
+          "z": "C"
+        },
+        {
+          "c": [
+            "@"
+          ],
+          "i": 33,
+          "p": 21.71,
+          "s": 100,
+          "t": "2026-11-10T14:44:00.519466191Z",
+          "x": "Q",
+          "z": "C"
+        }
+      ]
+    }
+  ],
+  "latest_market_time": "2026-11-10T14:44:58.003423971Z",
+  "paper_fill_created": false,
+  "warning": "Diagnostic only. Sale conditions, cancellations, corrections and as-of fill policy are not validated.",
+  "retrieved_at": "2026-11-11T00:51:32.933675+09:00"
+}
