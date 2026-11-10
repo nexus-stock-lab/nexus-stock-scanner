@@ -187,6 +187,194 @@
         "price_date": "2026-11-09",
         "rules_version": "nexus_rules_20261105_v3"
       }
+    },
+    {
+      "symbol": "LINC",
+      "signal": "反発初動",
+      "decision_time_jst": "2026-11-11T01:45:00+09:00",
+      "prepared_at": "2026-11-11T00:51:33.190801+09:00",
+      "stop_price": 17.110000610351562,
+      "target_price": 29.950000762939453,
+      "checks": {
+        "fundamentals": {
+          "status": "PASS",
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "rationale": "{'pass': True, 'revenue_growth_pct': 12.580893846055918, 'operating_income': 7696000.0, 'prior_operating_income': 6285000.0}; 2026年同一通期の売上見通しを8月10日590–600百万ドルから11月9日600–605百万ドルへ引上げ。両社公式IR本文の予想表とSEC添付99.1を比較した意味判断であり、下方修正語句の不在を根拠にしていない。学生入学者増加率は10–14%から10–12%へ上限縮小しており、これを売上見通し引上げと混同・隠蔽しない。調整EBITDA76–80百万ドル等は維持。11月10日のニュース一覧の最新は11月9日決算。",
+          "checked_at": "2026-11-10T10:23:12+00:00",
+          "evidence_sha256": "44009a09e19c12f60b527be5d46f4d2fb54132f7f0dac04cb9b2ce0031e3a447"
+        },
+        "earnings": {
+          "status": "PASS",
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "rationale": "直近の正式決算は2026年11月9日。11月10日NY判定の経過は1暦日。最新会社ニュース一覧（https://investors.lincolneducationalservices.com/news-releases）、SEC一覧（https://investors.lincolneducationalservices.com/financial-information/sec-filings）の11月9日8-K/10-Q、イベント画面（https://investors.lincolneducationalservices.com/events-and-presentations/upcoming-events）を実際に再読。イベント画面は今後の予定なし、過去11月9日決算説明会を表示し、新たな正式決算予定は掲載されていなかった。推定日を設定せずv3の0–30暦日例外で当NY日のみ審査継続。将来公表される日程やIR全体をSEC再検査だけで網羅できる保証はなく、正式予定判明時は3米国営業日前〜当日除外を優先。",
+          "checked_at": "2026-11-10T10:23:12+00:00",
+          "evidence_sha256": "44009a09e19c12f60b527be5d46f4d2fb54132f7f0dac04cb9b2ce0031e3a447",
+          "policy": "UNANNOUNCED_NEXT_DATE_LAST_RESULTS_30D",
+          "last_earnings_date": "2026-11-09",
+          "elapsed_calendar_days": 1,
+          "next_earnings_date": null
+        },
+        "decline_cause": {
+          "status": "PASS",
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+          "rationale": "8月10日公式資料はQ2入学者伸び率が想定約10%に対し約1%となった原因を申込から入学への転換・初日出席の低下と説明。同日株価は保存日足の8月7日終値40.99から8月10日30.77へ下落。11月9日正式資料では入学者+14.2%、転換率が従来水準へ改善、売上予想引上げを確認した。よって下落の具体的な業務要因について回復を伴う一時的要因と審査判断する。株価下落の全因果を会社が断定した資料ではなく、その関連付けはCodexの推論。9月の証券訴訟や入学者ガイダンス上限縮小など残存要因があり、全下落の解消や反発継続を保証しない。",
+          "checked_at": "2026-11-10T10:23:12+00:00",
+          "evidence_sha256": "74aa079e1bdbde894c0e0ecee9540f9fdca91bdb79b09f1de58b9c4988a96564"
+        },
+        "liquidity": {
+          "status": "PASS",
+          "source": "input/research/2026-11-10.json#daily-bars:LINC",
+          "rationale": "Frozen prior-session scan; original signal and liquidity thresholds",
+          "checked_at": "2026-11-11T00:51:33.190801+09:00"
+        },
+        "signal": {
+          "status": "PASS",
+          "source": "input/research/2026-11-10.json#daily-bars:LINC",
+          "rationale": "Frozen prior-session scan; original signal and liquidity thresholds",
+          "checked_at": "2026-11-11T00:51:33.190801+09:00"
+        },
+        "stop": {
+          "status": "PASS",
+          "source": "input/research/2026-11-10.json#daily-bars:LINC",
+          "rationale": "Minimum low of prior 20 completed US sessions",
+          "checked_at": "2026-11-11T00:51:33.190801+09:00"
+        },
+        "target": {
+          "status": "PASS",
+          "source": "input/research/2026-11-10.json#daily-bars:LINC",
+          "rationale": "Maximum high of prior 60 completed US sessions",
+          "checked_at": "2026-11-11T00:51:33.190801+09:00"
+        }
+      },
+      "rules_version": "nexus_rules_20261105_v3",
+      "financials": {
+        "symbol": "LINC",
+        "period_end": "2026-09-30",
+        "prior_period_end": "2025-09-30",
+        "revenue": 159177000,
+        "prior_revenue": 141389000,
+        "operating_income": 7696000,
+        "prior_operating_income": 6285000,
+        "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "quality": {
+          "pass": true,
+          "revenue_growth_pct": 12.580893846055918,
+          "operating_income": 7696000.0,
+          "prior_operating_income": 6285000.0
+        },
+        "checked_at": "2026-11-10T19:07:37.776725+09:00",
+        "published_at": "2026-11-09T21:58:46.000Z",
+        "evidence_sha256": "1679d1cc2ab06f0db73ee9f147e2649a50c7c4cdd8e5198511dcd2e702bc767e",
+        "comparison_basis": "SAME_LATEST_FILING",
+        "comparison_accessions": [
+          "0001140361-26-042810"
+        ],
+        "rules_version": "nexus_rules_20261105_v3",
+        "submissions_sha256": "224ef5070a9babe4a98ce92201b542981409de754a84e8fa0919edec15bf0ab0",
+        "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001286613.json",
+        "cik": "0001286613",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+            "evidence_sha256": "c5e0abaa234e9657ef0175400943a63a2b171da9b1525e69570b9049eea6021c",
+            "published_at": "2026-11-09T21:58:46.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_8k.htm",
+            "evidence_sha256": "59317512dfb9986efead4d45086c23d73a3ab95ca700e6fb328b2d264c95f718",
+            "published_at": "2026-11-09T21:18:52.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+            "evidence_sha256": "44009a09e19c12f60b527be5d46f4d2fb54132f7f0dac04cb9b2ce0031e3a447",
+            "published_at": "2026-11-09T21:18:52.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_8k.htm",
+            "evidence_sha256": "ad6c61396b54ca4e5a6243a267805e520a94168fbfc586955b732a8528d4d4fc",
+            "published_at": "2026-08-10T19:09:21.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "official_review": {
+        "symbol": "LINC",
+        "rules_version": "nexus_rules_20261105_v3",
+        "financial_evidence_sha256": "1679d1cc2ab06f0db73ee9f147e2649a50c7c4cdd8e5198511dcd2e702bc767e",
+        "guidance_not_lowered": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "44009a09e19c12f60b527be5d46f4d2fb54132f7f0dac04cb9b2ce0031e3a447",
+          "excerpt": "the Company is raising its full-year 2026 revenue guidance, narrowing its student start guidance, and reiterating its guidance for adjusted EBITDA, net income, diluted EPS and capital expenditures",
+          "rationale": "2026年同一通期の売上見通しを8月10日590–600百万ドルから11月9日600–605百万ドルへ引上げ。両社公式IR本文の予想表とSEC添付99.1を比較した意味判断であり、下方修正語句の不在を根拠にしていない。学生入学者増加率は10–14%から10–12%へ上限縮小しており、これを売上見通し引上げと混同・隠蔽しない。調整EBITDA76–80百万ドル等は維持。11月10日のニュース一覧の最新は11月9日決算。",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "checked_at": "2026-11-10T10:23:12+00:00",
+          "supporting_evidence": [
+            {
+              "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+              "evidence_sha256": "74aa079e1bdbde894c0e0ecee9540f9fdca91bdb79b09f1de58b9c4988a96564",
+              "scope": "2026年通期売上予想比較の旧値590–600百万ドル。選択抜粋だけのアーカイブ。"
+            }
+          ]
+        },
+        "decline_explanation_verified": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+          "evidence_sha256": "74aa079e1bdbde894c0e0ecee9540f9fdca91bdb79b09f1de58b9c4988a96564",
+          "excerpt": "we observed changes in the student decision-making process that affected conversion from enrollment to start.",
+          "rationale": "8月10日公式資料はQ2入学者伸び率が想定約10%に対し約1%となった原因を申込から入学への転換・初日出席の低下と説明。同日株価は保存日足の8月7日終値40.99から8月10日30.77へ下落。11月9日正式資料では入学者+14.2%、転換率が従来水準へ改善、売上予想引上げを確認した。よって下落の具体的な業務要因について回復を伴う一時的要因と審査判断する。株価下落の全因果を会社が断定した資料ではなく、その関連付けはCodexの推論。9月の証券訴訟や入学者ガイダンス上限縮小など残存要因があり、全下落の解消や反発継続を保証しない。",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "checked_at": "2026-11-10T10:23:12+00:00",
+          "supporting_evidence": [
+            {
+              "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+              "evidence_sha256": "44009a09e19c12f60b527be5d46f4d2fb54132f7f0dac04cb9b2ce0031e3a447",
+              "excerpt": "we saw an improvement in lead conversion rate to starts during the quarter to our historic levels.",
+              "meaning": "当四半期に転換率が従来水準へ改善したという会社の具体的説明と14.2%増の実績を確認。"
+            }
+          ]
+        },
+        "no_material_business_impairment": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+          "evidence_sha256": "c5e0abaa234e9657ef0175400943a63a2b171da9b1525e69570b9049eea6021c",
+          "excerpt": "the Lenders waived the event of default arising from share repurchases made while advances under the Amended and Restated Facility were outstanding.",
+          "rationale": "10-Qの債務注記・後発事象・資金繰り・規制・訴訟・内部統制を読んだ。23校は認定を維持し連邦支援参加資格があり、9か月営業CF61.515百万ドル、現金20.627百万ドル、リボルバー借入10百万ドル/未使用115百万ドル、不動産担保借入約15百万ドル、流動性約135.6百万ドルを確認。自社株買いによる契約違反は11月6日貸し手の明示的免除で解消、将来買戻しには流動性25百万ドル超等の制約。開示統制は会社評価で有効。現在の事業継続・資金調達・認定資格について重大な毀損が成立したとする根拠はこれらの内容から認めないため仮想審査を継続する。これは無リスク認定ではない。Bacha証券集団訴訟はQ1説明の虚偽を主張し損失額は推定不能、会社の否認を無実の証明にしない。既存の確定した会計誤謬との開示は確認できず、訴訟の帰結は未確定。Title IV資金依存約85%、2027年7月施行の認定規則影響は会社も評価中、設備投資67.37百万ドルで営業CFを超過、貸倒・生徒募集・新校損失リスクを残す。今後具体的な悪化開示があれば各時刻の既存SEC再検査と撤退規約を適用。",
+          "published_at": "2026-11-09T21:58:46.000Z",
+          "checked_at": "2026-11-10T10:23:12+00:00"
+        },
+        "next_earnings": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "44009a09e19c12f60b527be5d46f4d2fb54132f7f0dac04cb9b2ce0031e3a447",
+          "excerpt": "PARSIPPANY, N.J., November 9, 2026",
+          "rationale": "直近の正式決算は2026年11月9日。11月10日NY判定の経過は1暦日。最新会社ニュース一覧（https://investors.lincolneducationalservices.com/news-releases）、SEC一覧（https://investors.lincolneducationalservices.com/financial-information/sec-filings）の11月9日8-K/10-Q、イベント画面（https://investors.lincolneducationalservices.com/events-and-presentations/upcoming-events）を実際に再読。イベント画面は今後の予定なし、過去11月9日決算説明会を表示し、新たな正式決算予定は掲載されていなかった。推定日を設定せずv3の0–30暦日例外で当NY日のみ審査継続。将来公表される日程やIR全体をSEC再検査だけで網羅できる保証はなく、正式予定判明時は3米国営業日前〜当日除外を優先。",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "checked_at": "2026-11-10T10:23:12+00:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-09"
+        },
+        "review_packet_sha256": "95cc8abeb7779abfd06ef9f4df01e507472ef99a67e247ea78eee9ba217d74a3",
+        "reviewer_id": "codex-delegated",
+        "reviewed_at": "2026-11-10T10:23:12+00:00",
+        "approval_scope": "US_REGULAR_SESSION",
+        "approval_expires_at": "2026-11-11T05:45:00+09:00",
+        "review_kind": "DELEGATED_SOURCE_REVIEW",
+        "delegation_id": "owner_20261107_paper_only"
+      },
+      "technical_levels": {
+        "stop_price": 17.110000610351562,
+        "target_price": 29.950000762939453,
+        "price_date": "2026-11-09",
+        "rules_version": "nexus_rules_20261105_v3"
+      }
     }
   ],
   "quotes": [
@@ -215,6 +403,33 @@
       "warning": "Paper reference as observed at retrieval; later vendor revisions may differ.",
       "provider_validation": "Alpaca historical SIP; complete pagination; sale/update conditions; XNYS regular session",
       "corporate_evidence_uri": "input/market_evidence/a7f3a456b6a67a8b2e3815cc84ed995664763e66d7720459d3aec5f8a3a41a59.json"
+    },
+    {
+      "symbol": "LINC",
+      "kind": "trade",
+      "entry_policy": "nexus_asof_60s_v1",
+      "decision_time_jst": "2026-11-11T01:45:00+09:00",
+      "market_time": "2026-11-10T16:44:56.735283849Z",
+      "retrieved_at": "2026-11-11T02:50:20.152015+09:00",
+      "price": 23.47,
+      "source": "Alpaca historical SIP",
+      "evidence_uri": "input/market_evidence/84932243dd12de3eb32bfe08d9bc34a9380f89868184f6a6f0252083ca96cc16.json",
+      "history_complete": true,
+      "sale_conditions_verified": true,
+      "latest_valid_trade_verified": true,
+      "provider_verified": true,
+      "trade_id": 26,
+      "exchange": "J",
+      "tape": "C",
+      "conditions": [
+        "@",
+        "F"
+      ],
+      "update_state": null,
+      "reference_age_seconds": 3.264716151,
+      "warning": "Paper reference as observed at retrieval; later vendor revisions may differ.",
+      "provider_validation": "Alpaca historical SIP; complete pagination; sale/update conditions; XNYS regular session",
+      "corporate_evidence_uri": "input/market_evidence/b701feba709d3617941a35e5e5865a8595063c35883af916ffd2205f0ba5654f.json"
     }
   ],
   "streams": {},
@@ -249,6 +464,22 @@
         "selected_exit_trades": [],
         "min_price": 22.73,
         "max_price": 23.6827
+      }
+    },
+    {
+      "trade_id": "LINC-2026-11-10T23:45:00+09:00",
+      "stream": {
+        "coverage_start": "2026-11-11T01:38:57.868986+09:00",
+        "coverage_end": "2026-11-11T02:34:23.920688+09:00",
+        "complete": true,
+        "corporate_actions_clear": true,
+        "source": "Alpaca historical SIP",
+        "evidence_uri": "input/market_evidence/112dcabb5fa121852802bc582f044172ef43bb97b252b7a1594f3c9ebb9ab414.json,input/market_evidence/9c3ac62bfde5f2e41ffe6efc039275c5330c1c88810693f107fec28a1a50f11a.json,input/market_evidence/557d03b518732cc831aa425ef025a19cc6c21aa22126ea47ddf6cf85b0331e8b.json,input/market_evidence/7cdb23750705a970576781b17e658f554c74b5f51072f27ff657e0fd54541933.json,input/market_evidence/d20fc6cfb8ad51bdb576298cd7fccf0b48fa0d4c1e8abee2f3733ae51f9c1c66.json,input/market_evidence/9125cb37c0f24185fa0bca896d790bab689fb2b64bc9dde119d1dfeaa41ac403.json,input/market_evidence/f459c540b18c745c9bc25e16f3c5d4918fdcb8f7fbfea6c56244782bc7a56a9c.json,input/market_evidence/f12a867fb775e22e352001b13d705d8a8272235cef6d70711e603f4c285343ef.json,input/market_evidence/61b92223d0b4a3b47b39260e2047434a60501f7c56f43825081df3a977ae922d.json,input/market_evidence/d26c690ade770c6600e21375409f1bbb243ce171ecaeee760fe3890a78c4fbcc.json,input/market_evidence/121bc667a14180bfd552c2884f3e05dd22a112c6fc6a70891e91f761893d4b60.json,input/market_evidence/b69c42a8cb6b3ceab6485b5e547a175009cdc8ae95608d9590d2b80a75823880.json",
+        "trade_count": 388,
+        "trades_sha256": "fe638ab2c2dd6f5bb93bc86263ae352f5f89e7f0f763fcf9079b0944b4e80e47",
+        "selected_exit_trades": [],
+        "min_price": 22.67,
+        "max_price": 23.54
       }
     }
   ]
