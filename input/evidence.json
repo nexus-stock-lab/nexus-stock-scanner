@@ -1401,6 +1401,22 @@
         "min_price": 22.76,
         "max_price": 23.185
       }
+    },
+    {
+      "trade_id": "LINC-2026-11-10T23:45:00+09:00",
+      "stream": {
+        "coverage_start": "2026-11-11T06:27:26.929999+09:00",
+        "coverage_end": "2026-11-11T07:29:12.013900+09:00",
+        "complete": true,
+        "corporate_actions_clear": true,
+        "source": "Alpaca historical SIP",
+        "evidence_uri": "input/market_evidence/e10e04403cab29394c2b6e9d5dd253b1501ce3171df8af18df05bfcde030d368.json",
+        "trade_count": 0,
+        "trades_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "selected_exit_trades": [],
+        "min_price": null,
+        "max_price": null
+      }
     }
   ]
 }
