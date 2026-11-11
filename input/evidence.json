@@ -1449,6 +1449,22 @@
         "min_price": null,
         "max_price": null
       }
+    },
+    {
+      "trade_id": "LINC-2026-11-10T23:45:00+09:00",
+      "stream": {
+        "coverage_start": "2026-11-11T23:04:44.524004+09:00",
+        "coverage_end": "2026-11-12T00:39:10.936208+09:00",
+        "complete": true,
+        "corporate_actions_clear": true,
+        "source": "Alpaca historical SIP",
+        "evidence_uri": "input/market_evidence/9a65d77e85bc2fe5809bd2ed056d8ac98f3e752bd397fea1739589e0ae16636c.json,input/market_evidence/b776bbadbf00a2a5ab918be44e03e4f56088867e835e05e03e678dc4754ebe82.json,input/market_evidence/d46aea2c0722431a1cf15aad9262b8ce2bd0d0d7b03be579ae3a44d2675abd87.json,input/market_evidence/ca50f36fca102fd52379826f8fd0554410b250618e80380c5519df5be94c2d8a.json,input/market_evidence/e47d19dbf4e8a9af7b2d57c6d3e4398c3dc00fb02ca87bbcb6399530b9f6a066.json,input/market_evidence/de7b0b409bf253e2d6b96626d95e9b724809e1bf99904f29914d619f274d5aaa.json,input/market_evidence/99105b13ec59c14c36783079f2b5defb4a6b09228f30a95c864c1b0f1b76ffaa.json,input/market_evidence/e714229e76a9b71093f4500031d1f88781a83617595762dfceb399bb7444e722.json,input/market_evidence/eb3fa585d96a0c88cdb9304e7c6cbe4a7365bc43c44bb3f295d81a5157c215e7.json,input/market_evidence/e7c3cb495964bd54c0fbe142877a952dd0557d3d21b1f18c15584de4bd6b6237.json,input/market_evidence/9e4a76dc7333c3406c5c5ef40bf7ec4433679e1781b50aa981359aa70e840c89.json,input/market_evidence/e3b08d2580a566be96ddd2fa6b25e85d219949960785046eff7539ff5342c968.json,input/market_evidence/833c159fbf6406da9e80b61b6c035ac791b31ecb08d956a5edaf31fe7256094d.json,input/market_evidence/da3e71e11f3ff79693cdcefdafd889ae05be10bf3be03192b27038918c27e7f0.json,input/market_evidence/8df5f3a961327654c7988b14f90593efd3bc7984ff567291693ab9a0540e3b35.json",
+        "trade_count": 256,
+        "trades_sha256": "01f180f513b00cb5f373bf31ddd1381767ad3712d9949aad5fab5cf6f2a9ae92",
+        "selected_exit_trades": [],
+        "min_price": 23.21,
+        "max_price": 23.87
+      }
     }
   ]
 }
