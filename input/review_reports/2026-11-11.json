@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
   "decision_time_jst": "2026-11-11T23:45:00+09:00",
-  "observed_at": "2026-11-12T17:33:13.449723+09:00",
+  "observed_at": "2026-11-12T17:55:40.530209+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -83,27 +83,42 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "616eeb061dcb25717fce70fc7ec7500af9c03e962a910dd1b2f89bc4d6cf518a",
       "reasons": [
-        "guidance_not_lowered: 調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: guidance_not_lowered",
-        "decline_explanation_verified: 調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: decline_explanation_verified",
-        "no_material_business_impairment: 調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: no_material_business_impairment",
-        "next_earnings: 調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: next_earnings"
+        "guidance_not_lowered: 最新IRの予想表は調整EBITDA245〜265から250〜265百万ドル、燃料粗利47〜49セント。これだけで売上予想非下方修正を認定できない。同期間の会社売上見通しの比較根拠が不足。",
+        "decline_explanation_verified: 公式10-Qで燃料高・マクロ環境による既存店給油量7%減、店舗閉鎖/ディーラー転換、たばこ減を確認。しかし8月7日と10日の大幅下落が一時的だったとの照合は不足。",
+        "no_material_business_impairment: 公式10-QをWebで再読したが、保存調査の10-Q本文はUNVERIFIED。事業再編・借入・子会社取引と会計統制の十分な根拠付き結論に至らず。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: guidance_not_lowered"
+          "rationale": "最新IRの予想表は調整EBITDA245〜265から250〜265百万ドル、燃料粗利47〜49セント。これだけで売上予想非下方修正を認定できない。同期間の会社売上見通しの比較根拠が不足。",
+          "consulted_sources": [
+            "https://www.arkocorp.com/news-events/press-releases/detail/215/arko-corp-reports-third-quarter-2026-results-and-raises"
+          ],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: decline_explanation_verified"
+          "rationale": "公式10-Qで燃料高・マクロ環境による既存店給油量7%減、店舗閉鎖/ディーラー転換、たばこ減を確認。しかし8月7日と10日の大幅下落が一時的だったとの照合は不足。",
+          "consulted_sources": [],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: no_material_business_impairment"
+          "rationale": "公式10-QをWebで再読したが、保存調査の10-Q本文はUNVERIFIED。事業再編・借入・子会社取引と会計統制の十分な根拠付き結論に至らず。",
+          "consulted_sources": [],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: next_earnings"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1823794/000119312526448519/arko-ex99_1.htm",
+          "evidence_sha256": "b4710a6277d55e691fd0dc91fd0c3d4b42fd4dad1898d67ce1bb60bee8bc7271",
+          "excerpt": "November 5, 2026",
+          "rationale": "公式IRニュース・イベントを再確認し、次回正式決算日の公表を確認できない。直近発表は2026-11-05。NY11月12日は30暦日以内で既存例外に該当。推定日を設定せず、後に正式予定判明時は3米国営業日前〜当日除外を優先。確認先:https://www.arkocorp.com/news-events/ir-calendar",
+          "published_at": "2026-11-05T12:00:16.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-05"
         }
       },
       "official_documents": [
@@ -150,27 +165,41 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "ed3bb44f5449ad8239203d62a50e1ea06998876466c7f99a6d4aef0a2135d993",
       "reasons": [
-        "guidance_not_lowered: SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: guidance_not_lowered",
-        "decline_explanation_verified: SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: decline_explanation_verified",
-        "no_material_business_impairment: SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: no_material_business_impairment",
-        "next_earnings: SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: next_earnings"
+        "decline_explanation_verified: 商品コスト・関税、消費者変化とブランド売却の開示を確認。5月13日の株価下落と10月の下落を一時的/業界要因と確定する根拠が不足。40.7百万ドルのブランド減損や利払増を単に非現金・一時費用として除外しない。",
+        "next_earnings: 直近正式発表11月10日を確認。IRページは取得時403で最新イベント一覧を検証できず、次回未公表の確認を完了できない。推定日も置かない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: guidance_not_lowered"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926125151/bgs-ex99d1.htm",
+          "evidence_sha256": "4d8657fe3319e4177086bc20e4867f0bf041f7dfdd37d0de3830b3c11f3bf629",
+          "excerpt": "increased its net sales guidance",
+          "rationale": "同じ2026通期売上予想を8月時点1735〜1775百万ドルから11月10日1760〜1800百万ドルへ引上げ。ブランド売却と買収による範囲変更を留意し、上方修正を事業全体の無リスクとは扱わない。",
+          "published_at": "2026-11-10T21:05:09.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: decline_explanation_verified"
+          "rationale": "商品コスト・関税、消費者変化とブランド売却の開示を確認。5月13日の株価下落と10月の下落を一時的/業界要因と確定する根拠が不足。40.7百万ドルのブランド減損や利払増を単に非現金・一時費用として除外しない。",
+          "consulted_sources": [],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: no_material_business_impairment"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1278027/000110465926125162/bgs-20261003x10q.htm",
+          "evidence_sha256": "8871f5dcf2cf5376aff3355b39732f834a7a92063bcb41c60267ba07d9e7674e",
+          "excerpt": "in compliance with all of the covenants",
+          "rationale": "10-Q資金・債務・減損・統制を確認。純負債約2008.6百万ドル、現金61.7百万ドルと高レバレッジ、11%借入、四半期利払44.8百万ドルを明記。会社は借入契約順守・資金充足見込み・開示統制有効。2027年債券償還/借換を確認。ブランド減損は重いが現時点の重大な会計問題/継続企業毀損成立とは判断しない。",
+          "published_at": "2026-11-10T21:06:59.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: next_earnings"
+          "rationale": "直近正式発表11月10日を確認。IRページは取得時403で最新イベント一覧を検証できず、次回未公表の確認を完了できない。推定日も置かない。",
+          "consulted_sources": [
+            "https://bgfoods.com/investor-relations/"
+          ],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         }
       },
       "official_documents": [
@@ -215,30 +244,43 @@
     },
     {
       "symbol": "CENX",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "7db36d2b7c20fa6a9a1f3476f9a4367ee719b81c666d3bd1c54ed458cfb33e41",
       "reasons": [
-        "guidance_not_lowered: 公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: guidance_not_lowered",
-        "decline_explanation_verified: 公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: decline_explanation_verified",
-        "no_material_business_impairment: 公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: no_material_business_impairment",
-        "next_earnings: 公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: next_earnings"
+        "no_material_business_impairment: 最新10-QでJamalcoの業務・連結会計統制の重大な不備が9月30日も未解消。開示統制は有効でない。2025比較財務も連結方法の訂正あり。単なる一般的リスク列挙ではなく現存する重大な会計問題として既存条件により不通過。",
+        "guidance_not_lowered: 最新会社資料はQ4調整EBITDA275〜300百万ドル。通期売上予想の同期間比較には足りず、EBITDA前期比減を売上下方修正と混同しない。",
+        "decline_explanation_verified: アイスランド設備故障とJamalcoハリケーン後再稼働、電力費、アルミ価格の具体的要因を確認。ただし未解消の会計統制問題があるため純粋な一時的下落としては認定しない。",
+        "next_earnings: 直近決算11月5日を確認。IRイベント動的内容の十分な取得ができず、最新の次回日程未公表確認は未完了。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: guidance_not_lowered"
+          "rationale": "最新会社資料はQ4調整EBITDA275〜300百万ドル。通期売上予想の同期間比較には足りず、EBITDA前期比減を売上下方修正と混同しない。",
+          "consulted_sources": [],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: decline_explanation_verified"
+          "rationale": "アイスランド設備故障とJamalcoハリケーン後再稼働、電力費、アルミ価格の具体的要因を確認。ただし未解消の会計統制問題があるため純粋な一時的下落としては認定しない。",
+          "consulted_sources": [],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: no_material_business_impairment"
+          "value": false,
+          "source": "https://www.sec.gov/Archives/edgar/data/949157/000162828026071033/cenx-20260930.htm",
+          "evidence_sha256": "09b174b08545f18dc736c2b57ac299b59aa98a81b128176ff69313e479742d04",
+          "excerpt": "Our material weakness was not remediated",
+          "rationale": "最新10-QでJamalcoの業務・連結会計統制の重大な不備が9月30日も未解消。開示統制は有効でない。2025比較財務も連結方法の訂正あり。単なる一般的リスク列挙ではなく現存する重大な会計問題として既存条件により不通過。",
+          "published_at": "2026-11-05T21:08:47.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: next_earnings"
+          "rationale": "直近決算11月5日を確認。IRイベント動的内容の十分な取得ができず、最新の次回日程未公表確認は未完了。",
+          "consulted_sources": [
+            "https://investors.centuryaluminum.com/overview/"
+          ],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         }
       },
       "official_documents": [
@@ -283,30 +325,50 @@
     },
     {
       "symbol": "COLL",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "7470f67e73eaf7dcb034ad99f3779e0fd878858d3ae3a5dfe3ac69850fa877c2",
       "reasons": [
-        "guidance_not_lowered: 通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: guidance_not_lowered",
-        "decline_explanation_verified: 通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: decline_explanation_verified",
-        "no_material_business_impairment: 通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: no_material_business_impairment",
-        "next_earnings: 通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: next_earnings"
+        "decline_explanation_verified: Nucyntaは第三者ジェネリックとAGが実際に参入し、Q3同事業売上44%減、疼痛ポートフォリオ18%減。ブランド数量減と控除率増を会社が説明。8月6日下落とその後の低迷を審査し、持続する競争構造変化を一時的要因とは扱わず既存の下落理由条件で不通過。全株価下落の因果を会社が断定したという意味ではない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: guidance_not_lowered"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1267565/000162828026070585/coll-2026x09x30xex99x1.htm",
+          "evidence_sha256": "337546c89dd3b53fb2e92d2973968ff99420f8469a74a0eb095c354793957bd2",
+          "excerpt": "reaffirms its full-year 2026 guidance",
+          "rationale": "2026通期製品売上825〜855百万ドル、JORNAY190〜200、AZSTARYS65〜75、調整EBITDA445〜470を会社が維持。同じ期間の予想で比較。",
+          "published_at": "2026-11-05T12:32:59.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "decline_explanation_verified": {
-          "value": null,
-          "rationale": "通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: decline_explanation_verified"
+          "value": false,
+          "source": "https://www.sec.gov/Archives/edgar/data/1267565/000162828026070589/coll-20260930.htm",
+          "evidence_sha256": "7909f8b7844b580411590f73473afe91b64b14709285d1fa09a9349a0768c136",
+          "excerpt": "A third-party generic version of Nucynta IR launched",
+          "rationale": "Nucyntaは第三者ジェネリックとAGが実際に参入し、Q3同事業売上44%減、疼痛ポートフォリオ18%減。ブランド数量減と控除率増を会社が説明。8月6日下落とその後の低迷を審査し、持続する競争構造変化を一時的要因とは扱わず既存の下落理由条件で不通過。全株価下落の因果を会社が断定したという意味ではない。",
+          "published_at": "2026-11-05T12:34:15.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: no_material_business_impairment"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1267565/000162828026070589/coll-20260930.htm",
+          "evidence_sha256": "7909f8b7844b580411590f73473afe91b64b14709285d1fa09a9349a0768c136",
+          "excerpt": "disclosure controls and procedures were effective",
+          "rationale": "10-Qと10月和解を確認。Grunenthalには17百万ドルで和解し将来ロイヤリティ解消・特許譲受。Q3営業CF86.5百万ドル、現預金等144.8百万ドル。借入とオピオイド訴訟、Azstarys統制統合中のリスクは残るが、重大な会計/継続企業毀損成立とは判断しない。製品競争の構造悪化は下落項目で別途不通過。",
+          "published_at": "2026-11-05T12:34:15.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: next_earnings"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1267565/000162828026070585/coll-2026x09x30xex99x1.htm",
+          "evidence_sha256": "337546c89dd3b53fb2e92d2973968ff99420f8469a74a0eb095c354793957bd2",
+          "excerpt": "November 5, 2026",
+          "rationale": "公式IRニュース・イベントを再確認し、次回正式決算日の公表を確認できない。直近発表は2026-11-05。NY11月12日は30暦日以内で既存例外に該当。推定日を設定せず、後に正式予定判明時は3米国営業日前〜当日除外を優先。確認先:https://ir.collegiumpharma.com/events-and-presentations/event-calendar",
+          "published_at": "2026-11-05T12:32:59.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-05"
         }
       },
       "official_documents": [
@@ -354,27 +416,41 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "4b129af0037d215a6fd2ccea98747210ae84aa95927921e1efb6ea1f598f2401",
       "reasons": [
-        "guidance_not_lowered: 公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: guidance_not_lowered",
-        "decline_explanation_verified: 公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: decline_explanation_verified",
-        "no_material_business_impairment: 公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: no_material_business_impairment",
-        "next_earnings: 公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: next_earnings"
+        "decline_explanation_verified: 公式10-Qは商用車景気・関税・為替を説明。ただし保存日足最大下落はEaton取引発表翌6月11日約15%であり、取引条件/希薄化に対する再評価を単なる景気循環として除外できない。個別企業要因と市場要因の照合不足。",
+        "next_earnings: 直近10月28日決算は確認。公式Upcoming Eventsページが本文を返さず、次回正式決算日/未公表を十分に検証できない。会議11月3日を決算日と扱わない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: guidance_not_lowered"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/26780/000119312526435068/d160614dex991.htm",
+          "evidence_sha256": "3c14634739e6175919dc3e8c0a9a99975d68e50fbd990900ea7725ed7f740d70",
+          "excerpt": "Sales Outlook Increased",
+          "rationale": "同じ2026通期売上予想を約50百万ドル引上げ、7750〜7850百万ドル。調整EBITDA800〜850百万ドル等は維持。継続事業と非継続事業の区別・Eaton取引を留意。",
+          "published_at": "2026-10-28T11:00:10.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: decline_explanation_verified"
+          "rationale": "公式10-Qは商用車景気・関税・為替を説明。ただし保存日足最大下落はEaton取引発表翌6月11日約15%であり、取引条件/希薄化に対する再評価を単なる景気循環として除外できない。個別企業要因と市場要因の照合不足。",
+          "consulted_sources": [],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: no_material_business_impairment"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/26780/000143774926035309/dan20260930_10q.htm",
+          "evidence_sha256": "9e0f3117f9a669e44dcf7395aed5c3946d210e024f77fdbedaafe0636ab8acbb",
+          "excerpt": "in compliance with the covenants",
+          "rationale": "10-Qは債務契約順守・12か月資金充足見込み・開示統制有効、訴訟引当を開示。Eaton取引の26億ドルブリッジ、統合と資金調達、構造変化、継続事業赤字を留意するが現存の重大な会計/事業継続毀損成立とは判断しない。",
+          "published_at": "2026-11-05T21:34:12.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: next_earnings"
+          "rationale": "直近10月28日決算は確認。公式Upcoming Eventsページが本文を返さず、次回正式決算日/未公表を十分に検証できない。会議11月3日を決算日と扱わない。",
+          "consulted_sources": [
+            "https://danaincorporated.gcs-web.com/upcoming-events"
+          ],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         }
       },
       "official_documents": [
@@ -422,27 +498,47 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7789064f48e92e977d852ed93d2ceee2d5ff7a66782779832168c44c4ab25ef2",
       "reasons": [
-        "guidance_not_lowered: 公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: guidance_not_lowered",
-        "decline_explanation_verified: 公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: decline_explanation_verified",
-        "no_material_business_impairment: 公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: no_material_business_impairment",
-        "next_earnings: 公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: next_earnings"
+        "guidance_not_lowered: Q3公式10-Q売上はRentals141.756＋Sales116.866＝258.622百万ドル。保存財務はSalesのみ。最新IRと10-Qを確認したが、この不一致と次回イベントの動的表示を解消せず通過としない。元コード・財務根拠は変更しない。",
+        "decline_explanation_verified: Q3公式10-Q売上はRentals141.756＋Sales116.866＝258.622百万ドル。保存財務はSalesのみ。最新IRと10-Qを確認したが、この不一致と次回イベントの動的表示を解消せず通過としない。元コード・財務根拠は変更しない。",
+        "no_material_business_impairment: Q3公式10-Q売上はRentals141.756＋Sales116.866＝258.622百万ドル。保存財務はSalesのみ。最新IRと10-Qを確認したが、この不一致と次回イベントの動的表示を解消せず通過としない。元コード・財務根拠は変更しない。",
+        "next_earnings: Q3公式10-Q売上はRentals141.756＋Sales116.866＝258.622百万ドル。保存財務はSalesのみ。最新IRと10-Qを確認したが、この不一致と次回イベントの動的表示を解消せず通過としない。元コード・財務根拠は変更しない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: guidance_not_lowered"
+          "rationale": "Q3公式10-Q売上はRentals141.756＋Sales116.866＝258.622百万ドル。保存財務はSalesのみ。最新IRと10-Qを確認したが、この不一致と次回イベントの動的表示を解消せず通過としない。元コード・財務根拠は変更しない。",
+          "consulted_sources": [
+            "https://www.sec.gov/Archives/edgar/data/2035149/000119312526447415/floc-20260930.htm",
+            "https://ir.flowco-inc.com/news-events/events-and-presentations/default.aspx"
+          ],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: decline_explanation_verified"
+          "rationale": "Q3公式10-Q売上はRentals141.756＋Sales116.866＝258.622百万ドル。保存財務はSalesのみ。最新IRと10-Qを確認したが、この不一致と次回イベントの動的表示を解消せず通過としない。元コード・財務根拠は変更しない。",
+          "consulted_sources": [
+            "https://www.sec.gov/Archives/edgar/data/2035149/000119312526447415/floc-20260930.htm",
+            "https://ir.flowco-inc.com/news-events/events-and-presentations/default.aspx"
+          ],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: no_material_business_impairment"
+          "rationale": "Q3公式10-Q売上はRentals141.756＋Sales116.866＝258.622百万ドル。保存財務はSalesのみ。最新IRと10-Qを確認したが、この不一致と次回イベントの動的表示を解消せず通過としない。元コード・財務根拠は変更しない。",
+          "consulted_sources": [
+            "https://www.sec.gov/Archives/edgar/data/2035149/000119312526447415/floc-20260930.htm",
+            "https://ir.flowco-inc.com/news-events/events-and-presentations/default.aspx"
+          ],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: next_earnings"
+          "rationale": "Q3公式10-Q売上はRentals141.756＋Sales116.866＝258.622百万ドル。保存財務はSalesのみ。最新IRと10-Qを確認したが、この不一致と次回イベントの動的表示を解消せず通過としない。元コード・財務根拠は変更しない。",
+          "consulted_sources": [
+            "https://www.sec.gov/Archives/edgar/data/2035149/000119312526447415/floc-20260930.htm",
+            "https://ir.flowco-inc.com/news-events/events-and-presentations/default.aspx"
+          ],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         }
       },
       "official_documents": [
@@ -559,30 +655,50 @@
     },
     {
       "symbol": "HROW",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "241b8bc7ce9d9c69da9ffe99d6e67fd91c7766ecc003243fab1b02084a9a525d",
       "reasons": [
-        "guidance_not_lowered: 通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: guidance_not_lowered",
-        "decline_explanation_verified: 通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: decline_explanation_verified",
-        "no_material_business_impairment: 通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: no_material_business_impairment",
-        "next_earnings: 通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: next_earnings"
+        "decline_explanation_verified: 11月9日SEC/IRと株主書簡で通期調整EBITDAを80〜100百万ドルから40百万ドル超へ引下げ。原因はVEVYE前半売上未達、低い粗利率、R&D増と買収移行費。既存RULES_REQUIREDの下落理由条件（最新IRに業績下方修正がない）を満たさず、不通過。売上非下方修正とは別判定。",
+        "no_material_business_impairment: 10-Qでは開示統制有効・12か月資金充足見込みだが、TYRVAYA買収とVEVYE契約の競業制限について同意/免除未取得。違反やライセンス喪失が確定したとは言わず、重要事業権への影響が解決したとも認定しない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: guidance_not_lowered"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1360214/000162828026072195/hrow-20261109xpressrelease.htm",
+          "evidence_sha256": "302a7ec022bbff311683f67d07775f6637887336d1f7e60eab1a68884eb1c5a5",
+          "excerpt": "Reaffirmed full-year 2026 revenue guidance",
+          "rationale": "8月10日と11月9日の同じ2026通期売上350〜365百万ドルを比較し維持。利益予想の下方修正を売上予想の下方修正と混同しない。",
+          "published_at": "2026-11-09T21:13:56.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "decline_explanation_verified": {
-          "value": null,
-          "rationale": "通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: decline_explanation_verified"
+          "value": false,
+          "source": "https://www.sec.gov/Archives/edgar/data/1360214/000162828026072195/hrow-20261109xpressrelease.htm",
+          "evidence_sha256": "302a7ec022bbff311683f67d07775f6637887336d1f7e60eab1a68884eb1c5a5",
+          "excerpt": "compared with prior Adjusted EBITDA guidance",
+          "rationale": "11月9日SEC/IRと株主書簡で通期調整EBITDAを80〜100百万ドルから40百万ドル超へ引下げ。原因はVEVYE前半売上未達、低い粗利率、R&D増と買収移行費。既存RULES_REQUIREDの下落理由条件（最新IRに業績下方修正がない）を満たさず、不通過。売上非下方修正とは別判定。",
+          "published_at": "2026-11-09T21:13:56.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: no_material_business_impairment"
+          "rationale": "10-Qでは開示統制有効・12か月資金充足見込みだが、TYRVAYA買収とVEVYE契約の競業制限について同意/免除未取得。違反やライセンス喪失が確定したとは言わず、重要事業権への影響が解決したとも認定しない。",
+          "consulted_sources": [
+            "https://www.sec.gov/Archives/edgar/data/1360214/000162828026072325/hrow-20260930.htm"
+          ],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: next_earnings"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1360214/000162828026072195/hrow-20261109xpressrelease.htm",
+          "evidence_sha256": "302a7ec022bbff311683f67d07775f6637887336d1f7e60eab1a68884eb1c5a5",
+          "excerpt": "November 9, 2026",
+          "rationale": "公式IRニュース・イベントを再確認し、次回正式決算日の公表を確認できない。直近発表は2026-11-09。NY11月12日は30暦日以内で既存例外に該当。推定日を設定せず、後に正式予定判明時は3米国営業日前〜当日除外を優先。確認先:https://investors.harrow.com/investors/events",
+          "published_at": "2026-11-09T21:13:56.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-09"
         }
       },
       "official_documents": [
@@ -630,27 +746,47 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "abc9e80e34af10e2ce60d77b4d658ab6c89583761450c49414ab7cfc1f410bce",
       "reasons": [
-        "guidance_not_lowered: 既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: guidance_not_lowered",
-        "decline_explanation_verified: 既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: decline_explanation_verified",
-        "no_material_business_impairment: 既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: no_material_business_impairment",
-        "next_earnings: 既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: next_earnings"
+        "ValueError: past decision: no retrospective approval; retain research only"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: guidance_not_lowered"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "e1ed828b8350103dc0d22dac7a5fdc113ae36811ffd429ac74519357c471c2a6",
+          "excerpt": "raising its full-year 2026 revenue guidance",
+          "rationale": "11月12日に企業IR8月10日と11月9日を再読。同じ2026通期売上590〜600百万ドルから600〜605へ引上げ。学生開始成長率上限14から12%への縮小、EBITDA維持を隠さない。最新11月10日ニュースはHouston校建築表彰で業績予想変更ではない。",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "decline_explanation_verified": {
-          "value": null,
-          "rationale": "既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: decline_explanation_verified"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+          "evidence_sha256": "74aa079e1bdbde894c0e0ecee9540f9fdca91bdb79b09f1de58b9c4988a96564",
+          "excerpt": "affected conversion from enrollment to start.",
+          "rationale": "8月10日決算の入学転換率低下説明と、保存日足8月7日40.99→10日30.77を照合。11月9日の転換率回復と入学者14.2%増を再読し、業務上の一時要因と回復を伴う下落として判断。因果関係の関連付けは審査者の推論であり全下落の説明ではない。証券訴訟は残る。",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: no_material_business_impairment"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+          "evidence_sha256": "182ac690078eed281515137e0fee790a8f9dee6aa646ef8587783d265e1f5cae",
+          "excerpt": "the Lenders waived",
+          "rationale": "10-Qの資金・債務・認定資格・訴訟・統制を再読。自社株買いによる契約違反は11月6日貸し手免除。営業CF61.515百万ドル、現金20.627、リボルバー未使用115、認定・TitleIV参加資格維持を確認。設備投資がCF超、連邦資金依存、2027規制と証券訴訟のリスクを残すが重大毀損成立とは判断しない。",
+          "published_at": "2026-11-09T21:58:46.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: next_earnings"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "e1ed828b8350103dc0d22dac7a5fdc113ae36811ffd429ac74519357c471c2a6",
+          "excerpt": "November 9, 2026",
+          "rationale": "公式IRニュース・イベントを再確認し、次回正式決算日の公表を確認できない。直近発表は2026-11-09。NY11月12日は30暦日以内で既存例外に該当。推定日を設定せず、後に正式予定判明時は3米国営業日前〜当日除外を優先。確認先:https://investors.lincolneducationalservices.com/events-and-presentations/upcoming-events",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-09"
         }
       },
       "official_documents": [
@@ -698,27 +834,44 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "3a2816782be98095f910561dce070b2a87967e91c5ff923fd2018714c315be75",
       "reasons": [
-        "guidance_not_lowered: 最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: guidance_not_lowered",
-        "decline_explanation_verified: 最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: decline_explanation_verified",
-        "no_material_business_impairment: 最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: no_material_business_impairment",
-        "next_earnings: 最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: next_earnings"
+        "decline_explanation_verified: 11月4日-10.66%、5日-8.65%という保存日足下落を確認。会社資料の旧低採算受注・政府予算・調達リスクだけではこの下落が市場/業種又は一時的要因だったと確定できない。好決算による反発だけで遡って合格にしない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: guidance_not_lowered"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1049521/000104952126000096/a2027q1earningsreleaseex.htm",
+          "evidence_sha256": "d6f4ba80ca7fa92d8a64ed7f5b5def693b99447fa272f040a671f7d4be6eb823",
+          "excerpt": "raising our outlook for fiscal year 2027",
+          "rationale": "11月10日公式説明資料9頁で同じFY2027売上成長見通しが二桁近くから二桁へ引上げ、売上約11億ドル。調整EBITDA約210百万ドルへの引上げも区別して確認。公式説明資料を実読:https://ir.mrcy.com/static-files/0a70a992-efb1-475b-9998-4750cef81160",
+          "published_at": "2026-11-10T21:01:58.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: decline_explanation_verified"
+          "rationale": "11月4日-10.66%、5日-8.65%という保存日足下落を確認。会社資料の旧低採算受注・政府予算・調達リスクだけではこの下落が市場/業種又は一時的要因だったと確定できない。好決算による反発だけで遡って合格にしない。",
+          "consulted_sources": [],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: no_material_business_impairment"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1049521/000104952126000098/mrcy-20261002.htm",
+          "evidence_sha256": "ddfea9820dc1012b4098c67ccd5dac41d6bcdc6d9609ac67c3aac98b45419333",
+          "excerpt": "in compliance with all covenants",
+          "rationale": "10-Qの資金繰り・債務・会計見積り・訴訟・統制を確認。借入341.5百万ドル、現金約109.7百万ドル、12か月資金充足見込み、債務契約順守、開示統制有効。営業CF約14百万ドル赤字、原価見積変更の営業利益影響約3.059百万ドル減、環境責任と証券訴訟を残すが、事業継続や会計信頼性の重大毀損成立とは判断しない。",
+          "published_at": "2026-11-10T22:06:28.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: next_earnings"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1049521/000104952126000096/a2027q1earningsreleaseex.htm",
+          "evidence_sha256": "d6f4ba80ca7fa92d8a64ed7f5b5def693b99447fa272f040a671f7d4be6eb823",
+          "excerpt": "November 10, 2026",
+          "rationale": "公式IRニュース・イベントを再確認し、次回正式決算日の公表を確認できない。直近発表は2026-11-10。NY11月12日は30暦日以内で既存例外に該当。推定日を設定せず、後に正式予定判明時は3米国営業日前〜当日除外を優先。確認先:https://ir.mrcy.com/events-presentations",
+          "published_at": "2026-11-10T21:01:58.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-10"
         }
       },
       "official_documents": [
@@ -763,30 +916,48 @@
     },
     {
       "symbol": "RARE",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "185544d29253ef481a44b5c26d487f84f368fad537eec1fec1a25467bf478317",
       "reasons": [
-        "guidance_not_lowered: SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: guidance_not_lowered",
-        "decline_explanation_verified: SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: decline_explanation_verified",
-        "no_material_business_impairment: SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: no_material_business_impairment",
-        "next_earnings: SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: next_earnings"
+        "decline_explanation_verified: Angelman主要第3相試験が主要/副次評価項目未達で終了方向。UX701も次段階条件を満たさず中止。開発価値の損失を市場全体や単なる一時費用による下落とは判断せず不通過。",
+        "no_material_business_impairment: 10-Qで複数の重要開発計画中止、約20%人員削減、赤字と資金消費を確認。現金・PRV売却で12か月の資金は会社見込み上足り、会計不正や破産とは断定しないが、重要パイプライン喪失は既存の重大な事業毀損の審査では不通過。",
+        "next_earnings: 最新11月11日公式IRは11月16/17日投資家会議で決算ではない。直近決算11月3日。イベント一覧取得403のため次回決算未公表の全面確認は未完了。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: guidance_not_lowered"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1515673/000119312526445342/rare-ex99_1.htm",
+          "evidence_sha256": "d7a9cd465d3b42320d57177745beb5b95314b3d9c35cb562d9a7663a90f609eb",
+          "excerpt": "reaffirms its full year 2026 total revenue guidance",
+          "rationale": "同じ2026通期売上730〜760百万ドル維持。新製品立上げ売上を含まない点も確認。2027年黒字化見込みは確定実績ではない。",
+          "published_at": "2026-11-03T21:07:44.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "decline_explanation_verified": {
-          "value": null,
-          "rationale": "SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: decline_explanation_verified"
+          "value": false,
+          "source": "https://www.sec.gov/Archives/edgar/data/1515673/000119312526445718/rare-20260930.htm",
+          "evidence_sha256": "c596b44a32c50dd09da04ee0759b7eae41e28d9418d399f492207e7e4065582a",
+          "excerpt": "did not achieve its primary or secondary endpoints",
+          "rationale": "Angelman主要第3相試験が主要/副次評価項目未達で終了方向。UX701も次段階条件を満たさず中止。開発価値の損失を市場全体や単なる一時費用による下落とは判断せず不通過。",
+          "published_at": "2026-11-03T23:07:13.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: no_material_business_impairment"
+          "value": false,
+          "source": "https://www.sec.gov/Archives/edgar/data/1515673/000119312526445718/rare-20260930.htm",
+          "evidence_sha256": "c596b44a32c50dd09da04ee0759b7eae41e28d9418d399f492207e7e4065582a",
+          "excerpt": "We will terminate further development of this program",
+          "rationale": "10-Qで複数の重要開発計画中止、約20%人員削減、赤字と資金消費を確認。現金・PRV売却で12か月の資金は会社見込み上足り、会計不正や破産とは断定しないが、重要パイプライン喪失は既存の重大な事業毀損の審査では不通過。",
+          "published_at": "2026-11-03T23:07:13.000Z",
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: next_earnings"
+          "rationale": "最新11月11日公式IRは11月16/17日投資家会議で決算ではない。直近決算11月3日。イベント一覧取得403のため次回決算未公表の全面確認は未完了。",
+          "consulted_sources": [
+            "https://ir.ultragenyx.com/events-presentations"
+          ],
+          "checked_at": "2026-11-12T17:55:40.496552+09:00"
         }
       },
       "official_documents": [
@@ -836,8 +1007,8 @@
   "remote_verification": "NOT_PERFORMED_BY_THIS_LOCAL_PROCESS",
   "counts": {
     "PASS": 0,
-    "FAIL": 2,
-    "INSUFFICIENT_EVIDENCE": 10
+    "FAIL": 6,
+    "INSUFFICIENT_EVIDENCE": 6
   },
   "financial_pass_count": 12
 }
