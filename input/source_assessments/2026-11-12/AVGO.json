@@ -4,25 +4,26 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "7d2045d08e34d3fde992e71a435517a47376da1506f1e35376e5fd210458c9c4",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
   "generated_at": "2026-11-12T19:04:09.977485+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "第4四半期売上34.8十億ドル見通し。前年成長率だけで同一対象予想の非下方修正とは判定しない。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "株価下落の一時性未確認。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "顧客集中と大型AI契約の履行・資金リスクの確認未完了。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "12月9日という日付候補は企業IRの正式予定との照合未完了。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }

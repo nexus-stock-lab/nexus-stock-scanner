@@ -4,25 +4,26 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "7152719e135b095cd0082d9025815192a39212ce7eb8252a0ed66f8817738a58",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
   "generated_at": "2026-11-12T19:04:18.408405+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "11月12日Q3発表で通期売上2.037〜2.076から2.019〜2.038十億ドルへ下方修正。不通過。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既存のQ2財務通過をQ3公表後の承認に流用しない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "最新Q3に基づく重大リスク評価は未完了。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "本日11月12日が公式決算日で新規エントリー除外。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }

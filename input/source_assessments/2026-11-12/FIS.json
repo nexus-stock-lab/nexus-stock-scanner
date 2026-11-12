@@ -4,25 +4,31 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "0ba00dbe2a0a2d49a4948b26033a66336dd7d957495c0c9444424e151e1f4153",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
   "generated_at": "2026-11-12T19:04:20.682790+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/1136893/000113689326000061/q32026ex991.htm",
+      "evidence_sha256": "2b45cafd2c8621ed809925461ac2b2f35807a5d7880abbfc8e7aceb02f2f493c",
+      "excerpt": "Revenue $13,445 - $13,505",
+      "published_at": "2026-11-04T12:34:43.000Z",
+      "checked_at": "2026-11-12T23:11:11.600514+09:00",
+      "rationale": "FY2026売上見通し13,630〜13,695から13,445〜13,505百万ドルへ低下。プロフォーマ売上成長も4.5〜5.0%から3.1〜3.6%へ低下。事業売却の対象範囲差にも注意し、不通過。 旧見通しは追加一次資料URLの8月4日企業IRと比較。単なる連結範囲変化だけでなくプロフォーマも低下。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "見通し低下があり、一時的な下落として承認しない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "事業売却・買収統合リスクの独立評価は未完了。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "直近決算11月4日。次回公式日程未確認。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }

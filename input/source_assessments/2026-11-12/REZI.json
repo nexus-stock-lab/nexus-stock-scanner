@@ -4,25 +4,26 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "291084c86563ec94a78c875e13063cbc9854681c3c58a18e542e6380371c26d6",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
   "generated_at": "2026-11-12T19:04:49.106983+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "ADI分離後の継続事業売上727百万ドル。旧連結会社と対象範囲が異なり、同一対象期間・範囲の売上見通し比較が未完了。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "スピンオフの価格調整と経済的下落を分離できていない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "負債約21億ドル、返済後も資本構成変更の影響を確認する必要がある。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "直近決算11月10日。次回日付・公式イベント欄の確認未完了。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }

@@ -4,25 +4,26 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "5578636c4fd55312f4432aa13987395072b37fc471880835499f2239efa192f1",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
   "generated_at": "2026-11-12T19:04:12.092803+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "FY2026売上20.5から21十億ドル、調整EPS11.30から11.55へ引上げ。FCFは600から460百万ドルへ低下。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "運転資金増と成長投資だけで株価下落の一時性を証明できない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "大型顧客集中、設備投資増、8月増資の影響評価未完了。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "直近決算10月26日。次回公式日程未確認。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }

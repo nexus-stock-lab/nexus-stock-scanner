@@ -4,25 +4,36 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "ec0a8e012484b06d0ec7291c10698526712bf62440016632ac8f2869c5218689",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
   "generated_at": "2026-11-12T19:04:44.218313+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1809987/000162828026067591/a2026-10x27exhibit991.htm",
+      "evidence_sha256": "f8947d4ffc39fd225cecc4817e6d8db574a8bae71ac5367154dd09a5261904d0",
+      "excerpt": "Revenue growth of approximately 24% – 25%",
+      "published_at": "2026-10-27T20:16:08.000Z",
+      "checked_at": "2026-11-12T23:11:11.600514+09:00",
+      "rationale": "売上成長見通し22〜24%から24〜25%へ引上げ。"
     },
     "decline_explanation_verified": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/1809987/000162828026067591/a2026-10x27exhibit991.htm",
+      "evidence_sha256": "f8947d4ffc39fd225cecc4817e6d8db574a8bae71ac5367154dd09a5261904d0",
+      "excerpt": "previously $285 million – $300 million",
+      "published_at": "2026-10-27T20:16:08.000Z",
+      "checked_at": "2026-11-12T23:11:11.600514+09:00",
+      "rationale": "調整EBITDA285〜300から285〜292百万ドル、利益率25〜26%から24.7〜25.2%へ低下。既存の業績下方修正除外により不通過。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "10-Qの重大事業リスクの独立評価は未完了。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "直近決算10月27日。次回公式日程未確認。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }

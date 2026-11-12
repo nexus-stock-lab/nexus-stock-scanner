@@ -4,25 +4,51 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "503603baa242be1c239010c0da1b96f105dd668782ce6e50f475af5757741a74",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
   "generated_at": "2026-11-12T19:04:35.776149+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+      "evidence_sha256": "e1ed828b8350103dc0d22dac7a5fdc113ae36811ffd429ac74519357c471c2a6",
+      "excerpt": "raising its full-year 2026 revenue guidance",
+      "rationale": "11月12日に企業IR8月10日と11月9日を再読。同じ2026通期売上590〜600百万ドルから600〜605へ引上げ。学生開始成長率上限14から12%への縮小、EBITDA維持を隠さない。最新11月10日ニュースはHouston校建築表彰で業績予想変更ではない。 11月12日23時台に現行研究の財務証拠・同一SEC原文とIRニュース/イベントを再照合。新たな公表決算予定は確認できない。",
+      "published_at": "2026-11-09T21:18:52.000Z",
+      "checked_at": "2026-11-12T23:11:11.600514+09:00"
     },
     "decline_explanation_verified": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+      "evidence_sha256": "74aa079e1bdbde894c0e0ecee9540f9fdca91bdb79b09f1de58b9c4988a96564",
+      "excerpt": "affected conversion from enrollment to start.",
+      "rationale": "8月10日決算の入学転換率低下説明と、保存日足8月7日40.99→10日30.77を照合。11月9日の転換率回復と入学者14.2%増を再読し、業務上の一時要因と回復を伴う下落として判断。因果関係の関連付けは審査者の推論であり全下落の説明ではない。証券訴訟は残る。 11月12日23時台に現行研究の財務証拠・同一SEC原文とIRニュース/イベントを再照合。新たな公表決算予定は確認できない。",
+      "published_at": "2026-08-10T19:09:21.000Z",
+      "checked_at": "2026-11-12T23:11:11.600514+09:00"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+      "evidence_sha256": "182ac690078eed281515137e0fee790a8f9dee6aa646ef8587783d265e1f5cae",
+      "excerpt": "the Lenders waived",
+      "rationale": "10-Qの資金・債務・認定資格・訴訟・統制を再読。自社株買いによる契約違反は11月6日貸し手免除。営業CF61.515百万ドル、現金20.627、リボルバー未使用115、認定・TitleIV参加資格維持を確認。設備投資がCF超、連邦資金依存、2027規制と証券訴訟のリスクを残すが重大毀損成立とは判断しない。 11月12日23時台に現行研究の財務証拠・同一SEC原文とIRニュース/イベントを再照合。新たな公表決算予定は確認できない。",
+      "published_at": "2026-11-09T21:58:46.000Z",
+      "checked_at": "2026-11-12T23:11:11.600514+09:00"
     },
     "next_earnings": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+      "evidence_sha256": "e1ed828b8350103dc0d22dac7a5fdc113ae36811ffd429ac74519357c471c2a6",
+      "excerpt": "November 9, 2026",
+      "rationale": "公式IRニュース・イベントを再確認し、次回正式決算日の公表を確認できない。直近発表は2026-11-09。NY11月12日は30暦日以内で既存例外に該当。推定日を設定せず、後に正式予定判明時は3米国営業日前〜当日除外を優先。確認先:https://investors.lincolneducationalservices.com/events-and-presentations/upcoming-events 11月12日23時台に現行研究の財務証拠・同一SEC原文とIRニュース/イベントを再照合。新たな公表決算予定は確認できない。",
+      "published_at": "2026-11-09T21:18:52.000Z",
+      "checked_at": "2026-11-12T23:11:11.600514+09:00",
+      "date": "",
+      "next_date_unannounced": true,
+      "last_earnings_date": "2026-11-09"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only",
+  "approval_scope": "US_REGULAR_SESSION",
+  "decision_time_jst": "2026-11-13T05:45:00+09:00"
 }

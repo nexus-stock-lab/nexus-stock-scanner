@@ -4,25 +4,31 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "7b51c13101983bbca41a193ddcde64c633d5206a2f31a2adde53b5f22e7eb841",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
   "generated_at": "2026-11-12T19:04:14.243177+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "最新10-Qを確認したが同一対象の売上見通し比較は未完了。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "下落の一時性を裏付ける証拠が不足。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/1839341/000183934126000030/core-20260930.htm",
+      "evidence_sha256": "ce2ddd4e304746210df207d86b1bb4d62392b56bff343fb501270a28da96095e",
+      "excerpt": "As of September 30, 2026, this material weakness has not been remediated",
+      "published_at": "2026-11-05T13:09:17.000Z",
+      "checked_at": "2026-11-12T23:11:11.600514+09:00",
+      "rationale": "9月30日現在、内部統制の重大な弱点が未解消で開示統制も無効。重大会計リスクとして不通過。過去の破産を現在の破産とは扱わない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "直近決算11月5日。次回公式日程未確認。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }

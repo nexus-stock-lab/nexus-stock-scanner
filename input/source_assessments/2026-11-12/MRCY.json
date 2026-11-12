@@ -4,25 +4,26 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "7ab093a2884b5b848f862637f7c4cd29ea9b406a05c27ee6af1ef596ce7a0c80",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
   "generated_at": "2026-11-12T19:04:46.748893+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "FY2027売上成長を約2桁、調整EBITDA約210百万ドルに引上げ。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "11月4〜5日の下落について会社の公式発表との因果関係を確定できない。未承認。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "10-Qの12か月資金充足、契約遵守、統制を確認。ただし負の営業CFと契約原価推定リスクを継続監視。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "直近決算11月10日。推定2027年2月日付は公式確認できず採用しない。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }

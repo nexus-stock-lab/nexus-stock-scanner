@@ -4,25 +4,31 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "b71277e65f8eacb0dcb55fc090b20967b1a3798e3606288ada67df137fc9b834",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
   "generated_at": "2026-11-12T19:04:53.606617+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "通期売上3,900〜3,950から3,910〜3,940百万ドルへレンジ縮小、中央値同じ。売上下方修正とは断定しない。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "下落の一時性未確認。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/864749/000086474926000121/trmb-20261002.htm",
+      "evidence_sha256": "3bbaf143b2209bf9bf05d02f6f4c57d5dffff39c40b3d500362a344dab55cdb4",
+      "excerpt": "our disclosure controls and procedures were not effective",
+      "published_at": "2026-11-04T21:14:33.000Z",
+      "checked_at": "2026-11-12T23:11:11.600514+09:00",
+      "rationale": "最新10-Qで内部統制上の重大な弱点が残存し、開示統制が無効。重大会計リスクとして不通過。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "直近決算11月4日。次回公式日程未確認。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }
