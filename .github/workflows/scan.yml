@@ -76,6 +76,38 @@ jobs:
           NEXUS_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.NEXUS_GEMINI_FREE_TIER_CONFIRMED }}
           NEXUS_GEMINI_SHADOW_ENABLED: ${{ vars.NEXUS_GEMINI_SHADOW_ENABLED }}
         run: python daily_runner.py "$PHASE"
+      - name: Inventory every financial-pass source review
+        if: always() && (env.PHASE == 'prepare' || env.PHASE == 'cycle')
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          from review_workflow import run
+          files=sorted(Path('input/research').glob('*.json'))
+          if files:
+              report=run(files[-1],datetime.now(ZoneInfo('Asia/Tokyo')),promote=True)
+              print({key:report[key] for key in ('financial_pass_count','counts','saved_count','remote_verified_count')})
+          else:
+              print('No research snapshot: no approvals generated')
+          PY
+      - name: Persist source review reports independently of other phases
+        if: always() && (env.PHASE == 'prepare' || env.PHASE == 'cycle')
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          python - <<'PY'
+          import subprocess
+          from pathlib import Path
+          paths=[str(p) for p in (Path('input/review_reports'),Path('input/source_assessments'),Path('input/review_inbox')) if p.exists()]
+          if paths: subprocess.run(['git','add','--',*paths],check=True)
+          PY
+          if ! git diff --cached --quiet; then
+            git commit -m "Persist source review inventory and validated review packets"
+            git push origin "HEAD:$BRANCH"
+          fi
       - name: Persist Gemini request budget even on failure
         if: always() && (env.PHASE == 'gemini_probe' || env.PHASE == 'gemini_ir_probe' || vars.NEXUS_GEMINI_SHADOW_ENABLED == 'true')
         env:
