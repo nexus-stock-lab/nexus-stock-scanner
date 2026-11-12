@@ -96,3 +96,14 @@ checkpoint in the same NY session; it cannot extend expiry or roll to tomorrow.
 No session scope is inferred from an exact-time attestation. The source-review
 Action can create missing current research with the existing scanner, secondary
 review and `freeze_research`, without invoking any ledger phase.
+
+
+## 継続運用キュー（2026-11-13）
+
+SEC資料は決算2.02の8-K、定期報告、その他届出を各直近2件から優先順に最大8要求で取得する。新しい無関係の届出による決算EX-99.1の取得枠不足を防ぐ。CLS・AVGOの公式IR取得先を追加し、time datetimeも読む。公表日のみの資料は既存の保守的なUTC-12日末上限をDATE_ONLY_UPPER_BOUNDと明示し、実際の発表時刻や取得時刻と混同しない。
+
+input/review_tasks/<NY営業日>.jsonに未確認4項目、具体的理由、取得障害、財務取得不足、本文変更の有無を保存する。取得時刻だけの変化は本文変更と数えない。既存部分審査を上書きせず、不足項目だけを次のWork審査へ渡す。新しい公式公表が審査後にあれば古い承認を保留し、明示的な再審査を要求する。別日・別財務ハッシュへ承認を付け替えない。
+
+研究ファイルは次の有効な米国判定のNY日付で選ぶ。JST日付変更後も同じNY日の未来枠に接続する。収集は当該セッション最終枠まで行えるが、過去枠への承認は不可。
+
+平日JST07:00の資料収集Actions→既存08:00のWork定性審査→既存正式判定・cycleの順に運用する。cronの実起動は遅れる場合がある。投資ルール・エントリー条件・判定枠は変更しない。Actionsは資料収集と構造・証拠検証までで、裁量的な意味審査を完了したとは扱わない。Workが実行できない、または下落理由など公式根拠が不足する場合は未承認を維持し、原因を記録する。4項目が揃った明示レビューだけLINC形式で保存し、GitHub再取得で検証する。新規通過がない回に計画・台帳登録を作らない。

@@ -32,6 +32,8 @@ REGISTRY={
 # Official IR pages verified in Work on 2026-11-12. This is a source registry,
 # never an eligibility filter; every financial PASS remains in the review queue.
 REGISTRY.update({
+    'AVGO': {'index':'https://investors.broadcom.com/news-releases', 'prefix':'https://investors.broadcom.com/news-releases/'},
+    'CLS': {'index':'https://celestica.gcs-web.com/news-releases', 'prefix':'https://celestica.gcs-web.com/news-releases/'},
     'MRCY': {'index':'https://ir.mrcy.com/events-presentations', 'prefix':'https://ir.mrcy.com/news-releases/'},
     'HROW': {'index':'https://investors.harrow.com/investors', 'prefix':'https://investors.harrow.com/investors/'},
     'ARKO': {'index':'https://www.arkocorp.com/news-events/press-releases', 'prefix':'https://www.arkocorp.com/news-events/'},
@@ -85,6 +87,7 @@ class Page(HTMLParser):
         if tag=='script' and a.get('type')=='application/ld+json':self.ld=True;self.ldparts=[]
         if tag=='meta' and (a.get('property') or a.get('name','')).lower() in ('article:published_time','datepublished','date','pubdate'):
             self.dates.append(a.get('content',''))
+        if tag=='time' and a.get('datetime'):self.dates.append(a['datetime'])
         if tag=='a' and a.get('href'):self.links.append((a['href'],'article'))
         if tag=='link' and a.get('type') in ('application/rss+xml','application/atom+xml') and a.get('href'):
             self.links.append((a['href'],'feed'))
@@ -135,6 +138,7 @@ def archive(symbol,url,raw,published,at,now,root):
     document={'source':url,'source_kind':'ISSUER_IR','issuer_symbol':symbol,
               'source_registry_version':REGISTRY_VERSION,'authority_url':config['index'],
               'published_at':published.isoformat(),'retrieved_at':now.isoformat(),
+              'publication_precision':'DATE_ONLY_UPPER_BOUND' if published.utcoffset()==timedelta(hours=-12) and published.time()==time.max else 'TIMESTAMP',
               'official_source_verified':True,'text':text,'raw_sha256':hashlib.sha256(raw).hexdigest()}
     sha=digest(document);p=root/'official_documents'/f'{sha}.json';p.parent.mkdir(parents=True,exist_ok=True)
     p.write_text(json.dumps(document,ensure_ascii=False),encoding='utf-8')

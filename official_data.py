@@ -244,15 +244,23 @@ def collect_documents(submissions, cik, at, now, root, symbol=None, clock=None):
         accepted=recent['acceptanceDateTime'][i]
         if timestamp_ns(accepted)>timestamp_ns(at.isoformat()) or recent['form'][i] not in ('8-K','10-Q','10-K','10-Q/A','10-K/A'):
             continue
-        items.append((accepted,acc,recent['primaryDocument'][i]))
-    items=sorted(items,reverse=True)[:8]
+        fields=recent.get('items',[])
+        earnings=recent['form'][i]=='8-K' and i<len(fields) and '2.02' in fields[i]
+        priority=0 if earnings else 1 if recent['form'][i]!='8-K' else 2
+        items.append((priority,accepted,acc,recent['primaryDocument'][i]))
+    ordered=sorted(items,key=lambda x:(-x[0],x[1]),reverse=True)
+    items=[];counts={}
+    for item in ordered:
+        if counts.get(item[0],0)>=2:continue
+        counts[item[0]]=counts.get(item[0],0)+1
+        items.append(item)
     result=[];attempts=0
-    for published,acc,name in items:
-        if attempts>=4:
+    for priority,published,acc,name in items:
+        if attempts>=8:
             result.append({"status":"DEFERRED_SOURCE_BUDGET"});break
         base='https://www.sec.gov/Archives/edgar/data/'+str(int(cik))+'/'+acc.replace('-','')+'/'
         queue=[urljoin(base,name)];seen=set()
-        while queue and len(seen)<3 and attempts<4:
+        while queue and len(seen)<3 and attempts<8:
             url=queue.pop(0)
             if url in seen or not url.startswith(base):
                 continue

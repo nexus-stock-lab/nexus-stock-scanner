@@ -34,6 +34,23 @@ def write_verified(path, value):
         raise ValueError('persisted JSON readback mismatch')
 
 
+
+def current_research_path(now, root=Path('input')):
+    """Select the next existing checkpoint's US session, never the JST calendar day."""
+    from entry_schedule import next_slot,session_date
+    return Path(root)/'research'/(session_date(next_slot(now))+'.json')
+
+
+def require_current_disclosures(symbol, reviewed_at, root, day):
+    path=Path(root)/'review_tasks'/(day+'.json')
+    if not path.exists():return
+    for item in read(path).get('results',[]):
+        if item.get('symbol')!=symbol:continue
+        for doc in item.get('documents',[]):
+            if doc.get('published_at') and timestamp_ns(doc['published_at'])>timestamp_ns(reviewed_at):
+                raise ValueError('New official disclosure after review: explicit re-review required')
+
+
 def inventory(research, now, root=Path('input'), promote=False):
     """Review every financial PASS, independent of row order, R:R or AI budget.
 
@@ -70,12 +87,18 @@ def inventory(research, now, root=Path('input'), promote=False):
             packet_path = root/'review_inbox'/day/(symbol+'.json')
             if packet_path.exists():
                 packet = read(packet_path)
+                require_current_disclosures(symbol,packet['reviewed_at'],root,day)
                 reviewed = datetime.fromisoformat(packet['reviewed_at'])
                 if reviewed > now:
                     raise ValueError('review is future')
-                review = load_confirmed_review(symbol, financials, at, min(now, at), root,
-                                               session_scope=bool(packet.get('approval_scope')))
-                earnings_review(review['next_earnings'], at)
+                validation_at=at
+                scoped=bool(packet.get('approval_scope'))
+                if scoped:
+                    from entry_schedule import next_slot, session_date
+                    validation_at=next_slot(now)
+                    if session_date(validation_at)!=day:raise ValueError('no future checkpoint in this session')
+                review = load_confirmed_review(symbol,financials,validation_at,now,root,session_scope=scoped)
+                earnings_review(review['next_earnings'],validation_at)
                 result.update(status='PASS', packet_sha256=digest(packet),
                               assertions=packet['assertions'], reasons=['Existing intake and earnings policy verified'])
                 continue
@@ -110,6 +133,7 @@ def inventory(research, now, root=Path('input'), promote=False):
                 assessment.get('delegation_id') != DELEGATION):
                 raise ValueError('assessment identity, research binding or reviewer invalid')
             stamp = assessment['reviewed_at']
+            require_current_disclosures(symbol,stamp,root,day)
             if timestamp_ns(stamp) > timestamp_ns(now.isoformat()):
                 raise ValueError('assessment time is future')
             assertions = assessment['assertions']
@@ -204,6 +228,12 @@ def collect_assessments(research, now, root=Path('input'), *, sec_collector=None
     sec_collector = sec_collector or collect_company_documents
     ir_collector = ir_collector or collect_issuer_ir
     clock = clock or (lambda: datetime.now(now.tzinfo))
+    from entry_schedule import next_slot,session_slots
+    slots=session_slots(at.astimezone(ZoneInfo('America/New_York')).date())
+    deadline=slots[-1] if slots else at
+    latest_path=root/'review_tasks'/(day+'.json')
+    try:prior={x['symbol']:x for x in read(latest_path).get('results',[])} if latest_path.exists() else {}
+    except (ValueError,OSError,KeyError,TypeError):prior={}
     queue = {'kind':'SOURCE_REVIEW_QUEUE', 'research_sha256':research['snapshot_sha256'],
              'decision_time_jst':at.isoformat(), 'started_at':now.isoformat(),
              'may_register':False, 'results':[]}
@@ -213,12 +243,12 @@ def collect_assessments(research, now, root=Path('input'), *, sec_collector=None
         item = {'symbol':symbol, 'documents':[], 'errors':[]}
         queue['results'].append(item)
         current = clock()
-        if current > at:
+        if current > deadline:
             item['errors'].append('PAST_DECISION_NO_RETROSPECTIVE_COLLECTION_OR_APPROVAL')
         else:
             for name, collector in (('sec',sec_collector), ('issuer_ir',ir_collector)):
                 try:
-                    receipt = collector(symbol,at,clock(),root)
+                    receipt = collector(symbol,deadline,clock(),root)
                     if name == 'sec' and int(receipt['cik']) != int(financials['cik']):
                         raise ValueError('SEC issuer identity changed; fresh financial research required')
                     item[name] = receipt
@@ -229,9 +259,41 @@ def collect_assessments(research, now, root=Path('input'), *, sec_collector=None
         item['documents'] = financials.get('official_documents', []) + item['documents']
         item['assertion_names'] = list(NAMES)
         item['status'] = 'EXPLICIT_SEMANTIC_REVIEW_REQUIRED'
+        content=[]
+        for receipt in item['documents']:
+            sha=receipt.get('evidence_sha256')
+            if not sha:continue
+            try:
+                doc=read(root/'official_documents'/(sha+'.json'))
+                content.append((doc['source'],doc.get('raw_sha256') or digest(doc.get('text',''))))
+            except (ValueError,OSError,KeyError):item['errors'].append('DOCUMENT_ARCHIVE_INVALID:'+sha)
+        item['source_content_sha256']=digest(sorted(set(content)))
+        item['source_content_changed']=prior.get(symbol,{}).get('source_content_sha256')!=item['source_content_sha256']
+        assessment=None
+        try:
+            candidate=root/'source_assessments'/day/(symbol+'.json')
+            batchfile=root/'source_assessments'/(day+'.json')
+            assessment=read(candidate) if candidate.exists() else read(batchfile).get(symbol) if batchfile.exists() else None
+            if assessment is not None and not isinstance(assessment,dict):raise ValueError('invalid assessment object')
+        except (ValueError,OSError,AttributeError):
+            item['errors'].append('ASSESSMENT_INVALID_REPAIR_REQUIRED');assessment=None
+        assertions=(assessment or {}).get('assertions',{})
+        if not isinstance(assertions,dict):assertions={}
+        assertions={k:v for k,v in assertions.items() if isinstance(v,dict)}
+        binding=bool(assessment and assessment.get('research_sha256')==research['snapshot_sha256'] and
+                     assessment.get('financial_evidence_sha256')==financials.get('evidence_sha256'))
+        item['unresolved_items']=[{'name':name,'reason':assertions.get(name,{}).get('rationale','Explicit official-source review required'),
+            'action':'WORK_REVIEW_CHANGED_SOURCES' if item['source_content_changed'] else 'RESOLVE_EXISTING_EVIDENCE_GAP'}
+            for name in NAMES if not binding or assertions.get(name,{}).get('value') is None]
+        ir=item.get('issuer_ir',{})
+        item['collection_blockers']=list(ir.get('audit',[]))
+        if ir.get('status'):item['collection_blockers'].append({'status':ir['status']})
+        reviewed=(assessment or {}).get('reviewed_at')
+        item['requires_revalidation_of_known_items']=bool(reviewed and any(
+            d.get('published_at') and timestamp_ns(d['published_at'])>timestamp_ns(reviewed) for d in item['documents']))
+        if not binding and assessment:item['errors'].append('ASSESSMENT_BINDING_STALE_REVIEW_REQUIRED')
         path = root/'source_assessments'/day/(symbol+'.json')
-        batch = read(root/'source_assessments'/(day+'.json')) if (root/'source_assessments'/(day+'.json')).exists() else {}
-        if path.exists() or symbol in batch:
+        if path.exists() or assessment is not None:
             item['assessment_status'] = 'EXISTING_ATTESTATION_PRESERVED'
             continue
         # A truthful incomplete SOURCE_ASSESSMENT, not a fabricated reviewer signature.
@@ -245,8 +307,12 @@ def collect_assessments(research, now, root=Path('input'), *, sec_collector=None
         item['assessment_status'] = 'PENDING_CREATED'
     queue['completed_at'] = clock().isoformat()
     queue['financial_pass_count'] = len(queue['results'])
+    queue['financial_collection_gaps']=research.get('financial_audit',[])
+    queue['human_review_required']=True
+    queue['next_checkpoint_jst']=next_slot(clock()).isoformat()
     sha = digest(queue)
     write_verified(root/'source_review_runs'/day/(sha+'.json'),queue)
+    write_verified(latest_path,queue)
     return queue
 
 
@@ -286,8 +352,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     now = datetime.now(ZoneInfo('Asia/Tokyo'))
     if args.research is None:
-        from market_calendar import next_decision
-        args.research = args.root/'research'/(next_decision(now).date().isoformat()+'.json')
+        args.research = current_research_path(now,args.root)
     if not args.research.exists():
         args.out.mkdir(parents=True,exist_ok=True)
         write_verified(args.out/'source_review_status.json', {'status':'CURRENT_RESEARCH_MISSING', 'research_path':str(args.research), 'orders':0, 'ledger_writes':0})
