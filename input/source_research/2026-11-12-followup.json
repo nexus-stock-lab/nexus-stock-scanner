@@ -1,0 +1,162 @@
+{
+  "kind": "SOURCE_REVIEW_FOLLOWUP",
+  "observed_at": "2026-11-12T23:27:46.332830+09:00",
+  "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
+  "base_commit": "067326ac37b8d47247c90f65889ca612cddcc9ec",
+  "base_audit_path": "input/source_research/2026-11-12-50-review.json",
+  "reviewed_symbols": [
+    "MRCY",
+    "CLS",
+    "AVGO"
+  ],
+  "new_approvals": 0,
+  "remaining_unapproved_from_base_30": 30,
+  "intake_assertions_newly_verified_count": 6,
+  "non_intake_web_confirmations": [
+    {
+      "symbol": "CLS",
+      "item": "guidance_not_lowered",
+      "content_confirmed": true,
+      "intake_ready": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/1030894/000103089426000049/cls-20260930prcondensedfs.htm",
+      "publication_date": "2026-10-26",
+      "exact_publication_time": null,
+      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "finding": "同一通期売上・EPS見通し引上げ。FCF低下は別途明示。"
+    },
+    {
+      "symbol": "AVGO",
+      "item": "next_earnings",
+      "content_confirmed": true,
+      "intake_ready": false,
+      "source": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026",
+      "publication_date": "2026-11-09",
+      "exact_publication_time": null,
+      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "next_earnings_date": "2026-12-09",
+      "timing": "AFTER_US_MARKET_CLOSE",
+      "finding": "企業IRで確定日を確認。既存IR取込レジストリ・公表時刻拘束の不足は維持。"
+    }
+  ],
+  "calendar_checks": [
+    {
+      "symbol": "MRCY",
+      "source": "https://ir.mrcy.com/events-presentations",
+      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "upcoming_earnings_announced": false
+    },
+    {
+      "symbol": "CLS",
+      "source": "https://corporate.celestica.com/events-and-presentations",
+      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "upcoming_earnings_announced": false
+    }
+  ],
+  "results": [
+    {
+      "symbol": "MRCY",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1049521/000104952126000096/a2027q1earningsreleaseex.htm",
+          "evidence_sha256": "b9c8ecbbdc65962360f1b55b67d173aebdc3f504138cd9ce76823e75cf58591a",
+          "excerpt": "we are raising our outlook for fiscal year 2027",
+          "published_at": "2026-11-10T21:01:58.000Z",
+          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "rationale": "公式Q1 FY2027決算で通期見通し引上げを明示。11月12日追加確認。旧調査の売上・EBITDA説明を維持。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "追加検索でも11月4〜5日の株価下落を特定の一時的要因に結び付けるSEC・企業IRの裏付けを確認できない。最新決算好調や見通し上方修正だけでは下落原因の証明にならない。未承認。"
+        },
+        "no_material_business_impairment": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1049521/000104952126000098/mrcy-20261002.htm",
+          "evidence_sha256": "6b7affd4ec7a3652ec561619460efc3ec61a78314dba2e528a9112448eb0c1fb",
+          "excerpt": "we were in compliance with all covenants and conditions under the Revolver.",
+          "published_at": "2026-11-10T22:06:28.000Z",
+          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "rationale": "最新10-Qで契約遵守、12か月資金充足、開示統制有効を確認。現金109.7百万ドル、負債341.5百万ドル、営業CFマイナス14百万ドルと固定価格契約の原価見積リスクは残る。重大毀損成立とは判断しない。"
+        },
+        "next_earnings": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1049521/000104952126000096/a2027q1earningsreleaseex.htm",
+          "evidence_sha256": "b9c8ecbbdc65962360f1b55b67d173aebdc3f504138cd9ce76823e75cf58591a",
+          "excerpt": "November 10, 2026",
+          "published_at": "2026-11-10T21:01:58.000Z",
+          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "rationale": "企業IRイベント欄に今後のイベント掲載なし、直近は11月10日。次回正式決算日は未公表。既存の30暦日以内例外を11月12日の米国セッションについて確認し、推定日を使わない。確認先 https://ir.mrcy.com/events-presentations",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-10"
+        }
+      }
+    },
+    {
+      "symbol": "CLS",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "追加確認した公式SEC Q3決算発表でFY2026売上20.5から21.0十億ドル、調整EPS11.30から11.55へ上方修正。FCF600から460百万ドルへの低下は成長に備えた運転資金投資と説明。内容確認済みだが当該発表の正確な公表時刻・証拠アーカイブ拘束が未完成のため、この取込項目は未完了を維持。 https://www.sec.gov/Archives/edgar/data/1030894/000103089426000049/cls-20260930prcondensedfs.htm"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "追加確認した公式決算は需要増・業績上方修正を示すが、株価下落時点と一時的原因の対応を裏付ける公式証拠は不足。FCF低下の会社説明を株価下落の原因と断定しない。未承認。"
+        },
+        "no_material_business_impairment": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1030894/000103089426000050/cls-20260930.htm",
+          "evidence_sha256": "28a5e26cfb7e67a2ca3f93ab0aa6bfebc551e3547946eff3fc63e4edb919a023",
+          "excerpt": "we were in compliance with all restrictive and financial covenants under the Credit Facility.",
+          "published_at": "2026-10-26T20:26:17.000Z",
+          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "rationale": "最新10-Qで契約遵守、今後12か月超の資金充足、開示統制有効を確認。未使用融資枠1,739.3百万ドル。大型顧客集中、供給・生産拡大、8月増資、2027年設備投資15〜20億ドルとFCF低下のリスクを残すが、現時点で重大毀損が成立したとは判断しない。"
+        },
+        "next_earnings": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1030894/000103089426000050/cls-20260930.htm",
+          "evidence_sha256": "28a5e26cfb7e67a2ca3f93ab0aa6bfebc551e3547946eff3fc63e4edb919a023",
+          "excerpt": "October 26, 2026",
+          "published_at": "2026-10-26T20:26:17.000Z",
+          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "rationale": "公式SEC発表の直近決算日10月26日と企業IRイベント欄を追加確認。今後の決算日掲載を確認できず、11月12日は直近決算から30暦日以内の既存例外を適用可能。10月27日のInvestor Dayを決算発表日と混同しない。 https://corporate.celestica.com/events-and-presentations",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-10-26"
+        }
+      }
+    },
+    {
+      "symbol": "AVGO",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "第4四半期売上34.8十億ドル見通し。前年成長率だけで同一対象予想の非下方修正とは判定しない。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "追加検索で株価下落に関する二次情報は見つかったが、特定の一時的下落原因を裏付けるSEC・企業IRの証拠が不足。AI売上成長や次回決算日だけではこの項目を通過にしない。未承認。"
+        },
+        "no_material_business_impairment": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000080/avgo-20260802.htm",
+          "evidence_sha256": "0ad17bd10df83a85bd0096c4fd1aeb5fdb97eda8aabe67518d93fdd9d5e53561",
+          "excerpt": "we were in compliance with all debt covenants.",
+          "published_at": "2026-09-09T21:56:42.000Z",
+          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "rationale": "最新10-Qで債務契約遵守、今後12か月の資金充足、開示統制有効を確認。負債約61.1十億ドル、AI顧客・製造委託先集中と顧客資金調達への依存は残るが、現時点で重大毀損成立とは判断しない。"
+        },
+        "next_earnings": {
+          "value": null,
+          "rationale": "企業IRの11月9日公式発表で次回決算12月9日米国市場引け後を確認。11月12日は除外期間外。IRドメインは現行取込レジストリ未対応で公表時刻のアーカイブ拘束も未完成のため、canonical項目を未完了として維持。コード変更やSEC既存資料への日付転記はしない。 https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026"
+        }
+      }
+    }
+  ],
+  "next_checkpoint_connection": "No new approved candidate; no new review_inbox packet or entry plan created. Existing LINC approval remains separate and already open.",
+  "protected_changes": false,
+  "retrospective_approvals": 0
+}
