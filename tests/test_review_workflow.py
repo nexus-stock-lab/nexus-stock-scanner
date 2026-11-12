@@ -149,5 +149,27 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(self.run_report(True)['saved_count'],0)
         self.assertIn('unsigned',self.run_report()['results'][0]['reasons'][0])
 
+    def test_explicit_linc_session_scope_can_only_cover_future_existing_slots(self):
+        from entry_schedule import session_slots, NY
+        record=self.assessment()
+        expiry=session_slots(AT.astimezone(NY).date())[-1]
+        record.update(approval_scope='US_REGULAR_SESSION',decision_time_jst=expiry.isoformat())
+        write_verified(self.path,record)
+        report=self.run_report(True,AT+timedelta(minutes=1))
+        self.assertEqual(report['saved_count'],1)
+        packet=json.loads(Path(report['results'][0]['saved_path']).read_text())
+        self.assertEqual(packet['approval_scope'],'US_REGULAR_SESSION')
+        self.assertEqual(packet['decision_time_jst'],expiry.isoformat())
+
+    def test_session_assessment_cannot_change_expiry_or_roll_to_next_day(self):
+        from entry_schedule import session_slots, NY
+        record=self.assessment()
+        expiry=session_slots(AT.astimezone(NY).date())[-1]
+        record.update(approval_scope='US_REGULAR_SESSION',decision_time_jst=(expiry+timedelta(hours=1)).isoformat())
+        write_verified(self.path,record)
+        self.assertEqual(self.run_report(True)['saved_count'],0)
+        record['decision_time_jst']=expiry.isoformat();write_verified(self.path,record)
+        self.assertEqual(self.run_report(True,expiry+timedelta(seconds=1))['saved_count'],0)
+
 
 if __name__=='__main__': unittest.main()
