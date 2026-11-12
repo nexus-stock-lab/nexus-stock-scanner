@@ -94,5 +94,60 @@ class WorkflowTests(unittest.TestCase):
         self.research['rows']=[{'symbol':'INJECTED'}]
         with self.assertRaisesRegex(ValueError,'proof mismatch'):self.run_report()
 
+    def test_connected_collection_covers_all_passes_and_isolates_sec_failure(self):
+        from review_workflow import connected_run
+        self.research['financials']['AAA']={**self.financials,'symbol':'AAA'}
+        self.seal()
+        research_path=self.root/'research.json';write_verified(research_path,self.research)
+        calls=[]
+        def sec(symbol,at,now,root):
+            calls.append(('SEC',symbol))
+            if symbol=='AAA':raise OSError('fictional outage')
+            return {'cik':'1','official_documents':[]}
+        def ir(symbol,at,now,root):
+            calls.append(('IR',symbol));return {'documents':[], 'status':'IR_SOURCE_NOT_CONFIGURED'}
+        ledger=self.root/'trades.csv';ledger.write_text('protected fixture')
+        result=connected_run(research_path,self.now,self.root,self.root/'output',collect=True,
+                             clock=lambda:self.now,sec_collector=sec,ir_collector=ir)
+        self.assertEqual(len(calls),4)
+        self.assertEqual(result['review']['financial_pass_count'],2)
+        self.assertEqual(result['review']['counts']['INSUFFICIENT_EVIDENCE'],2)
+        self.assertEqual(result['review']['saved_count'],0)
+        self.assertEqual(ledger.read_text(),'protected fixture')
+        pending=json.loads(next((self.root/'source_assessments').rglob('AAA.json')).read_text())
+        self.assertIsNone(pending['reviewed_at'])
+        self.assertEqual(pending['reviewer_id'],'unassigned')
+        self.assertEqual(set(pending['assertions']),set(NAMES))
+
+    def test_connected_explicit_review_is_preserved_and_promoted(self):
+        from review_workflow import connected_run
+        self.assessment();original=self.path.read_bytes()
+        path=self.root/'research.json';write_verified(path,self.research)
+        result=connected_run(path,self.now,self.root,self.root/'output',collect=True,
+                             clock=lambda:self.now,
+                             sec_collector=lambda *a:{'cik':'1','official_documents':[]},
+                             ir_collector=lambda *a:{'documents':[]})
+        self.assertEqual(result['review']['saved_count'],1)
+        self.assertEqual(self.path.read_bytes(),original)
+        from review_intake import load_confirmed_review
+        actual=load_confirmed_review('TEST',self.financials,AT,self.now,self.root)
+        self.assertEqual(actual['reviewer_id'],'codex-delegated')
+
+    def test_past_collection_never_fetches_or_manufactures_current_approval(self):
+        from review_workflow import connected_run
+        path=self.root/'research.json';write_verified(path,self.research)
+        result=connected_run(path,AT+timedelta(minutes=1),self.root,self.root/'out',collect=True,
+                             clock=lambda:AT+timedelta(minutes=1),
+                             sec_collector=lambda *a:self.fail('past SEC collection'),
+                             ir_collector=lambda *a:self.fail('past IR collection'))
+        self.assertIn('PAST_DECISION',result['collection']['results'][0]['errors'][0])
+        self.assertEqual(result['review']['saved_count'],0)
+
+    def test_unsigned_record_cannot_smuggle_supported_assertions(self):
+        record=self.assessment();record.update(reviewer_id='unassigned',reviewed_at=None)
+        write_verified(self.path,record)
+        self.assertEqual(self.run_report(True)['saved_count'],0)
+        self.assertIn('unsigned',self.run_report()['results'][0]['reasons'][0])
+
 
 if __name__=='__main__': unittest.main()
