@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "decision_time_jst": "2026-11-12T23:45:00+09:00",
-  "observed_at": "2026-11-12T19:04:53.609506+09:00",
+  "observed_at": "2026-11-12T23:17:44.705004+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -10,27 +10,31 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "e7e6f0c8c480bbb49946ac02c47ab10d78c026e591e4bfd56a6be01f3cf8043f",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "decline_explanation_verified: 製品売上減とサービス売上増が併存。株価下落の一時性未確認。",
+        "no_material_business_impairment: デバイス融資契約は合意済み条件と最終成立を区別。大型南アフリカ契約への依存も未評価。",
+        "next_earnings: 直近決算11月9日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1774170/000149315226050619/ex99-1.htm",
+          "evidence_sha256": "7251881736ff6244e4be1cdfb640db0de8cda77ae56be1ee3d97023594873f1f",
+          "excerpt": "Affirm guidance for FY2027.",
+          "published_at": "2026-11-09T12:13:56.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00",
+          "rationale": "FY2027会社ガイダンス維持を公式発表で確認。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "製品売上減とサービス売上増が併存。株価下落の一時性未確認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "デバイス融資契約は合意済み条件と最終成立を区別。大型南アフリカ契約への依存も未評価。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月9日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -78,27 +82,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "940052bc5d4b85f720c67f2a506ac95826a4fe853ca12423ddab8d0cb20b3c19",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: FY2026売上4,440〜4,465百万ドル。旧FY2026見通しとの比較未完了。2027・28予想を代用しない。",
+        "decline_explanation_verified: Delivery減収とCloud成長が併存し、下落の一時性未確認。",
+        "no_material_business_impairment: 11月9日の転換社債調達と希薄化・顧客契約の履行リスク評価が未完了。",
+        "next_earnings: 直近決算11月5日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "FY2026売上4,440〜4,465百万ドル。旧FY2026見通しとの比較未完了。2027・28予想を代用しない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "Delivery減収とCloud成長が併存し、下落の一時性未確認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "11月9日の転換社債調達と希薄化・顧客契約の履行リスク評価が未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月5日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -146,27 +150,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7d2045d08e34d3fde992e71a435517a47376da1506f1e35376e5fd210458c9c4",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 第4四半期売上34.8十億ドル見通し。前年成長率だけで同一対象予想の非下方修正とは判定しない。",
+        "decline_explanation_verified: 株価下落の一時性未確認。",
+        "no_material_business_impairment: 顧客集中と大型AI契約の履行・資金リスクの確認未完了。",
+        "next_earnings: 12月9日という日付候補は企業IRの正式予定との照合未完了。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "第4四半期売上34.8十億ドル見通し。前年成長率だけで同一対象予想の非下方修正とは判定しない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "株価下落の一時性未確認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "顧客集中と大型AI契約の履行・資金リスクの確認未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "12月9日という日付候補は企業IRの正式予定との照合未完了。"
         }
       },
       "official_documents": [
@@ -214,27 +218,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "5578636c4fd55312f4432aa13987395072b37fc471880835499f2239efa192f1",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: FY2026売上20.5から21十億ドル、調整EPS11.30から11.55へ引上げ。FCFは600から460百万ドルへ低下。",
+        "decline_explanation_verified: 運転資金増と成長投資だけで株価下落の一時性を証明できない。",
+        "no_material_business_impairment: 大型顧客集中、設備投資増、8月増資の影響評価未完了。",
+        "next_earnings: 直近決算10月26日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "FY2026売上20.5から21十億ドル、調整EPS11.30から11.55へ引上げ。FCFは600から460百万ドルへ低下。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "運転資金増と成長投資だけで株価下落の一時性を証明できない。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "大型顧客集中、設備投資増、8月増資の影響評価未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算10月26日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -279,30 +283,35 @@
     },
     {
       "symbol": "CORZ",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "7b51c13101983bbca41a193ddcde64c633d5206a2f31a2adde53b5f22e7eb841",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "no_material_business_impairment: 9月30日現在、内部統制の重大な弱点が未解消で開示統制も無効。重大会計リスクとして不通過。過去の破産を現在の破産とは扱わない。",
+        "guidance_not_lowered: 最新10-Qを確認したが同一対象の売上見通し比較は未完了。",
+        "decline_explanation_verified: 下落の一時性を裏付ける証拠が不足。",
+        "next_earnings: 直近決算11月5日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "最新10-Qを確認したが同一対象の売上見通し比較は未完了。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "下落の一時性を裏付ける証拠が不足。"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": false,
+          "source": "https://www.sec.gov/Archives/edgar/data/1839341/000183934126000030/core-20260930.htm",
+          "evidence_sha256": "ce2ddd4e304746210df207d86b1bb4d62392b56bff343fb501270a28da96095e",
+          "excerpt": "As of September 30, 2026, this material weakness has not been remediated",
+          "published_at": "2026-11-05T13:09:17.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00",
+          "rationale": "9月30日現在、内部統制の重大な弱点が未解消で開示統制も無効。重大会計リスクとして不通過。過去の破産を現在の破産とは扱わない。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月5日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -350,27 +359,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7cbec1e2b556242fcfe4bb2d63b2b0cfb1f40d8f2d501bd3b70c79a316152f7c",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: FY2027売上5.5〜9.5%増は初回見通し。同一対象予想の比較未完了。",
+        "decline_explanation_verified: 株価下落の一時性未確認。",
+        "no_material_business_impairment: 10-Kの一般的な監査記述を実在する重大な弱点と誤認しない。重大リスク審査は未完了。",
+        "next_earnings: 12月2日という候補は公式企業IRで照合未完了。直近決算から30日超のため未公表例外を使わない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "FY2027売上5.5〜9.5%増は初回見通し。同一対象予想の比較未完了。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "株価下落の一時性未確認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "10-Kの一般的な監査記述を実在する重大な弱点と誤認しない。重大リスク審査は未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "12月2日という候補は公式企業IRで照合未完了。直近決算から30日超のため未公表例外を使わない。"
         }
       },
       "official_documents": [
@@ -418,27 +427,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7152719e135b095cd0082d9025815192a39212ce7eb8252a0ed66f8817738a58",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 11月12日Q3発表で通期売上2.037〜2.076から2.019〜2.038十億ドルへ下方修正。不通過。",
+        "decline_explanation_verified: 既存のQ2財務通過をQ3公表後の承認に流用しない。",
+        "no_material_business_impairment: 最新Q3に基づく重大リスク評価は未完了。",
+        "next_earnings: 本日11月12日が公式決算日で新規エントリー除外。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "11月12日Q3発表で通期売上2.037〜2.076から2.019〜2.038十億ドルへ下方修正。不通過。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "既存のQ2財務通過をQ3公表後の承認に流用しない。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "最新Q3に基づく重大リスク評価は未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "本日11月12日が公式決算日で新規エントリー除外。"
         }
       },
       "official_documents": [
@@ -483,30 +492,35 @@
     },
     {
       "symbol": "FIS",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "0ba00dbe2a0a2d49a4948b26033a66336dd7d957495c0c9444424e151e1f4153",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: FY2026売上見通し13,630〜13,695から13,445〜13,505百万ドルへ低下。プロフォーマ売上成長も4.5〜5.0%から3.1〜3.6%へ低下。事業売却の対象範囲差にも注意し、不通過。 旧見通しは追加一次資料URLの8月4日企業IRと比較。単なる連結範囲変化だけでなくプロフォーマも低下。",
+        "decline_explanation_verified: 見通し低下があり、一時的な下落として承認しない。",
+        "no_material_business_impairment: 事業売却・買収統合リスクの独立評価は未完了。",
+        "next_earnings: 直近決算11月4日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": false,
+          "source": "https://www.sec.gov/Archives/edgar/data/1136893/000113689326000061/q32026ex991.htm",
+          "evidence_sha256": "2b45cafd2c8621ed809925461ac2b2f35807a5d7880abbfc8e7aceb02f2f493c",
+          "excerpt": "Revenue $13,445 - $13,505",
+          "published_at": "2026-11-04T12:34:43.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00",
+          "rationale": "FY2026売上見通し13,630〜13,695から13,445〜13,505百万ドルへ低下。プロフォーマ売上成長も4.5〜5.0%から3.1〜3.6%へ低下。事業売却の対象範囲差にも注意し、不通過。 旧見通しは追加一次資料URLの8月4日企業IRと比較。単なる連結範囲変化だけでなくプロフォーマも低下。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "見通し低下があり、一時的な下落として承認しない。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "事業売却・買収統合リスクの独立評価は未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月4日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -554,27 +568,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "b0c148bc119e204efce62620d6f2f65fc5ef99be3953c73ece8cead4cc99ddfd",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 四半期売上586.4百万ドル。第4四半期610〜640百万ドルは初回予想で、同一期間の非下方修正比較は未完了。",
+        "decline_explanation_verified: 前年一時益を調整した営業利益は増加。ただし株価下落との対応・一時性が未確認。",
+        "no_material_business_impairment: 600百万ドルASRの現金・借入影響と最新10-Qのリスク評価が未完了。",
+        "next_earnings: 直近決算10月21日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "四半期売上586.4百万ドル。第4四半期610〜640百万ドルは初回予想で、同一期間の非下方修正比較は未完了。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "前年一時益を調整した営業利益は増加。ただし株価下落との対応・一時性が未確認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "600百万ドルASRの現金・借入影響と最新10-Qのリスク評価が未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算10月21日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -619,30 +633,35 @@
     },
     {
       "symbol": "HROW",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "1a22425f71ca18d42ed12f8375656f7702dbcf414a7bf36b5144e3913ea1d2c1",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "decline_explanation_verified: 調整EBITDA予想80〜100百万ドルから40百万ドル超に低下。既存の業績下方修正除外により不通過。",
+        "guidance_not_lowered: 通期売上350〜365百万ドルは維持。",
+        "no_material_business_impairment: TYRVAYAとVEVYE契約・追加投資・債務の影響は未完了。契約違反が成立したとは断定しない。",
+        "next_earnings: 直近決算11月9日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "通期売上350〜365百万ドルは維持。"
         },
         "decline_explanation_verified": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": false,
+          "source": "https://www.sec.gov/Archives/edgar/data/1360214/000162828026072195/hrow-20261109xpressrelease.htm",
+          "evidence_sha256": "7eab5dafc92286e9044f7141a8d1413ac9c8aef1fa7dab07ca3474984a703d8a",
+          "excerpt": "compared with prior Adjusted EBITDA guidance of $80 million to $100 million",
+          "published_at": "2026-11-09T21:13:56.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00",
+          "rationale": "調整EBITDA予想80〜100百万ドルから40百万ドル超に低下。既存の業績下方修正除外により不通過。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "TYRVAYAとVEVYE契約・追加投資・債務の影響は未完了。契約違反が成立したとは断定しない。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月9日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -715,27 +734,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "82a40b3311246638e52e88efb0c28e572da2559863420358b148999177401f50",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 総売上成長見通し約5%へ上方限定。一方、オーガニック見通しは3〜3.5%から約3%へ縮小。",
+        "decline_explanation_verified: 数量約10ポイント減を値上げ約11ポイント増が補う。需要減を一時的と確定できない。",
+        "no_material_business_impairment: カカオ価格、関税返金、デリバティブ要因と持続的収益の分離が未完了。",
+        "next_earnings: 直近決算10月29日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "総売上成長見通し約5%へ上方限定。一方、オーガニック見通しは3〜3.5%から約3%へ縮小。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "数量約10ポイント減を値上げ約11ポイント増が補う。需要減を一時的と確定できない。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "カカオ価格、関税返金、デリバティブ要因と持続的収益の分離が未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算10月29日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -783,27 +802,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "8ea3782bee97d054e8555f855c6f673fed06f487c330efb90ac248560d0c5e8a",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 調整EBITDAは引上げ。セグメント売上レンジ合算は中央値維持の縮小で、売上見通しの比較判断は未完了。",
+        "decline_explanation_verified: 株価下落の一時性未確認。",
+        "no_material_business_impairment: 債務約28億ドルと流動性約17億ドル。借入があることのみで重大毀損とは断定しない。",
+        "next_earnings: 直近決算11月4日。投資家説明会を決算日と混同しない。次回決算未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "調整EBITDAは引上げ。セグメント売上レンジ合算は中央値維持の縮小で、売上見通しの比較判断は未完了。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "株価下落の一時性未確認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "債務約28億ドルと流動性約17億ドル。借入があることのみで重大毀損とは断定しない。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月4日。投資家説明会を決算日と混同しない。次回決算未確認。"
         }
       },
       "official_documents": [
@@ -851,27 +870,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "2b061d2b613eacb0449806d4f9d31e2d08138b7aa8217c7e8ccc1c96eeeb3455",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 2026協業売上40〜45百万ドルの更新を確認したが旧見通しとの比較が未完了。",
+        "decline_explanation_verified: 株価下落と回復の公式根拠が不足。",
+        "no_material_business_impairment: 現金等492.1百万ドルと2028年超の資金計画を確認。条件付きマイルストーンを確定入金と扱わない。",
+        "next_earnings: 直近決算11月10日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "2026協業売上40〜45百万ドルの更新を確認したが旧見通しとの比較が未完了。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "株価下落と回復の公式根拠が不足。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "現金等492.1百万ドルと2028年超の資金計画を確認。条件付きマイルストーンを確定入金と扱わない。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月10日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -916,30 +935,50 @@
     },
     {
       "symbol": "LINC",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS",
       "financial_evidence_sha256": "503603baa242be1c239010c0da1b96f105dd668782ce6e50f475af5757741a74",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "All four explicit assertions validated"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "e1ed828b8350103dc0d22dac7a5fdc113ae36811ffd429ac74519357c471c2a6",
+          "excerpt": "raising its full-year 2026 revenue guidance",
+          "rationale": "11月12日に企業IR8月10日と11月9日を再読。同じ2026通期売上590〜600百万ドルから600〜605へ引上げ。学生開始成長率上限14から12%への縮小、EBITDA維持を隠さない。最新11月10日ニュースはHouston校建築表彰で業績予想変更ではない。 11月12日23時台に現行研究の財務証拠・同一SEC原文とIRニュース/イベントを再照合。新たな公表決算予定は確認できない。",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00"
         },
         "decline_explanation_verified": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+          "evidence_sha256": "74aa079e1bdbde894c0e0ecee9540f9fdca91bdb79b09f1de58b9c4988a96564",
+          "excerpt": "affected conversion from enrollment to start.",
+          "rationale": "8月10日決算の入学転換率低下説明と、保存日足8月7日40.99→10日30.77を照合。11月9日の転換率回復と入学者14.2%増を再読し、業務上の一時要因と回復を伴う下落として判断。因果関係の関連付けは審査者の推論であり全下落の説明ではない。証券訴訟は残る。 11月12日23時台に現行研究の財務証拠・同一SEC原文とIRニュース/イベントを再照合。新たな公表決算予定は確認できない。",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+          "evidence_sha256": "182ac690078eed281515137e0fee790a8f9dee6aa646ef8587783d265e1f5cae",
+          "excerpt": "the Lenders waived",
+          "rationale": "10-Qの資金・債務・認定資格・訴訟・統制を再読。自社株買いによる契約違反は11月6日貸し手免除。営業CF61.515百万ドル、現金20.627、リボルバー未使用115、認定・TitleIV参加資格維持を確認。設備投資がCF超、連邦資金依存、2027規制と証券訴訟のリスクを残すが重大毀損成立とは判断しない。 11月12日23時台に現行研究の財務証拠・同一SEC原文とIRニュース/イベントを再照合。新たな公表決算予定は確認できない。",
+          "published_at": "2026-11-09T21:58:46.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "e1ed828b8350103dc0d22dac7a5fdc113ae36811ffd429ac74519357c471c2a6",
+          "excerpt": "November 9, 2026",
+          "rationale": "公式IRニュース・イベントを再確認し、次回正式決算日の公表を確認できない。直近発表は2026-11-09。NY11月12日は30暦日以内で既存例外に該当。推定日を設定せず、後に正式予定判明時は3米国営業日前〜当日除外を優先。確認先:https://investors.lincolneducationalservices.com/events-and-presentations/upcoming-events 11月12日23時台に現行研究の財務証拠・同一SEC原文とIRニュース/イベントを再照合。新たな公表決算予定は確認できない。",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-09"
         }
       },
       "official_documents": [
@@ -1005,34 +1044,36 @@
         "registry_version": "official_ir_20261029_v1",
         "status": "IR_COLLECTION_ATTEMPTED",
         "index_evidence_sha256": "2e117b36f1dd5df17d51bcaa63188c22305c4bf6c022d658b4e7793ee0026851"
-      }
+      },
+      "packet_sha256": "259f64018cca34518f5b694636dda7844671e70281faa0edcc377bb5b3dab7e4",
+      "saved_path": "input/review_inbox/2026-11-12/LINC.json"
     },
     {
       "symbol": "MCD",
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7117caf06067ee789db800d9ab33303931c85fa2f74e66e811cfecd7058d0685",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: システム全体売上と会社連結売上を区別。会社の同一期間売上見通し非下方修正を明示確認できない。",
+        "decline_explanation_verified: 株価下落の一時性未確認。",
+        "no_material_business_impairment: 需要、フランチャイズ、負債・事業リスク評価未完了。",
+        "next_earnings: 直近決算11月4日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "システム全体売上と会社連結売上を区別。会社の同一期間売上見通し非下方修正を明示確認できない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "株価下落の一時性未確認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "需要、フランチャイズ、負債・事業リスク評価未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月4日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -1080,27 +1121,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "d04366b8d7a85487d42ded8bbd853e5c50fb7a1ed42fc690c76bcb9f88fac801",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 買収と決算期変更後の6か月移行期売上293〜297百万ドル。同一対象期間・会社範囲での比較未完了。",
+        "decline_explanation_verified: 買収込み成長率を既存事業回復の証明としない。下落の一時性未確認。",
+        "no_material_business_impairment: 統合・季節性・レジャーボート需要の重大リスク評価未完了。",
+        "next_earnings: 直近決算11月10日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "買収と決算期変更後の6か月移行期売上293〜297百万ドル。同一対象期間・会社範囲での比較未完了。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "買収込み成長率を既存事業回復の証明としない。下落の一時性未確認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "統合・季節性・レジャーボート需要の重大リスク評価未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月10日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -1148,27 +1189,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "1dec439b94c69939effabdd668f75d674996f34ab7f5b79de4ea2900357e741f",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 11月4日Q3生産117.3Mboe/日。生産計画を売上見通しに代用しない。",
+        "decline_explanation_verified: WildFire買収前後の売上・株式数変化があり、下落の一時性未確認。",
+        "no_material_business_impairment: 買収後の債務・現金・希薄化の影響評価が未完了。",
+        "next_earnings: 直近決算11月4日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "11月4日Q3生産117.3Mboe/日。生産計画を売上見通しに代用しない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "WildFire買収前後の売上・株式数変化があり、下落の一時性未確認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "買収後の債務・現金・希薄化の影響評価が未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月4日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -1213,30 +1254,39 @@
     },
     {
       "symbol": "MIR",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "ec0a8e012484b06d0ec7291c10698526712bf62440016632ac8f2869c5218689",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "decline_explanation_verified: 調整EBITDA285〜300から285〜292百万ドル、利益率25〜26%から24.7〜25.2%へ低下。既存の業績下方修正除外により不通過。",
+        "no_material_business_impairment: 10-Qの重大事業リスクの独立評価は未完了。",
+        "next_earnings: 直近決算10月27日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1809987/000162828026067591/a2026-10x27exhibit991.htm",
+          "evidence_sha256": "f8947d4ffc39fd225cecc4817e6d8db574a8bae71ac5367154dd09a5261904d0",
+          "excerpt": "Revenue growth of approximately 24% – 25%",
+          "published_at": "2026-10-27T20:16:08.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00",
+          "rationale": "売上成長見通し22〜24%から24〜25%へ引上げ。"
         },
         "decline_explanation_verified": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": false,
+          "source": "https://www.sec.gov/Archives/edgar/data/1809987/000162828026067591/a2026-10x27exhibit991.htm",
+          "evidence_sha256": "f8947d4ffc39fd225cecc4817e6d8db574a8bae71ac5367154dd09a5261904d0",
+          "excerpt": "previously $285 million – $300 million",
+          "published_at": "2026-10-27T20:16:08.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00",
+          "rationale": "調整EBITDA285〜300から285〜292百万ドル、利益率25〜26%から24.7〜25.2%へ低下。既存の業績下方修正除外により不通過。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "10-Qの重大事業リスクの独立評価は未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算10月27日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -1284,27 +1334,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7ab093a2884b5b848f862637f7c4cd29ea9b406a05c27ee6af1ef596ce7a0c80",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: FY2027売上成長を約2桁、調整EBITDA約210百万ドルに引上げ。",
+        "decline_explanation_verified: 11月4〜5日の下落について会社の公式発表との因果関係を確定できない。未承認。",
+        "no_material_business_impairment: 10-Qの12か月資金充足、契約遵守、統制を確認。ただし負の営業CFと契約原価推定リスクを継続監視。",
+        "next_earnings: 直近決算11月10日。推定2027年2月日付は公式確認できず採用しない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "FY2027売上成長を約2桁、調整EBITDA約210百万ドルに引上げ。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "11月4〜5日の下落について会社の公式発表との因果関係を確定できない。未承認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "10-Qの12か月資金充足、契約遵守、統制を確認。ただし負の営業CFと契約原価推定リスクを継続監視。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月10日。推定2027年2月日付は公式確認できず採用しない。"
         }
       },
       "official_documents": [
@@ -1353,27 +1403,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "291084c86563ec94a78c875e13063cbc9854681c3c58a18e542e6380371c26d6",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: ADI分離後の継続事業売上727百万ドル。旧連結会社と対象範囲が異なり、同一対象期間・範囲の売上見通し比較が未完了。",
+        "decline_explanation_verified: スピンオフの価格調整と経済的下落を分離できていない。",
+        "no_material_business_impairment: 負債約21億ドル、返済後も資本構成変更の影響を確認する必要がある。",
+        "next_earnings: 直近決算11月10日。次回日付・公式イベント欄の確認未完了。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "ADI分離後の継続事業売上727百万ドル。旧連結会社と対象範囲が異なり、同一対象期間・範囲の売上見通し比較が未完了。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "スピンオフの価格調整と経済的下落を分離できていない。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "負債約21億ドル、返済後も資本構成変更の影響を確認する必要がある。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月10日。次回日付・公式イベント欄の確認未完了。"
         }
       },
       "official_documents": [
@@ -1421,27 +1471,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "6c93123679a4d38a486cae19f4a5eb5240e479154ffedd30c453b751d5fdab91",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 生産増と売上増を確認。生産・設備投資計画を売上ガイダンスと同一視できない。",
+        "decline_explanation_verified: 原油価格の影響はあり得るが、株価下落の一時要因と確認できない。",
+        "no_material_business_impairment: 商品価格と操業リスクの重大性判断が未完了。",
+        "next_earnings: 直近決算11月4日。次回公式日程の確認未完了。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "生産増と売上増を確認。生産・設備投資計画を売上ガイダンスと同一視できない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "原油価格の影響はあり得るが、株価下落の一時要因と確認できない。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "商品価格と操業リスクの重大性判断が未完了。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月4日。次回公式日程の確認未完了。"
         }
       },
       "official_documents": [
@@ -1486,30 +1536,35 @@
     },
     {
       "symbol": "TRMB",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "b71277e65f8eacb0dcb55fc090b20967b1a3798e3606288ada67df137fc9b834",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "no_material_business_impairment: 最新10-Qで内部統制上の重大な弱点が残存し、開示統制が無効。重大会計リスクとして不通過。",
+        "guidance_not_lowered: 通期売上3,900〜3,950から3,910〜3,940百万ドルへレンジ縮小、中央値同じ。売上下方修正とは断定しない。",
+        "decline_explanation_verified: 下落の一時性未確認。",
+        "next_earnings: 直近決算11月4日。次回公式日程未確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "通期売上3,900〜3,950から3,910〜3,940百万ドルへレンジ縮小、中央値同じ。売上下方修正とは断定しない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "下落の一時性未確認。"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": false,
+          "source": "https://www.sec.gov/Archives/edgar/data/864749/000086474926000121/trmb-20261002.htm",
+          "evidence_sha256": "3bbaf143b2209bf9bf05d02f6f4c57d5dffff39c40b3d500362a344dab55cdb4",
+          "excerpt": "our disclosure controls and procedures were not effective",
+          "published_at": "2026-11-04T21:14:33.000Z",
+          "checked_at": "2026-11-12T23:11:11.600514+09:00",
+          "rationale": "最新10-Qで内部統制上の重大な弱点が残存し、開示統制が無効。重大会計リスクとして不通過。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "直近決算11月4日。次回公式日程未確認。"
         }
       },
       "official_documents": [
@@ -1553,14 +1608,14 @@
       }
     }
   ],
-  "saved_count": 0,
-  "local_readback_count": 0,
+  "saved_count": 1,
+  "local_readback_count": 1,
   "remote_verified_count": 0,
   "remote_verification": "NOT_PERFORMED_BY_THIS_LOCAL_PROCESS",
   "counts": {
-    "PASS": 0,
-    "FAIL": 0,
-    "INSUFFICIENT_EVIDENCE": 22
+    "PASS": 1,
+    "FAIL": 5,
+    "INSUFFICIENT_EVIDENCE": 16
   },
   "financial_pass_count": 22
 }
