@@ -136,8 +136,10 @@ class WorkflowTests(unittest.TestCase):
     def test_past_collection_never_fetches_or_manufactures_current_approval(self):
         from review_workflow import connected_run
         path=self.root/'research.json';write_verified(path,self.research)
-        result=connected_run(path,AT+timedelta(minutes=1),self.root,self.root/'out',collect=True,
-                             clock=lambda:AT+timedelta(minutes=1),
+        from entry_schedule import session_slots,NY
+        closed=session_slots(AT.astimezone(NY).date())[-1]+timedelta(seconds=1)
+        result=connected_run(path,closed,self.root,self.root/'out',collect=True,
+                             clock=lambda:closed,
                              sec_collector=lambda *a:self.fail('past SEC collection'),
                              ir_collector=lambda *a:self.fail('past IR collection'))
         self.assertIn('PAST_DECISION',result['collection']['results'][0]['errors'][0])
@@ -170,6 +172,41 @@ class WorkflowTests(unittest.TestCase):
         self.assertEqual(self.run_report(True)['saved_count'],0)
         record['decision_time_jst']=expiry.isoformat();write_verified(self.path,record)
         self.assertEqual(self.run_report(True,expiry+timedelta(seconds=1))['saved_count'],0)
+
+
+    def test_session_key_survives_jst_midnight(self):
+        from datetime import datetime
+        from review_workflow import current_research_path
+        self.assertEqual(current_research_path(datetime.fromisoformat('2026-11-13T01:00:00+09:00'),self.root).name,'2026-11-12.json')
+
+    def test_new_disclosure_blocks_old_approval(self):
+        self.assessment()
+        from entry_schedule import session_date
+        write_verified(self.root/'review_tasks'/(session_date(AT)+'.json'),{'results':[{'symbol':'TEST','documents':[{'published_at':(self.now+timedelta(seconds=1)).isoformat()}]}]})
+        r=self.run_report(True)
+        self.assertEqual(r['saved_count'],0)
+        self.assertIn('New official disclosure',r['results'][0]['reasons'][0])
+
+    def test_unchanged_sources_preserve_partial_review_and_only_queue_gap(self):
+        from review_workflow import collect_assessments
+        a=self.assessment();a['assertions'][NAMES[1]]={'value':None,'rationale':'Specific causal evidence missing'};write_verified(self.path,a)
+        old=self.path.read_bytes()
+        kw=dict(clock=lambda:self.now,sec_collector=lambda *a:{'cik':'1','official_documents':[]},ir_collector=lambda *a:{'documents':[],'status':'IR_SOURCE_NOT_CONFIGURED'})
+        collect_assessments(self.research,self.now,self.root,**kw)
+        q=collect_assessments(self.research,self.now,self.root,**kw)['results'][0]
+        self.assertFalse(q['source_content_changed'])
+        self.assertEqual([x['name'] for x in q['unresolved_items']],[NAMES[1]])
+        self.assertEqual(self.path.read_bytes(),old)
+
+    def test_bad_assessment_does_not_abort_next_issuer(self):
+        from review_workflow import collect_assessments
+        from entry_schedule import session_date
+        self.research['financials']['AAA']={**self.financials,'symbol':'AAA'};self.seal()
+        p=self.root/'source_assessments'/session_date(AT)/'AAA.json';write_verified(p,[])
+        q=collect_assessments(self.research,self.now,self.root,clock=lambda:self.now,sec_collector=lambda *a:{'cik':'1','official_documents':[]},ir_collector=lambda *a:{'documents':[]})
+        self.assertEqual(len(q['results']),2)
+        self.assertIn('ASSESSMENT_INVALID',str(q['results'][0]['errors']))
+        self.assertEqual(json.loads(p.read_text()),[])
 
 
 if __name__=='__main__': unittest.main()
