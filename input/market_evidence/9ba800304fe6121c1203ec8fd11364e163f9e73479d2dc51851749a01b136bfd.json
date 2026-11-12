@@ -1,0 +1,12 @@
+{
+  "symbol": "LINC",
+  "start": "2026-11-12T15:49:59.999999Z",
+  "end": "2026-11-12T15:54:59.999999Z",
+  "retrieved_at": "2026-11-12T20:46:54.774833+00:00",
+  "feed": "sip",
+  "sha256_raw_response": "1400397eb7f658efebce552e75d05b2d306ecd8a64299c7db9de56f597d6b121",
+  "raw_trade_count": 83,
+  "query": "https://data.alpaca.markets/v2/stocks/LINC/trades",
+  "pagination_complete": true,
+  "corporate_evidence": "input/market_evidence/70bf3777d73c6ff3fd2d0863563e177a1153a51cb092e838d67417632b180e42.json"
+}
