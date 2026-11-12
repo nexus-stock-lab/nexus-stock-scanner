@@ -52,3 +52,39 @@ FLOC stays pending until its financial evidence is resolved. Financial PASS
 does not mean qualitative PASS, and qualitative PASS does not mean entry.
 
 Tests: `python -m unittest discover -s tests -v`.
+
+## Connected execution (2026-11-12)
+
+`python review_workflow.py --collect --promote` selects the current decision's
+research file rather than silently reusing yesterday. Missing current research
+is an explicit `CURRENT_RESEARCH_MISSING` hold. With a supplied path, historical
+reports remain possible; retrospective collection/approval is refused.
+
+For **every** financial PASS, `collect_assessments` separately attempts SEC and
+registered official IR acquisition, preserves receipts in `source_review_runs`,
+and creates a four-item `SOURCE_ASSESSMENT` with null values when no explicit
+assessment exists. A generated pending record has `reviewer_id=unassigned` and
+`reviewed_at=null`: it is not a semantic review or an authorization signature.
+Unsupported IR issuers remain queued; the registry does not narrow the universe.
+Collectors and assessment failures are isolated by issuer. Full financial
+research stays immutable, and generated source receipts do not rebind it.
+
+The Work reviewer must read the source texts, resolve all four assertions and
+record actual sources, quotes and review times. Only the existing authorized
+attestation schema clears intake. Gemini SHADOW results stay SHADOW; quote
+matching alone cannot prove a financial interpretation. Pending templates are
+not automatically converted to `codex-delegated` attestations. There is still no
+unattended semantic-review service embedded in Python.
+
+During prepare, collection/intake now runs before plan preparation. Every plan
+preparation also intakes newly supplied explicit assessments first. Investment
+rules, checkpoint calculation, prices and the ledger code are unchanged.
+
+The dedicated **NEXUS Official Source Review** Action supports manual execution
+and runs on assessment pushes. It executes the same collector/intake without
+calling the daily trading runner. Its persistence allowlist contains only
+review sources/assessments/reports/inbox. It fetches the pushed GitHub commit,
+compares exact bytes of every saved file and checks protected ledger/rule blobs.
+`source_review_persistence.json` is a separate remote-proof artifact; local
+readback counters are never relabeled as GitHub verification. Missing research,
+missing sources and missing semantic decisions are reported separately.

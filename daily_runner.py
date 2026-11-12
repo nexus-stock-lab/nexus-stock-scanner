@@ -130,6 +130,8 @@ def prepare_plans(now, root=Path('input'), out=Path('output'),at=None,rolling=Fa
         expected=research.get('snapshot_sha256')
         if not expected or digest({k:v for k,v in research.items() if k!='snapshot_sha256'})!=expected:
             raise ValueError('research snapshot proof mismatch')
+        from review_workflow import run as run_source_reviews
+        run_source_reviews(path,now,root,promote=True)
         reviews_path=root/'official_reviews.json'
         reviews=json.loads(reviews_path.read_text()) if reviews_path.exists() else {}
         for row in research['rows']:
@@ -580,6 +582,9 @@ def main():
     (Path('output')/'verified_evidence.json').unlink(missing_ok=True)
     if args.phase == 'prepare':
         research=freeze_research(now,collect_official=True)
+        from review_workflow import connected_run
+        connected_run(Path('input/research')/(datetime.fromisoformat(research['decision_time_jst']).date().isoformat()+'.json'),
+                      datetime.now(JST), collect=True, promote=True)
         from gemini_review import shadow_reviews
         shadow_reviews(research,datetime.now(JST),Path('input'),Path('output'),
                        enabled=os.getenv('NEXUS_GEMINI_SHADOW_ENABLED')=='true')

@@ -29,6 +29,22 @@ REGISTRY={
             'feed_prefix':'https://iren.gcs-web.com/rss/'},
     'NBIS':{'index':'https://nebius.com/newsroom','prefix':'https://nebius.com/newsroom/'},
 }
+# Official IR pages verified in Work on 2026-11-12. This is a source registry,
+# never an eligibility filter; every financial PASS remains in the review queue.
+REGISTRY.update({
+    'MRCY': {'index':'https://ir.mrcy.com/events-presentations', 'prefix':'https://ir.mrcy.com/news-releases/'},
+    'HROW': {'index':'https://investors.harrow.com/investors', 'prefix':'https://investors.harrow.com/investors/'},
+    'ARKO': {'index':'https://www.arkocorp.com/news-events/press-releases', 'prefix':'https://www.arkocorp.com/news-events/'},
+    'BGS': {'index':'https://bgfoods.com/investor-relations/', 'prefix':'https://bgfoods.com/investor-relations/'},
+    'CENX': {'index':'https://investors.centuryaluminum.com/overview/', 'prefix':'https://investors.centuryaluminum.com/'},
+    'COLL': {'index':'https://ir.collegiumpharma.com/press-releases', 'prefix':'https://ir.collegiumpharma.com/'},
+    'DAN': {'index':'https://danaincorporated.gcs-web.com/upcoming-events', 'prefix':'https://danaincorporated.gcs-web.com/news-releases/'},
+    'RARE': {'index':'https://ir.ultragenyx.com/press-releases', 'prefix':'https://ir.ultragenyx.com/'},
+    'LINC': {'index':'https://investors.lincolneducationalservices.com/news-releases', 'prefix':'https://investors.lincolneducationalservices.com/'},
+    'FLOC': {'index':'https://ir.flowco-inc.com/news-events/events-and-presentations/default.aspx', 'prefix':'https://ir.flowco-inc.com/'},
+    'AAON': {'index':'https://investors.theaaongroup.com/overview/default.aspx', 'prefix':'https://investors.theaaongroup.com/'},
+    'FOUR': {'index':'https://investors.shift4.com/news-events/press-releases', 'prefix':'https://investors.shift4.com/news-events/'},
+})
 LIMIT=4_000_000
 
 class IRBlocked(ValueError):pass
