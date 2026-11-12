@@ -1,0 +1,92 @@
+name: NEXUS Official Source Review
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'input/source_assessments/**'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nexus-trade-ledger-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install review dependencies
+        run: python -m pip install 'exchange_calendars>=4.5,<5' 'PyYAML>=6.0,<7'
+      - name: Test evidence and approval boundaries
+        run: python -m unittest discover -s tests -v
+      - name: Collect and intake current financial-pass reviews without trading
+        env:
+          NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
+        run: python review_workflow.py --collect --promote
+      - name: Persist only review evidence and verify GitHub readback
+        env:
+          BRANCH: ${{ github.ref_name }}
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          python - <<'PY'
+          import json, os, subprocess, hashlib
+          from pathlib import Path
+          def git(*args):
+              return subprocess.check_output(['git',*args])
+          paths=['input/source_assessments','input/review_inbox','input/review_reports',
+                 'input/source_review_runs','input/official_documents',
+                 'input/official_evidence','input/issuer_ir_sources']
+          paths=[p for p in paths if Path(p).exists()]
+          # No staging of the whole input tree: the paper ledger, rules and plans
+          # are not writable outputs of this workflow.
+          protected=['input/trades.csv','strategy_rules.py','entry_schedule.py','price_policy.py']
+          before={p:git('rev-parse','HEAD:'+p).decode().strip() for p in protected}
+          if paths: subprocess.run(['git','add','--',*paths],check=True)
+          changed=git('diff','--cached','--name-only').decode().splitlines()
+          if changed:
+              subprocess.run(['git','commit','-m','Persist official source review evidence and verified approvals'],check=True)
+              subprocess.run(['git','push','origin','HEAD:'+os.environ['BRANCH']],check=True)
+          head=git('rev-parse','HEAD').decode().strip()
+          subprocess.run(['git','fetch','origin',os.environ['BRANCH']],check=True)
+          remote=git('rev-parse','FETCH_HEAD').decode().strip()
+          if remote!=head: raise RuntimeError('Remote head changed; no persistence success claimed')
+          verified=[]
+          for p in changed:
+              local=Path(p).read_bytes()
+              fetched=git('show','FETCH_HEAD:'+p)
+              if local!=fetched: raise RuntimeError('Remote content mismatch: '+p)
+              verified.append({'path':p,'sha256':hashlib.sha256(fetched).hexdigest()})
+          if before!={p:git('rev-parse','FETCH_HEAD:'+p).decode().strip() for p in protected}:
+              raise RuntimeError('Protected file changed')
+          Path('output/source_review_persistence.json').write_text(json.dumps({
+              'status':'GITHUB_READBACK_VERIFIED','commit':head,'files':verified,
+              'protected_files_unchanged':True,'ledger_writes':0},indent=2))
+          PY
+      - name: Show review outcome
+        if: always()
+        run: |
+          if [ -f output/source_review_summary.md ]; then
+            cat output/source_review_summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [ -f output/source_review_persistence.json ]; then
+            cat output/source_review_persistence.json >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: official-source-review-results
+          path: |
+            output/source_review_status.json
+            output/source_review_summary.md
+            output/source_review_persistence.json
+          if-no-files-found: warn
