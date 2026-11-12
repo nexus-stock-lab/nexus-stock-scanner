@@ -1,0 +1,348 @@
+{
+  "AAON": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "AAON",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "9c61e00987fc4de5d0a252242a212b3b4afcf13363bf26147238869536bb5808",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "10-QでQ1/Q2訂正・BASX売上認識の内部統制の重大な不備・開示統制が有効でないことを確認。解消済みとは認定しない。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "10-QでQ1/Q2訂正・BASX売上認識の内部統制の重大な不備・開示統制が有効でないことを確認。解消済みとは認定しない。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": false,
+        "source": "https://www.sec.gov/Archives/edgar/data/824142/000082414226000088/aaon-20260930.htm",
+        "evidence_sha256": "956e3e255b235bf43cd679a753019480e72ba1f5dff8bd4760ad20b0230e691e",
+        "excerpt": "our disclosure controls and procedures were not effective",
+        "rationale": "10-QでQ1/Q2訂正・BASX売上認識の内部統制の重大な不備・開示統制が有効でないことを確認。解消済みとは認定しない。",
+        "published_at": "2026-11-09T21:23:16.000Z",
+        "checked_at": "2026-11-12T17:33:13.446316+09:00"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "10-QでQ1/Q2訂正・BASX売上認識の内部統制の重大な不備・開示統制が有効でないことを確認。解消済みとは認定しない。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "ARKO": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "ARKO",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "616eeb061dcb25717fce70fc7ec7500af9c03e962a910dd1b2f89bc4d6cf518a",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "調整EBITDA予想下限引上げは確認。売上見通し同期間比較、負債・事業再編、下落原因と次回日程の審査未完了。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "BGS": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "BGS",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "ed3bb44f5449ad8239203d62a50e1ea06998876466c7f99a6d4aef0a2135d993",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "SEC決算資料で売上予想1760〜1800百万ドルへの引上げを確認。減損40.7百万ドル、利払増、純損失の継続性を精査中。次回日程・下落要因未完了。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "CENX": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "CENX",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "7db36d2b7c20fa6a9a1f3476f9a4367ee719b81c666d3bd1c54ed458cfb33e41",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "公式IRでアイスランド設備再稼働・電力費悪化・金属価格依存を確認。四半期EBITDAの前期比低下見込みだけで通期売上下方修正と扱わない。同期間売上比較、下落原因、次回日程未完了。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "COLL": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "COLL",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "7470f67e73eaf7dcb034ad99f3779e0fd878858d3ae3a5dfe3ac69850fa877c2",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "通期売上予想維持とADHD事業成長を確認。疼痛領域売上18%減・Nucynta44%減、利益低下について一時的悪化とは未認定。次回日程と事業・法務リスク未完了。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "DAN": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "DAN",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "4b129af0037d215a6fd2ccea98747210ae84aa95927921e1efb6ea1f598f2401",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "公式IRで通期売上予想約50百万ドル引上げを確認。継続事業純損失、事業売却・Eaton取引、下落要因、最新決算予定の審査未完了。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "FLOC": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "FLOC",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "7789064f48e92e977d852ed93d2ceee2d5ff7a66782779832168c44c4ab25ef2",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "公式10-Q総売上258.622百万ドルに対して保存財務はSalesのみ116.866百万ドル。Rentals141.756百万ドルを含まない。既存コード・財務根拠は修正せず、数値照合と定性審査を保留。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "FOUR": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "FOUR",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "352d1b4cf69b2d8fdcb468caee09a3f22dd80e29339eb7a8c8a85146b046a070",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": false,
+        "source": "https://www.sec.gov/Archives/edgar/data/1794669/000179466926000049/ex991q3.htm",
+        "evidence_sha256": "41bfe4d2068e4890a03102fe34f55decaa6ebe51753d3f13e03689de5bf2e904",
+        "excerpt": "lowering our full-year 2026 Gross Revenue less Network Fees guidance to $2.45 to $2.46 billion",
+        "rationale": "SEC添付株主書簡で通期Gross Revenue less Network Fees見通し引下げを会社が明記。売上見通し非下方修正を支持しない。",
+        "published_at": "2026-11-05T12:02:49.000Z",
+        "checked_at": "2026-11-12T17:33:13.446316+09:00"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "SEC添付株主書簡で通期Gross Revenue less Network Fees見通し引下げを会社が明記。売上見通し非下方修正を支持しない。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "SEC添付株主書簡で通期Gross Revenue less Network Fees見通し引下げを会社が明記。売上見通し非下方修正を支持しない。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "SEC添付株主書簡で通期Gross Revenue less Network Fees見通し引下げを会社が明記。売上見通し非下方修正を支持しない。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "HROW": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "HROW",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "241b8bc7ce9d9c69da9ffe99d6e67fd91c7766ecc003243fab1b02084a9a525d",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "通期売上予想350〜365百万ドル維持を確認。一方調整EBITDAは80〜100百万ドルから40百万ドル超へ引下げ。利益見通し悪化の継続性、負債、下落要因と次回決算確認は未完了。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "LINC": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "LINC",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "abc9e80e34af10e2ce60d77b4d658ab6c89583761450c49414ab7cfc1f410bce",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "既存レビューはNY11月10日用であり今回11月11日研究の財務ハッシュと異なる。既存の承認内容・日時を付替えず、最新SEC/IR再審査と当日ハッシュ照合を未完了とする。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "MRCY": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "MRCY",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "3a2816782be98095f910561dce070b2a87967e91c5ff923fd2018714c315be75",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "最新会社資料は見通し引上げを表明。同期間売上予想比較と11月4〜5日の株価下落の公式根拠が未完了。開示統制有効・債務契約順守と営業CF赤字、原価見積り、訴訟・環境リスクを確認。次回正式決算日は公式イベント一覧に未掲載。 未確認項目: next_earnings"
+      }
+    }
+  },
+  "RARE": {
+    "kind": "SOURCE_ASSESSMENT",
+    "symbol": "RARE",
+    "rules_version": "nexus_rules_20261105_v3",
+    "research_sha256": "0d622c69decba76208122ceaf048f81368900e27dd8cbad19b6ea3707a99b4b5",
+    "financial_evidence_sha256": "185544d29253ef481a44b5c26d487f84f368fad537eec1fec1a25467bf478317",
+    "reviewed_at": "2026-11-12T17:33:13.446316+09:00",
+    "reviewer_id": "codex-delegated",
+    "delegation_id": "owner_20261107_paper_only",
+    "assertions": {
+      "guidance_not_lowered": {
+        "value": null,
+        "rationale": "SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: guidance_not_lowered"
+      },
+      "decline_explanation_verified": {
+        "value": null,
+        "rationale": "SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: decline_explanation_verified"
+      },
+      "no_material_business_impairment": {
+        "value": null,
+        "rationale": "SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: no_material_business_impairment"
+      },
+      "next_earnings": {
+        "value": null,
+        "rationale": "SEC決算資料で通期売上予想730〜760百万ドル維持を確認。GTX-102研究終了、UX701中止、約20%人員削減、赤字・資金消費について重大毀損なしとは未認定。 未確認項目: next_earnings"
+      }
+    }
+  }
+}
