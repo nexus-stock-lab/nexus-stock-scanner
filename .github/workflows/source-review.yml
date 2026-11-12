@@ -2,6 +2,8 @@ name: NEXUS Official Source Review
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 22 * * 0-4'
   push:
     paths:
       - 'input/source_assessments/**'
@@ -21,6 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.ref_name }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -36,10 +39,11 @@ jobs:
           from pathlib import Path
           from datetime import datetime
           import subprocess, sys
-          from market_calendar import JST, next_decision
+          from market_calendar import JST
+          from review_workflow import current_research_path
           from daily_runner import freeze_research
           now=datetime.now(JST)
-          path=Path('input/research')/(next_decision(now).date().isoformat()+'.json')
+          path=current_research_path(now)
           if not path.exists():
               subprocess.run([sys.executable,'scanner.py'],check=True)
               subprocess.run([sys.executable,'review.py'],check=True)
@@ -63,7 +67,7 @@ jobs:
           def git(*args):
               return subprocess.check_output(['git',*args])
           paths=['input/research','input/source_assessments','input/review_inbox','input/review_reports',
-                 'input/source_review_runs','input/official_documents',
+                 'input/source_review_runs','input/review_tasks','input/official_documents',
                  'input/official_evidence','input/issuer_ir_sources']
           paths=[p for p in paths if Path(p).exists()]
           # No staging of the whole input tree: the paper ledger, rules and plans
