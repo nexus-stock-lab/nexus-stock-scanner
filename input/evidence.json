@@ -1497,6 +1497,22 @@
         "min_price": 23.94,
         "max_price": 24.23
       }
+    },
+    {
+      "trade_id": "LINC-2026-11-10T23:45:00+09:00",
+      "stream": {
+        "coverage_start": "2026-11-12T02:41:32.254552+09:00",
+        "coverage_end": "2026-11-12T09:18:24.188485+09:00",
+        "complete": true,
+        "corporate_actions_clear": true,
+        "source": "Alpaca historical SIP",
+        "evidence_uri": "input/market_evidence/b09094dcf72c70f1637692819cfaa3d3bfc64c806d2d41add4d6a131acb0da45.json,input/market_evidence/83d76123e5dafd1db37748f6dc32876e2a90df76cf3f7f3cd192fa9704f2427f.json,input/market_evidence/a36a53ad78664a803e4657809f655264be99c3ce50835cd4c57c699e674650f8.json,input/market_evidence/826acbef265f41ab7651d85900c19b40b5ab24af64a1697471b8d424819f4667.json,input/market_evidence/7b9e4220bf4215306ec5cef9d9200c7c17a7f76841289c5ccf4074fc563eefb2.json,input/market_evidence/f796a7bd685882c371134b39cc72ede52338ac6cbefadcc546c87752ce065b38.json,input/market_evidence/fb6d70c3bf2e20c054d21385c556e11edb2218a264d6b6edd64f27891f0a366e.json,input/market_evidence/b26bc5dbf6dcf7b2260195b6b6f210bb2d197815952b5c79870d7064e38c931c.json,input/market_evidence/596fb1d8d451af8545f8ab728508bb9e28df0c01429bc0df47a69f6509258789.json,input/market_evidence/69e58e5298fa964cce0efd980fcf61a2c3a5c18da6aeb4991538b1c6b142cbd3.json,input/market_evidence/be6c0892ef2dc35ba32b7fe1a3e59a9a3e8a376cfea7bb59824f42e7d528b279.json,input/market_evidence/234b5b5eae11bda4f8cf2216a407c537ecd81e760ad8b90937ae39217133ad32.json,input/market_evidence/93bb4d6973af159be8e29659600d42380d74da1f55a62c8a6c943099032ba271.json,input/market_evidence/bb816c62356a26c088c14466711e82987c9f9a15880c811744c3de4119e38b32.json,input/market_evidence/efb629c92f5eded6530aa375c15df2e15f3596e96682554fe6acb38cbb333e0b.json,input/market_evidence/c2a795d6135e2ef1868749662e8177710627b3fd4bd727ebb3394a6236e6b85d.json,input/market_evidence/32e6587c810a9cf03cb2d078a4692b3851abf45af6f61f47b4a4eeea110564f3.json,input/market_evidence/6b739d1cce6f499d5a9bf8b13ac38874ad79ccdfcded97d8468544e081bd86a5.json,input/market_evidence/348a4e69c7f8fc201dc7f2913e6f6b516f7463c5657407249f8627588660da09.json,input/market_evidence/822e50ca8b64fba52ad6c26cdeb156946597afa09e6b1b9214b6f7c36fe8ace0.json,input/market_evidence/1b8fe43b86fa60d84b5996a1da84769ecdbfc5a00d08eef3dd5b775759820754.json,input/market_evidence/4284563332b5435366a6d137b95802fde7a1380e253e8e9c165d7d336dba11b8.json,input/market_evidence/7a28e2fd546032296292bba3376955cf8be6d8f4d21ac76fe40157bf9da4dc9e.json,input/market_evidence/3d846562f57a8b04367cd8bedc179637fa2af5b7ff0f311c272f51d6aa607047.json,input/market_evidence/0c53476242e9a2ed8d4a2deded39e8aa85d4a2f7be4775f5ec1ef4adaf484d8d.json,input/market_evidence/527d5ebe84a734a629400788fa05262d619b8e754c2a3c1ac02998f6f251ce0e.json,input/market_evidence/3071b964b101a8785efda5627439dddaba98fa57795f7f13bfaaa83f5b662358.json,input/market_evidence/71ee0b2cea408a4287b9a8785658b328e641430b44d5200231764f7f449baa04.json,input/market_evidence/b6b51e60af9183957ac38b7711e0edbff7143bd501341de3df2f60a16dc46e3c.json,input/market_evidence/3a5baa14295562d7ec1779c7f3cced64c5aaa4d6091253b661583c89fd44abb8.json,input/market_evidence/0d4a14126cc90f0a71f713e103b5ae80ec8923628ebf5f81aca0d520e4f287eb.json,input/market_evidence/f489260889840ca3dcbd50cd5895c421beb23c352e7873cbe19de2ed29ce38d0.json,input/market_evidence/5f555353164c493110bb00f3472efaae95735167b5fb1a4d32ff79a442d6bddf.json,input/market_evidence/a43531d4acb67e278c433a85fa9fdc8a97de4614b5c2cbfd7728c16a4fd0efaa.json,input/market_evidence/cecd8f2f38a5545afe60b9e19df6d5559ef624f6c25bfeb9951c860fb0e2c21f.json,input/market_evidence/cd74998ff014ebbaf775868629a3ff38b1412b92090a95e6878a88f1290ede7f.json,input/market_evidence/55ed74df0a9e7151025c37b58e518806d9b2b552dfa3778de14df23e3ce0edb7.json,input/market_evidence/7ea6ba9cd0c9bfd72c09deed74cde913778e0d27d4958a606ae42b8ea450b74e.json,input/market_evidence/aa813addcd90c32f9cba4f34efb0e4756c19c0cdc0e8ca9d30588678a1fbf5f9.json,input/market_evidence/0b2a1058157f5b26b06ab92dce0963384f27f6eb1308d6d31596d2de7a234212.json,input/market_evidence/09c807823e676d438f58cff44a9038909f06c9b36b73da548bd8cba02d9edbd9.json",
+        "trade_count": 1805,
+        "trades_sha256": "0539c2cb3ac0ca9de960f9225cef77900bc58c75cf9548c379c11b60c9a09d9d",
+        "selected_exit_trades": [],
+        "min_price": 23.44,
+        "max_price": 24.105
+      }
     }
   ]
 }
