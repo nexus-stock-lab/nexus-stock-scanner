@@ -4,25 +4,43 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "7ab093a2884b5b848f862637f7c4cd29ea9b406a05c27ee6af1ef596ce7a0c80",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-12T23:27:46.332830+09:00",
   "generated_at": "2026-11-12T19:04:46.748893+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "FY2027売上成長を約2桁、調整EBITDA約210百万ドルに引上げ。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1049521/000104952126000096/a2027q1earningsreleaseex.htm",
+      "evidence_sha256": "b9c8ecbbdc65962360f1b55b67d173aebdc3f504138cd9ce76823e75cf58591a",
+      "excerpt": "we are raising our outlook for fiscal year 2027",
+      "published_at": "2026-11-10T21:01:58.000Z",
+      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "rationale": "公式Q1 FY2027決算で通期見通し引上げを明示。11月12日追加確認。旧調査の売上・EBITDA説明を維持。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "11月4〜5日の下落について会社の公式発表との因果関係を確定できない。未承認。"
+      "rationale": "追加検索でも11月4〜5日の株価下落を特定の一時的要因に結び付けるSEC・企業IRの裏付けを確認できない。最新決算好調や見通し上方修正だけでは下落原因の証明にならない。未承認。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "10-Qの12か月資金充足、契約遵守、統制を確認。ただし負の営業CFと契約原価推定リスクを継続監視。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1049521/000104952126000098/mrcy-20261002.htm",
+      "evidence_sha256": "6b7affd4ec7a3652ec561619460efc3ec61a78314dba2e528a9112448eb0c1fb",
+      "excerpt": "we were in compliance with all covenants and conditions under the Revolver.",
+      "published_at": "2026-11-10T22:06:28.000Z",
+      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "rationale": "最新10-Qで契約遵守、12か月資金充足、開示統制有効を確認。現金109.7百万ドル、負債341.5百万ドル、営業CFマイナス14百万ドルと固定価格契約の原価見積リスクは残る。重大毀損成立とは判断しない。"
     },
     "next_earnings": {
-      "value": null,
-      "rationale": "直近決算11月10日。推定2027年2月日付は公式確認できず採用しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1049521/000104952126000096/a2027q1earningsreleaseex.htm",
+      "evidence_sha256": "b9c8ecbbdc65962360f1b55b67d173aebdc3f504138cd9ce76823e75cf58591a",
+      "excerpt": "November 10, 2026",
+      "published_at": "2026-11-10T21:01:58.000Z",
+      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "rationale": "企業IRイベント欄に今後のイベント掲載なし、直近は11月10日。次回正式決算日は未公表。既存の30暦日以内例外を11月12日の米国セッションについて確認し、推定日を使わない。確認先 https://ir.mrcy.com/events-presentations",
+      "date": "",
+      "next_date_unannounced": true,
+      "last_earnings_date": "2026-11-10"
     }
   },
   "delegation_id": "owner_20261107_paper_only"

@@ -4,25 +4,38 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "5578636c4fd55312f4432aa13987395072b37fc471880835499f2239efa192f1",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-12T23:27:46.332830+09:00",
   "generated_at": "2026-11-12T19:04:12.092803+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "FY2026売上20.5から21十億ドル、調整EPS11.30から11.55へ引上げ。FCFは600から460百万ドルへ低下。"
+      "rationale": "追加確認した公式SEC Q3決算発表でFY2026売上20.5から21.0十億ドル、調整EPS11.30から11.55へ上方修正。FCF600から460百万ドルへの低下は成長に備えた運転資金投資と説明。内容確認済みだが当該発表の正確な公表時刻・証拠アーカイブ拘束が未完成のため、この取込項目は未完了を維持。 https://www.sec.gov/Archives/edgar/data/1030894/000103089426000049/cls-20260930prcondensedfs.htm"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "運転資金増と成長投資だけで株価下落の一時性を証明できない。"
+      "rationale": "追加確認した公式決算は需要増・業績上方修正を示すが、株価下落時点と一時的原因の対応を裏付ける公式証拠は不足。FCF低下の会社説明を株価下落の原因と断定しない。未承認。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "大型顧客集中、設備投資増、8月増資の影響評価未完了。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1030894/000103089426000050/cls-20260930.htm",
+      "evidence_sha256": "28a5e26cfb7e67a2ca3f93ab0aa6bfebc551e3547946eff3fc63e4edb919a023",
+      "excerpt": "we were in compliance with all restrictive and financial covenants under the Credit Facility.",
+      "published_at": "2026-10-26T20:26:17.000Z",
+      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "rationale": "最新10-Qで契約遵守、今後12か月超の資金充足、開示統制有効を確認。未使用融資枠1,739.3百万ドル。大型顧客集中、供給・生産拡大、8月増資、2027年設備投資15〜20億ドルとFCF低下のリスクを残すが、現時点で重大毀損が成立したとは判断しない。"
     },
     "next_earnings": {
-      "value": null,
-      "rationale": "直近決算10月26日。次回公式日程未確認。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1030894/000103089426000050/cls-20260930.htm",
+      "evidence_sha256": "28a5e26cfb7e67a2ca3f93ab0aa6bfebc551e3547946eff3fc63e4edb919a023",
+      "excerpt": "October 26, 2026",
+      "published_at": "2026-10-26T20:26:17.000Z",
+      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "rationale": "公式SEC発表の直近決算日10月26日と企業IRイベント欄を追加確認。今後の決算日掲載を確認できず、11月12日は直近決算から30暦日以内の既存例外を適用可能。10月27日のInvestor Dayを決算発表日と混同しない。 https://corporate.celestica.com/events-and-presentations",
+      "date": "",
+      "next_date_unannounced": true,
+      "last_earnings_date": "2026-10-26"
     }
   },
   "delegation_id": "owner_20261107_paper_only"

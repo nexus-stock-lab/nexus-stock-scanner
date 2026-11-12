@@ -4,7 +4,7 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "7d2045d08e34d3fde992e71a435517a47376da1506f1e35376e5fd210458c9c4",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-12T23:27:46.332830+09:00",
   "generated_at": "2026-11-12T19:04:09.977485+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
@@ -14,15 +14,20 @@
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "株価下落の一時性未確認。"
+      "rationale": "追加検索で株価下落に関する二次情報は見つかったが、特定の一時的下落原因を裏付けるSEC・企業IRの証拠が不足。AI売上成長や次回決算日だけではこの項目を通過にしない。未承認。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "顧客集中と大型AI契約の履行・資金リスクの確認未完了。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1730168/000173016826000080/avgo-20260802.htm",
+      "evidence_sha256": "0ad17bd10df83a85bd0096c4fd1aeb5fdb97eda8aabe67518d93fdd9d5e53561",
+      "excerpt": "we were in compliance with all debt covenants.",
+      "published_at": "2026-09-09T21:56:42.000Z",
+      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "rationale": "最新10-Qで債務契約遵守、今後12か月の資金充足、開示統制有効を確認。負債約61.1十億ドル、AI顧客・製造委託先集中と顧客資金調達への依存は残るが、現時点で重大毀損成立とは判断しない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "12月9日という日付候補は企業IRの正式予定との照合未完了。"
+      "rationale": "企業IRの11月9日公式発表で次回決算12月9日米国市場引け後を確認。11月12日は除外期間外。IRドメインは現行取込レジストリ未対応で公表時刻のアーカイブ拘束も未完成のため、canonical項目を未完了として維持。コード変更やSEC既存資料への日付転記はしない。 https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026"
     }
   },
   "delegation_id": "owner_20261107_paper_only"
