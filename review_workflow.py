@@ -143,7 +143,16 @@ def inventory(research, now, root=Path('input'), promote=False):
             packet = {k:assessment[k] for k in ('symbol','rules_version','financial_evidence_sha256',
                        'reviewed_at','reviewer_id','delegation_id','assertions')}
             packet.update(kind='DELEGATED_SOURCE_REVIEW', decision_time_jst=at.isoformat())
-            if now > at:
+            validation_at = at
+            scoped = assessment.get('approval_scope') is not None
+            if scoped:
+                from entry_schedule import next_slot, session_date, session_review_covers
+                packet.update(approval_scope=assessment['approval_scope'],
+                              decision_time_jst=assessment.get('decision_time_jst'))
+                validation_at = next_slot(now)
+                if session_date(validation_at) != day or not session_review_covers(packet,validation_at):
+                    raise ValueError('no future checkpoint in explicitly approved session')
+            elif now > at:
                 raise ValueError('past decision: no retrospective approval; retain research only')
             # Validate in a temporary intake before touching the real inbox.
             with tempfile.TemporaryDirectory() as folder:
@@ -151,10 +160,10 @@ def inventory(research, now, root=Path('input'), promote=False):
                 for name in ('official_documents','issuer_ir_sources'):
                     if (root/name).exists():
                         (staging/name).symlink_to((root/name).resolve(), target_is_directory=True)
-                candidate = staging/'review_inbox'/at.date().isoformat()/(symbol+'.json')
+                candidate = staging/'review_inbox'/(day if scoped else at.date().isoformat())/(symbol+'.json')
                 write_verified(candidate, packet)
-                validated = load_confirmed_review(symbol, financials, at, now, staging)
-                earnings_review(validated['next_earnings'], at)
+                validated = load_confirmed_review(symbol, financials, validation_at, now, staging,session_scope=scoped)
+                earnings_review(validated['next_earnings'], validation_at)
             result.update(status='PASS', packet_sha256=digest(packet), reasons=['All four explicit assertions validated'])
             if promote:
                 write_verified(packet_path, packet)

@@ -88,3 +88,11 @@ compares exact bytes of every saved file and checks protected ledger/rule blobs.
 `source_review_persistence.json` is a separate remote-proof artifact; local
 readback counters are never relabeled as GitHub verification. Missing research,
 missing sources and missing semantic decisions are reported separately.
+
+An assessment may explicitly include the existing LINC
+`approval_scope=US_REGULAR_SESSION` and the last valid checkpoint as its
+`decision_time_jst`. Intake validates it against the next **future** existing
+checkpoint in the same NY session; it cannot extend expiry or roll to tomorrow.
+No session scope is inferred from an exact-time attestation. The source-review
+Action can create missing current research with the existing scanner, secondary
+review and `freeze_research`, without invoking any ledger phase.
