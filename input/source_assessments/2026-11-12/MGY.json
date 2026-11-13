@@ -4,26 +4,34 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "1dec439b94c69939effabdd668f75d674996f34ab7f5b79de4ea2900357e741f",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-13T14:47:16.857433+09:00",
   "generated_at": "2026-11-12T19:04:42.032317+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "11月4日Q3生産117.3Mboe/日。生産計画を売上見通しに代用しない。"
+      "rationale": "11月4日Q3生産117.3Mboe/日。生産計画を売上見通しに代用しない。 次処理：生産ガイダンスを売上予想とみなさない。同一売上見通しの有無・更新、WildFire買収前後の希薄化と下落期間、公式決算日を確認する。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "WildFire買収前後の売上・株式数変化があり、下落の一時性未確認。"
+      "rationale": "WildFire買収前後の売上・株式数変化があり、下落の一時性未確認。 次処理：生産ガイダンスを売上予想とみなさない。同一売上見通しの有無・更新、WildFire買収前後の希薄化と下落期間、公式決算日を確認する。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "買収後の債務・現金・希薄化の影響評価が未完了。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1698990/000169899026000030/mgy-20260930.htm",
+      "evidence_sha256": "19d85a357ed7cec7952921b28cd8c2895fbb609e6b0eb7be4d5b9f52ed83581e",
+      "published_at": "2026-11-05T21:01:44.000Z",
+      "checked_at": "2026-11-13T14:47:16.857433+09:00",
+      "excerpt": "in compliance with all covenants under the RBL Facility",
+      "rationale": "WildFire取得後の最新10-QでRBL契約遵守・開示統制有効、営業CFとRBL余力が今後12か月超の資本計画・配当等を賄うとの評価を確認。現金17.5百万ドル、買収後の借入・統合・原油ガス価格の変動リスクを保持。将来の資金充足保証にはしないが現時点の重大毀損成立とは判断しない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "直近決算11月4日。次回公式日程未確認。"
+      "rationale": "直近決算11月4日。次回公式日程未確認。 次処理：生産ガイダンスを売上予想とみなさない。同一売上見通しの有無・更新、WildFire買収前後の希薄化と下落期間、公式決算日を確認する。"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "reused_assertion_checks": {},
+  "followup_scope": "全業種の未完了項目に対する追加審査。11月12日調査との拘束を保持。新規承認・遡及承認なし。",
+  "next_processing": "生産ガイダンスを売上予想とみなさない。同一売上見通しの有無・更新、WildFire買収前後の希薄化と下落期間、公式決算日を確認する。"
 }
