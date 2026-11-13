@@ -4,26 +4,34 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "8ea3782bee97d054e8555f855c6f673fed06f487c330efb90ac248560d0c5e8a",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-13T14:47:16.857433+09:00",
   "generated_at": "2026-11-12T19:04:30.153915+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "調整EBITDAは引上げ。セグメント売上レンジ合算は中央値維持の縮小で、売上見通しの比較判断は未完了。"
+      "rationale": "調整EBITDAは引上げ。セグメント売上レンジ合算は中央値維持の縮小で、売上見通しの比較判断は未完了。 次処理：FY2026セグメント売上レンジは上下限の混在変化でありEBITDA上方修正で代用しない。同一売上レンジ更新の会社説明、下落要因、次回決算公式カレンダーを照合する。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "株価下落の一時性未確認。"
+      "rationale": "株価下落の一時性未確認。 次処理：FY2026セグメント売上レンジは上下限の混在変化でありEBITDA上方修正で代用しない。同一売上レンジ更新の会社説明、下落要因、次回決算公式カレンダーを照合する。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "債務約28億ドルと流動性約17億ドル。借入があることのみで重大毀損とは断定しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1767042/000176704226000079/kgs-20260930.htm",
+      "evidence_sha256": "24dc4fc9303594877fc9837d59acc06725df59aa175b950dea9233ce55dbdf0a",
+      "published_at": "2026-11-09T21:02:36.000Z",
+      "checked_at": "2026-11-13T14:47:16.857433+09:00",
+      "excerpt": "in compliance with all covenants under the ABL Facility",
+      "rationale": "最新10-QでABL契約遵守、開示統制有効、営業CFと追加借入による短長期の債務返済・運転資金・設備投資充足評価を確認。流動性約17億ドルに対し負債約28億ドル、担保付き借入と設備発注・天然ガス活動への依存を残す。借入残高だけで破綻とは判断しない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "直近決算11月4日。投資家説明会を決算日と混同しない。次回決算未確認。"
+      "rationale": "直近決算11月4日。投資家説明会を決算日と混同しない。次回決算未確認。 次処理：FY2026セグメント売上レンジは上下限の混在変化でありEBITDA上方修正で代用しない。同一売上レンジ更新の会社説明、下落要因、次回決算公式カレンダーを照合する。"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "reused_assertion_checks": {},
+  "followup_scope": "全業種の未完了項目に対する追加審査。11月12日調査との拘束を保持。新規承認・遡及承認なし。",
+  "next_processing": "FY2026セグメント売上レンジは上下限の混在変化でありEBITDA上方修正で代用しない。同一売上レンジ更新の会社説明、下落要因、次回決算公式カレンダーを照合する。"
 }
