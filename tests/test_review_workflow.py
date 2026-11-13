@@ -210,3 +210,63 @@ class WorkflowTests(unittest.TestCase):
 
 
 if __name__=='__main__': unittest.main()
+
+class SavedResearchReuseTests(unittest.TestCase):
+    def test_selects_current_or_latest_saved_without_rewriting(self):
+        from datetime import datetime
+        from review_workflow import select_review_research, current_research_path
+        now=datetime.fromisoformat('2026-11-13T13:10:00+09:00')
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            def save(day):
+                value={'decision_time_jst':day+'T23:45:00+09:00','prepared_at':day+'T20:00:00+09:00'}
+                value['snapshot_sha256']=digest(value)
+                path=root/'research'/(day+'.json');write_verified(path,value)
+                return path
+            old=save('2026-11-12');before=old.read_bytes()
+            save('2026-11-11');save('2026-11-16')
+            self.assertEqual(select_review_research(now,root),old)
+            self.assertEqual(old.read_bytes(),before)
+            current=save('2026-11-13')
+            self.assertEqual(select_review_research(now,root),current_research_path(now,root))
+            self.assertEqual(current,current_research_path(now,root))
+
+    def test_prior_research_collects_now_but_cannot_promote_or_change_ledger(self):
+        from datetime import datetime
+        from unittest.mock import patch
+        from review_workflow import connected_run
+        now=datetime.fromisoformat('2026-11-13T13:10:00+09:00')
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d);path=root/'research'/'2026-11-12.json'
+            financials={**inputs()[2],'symbol':'TEST','cik':'1','quality':{'pass':True}}
+            value={'decision_time_jst':'2026-11-12T23:45:00+09:00','financials':{'TEST':financials},'rows':[]}
+            value['snapshot_sha256']=digest(value);write_verified(path,value)
+            ledger=root/'trades.csv';ledger.write_text('protected fixture');before=path.read_bytes()
+            calls=[]
+            def sec(symbol,at,observed,root):
+                calls.append(at);self.assertGreater(at,now)
+                return {'cik':'1','official_documents':[]}
+            def ir(*a):return {'documents':[]}
+            # Verify the promotion boundary even when a caller requests --promote.
+            with patch('review_workflow.run',return_value={'decision_time_jst':value['decision_time_jst'],'financial_pass_count':1,'counts':{},'saved_count':0,'results':[]}) as run:
+                status=connected_run(path,now,root,root/'out',collect=True,promote=True,reuse_research=True,clock=lambda:now,sec_collector=sec,ir_collector=ir)
+                self.assertIs(run.call_args.args[3],False)
+            self.assertEqual(len(calls),1)
+            self.assertEqual(status['research_mode'],'PRIOR_RESEARCH_REFERENCE_ONLY')
+            self.assertFalse(status['promotion_enabled'])
+            self.assertTrue(status['collection']['reference_only'])
+            self.assertEqual(status['research_sha256'],value['snapshot_sha256'])
+            self.assertEqual(ledger.read_text(),'protected fixture')
+            self.assertEqual(path.read_bytes(),before)
+            self.assertFalse((root/'research'/'2026-11-13.json').exists())
+
+    def test_no_research_does_not_invent_snapshot_and_tampering_is_rejected(self):
+        from datetime import datetime
+        from review_workflow import select_review_research,current_research_path
+        now=datetime.fromisoformat('2026-11-13T13:10:00+09:00')
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            self.assertEqual(select_review_research(now,root),current_research_path(now,root))
+            self.assertFalse(root.joinpath('research').exists())
+            write_verified(current_research_path(now,root),{'snapshot_sha256':'forged'})
+            with self.assertRaisesRegex(ValueError,'proof mismatch'):select_review_research(now,root)
