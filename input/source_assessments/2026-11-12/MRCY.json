@@ -4,7 +4,7 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "7ab093a2884b5b848f862637f7c4cd29ea9b406a05c27ee6af1ef596ce7a0c80",
-  "reviewed_at": "2026-11-12T23:27:46.332830+09:00",
+  "reviewed_at": "2026-11-13T13:55:47.617831+09:00",
   "generated_at": "2026-11-12T19:04:46.748893+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
@@ -14,12 +14,12 @@
       "evidence_sha256": "b9c8ecbbdc65962360f1b55b67d173aebdc3f504138cd9ce76823e75cf58591a",
       "excerpt": "we are raising our outlook for fiscal year 2027",
       "published_at": "2026-11-10T21:01:58.000Z",
-      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "checked_at": "2026-11-13T13:55:47.617831+09:00",
       "rationale": "公式Q1 FY2027決算で通期見通し引上げを明示。11月12日追加確認。旧調査の売上・EBITDA説明を維持。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "追加検索でも11月4〜5日の株価下落を特定の一時的要因に結び付けるSEC・企業IRの裏付けを確認できない。最新決算好調や見通し上方修正だけでは下落原因の証明にならない。未承認。"
+      "rationale": "11月4〜5日の下落に対する一時的原因の公式裏付けが不足。既存11月3日8-Kは取締役選任・議決結果であり原因と断定しない。11月10日決算好調・見通し引上げを下落原因に代用しない。次処理：公式IR決算説明資料・質疑または当該下落期間のSEC開示に原因を結び付ける説明が追加された時だけ再開。未承認を維持し他銘柄へ進む。"
     },
     "no_material_business_impairment": {
       "value": true,
@@ -27,7 +27,7 @@
       "evidence_sha256": "6b7affd4ec7a3652ec561619460efc3ec61a78314dba2e528a9112448eb0c1fb",
       "excerpt": "we were in compliance with all covenants and conditions under the Revolver.",
       "published_at": "2026-11-10T22:06:28.000Z",
-      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "checked_at": "2026-11-13T13:55:47.617831+09:00",
       "rationale": "最新10-Qで契約遵守、12か月資金充足、開示統制有効を確認。現金109.7百万ドル、負債341.5百万ドル、営業CFマイナス14百万ドルと固定価格契約の原価見積リスクは残る。重大毀損成立とは判断しない。"
     },
     "next_earnings": {
@@ -36,12 +36,30 @@
       "evidence_sha256": "b9c8ecbbdc65962360f1b55b67d173aebdc3f504138cd9ce76823e75cf58591a",
       "excerpt": "November 10, 2026",
       "published_at": "2026-11-10T21:01:58.000Z",
-      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "checked_at": "2026-11-13T13:55:47.617831+09:00",
       "rationale": "企業IRイベント欄に今後のイベント掲載なし、直近は11月10日。次回正式決算日は未公表。既存の30暦日以内例外を11月12日の米国セッションについて確認し、推定日を使わない。確認先 https://ir.mrcy.com/events-presentations",
       "date": "",
       "next_date_unannounced": true,
       "last_earnings_date": "2026-11-10"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "reused_assertion_checks": {
+    "guidance_not_lowered": {
+      "original_checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "evidence_sha256": "b9c8ecbbdc65962360f1b55b67d173aebdc3f504138cd9ce76823e75cf58591a",
+      "reuse_verified_at": "2026-11-13T13:55:47.617831+09:00"
+    },
+    "no_material_business_impairment": {
+      "original_checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "evidence_sha256": "6b7affd4ec7a3652ec561619460efc3ec61a78314dba2e528a9112448eb0c1fb",
+      "reuse_verified_at": "2026-11-13T13:55:47.617831+09:00"
+    },
+    "next_earnings": {
+      "original_checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "evidence_sha256": "b9c8ecbbdc65962360f1b55b67d173aebdc3f504138cd9ce76823e75cf58591a",
+      "reuse_verified_at": "2026-11-13T13:55:47.617831+09:00"
+    }
+  },
+  "followup_scope": "未完了項目のみ追加調査。既存判定は同一証拠の来歴を検証して再利用。過去セッションへの承認なし。"
 }
