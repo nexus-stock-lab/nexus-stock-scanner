@@ -4,26 +4,34 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "7152719e135b095cd0082d9025815192a39212ce7eb8252a0ed66f8817738a58",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-13T14:47:16.857433+09:00",
   "generated_at": "2026-11-12T19:04:18.408405+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "11月12日Q3発表で通期売上2.037〜2.076から2.019〜2.038十億ドルへ下方修正。不通過。"
+      "value": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/1710155/000171015526000006/ex991-q32026earningsrelease.htm",
+      "evidence_sha256": "481a8e92145df3ddb306fcc81b247d240f3f48e9519cf17d63cb5181167c0656",
+      "published_at": "2026-11-12T11:05:52.000Z",
+      "checked_at": "2026-11-13T14:47:16.857433+09:00",
+      "excerpt": "$2.037 billion - $2.076 billion $2.019 billion - $2.038 billion",
+      "rationale": "11月12日公表の同一FY2026売上見通し比較表で2037〜2076から2019〜2038百万ドルへ上下限とも低下。既存ルールにより不通過。決算当日という過去の理由だけでなく見通し低下を確定理由にする。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "既存のQ2財務通過をQ3公表後の承認に流用しない。"
+      "rationale": "既存のQ2財務通過をQ3公表後の承認に流用しない。 次処理：最新11月12日公表の通期売上予想下方修正で不通過。旧Q2財務PASSの承認流用を禁止し、次の調査でQ3財務を再照合。新規ガイダンス更新があるまで承認しない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "最新Q3に基づく重大リスク評価は未完了。"
+      "rationale": "最新Q3に基づく重大リスク評価は未完了。 次処理：最新11月12日公表の通期売上予想下方修正で不通過。旧Q2財務PASSの承認流用を禁止し、次の調査でQ3財務を再照合。新規ガイダンス更新があるまで承認しない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "本日11月12日が公式決算日で新規エントリー除外。"
+      "rationale": "本日11月12日が公式決算日で新規エントリー除外。 次処理：最新11月12日公表の通期売上予想下方修正で不通過。旧Q2財務PASSの承認流用を禁止し、次の調査でQ3財務を再照合。新規ガイダンス更新があるまで承認しない。"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "reused_assertion_checks": {},
+  "followup_scope": "全業種の未完了項目に対する追加審査。11月12日調査との拘束を保持。新規承認・遡及承認なし。",
+  "next_processing": "最新11月12日公表の通期売上予想下方修正で不通過。旧Q2財務PASSの承認流用を禁止し、次の調査でQ3財務を再照合。新規ガイダンス更新があるまで承認しない。"
 }
