@@ -41,6 +41,29 @@ def current_research_path(now, root=Path('input')):
     return Path(root)/'research'/(session_date(next_slot(now))+'.json')
 
 
+
+def select_review_research(now, root=Path('input')):
+    """Reuse immutable research without starting a price scan or rebinding it."""
+    expected = current_research_path(now, root)
+    def validated(path):
+        research = read(path)
+        if research.get('snapshot_sha256') != digest({k:v for k,v in research.items() if k!='snapshot_sha256'}):
+            raise ValueError('research snapshot proof mismatch: '+str(path))
+        return research
+    if expected.exists():
+        validated(expected)
+        return expected
+    target_day = expected.stem
+    candidates = []
+    for path in sorted((Path(root)/'research').glob('*.json')):
+        research = validated(path)
+        day = datetime.fromisoformat(research['decision_time_jst']).astimezone(ZoneInfo('America/New_York')).date().isoformat()
+        prepared = research.get('prepared_at')
+        if day <= target_day and (not prepared or timestamp_ns(prepared) <= timestamp_ns(now.isoformat())):
+            candidates.append((day, str(path), path))
+    return max(candidates)[2] if candidates else expected
+
+
 def require_current_disclosures(symbol, reviewed_at, root, day):
     path=Path(root)/'review_tasks'/(day+'.json')
     if not path.exists():return
@@ -211,7 +234,7 @@ def run(research_path, now, root=Path('input'), promote=False):
 
 
 def collect_assessments(research, now, root=Path('input'), *, sec_collector=None,
-                        ir_collector=None, clock=None):
+                        ir_collector=None, clock=None, reference_only=False):
     """Collect every financial PASS and publish an explicit four-item work queue.
 
     The Work reviewer supplies semantic decisions. Collection never claims to be
@@ -229,14 +252,16 @@ def collect_assessments(research, now, root=Path('input'), *, sec_collector=None
     ir_collector = ir_collector or collect_issuer_ir
     clock = clock or (lambda: datetime.now(now.tzinfo))
     from entry_schedule import next_slot,session_slots
-    slots=session_slots(at.astimezone(ZoneInfo('America/New_York')).date())
+    collection_at=next_slot(now) if reference_only else at
+    slots=session_slots(collection_at.astimezone(ZoneInfo('America/New_York')).date())
     deadline=slots[-1] if slots else at
     latest_path=root/'review_tasks'/(day+'.json')
     try:prior={x['symbol']:x for x in read(latest_path).get('results',[])} if latest_path.exists() else {}
     except (ValueError,OSError,KeyError,TypeError):prior={}
     queue = {'kind':'SOURCE_REVIEW_QUEUE', 'research_sha256':research['snapshot_sha256'],
              'decision_time_jst':at.isoformat(), 'started_at':now.isoformat(),
-             'may_register':False, 'results':[]}
+             'may_register':False, 'reference_only':reference_only,
+             'collection_deadline_jst':deadline.isoformat(), 'results':[]}
     for symbol, financials in sorted(research.get('financials', {}).items()):
         if financials.get('quality', {}).get('pass') is not True:
             continue
@@ -317,14 +342,20 @@ def collect_assessments(research, now, root=Path('input'), *, sec_collector=None
 
 
 def connected_run(research_path, now, root=Path('input'), out=Path('output'),
-                  *, collect=False, promote=True, clock=None, **collectors):
+                  *, collect=False, promote=True, clock=None, reuse_research=False, **collectors):
     """Review-only entry point; no prices, plan construction, fills or ledger writes."""
     research = read(Path(research_path))
-    queue = collect_assessments(research,now,root,clock=clock,**collectors) if collect else None
+    target_day=current_research_path(now,root).stem
+    research_day=datetime.fromisoformat(research['decision_time_jst']).astimezone(ZoneInfo('America/New_York')).date().isoformat()
+    reference_only=reuse_research and research_day != target_day
+    if reference_only:promote=False
+    queue = collect_assessments(research,now,root,clock=clock,reference_only=reference_only,**collectors) if collect else None
     completed = clock() if clock else datetime.now(now.tzinfo)
     report = run(research_path,completed,root,promote)
     status = {'kind':'CONNECTED_SOURCE_REVIEW_STATUS', 'observed_at':completed.isoformat(),
               'research_path':str(research_path),'research_sha256':research['snapshot_sha256'],
+              'research_mode':'PRIOR_RESEARCH_REFERENCE_ONLY' if reference_only else 'CURRENT_RESEARCH',
+              'promotion_enabled':promote, 'target_session_date':target_day,
               'collection':queue, 'review':report,
               'semantic_review':'EXPLICIT_WORK_REVIEWER_REQUIRED_FOR_PENDING_ITEMS',
               'ledger_writes':0, 'orders':0}
@@ -332,6 +363,8 @@ def connected_run(research_path, now, root=Path('input'), out=Path('output'),
     lines = ['# 公式資料審査', '',
              '財務通過: '+str(report['financial_pass_count'])+' / '+str(report['counts']),
              '承認保存（ローカル）: '+str(report['saved_count']),
+             '調査: '+str(research_path)+' / '+status['research_mode'],
+             '過去調査の再利用時は当日承認への転用を禁止。新しい調査への明示的な再審査が必要。' if reference_only else '',
              'GitHub再取得の証明は source_review_persistence.json を確認。', '',
              '未審査・根拠不足は承認しません。以下を Work の審査担当が確認します。', '']
     for result in report['results']:
@@ -346,17 +379,18 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('research', type=Path, nargs='?')
     parser.add_argument('--collect', action='store_true')
+    parser.add_argument('--reuse-research', action='store_true', help='Reuse latest saved research as reference only when current research is absent; never scan or promote past research')
     parser.add_argument('--out', type=Path, default=Path('output'))
     parser.add_argument('--root', type=Path, default=Path('input'))
     parser.add_argument('--promote', action='store_true', help='Save only explicitly reviewed and intake-validated PASS packets')
     args = parser.parse_args()
     now = datetime.now(ZoneInfo('Asia/Tokyo'))
     if args.research is None:
-        args.research = current_research_path(now,args.root)
+        args.research = select_review_research(now,args.root) if args.reuse_research else current_research_path(now,args.root)
     if not args.research.exists():
         args.out.mkdir(parents=True,exist_ok=True)
         write_verified(args.out/'source_review_status.json', {'status':'CURRENT_RESEARCH_MISSING', 'research_path':str(args.research), 'orders':0, 'ledger_writes':0})
         (args.out/'source_review_summary.md').write_text('# 公式資料審査\n\n当日分の財務調査が未保存です。過去日の承認は作りません。\n',encoding='utf-8')
         raise SystemExit(0)
-    report = connected_run(args.research, now, args.root, args.out, collect=args.collect, promote=args.promote)['review']
+    report = connected_run(args.research, now, args.root, args.out, collect=args.collect, promote=args.promote, reuse_research=args.reuse_research)['review']
     print(json.dumps({k:report[k] for k in ('financial_pass_count','counts','saved_count','local_readback_count','remote_verified_count')}, ensure_ascii=False))
