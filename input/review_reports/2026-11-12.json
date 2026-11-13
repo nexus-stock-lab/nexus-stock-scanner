@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "decision_time_jst": "2026-11-12T23:45:00+09:00",
-  "observed_at": "2026-11-13T10:47:18.643197+09:00",
+  "observed_at": "2026-11-13T13:47:25.225417+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -82,29 +82,9 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "940052bc5d4b85f720c67f2a506ac95826a4fe853ca12423ddab8d0cb20b3c19",
       "reasons": [
-        "guidance_not_lowered: FY2026売上4,440〜4,465百万ドル。旧FY2026見通しとの比較未完了。2027・28予想を代用しない。",
-        "decline_explanation_verified: Delivery減収とCloud成長が併存し、下落の一時性未確認。",
-        "no_material_business_impairment: 11月9日の転換社債調達と希薄化・顧客契約の履行リスク評価が未完了。",
-        "next_earnings: 直近決算11月5日。次回公式日程未確認。"
+        "ValueError: New official disclosure after review: explicit re-review required"
       ],
-      "assertions": {
-        "guidance_not_lowered": {
-          "value": null,
-          "rationale": "FY2026売上4,440〜4,465百万ドル。旧FY2026見通しとの比較未完了。2027・28予想を代用しない。"
-        },
-        "decline_explanation_verified": {
-          "value": null,
-          "rationale": "Delivery減収とCloud成長が併存し、下落の一時性未確認。"
-        },
-        "no_material_business_impairment": {
-          "value": null,
-          "rationale": "11月9日の転換社債調達と希薄化・顧客契約の履行リスク評価が未完了。"
-        },
-        "next_earnings": {
-          "value": null,
-          "rationale": "直近決算11月5日。次回公式日程未確認。"
-        }
-      },
+      "assertions": {},
       "official_documents": [
         {
           "source": "https://www.sec.gov/Archives/edgar/data/1086222/000119312526455539/d51061d8k.htm",
