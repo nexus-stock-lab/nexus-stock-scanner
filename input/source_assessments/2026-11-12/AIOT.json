@@ -4,7 +4,7 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "e7e6f0c8c480bbb49946ac02c47ab10d78c026e591e4bfd56a6be01f3cf8043f",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-13T14:47:16.857433+09:00",
   "generated_at": "2026-11-12T19:04:05.788953+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
@@ -14,21 +14,35 @@
       "evidence_sha256": "7251881736ff6244e4be1cdfb640db0de8cda77ae56be1ee3d97023594873f1f",
       "excerpt": "Affirm guidance for FY2027.",
       "published_at": "2026-11-09T12:13:56.000Z",
-      "checked_at": "2026-11-12T23:11:11.600514+09:00",
+      "checked_at": "2026-11-13T14:47:16.857433+09:00",
       "rationale": "FY2027会社ガイダンス維持を公式発表で確認。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "製品売上減とサービス売上増が併存。株価下落の一時性未確認。"
+      "rationale": "製品売上減とサービス売上増が併存。株価下落の一時性未確認。 次処理：南ア大型契約の資金実行・サービス売上移行と対象株価下落期間を公式決算説明で照合する。未締結融資を成立済みと扱わない。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "デバイス融資契約は合意済み条件と最終成立を区別。大型南アフリカ契約への依存も未評価。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1774170/000162828026072142/aiot-20260930.htm",
+      "evidence_sha256": "8bed7955c9b8321d4d9b5f4110d5a37452bf31e3621fc40c1f6ebc9936b83f59",
+      "published_at": "2026-11-09T21:07:27.000Z",
+      "checked_at": "2026-11-13T14:47:16.857433+09:00",
+      "excerpt": "in compliance with all applicable financial and non‑financial covenants",
+      "rationale": "最新10-Qで融資契約遵守・デフォルトなし、開示統制有効と既存現金・営業CF・借入余力による少なくとも12か月の資金充足評価を確認。南ア国庫契約向け新デバイス融資は最終契約未締結であり成立済み資金に加えない。大型案件依存、ERP展開と借換リスクは残るが、確認した現時点の重大毀損成立とは判断しない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "直近決算11月9日。次回公式日程未確認。"
+      "rationale": "直近決算11月9日。次回公式日程未確認。 次処理：南ア大型契約の資金実行・サービス売上移行と対象株価下落期間を公式決算説明で照合する。未締結融資を成立済みと扱わない。"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "reused_assertion_checks": {
+    "guidance_not_lowered": {
+      "original_checked_at": "2026-11-12T23:11:11.600514+09:00",
+      "evidence_sha256": "7251881736ff6244e4be1cdfb640db0de8cda77ae56be1ee3d97023594873f1f",
+      "reuse_verified_at": "2026-11-13T14:47:16.857433+09:00"
+    }
+  },
+  "followup_scope": "全業種の未完了項目に対する追加審査。11月12日調査との拘束を保持。新規承認・遡及承認なし。",
+  "next_processing": "南ア大型契約の資金実行・サービス売上移行と対象株価下落期間を公式決算説明で照合する。未締結融資を成立済みと扱わない。"
 }
