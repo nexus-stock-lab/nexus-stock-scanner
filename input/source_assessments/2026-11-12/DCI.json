@@ -4,26 +4,34 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "7cbec1e2b556242fcfe4bb2d63b2b0cfb1f40d8f2d501bd3b70c79a316152f7c",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-13T14:47:16.857433+09:00",
   "generated_at": "2026-11-12T19:04:16.295692+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "FY2027売上5.5〜9.5%増は初回見通し。同一対象予想の比較未完了。"
+      "rationale": "FY2027売上5.5〜9.5%増は初回見通し。同一対象予想の比較未完了。 次処理：次回12月2日は会社配信発表の候補を発見したが、企業IR原本の取得・公表日時拘束は未完了。直近決算から30日超のため未公表例外を適用しない。FY2027売上見通しの同一期間維持確認と下落原因を公式資料で取得する。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "株価下落の一時性未確認。"
+      "rationale": "株価下落の一時性未確認。 次処理：次回12月2日は会社配信発表の候補を発見したが、企業IR原本の取得・公表日時拘束は未完了。直近決算から30日超のため未公表例外を適用しない。FY2027売上見通しの同一期間維持確認と下落原因を公式資料で取得する。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "10-Kの一般的な監査記述を実在する重大な弱点と誤認しない。重大リスク審査は未完了。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/29644/000002964426000085/dci-20260731.htm",
+      "evidence_sha256": "d374bfc0912293e45796d563d75cb9fb301b5c9b42abdc8a50e3b1655233e8df",
+      "published_at": "2026-09-25T15:58:43.000Z",
+      "checked_at": "2026-11-13T14:47:16.857433+09:00",
+      "excerpt": "cash requirements for the next 12 months and beyond",
+      "rationale": "最新10-Kの開示統制有効、営業CF・現金・既存借入余力で今後12か月超の必要資金を充足するとの評価を確認。監査手続説明のmaterial weaknessを会社の実在する弱点と混同しない。再編・買収・Life Sciencesの収益性、関税・景気リスクは残す。確認資料の重大毀損成立とは判断しない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "12月2日という候補は公式企業IRで照合未完了。直近決算から30日超のため未公表例外を使わない。"
+      "rationale": "12月2日という候補は公式企業IRで照合未完了。直近決算から30日超のため未公表例外を使わない。 次処理：次回12月2日は会社配信発表の候補を発見したが、企業IR原本の取得・公表日時拘束は未完了。直近決算から30日超のため未公表例外を適用しない。FY2027売上見通しの同一期間維持確認と下落原因を公式資料で取得する。"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "reused_assertion_checks": {},
+  "followup_scope": "全業種の未完了項目に対する追加審査。11月12日調査との拘束を保持。新規承認・遡及承認なし。",
+  "next_processing": "次回12月2日は会社配信発表の候補を発見したが、企業IR原本の取得・公表日時拘束は未完了。直近決算から30日超のため未公表例外を適用しない。FY2027売上見通しの同一期間維持確認と下落原因を公式資料で取得する。"
 }
