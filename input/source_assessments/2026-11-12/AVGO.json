@@ -4,17 +4,17 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "7d2045d08e34d3fde992e71a435517a47376da1506f1e35376e5fd210458c9c4",
-  "reviewed_at": "2026-11-12T23:27:46.332830+09:00",
+  "reviewed_at": "2026-11-13T13:55:47.617831+09:00",
   "generated_at": "2026-11-12T19:04:09.977485+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "第4四半期売上34.8十億ドル見通し。前年成長率だけで同一対象予想の非下方修正とは判定しない。"
+      "rationale": "Q4売上34.8十億ドルの公式予想は確認済み。同一Q4対象の従前予想または明示的な維持確認が不足。次処理：最新IR・SECのQ4予想更新/維持発表を比較し、前年比成長やQ3実績を同一対象比較に代用しない。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "追加検索で株価下落に関する二次情報は見つかったが、特定の一時的下落原因を裏付けるSEC・企業IRの証拠が不足。AI売上成長や次回決算日だけではこの項目を通過にしない。未承認。"
+      "rationale": "公式Q3発表・10-Q・直近IRにより事業情報は確認したが、対象下落を特定の一時的原因に結び付ける説明が不足。次処理：公式IR説明会・SECの対象期間の開示で下落要因と継続期間を照合。次回決算日やAI需要増だけで承認せず、未承認を維持し他銘柄へ進む。"
     },
     "no_material_business_impairment": {
       "value": true,
@@ -22,13 +22,27 @@
       "evidence_sha256": "0ad17bd10df83a85bd0096c4fd1aeb5fdb97eda8aabe67518d93fdd9d5e53561",
       "excerpt": "we were in compliance with all debt covenants.",
       "published_at": "2026-09-09T21:56:42.000Z",
-      "checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "checked_at": "2026-11-13T13:55:47.617831+09:00",
       "rationale": "最新10-Qで債務契約遵守、今後12か月の資金充足、開示統制有効を確認。負債約61.1十億ドル、AI顧客・製造委託先集中と顧客資金調達への依存は残るが、現時点で重大毀損成立とは判断しない。"
     },
     "next_earnings": {
-      "value": null,
-      "rationale": "企業IRの11月9日公式発表で次回決算12月9日米国市場引け後を確認。11月12日は除外期間外。IRドメインは現行取込レジストリ未対応で公表時刻のアーカイブ拘束も未完成のため、canonical項目を未完了として維持。コード変更やSEC既存資料への日付転記はしない。 https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026"
+      "value": true,
+      "source": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026",
+      "evidence_sha256": "5e203f0dfc117d0e2959286097bbd6e19f6b0730e2b9bbb614a7e8447966dd76",
+      "published_at": "2026-11-09T08:00:43-05:00",
+      "checked_at": "2026-11-13T13:55:47.617831+09:00",
+      "excerpt": "December 9, 2026",
+      "date": "2026-12-09",
+      "rationale": "公式IR本文と機械可読公表日時2026-11-09T08:00:43-05:00を直接取得。次回12月9日米国市場引け後を確認。IR一覧404を、既存許可済み個別記事URLの直接取得で解消。レジストリ・コードは変更せず。11月13日の次回正式判定では決算前後除外期間外。"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "reused_assertion_checks": {
+    "no_material_business_impairment": {
+      "original_checked_at": "2026-11-12T23:27:46.332830+09:00",
+      "evidence_sha256": "0ad17bd10df83a85bd0096c4fd1aeb5fdb97eda8aabe67518d93fdd9d5e53561",
+      "reuse_verified_at": "2026-11-13T13:55:47.617831+09:00"
+    }
+  },
+  "followup_scope": "未完了項目のみ追加調査。既存判定は同一証拠の来歴を検証して再利用。過去セッションへの承認なし。"
 }
