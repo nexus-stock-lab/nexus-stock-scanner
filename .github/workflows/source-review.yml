@@ -31,30 +31,10 @@ jobs:
         run: python -m pip install -r requirements.txt
       - name: Test evidence and approval boundaries
         run: python -m unittest discover -s tests -v
-      - name: Prepare missing current research without running the trading phase
-        env:
-          NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
-        run: |
-          python - <<'PYCODE'
-          from pathlib import Path
-          from datetime import datetime
-          import subprocess, sys
-          from market_calendar import JST
-          from review_workflow import current_research_path
-          from daily_runner import freeze_research
-          now=datetime.now(JST)
-          path=current_research_path(now)
-          if not path.exists():
-              subprocess.run([sys.executable,'scanner.py'],check=True)
-              subprocess.run([sys.executable,'review.py'],check=True)
-              # This function only freezes research and source evidence. Never
-              # call daily_runner.main, run, reconcile or track in this workflow.
-              freeze_research(datetime.now(JST),collect_official=True)
-          PYCODE
       - name: Collect and intake current financial-pass reviews without trading
         env:
           NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
-        run: python review_workflow.py --collect --promote
+        run: python review_workflow.py --reuse-research --collect --promote
       - name: Persist only review evidence and verify GitHub readback
         env:
           BRANCH: ${{ github.ref_name }}
