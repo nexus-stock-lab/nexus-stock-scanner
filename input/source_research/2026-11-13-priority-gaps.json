@@ -1,0 +1,75 @@
+{
+  "kind": "OFFICIAL_SOURCE_GAP_FOLLOWUP",
+  "reviewed_at": "2026-11-13T13:55:47.617831+09:00",
+  "research_path": "input/research/2026-11-12.json",
+  "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
+  "reference_only": true,
+  "new_confirmed_item_count": 2,
+  "new_approved_count": 0,
+  "unapproved_count": 3,
+  "retrospective_approvals": 0,
+  "ledger_writes": 0,
+  "code_changes": 0,
+  "results": [
+    {
+      "symbol": "CLS",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "prior_assessment_sha256": "03965d0e3b3a17368f646f91d81bf6d6e0d3356ada04026eea5f8106ed0a6803",
+      "assessment_sha256": "39f912aa9e710df91549c295623826e98d9a7e71c1913737feae847c6c0452a7",
+      "confirmed_new_items": [
+        "guidance_not_lowered"
+      ],
+      "unresolved_items": [
+        {
+          "name": "decline_explanation_verified",
+          "next_processing": "FCF600→460百万ドル、2027年設備投資15〜20億ドル、増資による希薄化は公式資料に記載。ただし対象下落の原因・一時性を確定する公式説明が不足。FCF低下説明だけで一時的下落と断定しない。次処理：公式Investor Day資料・質疑の資金回収時期/一過性の説明と対象下落期間を照合。未承認を維持し他銘柄へ進む。"
+        }
+      ]
+    },
+    {
+      "symbol": "MRCY",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "prior_assessment_sha256": "7fc172f85556cfe33bfc264a4b7cc04482d0ee026ae304a4326af9c53081fbc0",
+      "assessment_sha256": "48be5fe64722cf2b3a2fd9fa1b3eb9001560d744445476f924e29bc3ad914ca7",
+      "confirmed_new_items": [],
+      "unresolved_items": [
+        {
+          "name": "decline_explanation_verified",
+          "next_processing": "11月4〜5日の下落に対する一時的原因の公式裏付けが不足。既存11月3日8-Kは取締役選任・議決結果であり原因と断定しない。11月10日決算好調・見通し引上げを下落原因に代用しない。次処理：公式IR決算説明資料・質疑または当該下落期間のSEC開示に原因を結び付ける説明が追加された時だけ再開。未承認を維持し他銘柄へ進む。"
+        }
+      ]
+    },
+    {
+      "symbol": "AVGO",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "prior_assessment_sha256": "f17abe49252925371b8a06689d9b81cdee9b18b6b66a15419f0a124c080b084e",
+      "assessment_sha256": "07f2bf94f954871ba0ebac6cf31fb5132dd1002efa8fc7873871941e402a06d3",
+      "confirmed_new_items": [
+        "next_earnings"
+      ],
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "next_processing": "Q4売上34.8十億ドルの公式予想は確認済み。同一Q4対象の従前予想または明示的な維持確認が不足。次処理：最新IR・SECのQ4予想更新/維持発表を比較し、前年比成長やQ3実績を同一対象比較に代用しない。"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "next_processing": "公式Q3発表・10-Q・直近IRにより事業情報は確認したが、対象下落を特定の一時的原因に結び付ける説明が不足。次処理：公式IR説明会・SECの対象期間の開示で下落要因と継続期間を照合。次回決算日やAI需要増だけで承認せず、未承認を維持し他銘柄へ進む。"
+        }
+      ]
+    }
+  ],
+  "handoff": "source-review.yml --reuse-research --collect --promote recomputes review_tasks unresolved_items from these assessments. Current-day financial snapshot must be available and explicit review rebound before future approval; never change old approval timestamps or paper ledger.",
+  "official_sources_checked": [
+    "https://ir.mrcy.com/events-presentations",
+    "https://ir.mrcy.com/press-releases",
+    "https://www.sec.gov/Archives/edgar/data/1049521/000104952126000094/mrcy-20261028.htm",
+    "https://celestica.gcs-web.com/news-releases/news-release-details/celestica-announces-third-quarter-2026-financial-results-and",
+    "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026",
+    "https://investors.broadcom.com/financial-information/financial-news-releases"
+  ],
+  "limitations": [
+    "下落理由の根拠不足は今回確認範囲での結論。全開示に原因が存在しないと主張しない。",
+    "既存11月12日財務調査は参考。11月13日正式判定への承認・計画は生成しない。"
+  ]
+}
