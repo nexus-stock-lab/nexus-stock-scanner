@@ -4,26 +4,34 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "d04366b8d7a85487d42ded8bbd853e5c50fb7a1ed42fc690c76bcb9f88fac801",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-13T14:47:16.857433+09:00",
   "generated_at": "2026-11-12T19:04:39.994637+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "買収と決算期変更後の6か月移行期売上293〜297百万ドル。同一対象期間・会社範囲での比較未完了。"
+      "rationale": "買収と決算期変更後の6か月移行期売上293〜297百万ドル。同一対象期間・会社範囲での比較未完了。 次処理：買収・決算期変更後6か月移行期の売上293〜297百万ドルと比較できる同じ期間・範囲の旧予想を取得。買収の機械的売上増を一時的下落からの回復とみなさない。次回公式決算日も確認する。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "買収込み成長率を既存事業回復の証明としない。下落の一時性未確認。"
+      "rationale": "買収込み成長率を既存事業回復の証明としない。下落の一時性未確認。 次処理：買収・決算期変更後6か月移行期の売上293〜297百万ドルと比較できる同じ期間・範囲の旧予想を取得。買収の機械的売上増を一時的下落からの回復とみなさない。次回公式決算日も確認する。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "統合・季節性・レジャーボート需要の重大リスク評価未完了。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1638290/000119312526454931/mcft-20261004.htm",
+      "evidence_sha256": "93aa5676dcbe7e8236d7882269f0a277774aa1c729534c4cc85864cf849d8eb5",
+      "published_at": "2026-11-10T17:17:40.000Z",
+      "checked_at": "2026-11-13T14:47:16.857433+09:00",
+      "excerpt": "in compliance with its financial covenants under the Credit Agreement",
+      "rationale": "最新10-Qで契約遵守・開示統制有効、現金41.9百万ドル・借入余力75百万ドル、10月4日時点長期借入なし、資金充足の会社評価を確認。Marine Products買収の統合・会計統制変更、季節性とレジャーボート需要リスクを残し、買収込み成長率を既存事業回復とみなさない。現時点の重大毀損成立とは判断しない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "直近決算11月10日。次回公式日程未確認。"
+      "rationale": "直近決算11月10日。次回公式日程未確認。 次処理：買収・決算期変更後6か月移行期の売上293〜297百万ドルと比較できる同じ期間・範囲の旧予想を取得。買収の機械的売上増を一時的下落からの回復とみなさない。次回公式決算日も確認する。"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "reused_assertion_checks": {},
+  "followup_scope": "全業種の未完了項目に対する追加審査。11月12日調査との拘束を保持。新規承認・遡及承認なし。",
+  "next_processing": "買収・決算期変更後6か月移行期の売上293〜297百万ドルと比較できる同じ期間・範囲の旧予想を取得。買収の機械的売上増を一時的下落からの回復とみなさない。次回公式決算日も確認する。"
 }
