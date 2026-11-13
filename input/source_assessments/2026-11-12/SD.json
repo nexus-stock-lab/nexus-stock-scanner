@@ -4,26 +4,34 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "6c93123679a4d38a486cae19f4a5eb5240e479154ffedd30c453b751d5fdab91",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-13T14:47:16.857433+09:00",
   "generated_at": "2026-11-12T19:04:51.397152+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "生産増と売上増を確認。生産・設備投資計画を売上ガイダンスと同一視できない。"
+      "rationale": "生産増と売上増を確認。生産・設備投資計画を売上ガイダンスと同一視できない。 次処理：原油ガスの生産・設備投資計画は売上予想ではない。会社売上ガイダンスの同一期間比較資料と、下落の市場/一時要因の一次根拠、次回公式決算日を確認する。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "原油価格の影響はあり得るが、株価下落の一時要因と確認できない。"
+      "rationale": "原油価格の影響はあり得るが、株価下落の一時要因と確認できない。 次処理：原油ガスの生産・設備投資計画は売上予想ではない。会社売上ガイダンスの同一期間比較資料と、下落の市場/一時要因の一次根拠、次回公式決算日を確認する。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "商品価格と操業リスクの重大性判断が未完了。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1349436/000162828026071179/sd-20260930.htm",
+      "evidence_sha256": "a2a33fa64220efbe24e57433b5da1bd7c24567f5df813fc75c7540dde7693d0b",
+      "published_at": "2026-11-05T22:21:34.000Z",
+      "checked_at": "2026-11-13T14:47:16.857433+09:00",
+      "excerpt": "We had no outstanding term or revolving debt obligations as of September 30, 2026.",
+      "rationale": "最新10-Qで9月30日時点ターム・リボルビング債務なし、現金等70百万ドル、短長期流動性充足評価・開示統制有効を確認。原油ガス価格と採掘・埋蔵量・買収リスクは残し、商品価格下落の一時性まで証明したとは扱わない。現時点で重大毀損成立とは判断しない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "直近決算11月4日。次回公式日程の確認未完了。"
+      "rationale": "直近決算11月4日。次回公式日程の確認未完了。 次処理：原油ガスの生産・設備投資計画は売上予想ではない。会社売上ガイダンスの同一期間比較資料と、下落の市場/一時要因の一次根拠、次回公式決算日を確認する。"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "reused_assertion_checks": {},
+  "followup_scope": "全業種の未完了項目に対する追加審査。11月12日調査との拘束を保持。新規承認・遡及承認なし。",
+  "next_processing": "原油ガスの生産・設備投資計画は売上予想ではない。会社売上ガイダンスの同一期間比較資料と、下落の市場/一時要因の一次根拠、次回公式決算日を確認する。"
 }
