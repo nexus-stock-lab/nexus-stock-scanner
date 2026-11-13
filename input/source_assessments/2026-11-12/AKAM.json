@@ -4,26 +4,35 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "940052bc5d4b85f720c67f2a506ac95826a4fe853ca12423ddab8d0cb20b3c19",
-  "reviewed_at": "2026-11-12T23:11:11.600514+09:00",
+  "reviewed_at": "2026-11-13T14:47:16.857433+09:00",
   "generated_at": "2026-11-12T19:04:07.696006+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "FY2026売上4,440〜4,465百万ドル。旧FY2026見通しとの比較未完了。2027・28予想を代用しない。"
+      "value": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/1086222/000108622226000097/exhibit991-q32026.htm",
+      "evidence_sha256": "ed3340149d5ef07b22f318b739e61aba04f96404dbeee59a5c63df66d869b105",
+      "published_at": "2026-11-05T21:08:34.000Z",
+      "checked_at": "2026-11-13T14:47:16.857433+09:00",
+      "excerpt": "Revenue (in millions)",
+      "rationale": "FY2026売上見通しを同一対象期間で比較。8月6日4445〜4530百万ドルから11月5日4440〜4465百万ドルへ上下限とも低下。次年度のAI成長見通しで代用せず既存の売上見通し非下方修正条件により不通過。",
+      "comparative_evidence_sha256": "cff1211ccc5894a2199dc11a4a94be1ed6fa1f78bf038ae40531e56a973f1048"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "Delivery減収とCloud成長が併存し、下落の一時性未確認。"
+      "rationale": "Delivery減収とCloud成長が併存し、下落の一時性未確認。 次処理：同一FY2026売上予想の下方修正により不通過。次の公式売上見通し更新で条件が再び成立するまで承認しない。2027/28年の成長予想で2026年の下方修正を置換しない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "11月9日の転換社債調達と希薄化・顧客契約の履行リスク評価が未完了。"
+      "rationale": "11月9日の転換社債調達と希薄化・顧客契約の履行リスク評価が未完了。 次処理：同一FY2026売上予想の下方修正により不通過。次の公式売上見通し更新で条件が再び成立するまで承認しない。2027/28年の成長予想で2026年の下方修正を置換しない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "直近決算11月5日。次回公式日程未確認。"
+      "rationale": "直近決算11月5日。次回公式日程未確認。 次処理：同一FY2026売上予想の下方修正により不通過。次の公式売上見通し更新で条件が再び成立するまで承認しない。2027/28年の成長予想で2026年の下方修正を置換しない。"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "reused_assertion_checks": {},
+  "followup_scope": "全業種の未完了項目に対する追加審査。11月12日調査との拘束を保持。新規承認・遡及承認なし。",
+  "next_processing": "同一FY2026売上予想の下方修正により不通過。次の公式売上見通し更新で条件が再び成立するまで承認しない。2027/28年の成長予想で2026年の下方修正を置換しない。"
 }
