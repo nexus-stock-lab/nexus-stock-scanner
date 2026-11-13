@@ -1,0 +1,227 @@
+{
+  "kind": "BROAD_OFFICIAL_SOURCE_FOLLOWUP",
+  "reviewed_at": "2026-11-13T14:47:16.857433+09:00",
+  "research_path": "input/research/2026-11-12.json",
+  "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
+  "financial_pass_inventory_count": 22,
+  "additional_review_count": 13,
+  "approved_count": 0,
+  "failed_count": 2,
+  "insufficient_count": 11,
+  "newly_resolved_item_count": 11,
+  "reference_only": true,
+  "retrospective_approvals": 0,
+  "code_changes": 0,
+  "ledger_writes": 0,
+  "sectors": [
+    "industrial equipment",
+    "consumer food",
+    "energy/oil and gas",
+    "healthcare/biopharmaceuticals",
+    "restaurants",
+    "home building controls",
+    "leisure boats",
+    "software/cloud/IoT"
+  ],
+  "results": [
+    {
+      "symbol": "AIOT",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [
+        "no_material_business_impairment"
+      ],
+      "prior_assessment_sha256": "614a4b6048576704fa7125843a3eb240c78ca264616d4a53254808b8f3cabe94",
+      "assessment_sha256": "c8643a1b3c7d90818ed760e9300bb05dfe64279944a12d29a85f9ce2c607b25a",
+      "unresolved_items": [
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "next_processing": "南ア大型契約の資金実行・サービス売上移行と対象株価下落期間を公式決算説明で照合する。未締結融資を成立済みと扱わない。"
+    },
+    {
+      "symbol": "AKAM",
+      "status": "FAIL",
+      "newly_resolved_items": [
+        "guidance_not_lowered"
+      ],
+      "prior_assessment_sha256": "cc3ef96256634924e34acfd7c0b1fe6ce30b2c9a13ab95d1c83d3b7a73aff849",
+      "assessment_sha256": "c878e29d6b24beb2e39c33906d1a9449023c0fe14117e2ae71bbfaf919430139",
+      "unresolved_items": [
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "next_processing": "同一FY2026売上予想の下方修正により不通過。次の公式売上見通し更新で条件が再び成立するまで承認しない。2027/28年の成長予想で2026年の下方修正を置換しない。"
+    },
+    {
+      "symbol": "DCI",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [
+        "no_material_business_impairment"
+      ],
+      "prior_assessment_sha256": "f7e58a59d0f45088c37ad30f3a9b621f75e3cd41505600d832d401bd484ec637",
+      "assessment_sha256": "836d44dd00cd3319e8712ea63489b07cbf127d1e9faac4c6dc4b8adcd93de5a3",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "next_processing": "次回12月2日は会社配信発表の候補を発見したが、企業IR原本の取得・公表日時拘束は未完了。直近決算から30日超のため未公表例外を適用しない。FY2027売上見通しの同一期間維持確認と下落原因を公式資料で取得する。"
+    },
+    {
+      "symbol": "EYE",
+      "status": "FAIL",
+      "newly_resolved_items": [
+        "guidance_not_lowered"
+      ],
+      "prior_assessment_sha256": "cbeb6fc12cc9cd3238de32941634c1ed4f35e8dd155d26f7cc4dab0dd1174ec7",
+      "assessment_sha256": "835059d72e43e86d3b64344e5edd5b23b0568d8346df7bf9568772880e9177f8",
+      "unresolved_items": [
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "next_processing": "最新11月12日公表の通期売上予想下方修正で不通過。旧Q2財務PASSの承認流用を禁止し、次の調査でQ3財務を再照合。新規ガイダンス更新があるまで承認しない。"
+    },
+    {
+      "symbol": "GGG",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [],
+      "prior_assessment_sha256": "8f79d949dd3bc11d097a19514046f45f37766b3da1e21c4935c4c893285a0342",
+      "assessment_sha256": "9eb4a94963857b1f2cd2f80a70886ae6712d02646de4933622d684640884b575",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "next_processing": "9月25日流動性808百万ドルに対し11月10日ASR600百万ドルは現金・既存借入で調達。ASR後の現金、借入、契約余力を次の公式開示で確認する。Q4初回予想と同一期間の更新比較・下落一時性も未確認。"
+    },
+    {
+      "symbol": "HSY",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [
+        "guidance_not_lowered"
+      ],
+      "prior_assessment_sha256": "9284e849641c4ad6e1c225bb25238e9e9ff1a5d4722b3afa5ead84755a994c46",
+      "assessment_sha256": "7cb845067a60e0bddd60ba37ec9a6ed35c035d926987ae13ed1981eefff7b577",
+      "unresolved_items": [
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "next_processing": "総売上成長約5%は維持以上だが有機売上は3〜3.5%から約3%、数量減とココア・物流・関税影響が残る。数量/需要減の一時性と利益の持続性を公式説明で確認する。売上見通し項目だけで全体を承認しない。"
+    },
+    {
+      "symbol": "KGS",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [
+        "no_material_business_impairment"
+      ],
+      "prior_assessment_sha256": "cc0c57877a86c84005d13b1fcdf7b03eb6ebf9a878bbb629a18ec0bf8b77d6e9",
+      "assessment_sha256": "aaf5abd424ca91f3917e9cad2319607bc7d28ec3f07fa79f19c18b6ea4b1a40b",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "next_processing": "FY2026セグメント売上レンジは上下限の混在変化でありEBITDA上方修正で代用しない。同一売上レンジ更新の会社説明、下落要因、次回決算公式カレンダーを照合する。"
+    },
+    {
+      "symbol": "KURA",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [
+        "no_material_business_impairment"
+      ],
+      "prior_assessment_sha256": "90fa88058b3f584254bd143fe73f2d96e1212a484ad4b61358edfd785de74306",
+      "assessment_sha256": "48d12e97485e3a5780ff46c4bf6641c26eaacc1e17e20b9941fa56c5c6f42df8",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "next_processing": "協業売上40〜45百万ドルは会計上の認識額で現金受領時期と異なる。旧同一対象見通しとの比較、下落理由と次回決算公式日程を取得。条件付き資金の入金を捏造しない。"
+    },
+    {
+      "symbol": "MCD",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [],
+      "prior_assessment_sha256": "fe092b57241a2c28984a4f48c9b696361e16d75a6d210271e7f2aef03987868a",
+      "assessment_sha256": "a6193f59db924a47f00196791f25fd550b7cc84cb84a46850513ed03c73694ab",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "next_processing": "会社の連結売上見通しをシステム全体売上目標で代用しない。確認10-Qの開示統制は有効だが、多年度戦略転換、債務・フランチャイズ資金負担、消費者需要を合わせた重大毀損の審査は未完了。会社売上見通し・下落要因・IR決算日を公式資料で追加確認する。"
+    },
+    {
+      "symbol": "MCFT",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [
+        "no_material_business_impairment"
+      ],
+      "prior_assessment_sha256": "97c0d12708ff9e6e56b6c87f0338306294bd20e4a508076fb5c056a0a7374c3e",
+      "assessment_sha256": "eeb0d4b0b218bfec53a1a583ed01e6c32dfb216b0c937e55e61413a4ebe6f522",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "next_processing": "買収・決算期変更後6か月移行期の売上293〜297百万ドルと比較できる同じ期間・範囲の旧予想を取得。買収の機械的売上増を一時的下落からの回復とみなさない。次回公式決算日も確認する。"
+    },
+    {
+      "symbol": "MGY",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [
+        "no_material_business_impairment"
+      ],
+      "prior_assessment_sha256": "8984aeecab36af246550713c78b28fdcbf337a1d6c2972d423358439552bd714",
+      "assessment_sha256": "d1d3d012285dacec700a3245dd0594ffec965636071158f2c217a42d34fef19e",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "next_processing": "生産ガイダンスを売上予想とみなさない。同一売上見通しの有無・更新、WildFire買収前後の希薄化と下落期間、公式決算日を確認する。"
+    },
+    {
+      "symbol": "REZI",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [
+        "no_material_business_impairment"
+      ],
+      "prior_assessment_sha256": "d56c02193e9e2d249e03e28da65b3672dd68334108748339d662c55acaeec3e6",
+      "assessment_sha256": "164fb1596cf2713a3f725bbef0fdc2dd44956e30757f54fd50f8f565848c32e7",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "next_processing": "Q2の分離後FY2026売上予想2900〜2950百万ドルに対しQ3は2927〜2947百万ドル。範囲差の原因は解消したが下限上昇・上限低下が混在し、非下方修正の明示判断は保留。スピンオフ分配1株/REZI2株の価格調整と経済的下落を分離して照合し、公式決算日も確認。"
+    },
+    {
+      "symbol": "SD",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "newly_resolved_items": [
+        "no_material_business_impairment"
+      ],
+      "prior_assessment_sha256": "8c3cf2dfa2cd78943b2e4cc8ff31fa743f9985fb2cd86471766522de97d844a3",
+      "assessment_sha256": "8bc8dd277eca20627dfbeaa9a2caf574349567183fa75d612d31c1f8c3091276",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "next_processing": "原油ガスの生産・設備投資計画は売上予想ではない。会社売上ガイダンスの同一期間比較資料と、下落の市場/一時要因の一次根拠、次回公式決算日を確認する。"
+    }
+  ],
+  "handoff": "Read existing review_tasks and these issuer assessments. Exclude mandatory FAIL without redoing all unknown items. Continue unresolved evidence for others; do not stop the whole universe. Only four explicitly supported assertions with current-session financial binding may be promoted.",
+  "limitations": [
+    "13銘柄の追加審査であり13銘柄の4項目全部完了を意味しない。",
+    "22銘柄は11月12日の保存済み財務PASS母集団で、当日新規財務PASS総数ではない。",
+    "CLS/MRCY/AVGOの前回結果と既存不通過5銘柄、LINC既存結果を再利用し、本報告の追加審査件数に混入しない。",
+    "次回IR決算日の未確認は残し推定を承認日付にしない。"
+  ]
+}
