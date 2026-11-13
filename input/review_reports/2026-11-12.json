@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "decision_time_jst": "2026-11-12T23:45:00+09:00",
-  "observed_at": "2026-11-13T13:47:25.225417+09:00",
+  "observed_at": "2026-11-13T14:04:31.682294+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -130,18 +130,17 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7d2045d08e34d3fde992e71a435517a47376da1506f1e35376e5fd210458c9c4",
       "reasons": [
-        "guidance_not_lowered: 第4四半期売上34.8十億ドル見通し。前年成長率だけで同一対象予想の非下方修正とは判定しない。",
-        "decline_explanation_verified: 追加検索で株価下落に関する二次情報は見つかったが、特定の一時的下落原因を裏付けるSEC・企業IRの証拠が不足。AI売上成長や次回決算日だけではこの項目を通過にしない。未承認。",
-        "next_earnings: 企業IRの11月9日公式発表で次回決算12月9日米国市場引け後を確認。11月12日は除外期間外。IRドメインは現行取込レジストリ未対応で公表時刻のアーカイブ拘束も未完成のため、canonical項目を未完了として維持。コード変更やSEC既存資料への日付転記はしない。 https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026"
+        "guidance_not_lowered: Q4売上34.8十億ドルの公式予想は確認済み。同一Q4対象の従前予想または明示的な維持確認が不足。次処理：最新IR・SECのQ4予想更新/維持発表を比較し、前年比成長やQ3実績を同一対象比較に代用しない。",
+        "decline_explanation_verified: 公式Q3発表・10-Q・直近IRにより事業情報は確認したが、対象下落を特定の一時的原因に結び付ける説明が不足。次処理：公式IR説明会・SECの対象期間の開示で下落要因と継続期間を照合。次回決算日やAI需要増だけで承認せず、未承認を維持し他銘柄へ進む。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "第4四半期売上34.8十億ドル見通し。前年成長率だけで同一対象予想の非下方修正とは判定しない。"
+          "rationale": "Q4売上34.8十億ドルの公式予想は確認済み。同一Q4対象の従前予想または明示的な維持確認が不足。次処理：最新IR・SECのQ4予想更新/維持発表を比較し、前年比成長やQ3実績を同一対象比較に代用しない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "追加検索で株価下落に関する二次情報は見つかったが、特定の一時的下落原因を裏付けるSEC・企業IRの証拠が不足。AI売上成長や次回決算日だけではこの項目を通過にしない。未承認。"
+          "rationale": "公式Q3発表・10-Q・直近IRにより事業情報は確認したが、対象下落を特定の一時的原因に結び付ける説明が不足。次処理：公式IR説明会・SECの対象期間の開示で下落要因と継続期間を照合。次回決算日やAI需要増だけで承認せず、未承認を維持し他銘柄へ進む。"
         },
         "no_material_business_impairment": {
           "value": true,
@@ -149,12 +148,18 @@
           "evidence_sha256": "0ad17bd10df83a85bd0096c4fd1aeb5fdb97eda8aabe67518d93fdd9d5e53561",
           "excerpt": "we were in compliance with all debt covenants.",
           "published_at": "2026-09-09T21:56:42.000Z",
-          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "checked_at": "2026-11-13T13:55:47.617831+09:00",
           "rationale": "最新10-Qで債務契約遵守、今後12か月の資金充足、開示統制有効を確認。負債約61.1十億ドル、AI顧客・製造委託先集中と顧客資金調達への依存は残るが、現時点で重大毀損成立とは判断しない。"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "企業IRの11月9日公式発表で次回決算12月9日米国市場引け後を確認。11月12日は除外期間外。IRドメインは現行取込レジストリ未対応で公表時刻のアーカイブ拘束も未完成のため、canonical項目を未完了として維持。コード変更やSEC既存資料への日付転記はしない。 https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026"
+          "value": true,
+          "source": "https://investors.broadcom.com/news-releases/news-release-details/broadcom-inc-announce-fourth-quarter-and-fiscal-year-2026",
+          "evidence_sha256": "5e203f0dfc117d0e2959286097bbd6e19f6b0730e2b9bbb614a7e8447966dd76",
+          "published_at": "2026-11-09T08:00:43-05:00",
+          "checked_at": "2026-11-13T13:55:47.617831+09:00",
+          "excerpt": "December 9, 2026",
+          "date": "2026-12-09",
+          "rationale": "公式IR本文と機械可読公表日時2026-11-09T08:00:43-05:00を直接取得。次回12月9日米国市場引け後を確認。IR一覧404を、既存許可済み個別記事URLの直接取得で解消。レジストリ・コードは変更せず。11月13日の次回正式判定では決算前後除外期間外。"
         }
       },
       "official_documents": [
@@ -202,17 +207,21 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "5578636c4fd55312f4432aa13987395072b37fc471880835499f2239efa192f1",
       "reasons": [
-        "guidance_not_lowered: 追加確認した公式SEC Q3決算発表でFY2026売上20.5から21.0十億ドル、調整EPS11.30から11.55へ上方修正。FCF600から460百万ドルへの低下は成長に備えた運転資金投資と説明。内容確認済みだが当該発表の正確な公表時刻・証拠アーカイブ拘束が未完成のため、この取込項目は未完了を維持。 https://www.sec.gov/Archives/edgar/data/1030894/000103089426000049/cls-20260930prcondensedfs.htm",
-        "decline_explanation_verified: 追加確認した公式決算は需要増・業績上方修正を示すが、株価下落時点と一時的原因の対応を裏付ける公式証拠は不足。FCF低下の会社説明を株価下落の原因と断定しない。未承認。"
+        "decline_explanation_verified: FCF600→460百万ドル、2027年設備投資15〜20億ドル、増資による希薄化は公式資料に記載。ただし対象下落の原因・一時性を確定する公式説明が不足。FCF低下説明だけで一時的下落と断定しない。次処理：公式Investor Day資料・質疑の資金回収時期/一過性の説明と対象下落期間を照合。未承認を維持し他銘柄へ進む。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "追加確認した公式SEC Q3決算発表でFY2026売上20.5から21.0十億ドル、調整EPS11.30から11.55へ上方修正。FCF600から460百万ドルへの低下は成長に備えた運転資金投資と説明。内容確認済みだが当該発表の正確な公表時刻・証拠アーカイブ拘束が未完成のため、この取込項目は未完了を維持。 https://www.sec.gov/Archives/edgar/data/1030894/000103089426000049/cls-20260930prcondensedfs.htm"
+          "value": true,
+          "source": "https://celestica.gcs-web.com/news-releases/news-release-details/celestica-announces-third-quarter-2026-financial-results-and",
+          "evidence_sha256": "573bed79dbe8b5d8f7f00913fd3334eecca895883a5bde03e100ab243f2936fa",
+          "published_at": "2026-10-26T16:17:36-04:00",
+          "checked_at": "2026-11-13T13:55:47.617831+09:00",
+          "excerpt": "Revenue of $21.0 billion (previous outlook $20.5 billion)",
+          "rationale": "取得済み企業IRの公表日時付きアーカイブを確認し証拠拘束不足を解消。FY2026売上20.5→21.0十億ドル、調整EPS11.30→11.55、調整営業利益率8.4%据置。FCFは600→460百万ドルへ低下しており、運転資金投資と会社が説明。既存の売上見通し非下方修正項目のみ確認し、FCF減を隠さずリスクに保持。下落理由の承認には流用しない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "追加確認した公式決算は需要増・業績上方修正を示すが、株価下落時点と一時的原因の対応を裏付ける公式証拠は不足。FCF低下の会社説明を株価下落の原因と断定しない。未承認。"
+          "rationale": "FCF600→460百万ドル、2027年設備投資15〜20億ドル、増資による希薄化は公式資料に記載。ただし対象下落の原因・一時性を確定する公式説明が不足。FCF低下説明だけで一時的下落と断定しない。次処理：公式Investor Day資料・質疑の資金回収時期/一過性の説明と対象下落期間を照合。未承認を維持し他銘柄へ進む。"
         },
         "no_material_business_impairment": {
           "value": true,
@@ -220,7 +229,7 @@
           "evidence_sha256": "28a5e26cfb7e67a2ca3f93ab0aa6bfebc551e3547946eff3fc63e4edb919a023",
           "excerpt": "we were in compliance with all restrictive and financial covenants under the Credit Facility.",
           "published_at": "2026-10-26T20:26:17.000Z",
-          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "checked_at": "2026-11-13T13:55:47.617831+09:00",
           "rationale": "最新10-Qで契約遵守、今後12か月超の資金充足、開示統制有効を確認。未使用融資枠1,739.3百万ドル。大型顧客集中、供給・生産拡大、8月増資、2027年設備投資15〜20億ドルとFCF低下のリスクを残すが、現時点で重大毀損が成立したとは判断しない。"
         },
         "next_earnings": {
@@ -229,7 +238,7 @@
           "evidence_sha256": "28a5e26cfb7e67a2ca3f93ab0aa6bfebc551e3547946eff3fc63e4edb919a023",
           "excerpt": "October 26, 2026",
           "published_at": "2026-10-26T20:26:17.000Z",
-          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "checked_at": "2026-11-13T13:55:47.617831+09:00",
           "rationale": "公式SEC発表の直近決算日10月26日と企業IRイベント欄を追加確認。今後の決算日掲載を確認できず、11月12日は直近決算から30暦日以内の既存例外を適用可能。10月27日のInvestor Dayを決算発表日と混同しない。 https://corporate.celestica.com/events-and-presentations",
           "date": "",
           "next_date_unannounced": true,
@@ -1287,7 +1296,7 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7ab093a2884b5b848f862637f7c4cd29ea9b406a05c27ee6af1ef596ce7a0c80",
       "reasons": [
-        "decline_explanation_verified: 追加検索でも11月4〜5日の株価下落を特定の一時的要因に結び付けるSEC・企業IRの裏付けを確認できない。最新決算好調や見通し上方修正だけでは下落原因の証明にならない。未承認。"
+        "decline_explanation_verified: 11月4〜5日の下落に対する一時的原因の公式裏付けが不足。既存11月3日8-Kは取締役選任・議決結果であり原因と断定しない。11月10日決算好調・見通し引上げを下落原因に代用しない。次処理：公式IR決算説明資料・質疑または当該下落期間のSEC開示に原因を結び付ける説明が追加された時だけ再開。未承認を維持し他銘柄へ進む。"
       ],
       "assertions": {
         "guidance_not_lowered": {
@@ -1296,12 +1305,12 @@
           "evidence_sha256": "b9c8ecbbdc65962360f1b55b67d173aebdc3f504138cd9ce76823e75cf58591a",
           "excerpt": "we are raising our outlook for fiscal year 2027",
           "published_at": "2026-11-10T21:01:58.000Z",
-          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "checked_at": "2026-11-13T13:55:47.617831+09:00",
           "rationale": "公式Q1 FY2027決算で通期見通し引上げを明示。11月12日追加確認。旧調査の売上・EBITDA説明を維持。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "追加検索でも11月4〜5日の株価下落を特定の一時的要因に結び付けるSEC・企業IRの裏付けを確認できない。最新決算好調や見通し上方修正だけでは下落原因の証明にならない。未承認。"
+          "rationale": "11月4〜5日の下落に対する一時的原因の公式裏付けが不足。既存11月3日8-Kは取締役選任・議決結果であり原因と断定しない。11月10日決算好調・見通し引上げを下落原因に代用しない。次処理：公式IR決算説明資料・質疑または当該下落期間のSEC開示に原因を結び付ける説明が追加された時だけ再開。未承認を維持し他銘柄へ進む。"
         },
         "no_material_business_impairment": {
           "value": true,
@@ -1309,7 +1318,7 @@
           "evidence_sha256": "6b7affd4ec7a3652ec561619460efc3ec61a78314dba2e528a9112448eb0c1fb",
           "excerpt": "we were in compliance with all covenants and conditions under the Revolver.",
           "published_at": "2026-11-10T22:06:28.000Z",
-          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "checked_at": "2026-11-13T13:55:47.617831+09:00",
           "rationale": "最新10-Qで契約遵守、12か月資金充足、開示統制有効を確認。現金109.7百万ドル、負債341.5百万ドル、営業CFマイナス14百万ドルと固定価格契約の原価見積リスクは残る。重大毀損成立とは判断しない。"
         },
         "next_earnings": {
@@ -1318,7 +1327,7 @@
           "evidence_sha256": "b9c8ecbbdc65962360f1b55b67d173aebdc3f504138cd9ce76823e75cf58591a",
           "excerpt": "November 10, 2026",
           "published_at": "2026-11-10T21:01:58.000Z",
-          "checked_at": "2026-11-12T23:27:46.332830+09:00",
+          "checked_at": "2026-11-13T13:55:47.617831+09:00",
           "rationale": "企業IRイベント欄に今後のイベント掲載なし、直近は11月10日。次回正式決算日は未公表。既存の30暦日以内例外を11月12日の米国セッションについて確認し、推定日を使わない。確認先 https://ir.mrcy.com/events-presentations",
           "date": "",
           "next_date_unannounced": true,
