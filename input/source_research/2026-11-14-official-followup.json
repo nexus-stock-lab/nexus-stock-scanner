@@ -1,0 +1,60 @@
+{
+  "kind": "OFFICIAL_SOURCE_FOLLOWUP_AFTER_SCAN103",
+  "observed_at": "2026-11-14T12:30:51.862771+09:00",
+  "research_path": "input/research/2026-11-12.json",
+  "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
+  "reference_only": true,
+  "additional_review_count": 4,
+  "newly_confirmed_item_count": 1,
+  "approved_count": 0,
+  "unapproved_count": 4,
+  "recovered_candidate_count": 40,
+  "new_research_snapshot_created": false,
+  "code_changes": 0,
+  "ledger_writes": 0,
+  "orders": 0,
+  "calendar_observations": [
+    {
+      "symbol": "MCFT",
+      "source": "https://investors.mastercraft.com/",
+      "redirected_source": "https://investors.mcbh.com/overview/default.aspx",
+      "observed_at": "2026-11-14T12:30:51.862771+09:00",
+      "published_at": null,
+      "observation": "Official IR overview redirected to mcbh; web text lists Q1 report links but dynamic Latest Events body is not complete. Cached official material shows last call Nov10. Missing future events text is not proof of no future earnings announcement.",
+      "next_action": "Obtain the current rendered issuer events list or a dated next-earnings announcement before using an unannounced-date exception.",
+      "status": "UNCONFIRMED"
+    },
+    {
+      "symbol": "SD",
+      "source": "https://investors.sandridgeenergy.com/Investor-Relations/events/",
+      "observed_at": "2026-11-14T12:30:51.862771+09:00",
+      "published_at": null,
+      "observation": "Official Q4-hosted calendar text contains Upcoming/Recent headings with no populated events. The page may use dynamic loading; this is not positive proof that the next date is unannounced. Last SEC release is Nov4; Nov5 was its conference call.",
+      "next_action": "Confirm populated official event/news data; do not substitute inferred February dates or use empty dynamic output as evidence.",
+      "status": "UNCONFIRMED"
+    },
+    {
+      "symbol": "KURA",
+      "source": "https://ir.kuraoncology.com/events-presentations/events",
+      "observed_at": "2026-11-14T12:30:51.862771+09:00",
+      "published_at": null,
+      "observation": "Official search extract shows Dec15 ASH update and last financial call Nov10; direct retrieval returned HTTP403. ASH clinical update is not a quarterly earnings announcement. Complete current calendar acquisition not verified.",
+      "next_action": "Obtain accessible official calendar/news text; distinguish clinical and investor conferences from financial results. Preserve unknown next-earnings status.",
+      "status": "UNCONFIRMED"
+    }
+  ],
+  "new_confirmed_item": {
+    "symbol": "MCD",
+    "name": "no_material_business_impairment",
+    "assessment_before_sha256": "a6193f59db924a47f00196791f25fd550b7cc84cb84a46850513ed03c73694ab",
+    "evidence_sha256": "3f6ea178cb319ab6ce4e8ebc9c6cb7afe16f58dc6caf4c87bc4a14619c9c0792"
+  },
+  "next_formal_checkpoint_jst": "2026-11-16T23:45:00+09:00",
+  "unresolved_operational_blocker": "New session research is missing. Existing prepare uses legacy JST calendar next_decision and failed on complete-bar validation after late start; code change prohibited and not performed.",
+  "handoff_recovery_path": "input/source_research/2026-11-14-scan103-recovery.json",
+  "limitations": [
+    "4銘柄の追加審査であり4項目すべて完了した銘柄は0。",
+    "過去の審査結果は参考であり、当日/将来日の財務ハッシュを自動付け替えしない。",
+    "カレンダー取得不足を次回未公表の確定証拠とはしない。"
+  ]
+}
