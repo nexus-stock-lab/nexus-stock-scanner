@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "decision_time_jst": "2026-11-12T23:45:00+09:00",
-  "observed_at": "2026-11-14T10:25:44.999456+09:00",
+  "observed_at": "2026-11-14T12:40:12.647634+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -923,7 +923,7 @@
       "reasons": [
         "guidance_not_lowered: 2026協業売上40〜45百万ドルの更新を確認したが旧見通しとの比較が未完了。 次処理：協業売上40〜45百万ドルは会計上の認識額で現金受領時期と異なる。旧同一対象見通しとの比較、下落理由と次回決算公式日程を取得。条件付き資金の入金を捏造しない。",
         "decline_explanation_verified: 株価下落と回復の公式根拠が不足。 次処理：協業売上40〜45百万ドルは会計上の認識額で現金受領時期と異なる。旧同一対象見通しとの比較、下落理由と次回決算公式日程を取得。条件付き資金の入金を捏造しない。",
-        "next_earnings: 直近決算11月10日。次回公式日程未確認。 次処理：協業売上40〜45百万ドルは会計上の認識額で現金受領時期と異なる。旧同一対象見通しとの比較、下落理由と次回決算公式日程を取得。条件付き資金の入金を捏造しない。"
+        "next_earnings: Official search extract shows Dec15 ASH update and last financial call Nov10; direct retrieval returned HTTP403. ASH clinical update is not a quarterly earnings announcement. Complete current calendar acquisition not verified. 次処理：Obtain accessible official calendar/news text; distinguish clinical and investor conferences from financial results. Preserve unknown next-earnings status."
       ],
       "assertions": {
         "guidance_not_lowered": {
@@ -945,7 +945,7 @@
         },
         "next_earnings": {
           "value": null,
-          "rationale": "直近決算11月10日。次回公式日程未確認。 次処理：協業売上40〜45百万ドルは会計上の認識額で現金受領時期と異なる。旧同一対象見通しとの比較、下落理由と次回決算公式日程を取得。条件付き資金の入金を捏造しない。"
+          "rationale": "Official search extract shows Dec15 ASH update and last financial call Nov10; direct retrieval returned HTTP403. ASH clinical update is not a quarterly earnings announcement. Complete current calendar acquisition not verified. 次処理：Obtain accessible official calendar/news text; distinguish clinical and investor conferences from financial results. Preserve unknown next-earnings status."
         }
       },
       "official_documents": [
@@ -1068,7 +1068,6 @@
       "reasons": [
         "guidance_not_lowered: システム全体売上と会社連結売上を区別。会社の同一期間売上見通し非下方修正を明示確認できない。 次処理：会社の連結売上見通しをシステム全体売上目標で代用しない。確認10-Qの開示統制は有効だが、多年度戦略転換、債務・フランチャイズ資金負担、消費者需要を合わせた重大毀損の審査は未完了。会社売上見通し・下落要因・IR決算日を公式資料で追加確認する。",
         "decline_explanation_verified: 株価下落の一時性未確認。 次処理：会社の連結売上見通しをシステム全体売上目標で代用しない。確認10-Qの開示統制は有効だが、多年度戦略転換、債務・フランチャイズ資金負担、消費者需要を合わせた重大毀損の審査は未完了。会社売上見通し・下落要因・IR決算日を公式資料で追加確認する。",
-        "no_material_business_impairment: 需要、フランチャイズ、負債・事業リスク評価未完了。 次処理：会社の連結売上見通しをシステム全体売上目標で代用しない。確認10-Qの開示統制は有効だが、多年度戦略転換、債務・フランチャイズ資金負担、消費者需要を合わせた重大毀損の審査は未完了。会社売上見通し・下落要因・IR決算日を公式資料で追加確認する。",
         "next_earnings: 直近決算11月4日。次回公式日程未確認。 次処理：会社の連結売上見通しをシステム全体売上目標で代用しない。確認10-Qの開示統制は有効だが、多年度戦略転換、債務・フランチャイズ資金負担、消費者需要を合わせた重大毀損の審査は未完了。会社売上見通し・下落要因・IR決算日を公式資料で追加確認する。"
       ],
       "assertions": {
@@ -1081,8 +1080,13 @@
           "rationale": "株価下落の一時性未確認。 次処理：会社の連結売上見通しをシステム全体売上目標で代用しない。確認10-Qの開示統制は有効だが、多年度戦略転換、債務・フランチャイズ資金負担、消費者需要を合わせた重大毀損の審査は未完了。会社売上見通し・下落要因・IR決算日を公式資料で追加確認する。"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "需要、フランチャイズ、負債・事業リスク評価未完了。 次処理：会社の連結売上見通しをシステム全体売上目標で代用しない。確認10-Qの開示統制は有効だが、多年度戦略転換、債務・フランチャイズ資金負担、消費者需要を合わせた重大毀損の審査は未完了。会社売上見通し・下落要因・IR決算日を公式資料で追加確認する。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/63908/000006390826000083/mcd-20260930.htm",
+          "evidence_sha256": "3f6ea178cb319ab6ce4e8ebc9c6cb7afe16f58dc6caf4c87bc4a14619c9c0792",
+          "published_at": "2026-11-06T17:07:09.000Z",
+          "checked_at": "2026-11-14T12:30:51.862771+09:00",
+          "excerpt": "Cash provided by operations totaled $8.3 billion",
+          "rationale": "最新10-Qで9か月営業CF83億ドル、設備投資を59億ドル上回る現金創出と開示統制有効を確認。債務簿価398億ドル、長期資産評価・消費需要・フランチャイズ収益・戦略転換リスクを検討した。現時点の重大な事業/会計毀損が成立したとは判断しない。会社連結売上見通しや下落理由まで確認したとは扱わず、残る項目は未完了を維持。"
         },
         "next_earnings": {
           "value": null,
@@ -1136,7 +1140,7 @@
       "reasons": [
         "guidance_not_lowered: 買収と決算期変更後の6か月移行期売上293〜297百万ドル。同一対象期間・会社範囲での比較未完了。 次処理：買収・決算期変更後6か月移行期の売上293〜297百万ドルと比較できる同じ期間・範囲の旧予想を取得。買収の機械的売上増を一時的下落からの回復とみなさない。次回公式決算日も確認する。",
         "decline_explanation_verified: 買収込み成長率を既存事業回復の証明としない。下落の一時性未確認。 次処理：買収・決算期変更後6か月移行期の売上293〜297百万ドルと比較できる同じ期間・範囲の旧予想を取得。買収の機械的売上増を一時的下落からの回復とみなさない。次回公式決算日も確認する。",
-        "next_earnings: 直近決算11月10日。次回公式日程未確認。 次処理：買収・決算期変更後6か月移行期の売上293〜297百万ドルと比較できる同じ期間・範囲の旧予想を取得。買収の機械的売上増を一時的下落からの回復とみなさない。次回公式決算日も確認する。"
+        "next_earnings: Official IR overview redirected to mcbh; web text lists Q1 report links but dynamic Latest Events body is not complete. Cached official material shows last call Nov10. Missing future events text is not proof of no future earnings announcement. 次処理：Obtain the current rendered issuer events list or a dated next-earnings announcement before using an unannounced-date exception."
       ],
       "assertions": {
         "guidance_not_lowered": {
@@ -1158,7 +1162,7 @@
         },
         "next_earnings": {
           "value": null,
-          "rationale": "直近決算11月10日。次回公式日程未確認。 次処理：買収・決算期変更後6か月移行期の売上293〜297百万ドルと比較できる同じ期間・範囲の旧予想を取得。買収の機械的売上増を一時的下落からの回復とみなさない。次回公式決算日も確認する。"
+          "rationale": "Official IR overview redirected to mcbh; web text lists Q1 report links but dynamic Latest Events body is not complete. Cached official material shows last call Nov10. Missing future events text is not proof of no future earnings announcement. 次処理：Obtain the current rendered issuer events list or a dated next-earnings announcement before using an unannounced-date exception."
         }
       },
       "official_documents": [
@@ -1513,7 +1517,7 @@
       "reasons": [
         "guidance_not_lowered: 生産増と売上増を確認。生産・設備投資計画を売上ガイダンスと同一視できない。 次処理：原油ガスの生産・設備投資計画は売上予想ではない。会社売上ガイダンスの同一期間比較資料と、下落の市場/一時要因の一次根拠、次回公式決算日を確認する。",
         "decline_explanation_verified: 原油価格の影響はあり得るが、株価下落の一時要因と確認できない。 次処理：原油ガスの生産・設備投資計画は売上予想ではない。会社売上ガイダンスの同一期間比較資料と、下落の市場/一時要因の一次根拠、次回公式決算日を確認する。",
-        "next_earnings: 直近決算11月4日。次回公式日程の確認未完了。 次処理：原油ガスの生産・設備投資計画は売上予想ではない。会社売上ガイダンスの同一期間比較資料と、下落の市場/一時要因の一次根拠、次回公式決算日を確認する。"
+        "next_earnings: Official Q4-hosted calendar text contains Upcoming/Recent headings with no populated events. The page may use dynamic loading; this is not positive proof that the next date is unannounced. Last SEC release is Nov4; Nov5 was its conference call. 次処理：Confirm populated official event/news data; do not substitute inferred February dates or use empty dynamic output as evidence."
       ],
       "assertions": {
         "guidance_not_lowered": {
@@ -1535,7 +1539,7 @@
         },
         "next_earnings": {
           "value": null,
-          "rationale": "直近決算11月4日。次回公式日程の確認未完了。 次処理：原油ガスの生産・設備投資計画は売上予想ではない。会社売上ガイダンスの同一期間比較資料と、下落の市場/一時要因の一次根拠、次回公式決算日を確認する。"
+          "rationale": "Official Q4-hosted calendar text contains Upcoming/Recent headings with no populated events. The page may use dynamic loading; this is not positive proof that the next date is unannounced. Last SEC release is Nov4; Nov5 was its conference call. 次処理：Confirm populated official event/news data; do not substitute inferred February dates or use empty dynamic output as evidence."
         }
       },
       "official_documents": [
