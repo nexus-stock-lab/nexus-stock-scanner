@@ -1,0 +1,301 @@
+{
+  "kind": "RESEARCH_CONNECTION_AUDIT",
+  "observed_at": "2026-11-16T08:33:27.326671+09:00",
+  "target_session_date": "2026-11-16",
+  "formal_report_time_jst": "23:45",
+  "base_commit": "81bc2c4200f7afa9afd30ed7a94f6be118783cfd",
+  "current_research_exists": false,
+  "latest_research_path": "input/research/2026-11-12.json",
+  "latest_snapshot_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
+  "snapshot_digest_valid": true,
+  "financial_pass_count": 22,
+  "review_tasks_exact_coverage": true,
+  "assessment_binding_match_count": 22,
+  "unresolved_assertions": {
+    "decline_explanation_verified": 19,
+    "next_earnings": 18,
+    "no_material_business_impairment": 5,
+    "guidance_not_lowered": 13
+  },
+  "prior_classification_counts": {
+    "PASS": 0,
+    "FAIL": 7,
+    "INSUFFICIENT_EVIDENCE": 15
+  },
+  "generation_path": {
+    "schedule_utc": "0 9 * * 1-5",
+    "schedule_jst": "18:00 JST weekdays; configuration unchanged",
+    "phase": "prepare",
+    "calls": [
+      "scanner.py",
+      "review.py",
+      "daily_runner.py prepare",
+      "freeze_research(collect_official=True)",
+      "connected_run(collect=True,promote=True)",
+      "prepare_next",
+      "refresh_scenarios",
+      "track_positions",
+      "paper_engine.run"
+    ],
+    "financials_location": "Embedded research.financials; official_evidence/official_documents contain hash-bound raw evidence",
+    "review_tasks_location": "input/review_tasks/<NY session>.json",
+    "ledger_side_effect": "paper_engine.run writes input/trades.csv and track_positions can advance existing trade cursor; not a research-only CLI",
+    "existing_review_only_workflow": "source-review.yml --reuse-research --collect --promote; no prices/plans/ledger writes, does not create current research"
+  },
+  "date_selection_checks": [
+    {
+      "input_jst": "2026-11-16T18:00:00+09:00",
+      "result_jst": "2026-11-16T23:45:00+09:00",
+      "type": "SYNTHETIC_DATE_SELECTION_CHECK_NOT_ACTUAL_EXECUTION"
+    },
+    {
+      "input_jst": "2026-11-17T00:10:00+09:00",
+      "result_jst": "2026-11-17T23:45:00+09:00",
+      "type": "SYNTHETIC_DATE_SELECTION_CHECK_NOT_ACTUAL_EXECUTION"
+    }
+  ],
+  "current_disposition": "PREPARE_NOT_DISPATCHED_THIS_TURN_PENDING_CLARIFICATION_OF_AUTOMATIC_LEDGER_UPDATES",
+  "authorization_conflict": "User prohibits ledger modification while asking formal plans/registration through existing Actions only; do not infer permission for prepare to update the existing LINC row. Need explicit clarification of normal Actions-managed ledger writes before dispatch.",
+  "no_retroactive_approval": true,
+  "orders": 0,
+  "new_approvals": 0,
+  "rows": [
+    {
+      "symbol": "AIOT",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "南ア大型契約の資金実行・サービス売上移行と対象株価下落期間を公式決算説明で照合する。未締結融資を成立済みと扱わない。"
+    },
+    {
+      "symbol": "AKAM",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "prior_result": "FAIL",
+      "next_processing": "同一FY2026売上予想の下方修正により不通過。次の公式売上見通し更新で条件が再び成立するまで承認しない。2027/28年の成長予想で2026年の下方修正を置換しない。"
+    },
+    {
+      "symbol": "AVGO",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "Keep existing explicit hold; no retrospective promotion."
+    },
+    {
+      "symbol": "CLS",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "decline_explanation_verified"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "Keep existing explicit hold; no retrospective promotion."
+    },
+    {
+      "symbol": "CORZ",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "FAIL",
+      "next_processing": "Keep existing explicit hold; no retrospective promotion."
+    },
+    {
+      "symbol": "DCI",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "次回12月2日の公式検索表示を発見したが動的本文・原本公表日時・検証対応が不足。コード変更禁止を維持。FY2027売上予想の同一期間比較と下落一時性も未完了。"
+    },
+    {
+      "symbol": "EYE",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "prior_result": "FAIL",
+      "next_processing": "最新11月12日公表の通期売上予想下方修正で不通過。旧Q2財務PASSの承認流用を禁止し、次の調査でQ3財務を再照合。新規ガイダンス更新があるまで承認しない。"
+    },
+    {
+      "symbol": "FIS",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "prior_result": "FAIL",
+      "next_processing": "Keep existing explicit hold; no retrospective promotion."
+    },
+    {
+      "symbol": "GGG",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "同一Q4売上見通しの更新比較、株価下落の一次説明、次回決算日を追加確認。ASR後の実際の現金・借入・余力は後続開示で追跡。今回リスク評価を全項目承認に拡張しない。"
+    },
+    {
+      "symbol": "HROW",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "prior_result": "FAIL",
+      "next_processing": "Keep existing explicit hold; no retrospective promotion."
+    },
+    {
+      "symbol": "HSY",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "数量・需要減と株価下落期間の対応、一時性の一次説明、次回公式決算日を確認する。総売上見通しと重大リスク項目は今回確認済みだが当日researchとの再審査・拘束なしに承認しない。"
+    },
+    {
+      "symbol": "KGS",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "FY2026セグメント売上レンジは上下限の混在変化でありEBITDA上方修正で代用しない。同一売上レンジ更新の会社説明、下落要因、次回決算公式カレンダーを照合する。"
+    },
+    {
+      "symbol": "KURA",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "協業売上40〜45百万ドルは会計上の認識額で現金受領時期と異なる。旧同一対象見通しとの比較、下落理由と次回決算公式日程を取得。条件付き資金の入金を捏造しない。 次回決算日：Obtain accessible official calendar/news text; distinguish clinical and investor conferences from financial results. Preserve unknown next-earnings status."
+    },
+    {
+      "symbol": "LINC",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "Keep existing explicit hold; no retrospective promotion."
+    },
+    {
+      "symbol": "MCD",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "会社連結売上見通しをSystemwide売上目標で代用しない。同一期間の会社売上見通し、下落の一次根拠、公式次回決算日を追加確認。新たな正式調査との再拘束前には承認しない。"
+    },
+    {
+      "symbol": "MCFT",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "買収・決算期変更後6か月移行期の売上293〜297百万ドルと比較できる同じ期間・範囲の旧予想を取得。買収の機械的売上増を一時的下落からの回復とみなさない。次回公式決算日も確認する。 次回決算日：Obtain the current rendered issuer events list or a dated next-earnings announcement before using an unannounced-date exception."
+    },
+    {
+      "symbol": "MGY",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "生産ガイダンスを売上予想とみなさない。同一売上見通しの有無・更新、WildFire買収前後の希薄化と下落期間、公式決算日を確認する。"
+    },
+    {
+      "symbol": "MIR",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "prior_result": "FAIL",
+      "next_processing": "Keep existing explicit hold; no retrospective promotion."
+    },
+    {
+      "symbol": "MRCY",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "decline_explanation_verified"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "Keep existing explicit hold; no retrospective promotion."
+    },
+    {
+      "symbol": "REZI",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "Q2の分離後FY2026売上予想2900〜2950百万ドルに対しQ3は2927〜2947百万ドル。範囲差の原因は解消したが下限上昇・上限低下が混在し、非下方修正の明示判断は保留。スピンオフ分配1株/REZI2株の価格調整と経済的下落を分離して照合し、公式決算日も確認。"
+    },
+    {
+      "symbol": "SD",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "INSUFFICIENT_EVIDENCE",
+      "next_processing": "原油ガスの生産・設備投資計画は売上予想ではない。会社売上ガイダンスの同一期間比較資料と、下落の市場/一時要因の一次根拠、次回公式決算日を確認する。 次回決算日：Confirm populated official event/news data; do not substitute inferred February dates or use empty dynamic output as evidence."
+    },
+    {
+      "symbol": "TRMB",
+      "assessment_binding": "MATCH_PRIOR_RESEARCH_ONLY",
+      "unresolved_items": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "next_earnings"
+      ],
+      "prior_result": "FAIL",
+      "next_processing": "Keep existing explicit hold; no retrospective promotion."
+    }
+  ],
+  "next_action_if_normal_actions_updates_authorized": "Dispatch existing main prepare once; verify completed bars through Nov13, research/2026-11-16 hash, financials evidence, exact PASS/review_tasks coverage; explicitly reuse reviewed assertions only after current binding and disclosure checks. Let existing cycle manage formal plans/registration. No source or schedule change.",
+  "remaining_work": [
+    "Latest research/financials/queue generation unverified",
+    "Source review on old research is reference-only and cannot approve Nov16",
+    "Incomplete semantic items remain unapproved; fail issuers retain their definite reason",
+    "Need distinguish original trade economic fields and any normal Actions tracking or entry effects in before/after audit"
+  ]
+}
