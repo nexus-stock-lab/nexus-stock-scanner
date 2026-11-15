@@ -4,7 +4,7 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "c44cd777a140229a1e8581664da2465463e8bbc7db74036d60dd19cc42ea5418",
   "financial_evidence_sha256": "b0c148bc119e204efce62620d6f2f65fc5ef99be3953c73ece8cead4cc99ddfd",
-  "reviewed_at": "2026-11-13T14:47:16.857433+09:00",
+  "reviewed_at": "2026-11-16T08:15:19.128084+09:00",
   "generated_at": "2026-11-12T19:04:22.679236+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
@@ -17,8 +17,13 @@
       "rationale": "前年一時益を調整した営業利益は増加。ただし株価下落との対応・一時性が未確認。 次処理：9月25日流動性808百万ドルに対し11月10日ASR600百万ドルは現金・既存借入で調達。ASR後の現金、借入、契約余力を次の公式開示で確認する。Q4初回予想と同一期間の更新比較・下落一時性も未確認。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "600百万ドルASRの現金・借入影響と最新10-Qのリスク評価が未完了。 次処理：9月25日流動性808百万ドルに対し11月10日ASR600百万ドルは現金・既存借入で調達。ASR後の現金、借入、契約余力を次の公式開示で確認する。Q4初回予想と同一期間の更新比較・下落一時性も未確認。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/42888/000119312526455736/d125383dex991.htm",
+      "evidence_sha256": "9a7aa20fe9fd545e257e8d39367b6d77d1615746ecc1a57a71cffe3b17d885c9",
+      "published_at": "2026-11-10T22:13:39.000Z",
+      "checked_at": "2026-11-16T08:15:19.128084+09:00",
+      "excerpt": "Following the repurchase, we still retain significant financial flexibility to support our strategic priorities.",
+      "rationale": "9月25日10-Qの営業CF463百万ドル・現金と未使用枠合計808百万ドル・開示統制有効を、11月10日SEC添付ASR発表と合わせて評価。600百万ドルの前払は現金・既存リボルバー調達であり、ASR後も財務柔軟性を維持するとの会社評価を確認。単純差208百万ドルをASR後の実測残高とは扱わず、後続開示で残高・契約余力を追跡する。景気循環・買収・追加借入リスクは残るが現時点の重大毀損成立とは判断しない。下落理由・売上予想比較・決算日は別途未完了。"
     },
     "next_earnings": {
       "value": null,
@@ -28,5 +33,13 @@
   "delegation_id": "owner_20261107_paper_only",
   "reused_assertion_checks": {},
   "followup_scope": "全業種の未完了項目に対する追加審査。11月12日調査との拘束を保持。新規承認・遡及承認なし。",
-  "next_processing": "9月25日流動性808百万ドルに対し11月10日ASR600百万ドルは現金・既存借入で調達。ASR後の現金、借入、契約余力を次の公式開示で確認する。Q4初回予想と同一期間の更新比較・下落一時性も未確認。"
+  "next_processing": "同一Q4売上見通しの更新比較、株価下落の一次説明、次回決算日を追加確認。ASR後の実際の現金・借入・余力は後続開示で追跡。今回リスク評価を全項目承認に拡張しない。",
+  "supporting_evidence": [
+    {
+      "evidence_sha256": "9c0db998d9d06774e33b2631aeb3c8e096bb7441c490bd996ef89d2c42c35d6c",
+      "source": "https://www.sec.gov/Archives/edgar/data/42888/000004288826000145/ggg-20260925.htm",
+      "published_at": "2026-10-21T20:27:02.000Z",
+      "checked_at": "2026-11-16T08:15:19.128084+09:00"
+    }
+  ]
 }
