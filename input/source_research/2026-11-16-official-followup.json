@@ -1,0 +1,71 @@
+{
+  "kind": "OFFICIAL_RESEARCH_FOLLOWUP",
+  "observed_at": "2026-11-16T08:15:19.128084+09:00",
+  "target_decision_jst": "2026-11-16T23:45:00+09:00",
+  "base_commit": "2245743c380b3b4ca177e3a17c7a72cc735b306b",
+  "latest_research": "input/research/2026-11-12.json",
+  "current_research_generated": false,
+  "inventory_scope": "All sectors; 22 prior financial-PASS issuers retained, not an AI-only filter",
+  "additional_issuers_reviewed": [
+    "HSY",
+    "GGG",
+    "DCI"
+  ],
+  "newly_confirmed_assertions": 2,
+  "all_four_completed": 0,
+  "new_approvals": 0,
+  "approval_packets_saved": 0,
+  "preserved_research_binding": true,
+  "reuse_policy": "No date/hash rebinding of prior-session research or approval",
+  "research_gap": {
+    "prior_failed_prepare_run": 43467943749,
+    "prior_cycle_run": 43540432427,
+    "prior_cause": "Late JST Nov14 execution selected Saturday decision; completed-bar validation failed before finance/IR. Cycle did not recreate prepare.",
+    "today_status": "At Nov16 morning, scheduled prepare at 18:00 JST has not yet occurred; weekend has no scheduled prepare. Do not call this a failed Nov16 scheduled prepare.",
+    "manual_prepare_run": 43773387938,
+    "manual_prepare_phase": "prepare",
+    "manual_prepare_disposition": "CANCELLED_DURING_SCANNER_BEFORE_DAILY_RUNNER",
+    "safety_reason": "Further inspection found daily_runner.main unconditionally calls refresh_scenarios, track_positions and run after prepare. Initial assumption of no ledger operations was incorrect, so this run was stopped.",
+    "code_path": "daily_runner.py main, after prepare branch",
+    "current_research_blocker": "Existing Market Scan prepare CLI is not isolated from ledger processing. Source-review workflow is ledger-free but only reuses an existing snapshot; it cannot generate current research. No code/workflow change is authorized."
+  },
+  "source_observations": [
+    {
+      "symbol": "DCI",
+      "source": "https://ir.donaldson.com/events-and-presentations/default.aspx?LanguageId=1",
+      "observed_at": "2026-11-16T08:15:19.128084+09:00",
+      "published_at": null,
+      "status": "SEARCH_LISTS_DEC2_DIRECT_TEXT_DYNAMIC_EMPTY",
+      "next_action": "Obtain archived official announcement with publication time and admitted source verification; no approval."
+    },
+    {
+      "symbol": "HSY",
+      "source": "https://investors.thehersheycompany.com/en_us/home/news-and-events/calendar-of-events.html",
+      "linked_official_calendar": "https://hershey.gcs-web.com/events",
+      "observed_at": "2026-11-16T08:15:19.128084+09:00",
+      "published_at": null,
+      "status": "OFFICIAL_CALENDAR_HTTP403",
+      "next_action": "Do not infer no upcoming earnings from inaccessible calendar."
+    },
+    {
+      "symbol": "GGG",
+      "source": "https://investors.graco.com/news-releases/news-release-details/graco-announces-600-million-accelerated-share-repurchase",
+      "sec_evidence_sha256": "9a7aa20fe9fd545e257e8d39367b6d77d1615746ecc1a57a71cffe3b17d885c9",
+      "observed_at": "2026-11-16T08:15:19.128084+09:00",
+      "status": "SEC_AND_IR_AGREE_ON_ASR_AND_FINANCIAL_FLEXIBILITY",
+      "next_action": "Track actual balances and remaining credit in subsequent filings; do not invent them."
+    }
+  ],
+  "protected_changes": {
+    "code": 0,
+    "investment_rules": 0,
+    "decision_schedule": 0,
+    "ledger": 0
+  },
+  "orders": 0,
+  "next_processing": [
+    "Run only review-only workflow under current prohibition; verify saved assessments and remote contents.",
+    "Use latest dated official research if the pre-existing scheduled prepare later generates it; assess financial evidence explicitly, never copy hashes or approvals to a new day blindly.",
+    "Full automation remains incomplete: do not claim current research or second paper entry readiness from review-only Actions success."
+  ]
+}
