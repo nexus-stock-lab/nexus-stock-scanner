@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "decision_time_jst": "2026-11-16T23:45:00+09:00",
-  "observed_at": "2026-11-16T18:55:43.711362+09:00",
+  "observed_at": "2026-11-16T18:57:42.388414+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -534,7 +534,7 @@
       "status": "PASS",
       "financial_evidence_sha256": "1422bfe68a98f56b41fc3566432682b572a0b4d52fb249cf8c4fcde73a9cf700",
       "reasons": [
-        "All four explicit assertions validated"
+        "Existing intake and earnings policy verified"
       ],
       "assertions": {
         "guidance_not_lowered": {
@@ -662,8 +662,7 @@
         "status": "IR_COLLECTION_ATTEMPTED",
         "index_evidence_sha256": "e6132b297108ab76429c351a8000d8a6947d83edac69241e2bf7c1e567172dcd"
       },
-      "packet_sha256": "49ad64cea5db5150a5b2a9170d930d49f78eee7ec62c5116067c3e3c2c84d5f0",
-      "saved_path": "input/review_inbox/2026-11-16/LINC.json"
+      "packet_sha256": "49ad64cea5db5150a5b2a9170d930d49f78eee7ec62c5116067c3e3c2c84d5f0"
     },
     {
       "symbol": "LOPE",
@@ -843,8 +842,8 @@
       }
     }
   ],
-  "saved_count": 1,
-  "local_readback_count": 1,
+  "saved_count": 0,
+  "local_readback_count": 0,
   "remote_verified_count": 0,
   "remote_verification": "NOT_PERFORMED_BY_THIS_LOCAL_PROCESS",
   "counts": {
