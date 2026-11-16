@@ -4,25 +4,30 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "7bc51558072d411ece7d644593e7dc56af59deec1b2b5e3047d83d8eacc426f9",
-  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
+  "reviewed_at": "2026-11-16T22:02:35.600748+09:00",
   "generated_at": "2026-11-16T18:41:01.852523+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "最新8-K本文だけでは会社全体の売上見通しと前回の比較を完了できない。公式決算添付・IR資料を取得し、製品量予想と売上予想を区別する。"
+      "rationale": "取得漏れのSEC決算添付mpmcq32026er.htmをWebで実読。GM認定完了とQ4磁石売上開始は確認したが、会社全体の同じ期間の売上予想比較は未完了。売上実績176%増を将来売上予想の非下方修正と代用しない。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "輸出・中国顧客・製造投資に関する公式説明と株価下落日の照合が未完了。"
+      "rationale": "保存日足の11月5日6.04%下落は決算公表21:04Zより前であり、その日の決算を原因と即断しない。最大下落3月30日11.99%等に対応する公式市場/業種・企業要因の証拠が不足。公式発表との時刻関係を調査する。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "10-Qの有効統制・契約遵守は確認。一方9か月設備投資413.75百万ドル、営業CF使用7.757百万ドル。資金調達・DOD契約・建設実行リスクを総合評価するまで通過させない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1801368/000180136826000057/mp-20260930.htm",
+      "published_at": "2026-11-05T23:13:56.000Z",
+      "evidence_sha256": "8680cedf9da54b153bfa0541cae80f0ab33b250f2684cfefe6af8acfadb4ef10",
+      "excerpt": "$1.3 billion of cash, cash equivalents and short-term investments",
+      "rationale": "10-Qの資金・契約・統制とDoW契約、建設投資を実読。現金等13億ドル、長期債務元本10億、設備投資年間500〜600百万ドル、9か月FCF約マイナス421.5百万ドル。会社は近い将来の資金充足を見込むが追加資金調達・費用超過・建設遅延・政府契約・希薄化リスクは残る。有効統制・契約遵守、GM磁石認定完了とQ4販売開始を確認。現時点で重大毀損・重大会計問題の成立とは判断しない。",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "次回決算公式予定・最新IR一覧確認が不足。推定日を作らず、公式根拠を追加取得する。"
+      "rationale": "公式IR予定一覧は動的で予定本文を取得できず未公表と確定できない。最新SEC決算11月5日は確認済み。公式予定の空欄だけで30暦日例外を自動適用せず、追加確認まで未承認。input/source_research/2026-11-16-semantic-observations.json"
     }
   },
   "delegation_id": "owner_20261107_paper_only"
