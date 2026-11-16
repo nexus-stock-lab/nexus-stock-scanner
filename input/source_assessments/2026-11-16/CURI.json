@@ -4,25 +4,26 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "0ce6dab07c15985d93f8f75963740cae014f5e4502688af41c13ff726fe36656",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
   "generated_at": "2026-11-16T18:40:45.615521+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "11月11日の8-K本文に決算添付99.1があるが、保存済み本文には売上予想比較の全文がない。添付資料と前回同一期間予想を取得・保存して比較する。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "保存日足の下落日と公式業績説明の対応づけが未完了。一般的な成長説明では承認しない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "10-Qの統制有効・契約遵守は確認。9か月営業CF1.523百万ドル、パートナー過払い返還予定、現金余力と配当支出の整合性について追加評価が必要。未承認を維持。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "次回決算の公式予定または未公表例外の確認が不足。公式IRイベントと最新発表日を確認・保存する。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }
