@@ -1,0 +1,147 @@
+{
+  "kind": "RESEARCH_RECOVERY_AND_HANDOFF",
+  "recorded_at": "2026-11-16T18:55:53.883725+09:00",
+  "prepare_run_id": 43837619841,
+  "prepare_result": "SUCCESS",
+  "research_path": "input/research/2026-11-16.json",
+  "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
+  "prepared_at": "2026-11-16T18:40:33.958811+09:00",
+  "decision_time_jst": "2026-11-16T23:45:00+09:00",
+  "financial_records": 22,
+  "financial_pass_symbols": [
+    "BL",
+    "BRBR",
+    "CNR",
+    "CURI",
+    "IBP",
+    "KRMN",
+    "LINC",
+    "LOPE",
+    "MP"
+  ],
+  "review_counts_validated_locally": {
+    "PASS": 1,
+    "FAIL": 3,
+    "INSUFFICIENT_EVIDENCE": 5
+  },
+  "current_reuse_of_prior_22": [
+    "LINC"
+  ],
+  "prior_other_21": "既存記録を保持。今回の財務PASS集合外であり、当日承認へ自動転記しない。",
+  "financial_collection_gaps": [
+    {
+      "symbol": "STN",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "LWAY",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "DGXX",
+      "status": "UNVERIFIED",
+      "reason": "KeyError"
+    },
+    {
+      "symbol": "VKTX",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "LMND",
+      "status": "UNVERIFIED",
+      "reason": "KeyError"
+    },
+    {
+      "symbol": "NU",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "KLAR",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "STVN",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "CAE",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "JBGS",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "AGRO",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "STNE",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "PAHC",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "ECC",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "DXYZ",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "TECX",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "ANDE",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "VEL",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "FG",
+      "status": "UNVERIFIED",
+      "reason": "KeyError"
+    },
+    {
+      "symbol": "DOO",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "RWAY",
+      "status": "UNVERIFIED",
+      "reason": "KeyError"
+    }
+  ],
+  "new_entry_ready": false,
+  "new_entry_reason": "通過LINCは既存OPENの1件で、当日research rowsに含まれない。他の8銘柄は不通過または根拠不足。",
+  "next_processing": "既存cycle Actionsが当日researchとreview_inboxを読み、次の有効なv3枠の計画を準備する。未承認の自動補完・過去枠の遡及登録は行わない。",
+  "missing_evidence_handoff": "input/source_assessments/2026-11-16 の各assertions.rationaleに不足項目・次処理を保存。既存collectorは収集・整合性検証を行うが、定性判定を自動でtrueにしない。",
+  "protected_code_rules_schedule_changed": false,
+  "ledger_manual_edit": false,
+  "authorized_actions_ledger_change": "prepareによるtracked_through_jstのみの通常自動更新を確認。OPEN取引1件、売買条件変更なし。",
+  "recovery_scope": "当日prepareの再実行による生成復旧。日付選択の恒久コード修正は実施していない。",
+  "tests": "Market Scan #105: Ran 253 tests; OK"
+}
