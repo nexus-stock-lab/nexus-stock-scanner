@@ -4,26 +4,51 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "0ce6dab07c15985d93f8f75963740cae014f5e4502688af41c13ff726fe36656",
-  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
+  "reviewed_at": "2026-11-16T22:02:35.600748+09:00",
   "generated_at": "2026-11-16T18:40:45.615521+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "11月11日の8-K本文に決算添付99.1があるが、保存済み本文には売上予想比較の全文がない。添付資料と前回同一期間予想を取得・保存して比較する。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/pressrelease3q26qcuri-2026.htm",
+      "published_at": "2026-11-12T13:49:17.000Z",
+      "evidence_sha256": "3abba6cb4cd814279fdf397805f4262f0f0b80423f2dcc51981ae75b55a304a7",
+      "excerpt": "$79 - $82 million",
+      "rationale": "同じ2026通期売上予想を8月12日の77〜82百万ドルから11月11日に79〜82へ引上げ、上限維持。前回比較のSEC添付は 41cea0dd6b183cd7e7b7db7a07274f906f06d6af38c01425eb6dfd10421d081f。今回、収集漏れのExhibit99.1をWebで取得・実読した。",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00"
     },
     "decline_explanation_verified": {
-      "value": null,
-      "rationale": "保存日足の下落日と公式業績説明の対応づけが未完了。一般的な成長説明では承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026035114/pressrelease1q26qcuri-2026.htm",
+      "published_at": "2026-05-14T20:12:54.000Z",
+      "evidence_sha256": "233a270c6696b06fe29eda9c69e7e9bb6cafb2af62c38746624862f8433ff0cd",
+      "excerpt": "Q1's sequential revenue decline was anticipated and, we believe, temporary",
+      "rationale": "当日research保存日足の5月14日調整後終値2.9583046436→15日2.3817658424（約19.49%下落）と、5月14日公式決算の前四半期比減収・純損失・SBC増加、一時的減収の経営説明を照合。8月の増収・利益回復、11月の売上20.7百万ドル・利益4.8百万ドルと通期予想引上げで回復を確認。一時的業績弱含みと下落の関連付けは審査者の推論であり、会社が株価下落原因を断定した事実や全期間の下落説明とは主張しない。8月17日など別の急落全ては説明していない。",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "10-Qの統制有効・契約遵守は確認。9か月営業CF1.523百万ドル、パートナー過払い返還予定、現金余力と配当支出の整合性について追加評価が必要。未承認を維持。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073161/curi-20260930.htm",
+      "published_at": "2026-11-12T13:52:02.000Z",
+      "evidence_sha256": "e8a8fd827dd15cbc5b6dafdb06143a8fb4e300b373f9093c2c65b69c54919a79",
+      "excerpt": "will be sufficient to fund our operations, capital expenditures, dividends, and working capital needs for at least the next twelve months",
+      "rationale": "最新10-Qの資金・債務契約・統制・訴訟・集中/ライセンス収益認識を確認。現金等5.6百万ドルと債券投資4.4、未使用信用枠10、借入なし、契約遵守、有効統制、会社の12か月資金見通しを確認。営業CF1.523百万ドルは9か月配当約15より小さく、分配パートナー過払い返還、売掛金増、バーター非現金取引・収益集中・10月人員削減は残存リスクとして明示。これらを無視せず、現時点の重大毀損・重大会計問題・継続企業疑義の成立とは判断しない。追加資金や配当維持を保証しない。 流動資産21.285百万ドルは流動負債27.248を約5.963下回り、過払いを含むOther負債6.266百万ドルの返還を予定。配当等には最低流動性10百万ドルの契約条件もあり、Q4営業CF・回収の継続監視が必要。会社の12か月資金見通しと未使用枠を併せて評価し、資金不足が顕在化したとは認定しない。",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00"
     },
     "next_earnings": {
-      "value": null,
-      "rationale": "次回決算の公式予定または未公表例外の確認が不足。公式IRイベントと最新発表日を確認・保存する。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/pressrelease3q26qcuri-2026.htm",
+      "published_at": "2026-11-12T13:49:17.000Z",
+      "evidence_sha256": "3abba6cb4cd814279fdf397805f4262f0f0b80423f2dcc51981ae75b55a304a7",
+      "excerpt": "November 11, 2026",
+      "rationale": "公式IRトップの最新ニュースとイベント一覧を実読。There are currently no upcoming events announced. を確認し、次回正式日は未公表。観測証拠は input/source_research/2026-11-16-semantic-observations.json。直近決算11月11日はNY11月16日時点で30暦日以内の既存例外。推定日を設定せず、正式日判明時の3米国営業日前〜当日除外を優先。",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00",
+      "date": "",
+      "next_date_unannounced": true,
+      "last_earnings_date": "2026-11-11"
     }
   },
-  "delegation_id": "owner_20261107_paper_only"
+  "delegation_id": "owner_20261107_paper_only",
+  "approval_scope": "US_REGULAR_SESSION",
+  "decision_time_jst": "2026-11-17T05:45:00+09:00"
 }
