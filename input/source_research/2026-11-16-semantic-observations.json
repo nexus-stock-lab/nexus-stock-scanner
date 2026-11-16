@@ -1,0 +1,49 @@
+{
+  "kind": "OFFICIAL_IR_OBSERVATIONS",
+  "captured_at": "2026-11-16T22:01:34.042101+09:00",
+  "method": "Web source retrieval; raw bytes not claimed",
+  "observations": [
+    {
+      "symbol": "CURI",
+      "source": "https://investors.curiositystream.com/events/",
+      "observed_at": "2026-11-16T22:01:34.042101+09:00",
+      "excerpt": "There are currently no upcoming events announced.",
+      "interpretation": "予定一覧とIRトップ最新ニュースは11月11日決算が最新。次回日付は未公表として明示確認。"
+    },
+    {
+      "symbol": "IBP",
+      "source": "https://investors.installedbuildingproducts.com/events-and-presentations",
+      "observed_at": "2026-11-16T22:01:34.042101+09:00",
+      "excerpt": "More events are coming soon.",
+      "interpretation": "次回決算の予定掲載なし。最新ニュースと11月12日の買収発表は決算発表日と混同しない。"
+    },
+    {
+      "symbol": "BRBR",
+      "source": "https://bellring.com/news/bellring-brands-announces-timing-fourth-quarter-and-fiscal-year",
+      "observed_at": "2026-11-16T22:01:34.042101+09:00",
+      "excerpt": "Wednesday, November 18, 2026 at 7:00 a.m. ET.",
+      "interpretation": "正式次回決算11月18日。11月16日は3米国営業日前から当日の除外範囲。現行issuer_ir.REGISTRYにBRBRがなくIR文書をcanonical承認根拠へ取り込めないが、既知の除外理由は未承認記録に保存する。"
+    },
+    {
+      "symbol": "BRBR",
+      "source": "https://bellring.com/news/bellring-brands-reports-results-second-quarter-fiscal-year-2026",
+      "observed_at": "2026-11-16T22:01:34.042101+09:00",
+      "excerpt": "Net Sales $2.325-$2.365 billion",
+      "interpretation": "5月5日の2026通期売上見通し。8月4日の2.335〜2.375bへ引上げ。EBITDAは315〜335mから275〜295mへ引下げであり売上予想と混同しない。"
+    },
+    {
+      "symbol": "CNR",
+      "source": "https://investors.corenaturalresources.com/Events-and-Presentations",
+      "observed_at": "2026-11-16T22:01:34.042101+09:00",
+      "excerpt": "No events to display",
+      "interpretation": "動的イベント欄の空表示だけでは正式日未公表を確定しない。最新ニュースは11月5日決算。"
+    },
+    {
+      "symbol": "MP",
+      "source": "https://investors.mpmaterials.com/events-and-presentations/default.aspx",
+      "observed_at": "2026-11-16T22:01:34.042101+09:00",
+      "excerpt": "Upcoming Events",
+      "interpretation": "動的一覧に予定本文が取得されず、未公表確定には不足。最新SEC決算添付mpmcq32026er.htmをWebで実読。Q4 GM磁石売上開始を確認したが会社全体の同一期間売上見通し比較は完了していない。"
+    }
+  ]
+}
