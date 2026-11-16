@@ -4,25 +4,31 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "8efabd821976ace5507fa30bce4f4c9e7d2161f11d67758b20fd42d2a4f62bc3",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
   "generated_at": "2026-11-16T18:40:59.045377+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/1434588/000110465926122660/lope-ex99d1.htm",
+      "evidence_sha256": "c825282101cbcba87bc61088df6dfcce18ee25d0e6a8ed790a433e0985cfc088",
+      "excerpt": "$1,160.7 million and $1,161.7 million",
+      "rationale": "同じ2026通期サービス売上見通しが7月30日の1165.3〜1172.3百万ドルから11月4日に1160.7〜1161.7へ下方修正。不通過。比較資料 input/official_documents/80632bc3fd3b3b17760b51a9a1741cc770dba586ab069ea7284df306a0e8adba.json。次回公式見通し更新を待つ。",
+      "published_at": "2026-11-04T21:05:24.000Z",
+      "checked_at": "2026-11-16T18:51:01.647806+09:00"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }
