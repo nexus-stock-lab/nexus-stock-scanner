@@ -1,0 +1,55 @@
+{
+  "kind": "PRECHECKPOINT_EXECUTION_AND_REMAINING_GAPS",
+  "observed_at": "2026-11-16T22:21:42.802434+09:00",
+  "baseline_main": "171cc7c",
+  "decision_time_jst": "2026-11-16T23:45:00+09:00",
+  "first_sip_verification_eligible_at": "2026-11-17T00:01:00+09:00",
+  "market_scan_latest_success": 107,
+  "market_scan_run_id": 43872918128,
+  "formal_plan_count": 1,
+  "formal_plan_symbols": [
+    "CURI"
+  ],
+  "ledger_total": 1,
+  "new_registration_count": 0,
+  "sip_reconciliation_count": 0,
+  "status": "BEFORE_CHECKPOINT_NOT_A_REGISTRATION_FAILURE",
+  "cause_classification": {
+    "price_rr": "前日終値参照R:Rは不成立だが正式SIP価格がまだ存在しないため判定保留。CURI stop2.325000047683716/target3.1649999618530273、R:R>=1.5の上限価格2.6610000133514404。",
+    "data_acquisition_failure": "当該未来枠のSIP未取得をデータ取得失敗と呼ばない。IBPの公式Q3投資家PDFはWeb取得サイズ19,215,950 bytesで取得制限により本文比較未完了。",
+    "actions_delay": "23:45前なので当該枠の遅延・失敗は未判定。最新#107は成功。",
+    "research_delay": "CURIは22:02審査・22:09正式計画で最初の23:45枠より前、現在の時点で審査遅延による取り逃しの実証はない。"
+  },
+  "newly_completed_items": [
+    "CNR.next_earnings",
+    "MP.next_earnings"
+  ],
+  "unresolved_items": {
+    "CNR": [
+      "guidance_not_lowered"
+    ],
+    "MP": [
+      "guidance_not_lowered",
+      "decline_explanation_verified"
+    ],
+    "IBP": [
+      "guidance_not_lowered"
+    ],
+    "BRBR": [
+      "決算11月18日の既存除外期間。残審査未完了、未承認維持。"
+    ]
+  },
+  "canonical_counts": {
+    "PASS": 2,
+    "FAIL": 3,
+    "INSUFFICIENT_EVIDENCE": 4
+  },
+  "next_processing": "既存スケジュールのcycleのみで未来枠を事前計画し、各枠16分後以降にSIP・R:R・paper_engineの実結果を確認。過去枠再構築・台帳手動編集は禁止。既存23:45/翌08:00タスクへ既に引継ぎ済み。",
+  "protected_changes": {
+    "code": false,
+    "rules": false,
+    "times": false,
+    "schedules": false,
+    "manual_ledger": false
+  }
+}
