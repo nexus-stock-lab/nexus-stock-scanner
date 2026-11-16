@@ -1,0 +1,43 @@
+{
+  "kind": "LIVE_OFFICIAL_CALENDAR_OBSERVATIONS",
+  "observed_at": "2026-11-16T13:20:47.118Z",
+  "source_method": "Cloud browser visible UI",
+  "CNR": {
+    "source": "https://investors.corenaturalresources.com/Events-and-Presentations#future:2026:12",
+    "interpretation": "Upcoming Events selected; November and December 2026 both No events to display; past November 5 earnings successfully rendered before switching.",
+    "visible_evidence_lines": [
+      "67 pop up button (collapsed, settable) Description: Year, Value: 2026, ID: wd_events_input_year, Secondary Actions: Expand",
+      "70 pop up button (collapsed, settable) Description: Month, Value: December, ID: wd_events_input_month, Secondary Actions: Expand",
+      "84 radio button   Upcoming Events, Value: 1",
+      "86 text Upcoming Events",
+      "87 radio button   Past Events, Value: 0",
+      "89 text Past Events",
+      "143 text No events to display"
+    ]
+  },
+  "MP": {
+    "source": "https://investors.mpmaterials.com/events-and-presentations/default.aspx",
+    "interpretation": "Upcoming Events explicitly says There are no events scheduled; past events successfully render including November 5 earnings and November 9/11 conferences.",
+    "visible_evidence_lines": [
+      "40 heading Upcoming Events, Value: 2",
+      "41 text Upcoming Events",
+      "43 text  There are no events scheduled.",
+      "51 pop up button (collapsed, settable) Select Year:, Value: 2026, Secondary Actions: Expand",
+      "68 heading Baird 2026 Global Industrial Conference, Value: 3",
+      "69 link Description: Baird 2026 Global Industrial Conference, Value: investors.mpmaterials.com/events-and-presentations/events-calendar/event-details/2026/Baird-2026-Global-Industrial-Conference--2026-ue9tf7ik30/default.aspx",
+      "71 link Description: Webcast, Baird 2026 Global Industrial Conference, November 11, 2026, opens in new window, Help: Webcast (opens in new window), Value: event.summitcast.com/view/8hgfu2da8CspZvFv8aZFfm/guest_book?session_id=3WFTFWCsoexZtDrxUozuvR",
+      "78 heading D.A. Davidson 2026 Critical Minerals Conference, Value: 3",
+      "79 link Description: D.A. Davidson 2026 Critical Minerals Conference, Value: investors.mpmaterials.com/events-and-presentations/events-calendar/event-details/2026/DA-Davidson-2026-Critical-Minerals-Conference-2026-6CggPiW9NG/default.aspx",
+      "81 link Description: Webcast, D.A. Davidson 2026 Critical Minerals Conference, November 9, 2026, opens in new window, Help: Webcast (opens in new window), Value: event.summitcast.com/view/DyLnSFwLya8Tg9iMHJwkfa/guest_book?session_id=Qm62UAGTsk6vFw5oMjthsD",
+      "85 text November 5, 2026",
+      "88 heading MP Materials Third Quarter 2026 Earnings Webcast, Value: 3",
+      "89 link Description: MP Materials Third Quarter 2026 Earnings Webcast, Value: investors.mpmaterials.com/events-and-presentations/events-calendar/event-details/2026/MP-Materials-Third-Quarter-2026-Earnings-Webcast-2026-3G4Ye47avY/default.aspx",
+      "91 link Description: Webcast, MP Materials Third Quarter 2026 Earnings Webcast, November 5, 2026, opens in new window, Help: Webcast (opens in new window), Value: mp-materials-q3-2026-earnings.open-exchange.net/",
+      "92 link Description: Press Release, Open Event Link, PDF file, November 5, 2026, opens in new window, Help: Press Release (opens in new window), Value: s25.q4cdn.com/570172628/files/content_files/Release-MP-Q3-2026-Earnings-FINAL.pdf",
+      "93 link Description: Presentation, Open Event Link, PDF file, November 5, 2026, opens in new window, Help: Presentation (opens in new window), Value: s25.q4cdn.com/570172628/files/content_files/Deck-MP-Q3-2026-Earnings-FINAL-FINAL.pdf",
+      "94 link Description: 10-Q, Open Event Link, PDF file, November 5, 2026, opens in new window, Help: 10-Q (opens in new window), Value: s25.q4cdn.com/570172628/files/content_files/10Q-MP-Q3-2026-Earnings-FINAL.pdf",
+      "117 pop up button (collapsed, settable) Select Year:, Value: 2026, Secondary Actions: Expand",
+      "128 text November 5, 2026"
+    ]
+  }
+}
