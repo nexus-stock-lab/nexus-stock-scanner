@@ -4,25 +4,31 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "5e21cce45a7683a764580db763b9498e92970695ab50fc05fb518281d4c99e07",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
   "generated_at": "2026-11-16T18:40:37.286361+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/1666134/000117184326007177/exh_991.htm",
+      "evidence_sha256": "08c4916ef3c84db08c6e7d72dbb3516bf55b16e6d220a462416cea0beeb3d5b8",
+      "excerpt": "$759.5 million to $761.5 million",
+      "rationale": "同じ2026通期GAAP売上見通しを8月4日の765〜769百万ドルから11月5日に759.5〜761.5へ引下げ。不通過。比較資料 input/official_documents/ff388374f7e10830557f0ab68e77148d9a2ad6cdb50cc0e0c62f73ef9a30fe02.json の同じFull Year 2026を確認。次回公式見通し更新まで承認しない。",
+      "published_at": "2026-11-05T21:06:33.000Z",
+      "checked_at": "2026-11-16T18:51:01.647806+09:00"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }
