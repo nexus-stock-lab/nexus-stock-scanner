@@ -4,25 +4,35 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "7d86b6c792d12dd68c4791264e42901f84ee30b6dddc66114bf3c52f0b5612b9",
-  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
+  "reviewed_at": "2026-11-16T22:02:35.600748+09:00",
   "generated_at": "2026-11-16T18:40:42.680376+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "取得済み8-K本文だけでは同一期間の会社売上見通し比較が完了しない。予想が生産量・コストのみの場合も売上非下方修正と同一視せず、公式決算添付資料を確認する。"
+      "rationale": "SECのQ3決算添付と補足資料を実読。数量・単価・コスト予想はあるが、同じ対象期間の会社全体の売上予想の非下方修正比較を完了できない。数量予想や契約量から売上予想を捏造しない。資料の取得失敗と、比較可能な総売上予想の不足を分離して保持。"
     },
     "decline_explanation_verified": {
-      "value": null,
-      "rationale": "石炭価格・操業要因と実際の下落日の対応が未確認。保存日足と公式説明を照合する。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000067/cnrq32026er-exhibit991.htm",
+      "published_at": "2026-11-05T11:59:53.000Z",
+      "evidence_sha256": "eb067a68ebb7ae035fb3d6fddc86a344b2494ab1d6552c8986c45080e1394ae1",
+      "excerpt": "normal geologic variability and weather-related shipment delays",
+      "rationale": "保存日足11月4日80.22→5日75.21、約6.25%下落を当日公式決算と照合。通常の地質条件・天候による出荷遅延、コスト上昇、Q2保険金の反動で前四半期比較が弱含んだ説明がある。Leer Southは再稼働・影響区画封鎖と保険和解を最新10-Qで確認。業務上の一時要因と関連づけるのは審査者の推論であり、全52週下落を説明したとはしない。",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "10-Qの有効統制・債務契約遵守・未使用リボルバーは確認した。Leer South等の操業・火災影響と回復見込みの評価が未完了であり、資金余力だけで通過としない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000068/cnr-20260930.htm",
+      "published_at": "2026-11-05T12:01:15.000Z",
+      "evidence_sha256": "8f948b1c114a578019818c07b58c4b08bbe40f4878c1e6b13fec3cb50af63743",
+      "excerpt": "resumed longwall operations",
+      "rationale": "10-QのLeer South火災経緯を実読し、機器回収・移設・長壁採掘再開・被災区画恒久封鎖、6月保険和解154.5百万ドルを確認。保険金は反復収益とみなさない。流動性約1028百万ドル、債務契約遵守、有効統制を確認。価格・輸送・地質・再発火災・環境/閉山負担は残るが現在の重大事業毀損・重大会計問題の成立とは判断しない。",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式IR予定一覧・最新決算リリースの確認が不足。次回正式日または既存未公表例外の根拠を収集する。"
+      "rationale": "公式IRイベント欄はNo events to display、最新ニュースは11月5日。動的一覧の空表示のため完全な未公表確認は未完了。公式IR発表・問い合わせ先の公表資料で次回予定を確認する。input/source_research/2026-11-16-semantic-observations.json"
     }
   },
   "delegation_id": "owner_20261107_paper_only"
