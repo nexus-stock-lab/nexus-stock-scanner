@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "decision_time_jst": "2026-11-16T23:45:00+09:00",
-  "observed_at": "2026-11-16T22:09:26.600047+09:00",
+  "observed_at": "2026-11-16T22:26:03.523807+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -185,8 +185,7 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7d86b6c792d12dd68c4791264e42901f84ee30b6dddc66114bf3c52f0b5612b9",
       "reasons": [
-        "guidance_not_lowered: SECのQ3決算添付と補足資料を実読。数量・単価・コスト予想はあるが、同じ対象期間の会社全体の売上予想の非下方修正比較を完了できない。数量予想や契約量から売上予想を捏造しない。資料の取得失敗と、比較可能な総売上予想の不足を分離して保持。",
-        "next_earnings: 公式IRイベント欄はNo events to display、最新ニュースは11月5日。動的一覧の空表示のため完全な未公表確認は未完了。公式IR発表・問い合わせ先の公表資料で次回予定を確認する。input/source_research/2026-11-16-semantic-observations.json"
+        "guidance_not_lowered: SECのQ3決算添付と補足資料を実読。数量・単価・コスト予想はあるが、同じ対象期間の会社全体の売上予想の非下方修正比較を完了できない。数量予想や契約量から売上予想を捏造しない。資料の取得失敗と、比較可能な総売上予想の不足を分離して保持。"
       ],
       "assertions": {
         "guidance_not_lowered": {
@@ -200,7 +199,7 @@
           "evidence_sha256": "eb067a68ebb7ae035fb3d6fddc86a344b2494ab1d6552c8986c45080e1394ae1",
           "excerpt": "normal geologic variability and weather-related shipment delays",
           "rationale": "保存日足11月4日80.22→5日75.21、約6.25%下落を当日公式決算と照合。通常の地質条件・天候による出荷遅延、コスト上昇、Q2保険金の反動で前四半期比較が弱含んだ説明がある。Leer Southは再稼働・影響区画封鎖と保険和解を最新10-Qで確認。業務上の一時要因と関連づけるのは審査者の推論であり、全52週下落を説明したとはしない。",
-          "checked_at": "2026-11-16T22:02:35.600748+09:00"
+          "checked_at": "2026-11-16T22:21:42.802434+09:00"
         },
         "no_material_business_impairment": {
           "value": true,
@@ -209,11 +208,19 @@
           "evidence_sha256": "8f948b1c114a578019818c07b58c4b08bbe40f4878c1e6b13fec3cb50af63743",
           "excerpt": "resumed longwall operations",
           "rationale": "10-QのLeer South火災経緯を実読し、機器回収・移設・長壁採掘再開・被災区画恒久封鎖、6月保険和解154.5百万ドルを確認。保険金は反復収益とみなさない。流動性約1028百万ドル、債務契約遵守、有効統制を確認。価格・輸送・地質・再発火災・環境/閉山負担は残るが現在の重大事業毀損・重大会計問題の成立とは判断しない。",
-          "checked_at": "2026-11-16T22:02:35.600748+09:00"
+          "checked_at": "2026-11-16T22:21:42.802434+09:00"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "公式IRイベント欄はNo events to display、最新ニュースは11月5日。動的一覧の空表示のため完全な未公表確認は未完了。公式IR発表・問い合わせ先の公表資料で次回予定を確認する。input/source_research/2026-11-16-semantic-observations.json"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000067/cnrq32026er-exhibit991.htm",
+          "evidence_sha256": "eb067a68ebb7ae035fb3d6fddc86a344b2494ab1d6552c8986c45080e1394ae1",
+          "published_at": "2026-11-05T11:59:53.000Z",
+          "excerpt": "November 5, 2026",
+          "rationale": "公式IRのライブ予定一覧をクラウドブラウザで確認。CNRは当初Past Events/Novemberが選択されていた。Upcoming Eventsへ切替し、選択可能な2026年11月・12月ともNo events to displayを確認。過去11月5日決算は正常に表示されるため、単なる動的取得失敗と区別。 最新決算は11月5日、次回正式日は未公表として明示確認。観測日時・実際のURL・表示証拠は input/source_research/2026-11-16-live-calendar-followup.json。NY11月16日は30暦日以内の既存例外に該当。後に正式日判明時は3米国営業日前から当日の除外を優先。推定日付を作らない。",
+          "checked_at": "2026-11-16T22:21:42.802434+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-05"
         }
       },
       "official_documents": [
@@ -811,14 +818,13 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7bc51558072d411ece7d644593e7dc56af59deec1b2b5e3047d83d8eacc426f9",
       "reasons": [
-        "guidance_not_lowered: 取得漏れのSEC決算添付mpmcq32026er.htmをWebで実読。GM認定完了とQ4磁石売上開始は確認したが、会社全体の同じ期間の売上予想比較は未完了。売上実績176%増を将来売上予想の非下方修正と代用しない。",
-        "decline_explanation_verified: 保存日足の11月5日6.04%下落は決算公表21:04Zより前であり、その日の決算を原因と即断しない。最大下落3月30日11.99%等に対応する公式市場/業種・企業要因の証拠が不足。公式発表との時刻関係を調査する。",
-        "next_earnings: 公式IR予定一覧は動的で予定本文を取得できず未公表と確定できない。最新SEC決算11月5日は確認済み。公式予定の空欄だけで30暦日例外を自動適用せず、追加確認まで未承認。input/source_research/2026-11-16-semantic-observations.json"
+        "guidance_not_lowered: 取得漏れのSEC決算添付mpmcq32026er.htmをWebで実読。GM認定完了とQ4磁石売上開始は確認したが、会社全体の同じ期間の売上予想比較は未完了。売上実績176%増を将来売上予想の非下方修正と代用しない。 11月16日22時台に企業IR掲載のQ2/Q3公式決算説明資料各p4を比較。Q2のQ4初商業出荷予定とQ3のQ4売上開始は同じ四半期で維持されている。これは磁石部門の時期確認であり会社全体の同一期間売上予想比較には代用しない。比較先: https://s25.q4cdn.com/570172628/files/doc_financials/2026/q2/Deck-Q2-2026-MP-Earnings-FINAL.pdf および https://s25.q4cdn.com/570172628/files/content_files/Deck-MP-Q3-2026-Earnings-FINAL-FINAL.pdf 。",
+        "decline_explanation_verified: 保存日足の11月5日6.04%下落は決算公表21:04Zより前であり、その日の決算を原因と即断しない。最大下落3月30日11.99%等に対応する公式市場/業種・企業要因の証拠が不足。公式発表との時刻関係を調査する。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "取得漏れのSEC決算添付mpmcq32026er.htmをWebで実読。GM認定完了とQ4磁石売上開始は確認したが、会社全体の同じ期間の売上予想比較は未完了。売上実績176%増を将来売上予想の非下方修正と代用しない。"
+          "rationale": "取得漏れのSEC決算添付mpmcq32026er.htmをWebで実読。GM認定完了とQ4磁石売上開始は確認したが、会社全体の同じ期間の売上予想比較は未完了。売上実績176%増を将来売上予想の非下方修正と代用しない。 11月16日22時台に企業IR掲載のQ2/Q3公式決算説明資料各p4を比較。Q2のQ4初商業出荷予定とQ3のQ4売上開始は同じ四半期で維持されている。これは磁石部門の時期確認であり会社全体の同一期間売上予想比較には代用しない。比較先: https://s25.q4cdn.com/570172628/files/doc_financials/2026/q2/Deck-Q2-2026-MP-Earnings-FINAL.pdf および https://s25.q4cdn.com/570172628/files/content_files/Deck-MP-Q3-2026-Earnings-FINAL-FINAL.pdf 。"
         },
         "decline_explanation_verified": {
           "value": null,
@@ -831,11 +837,19 @@
           "evidence_sha256": "8680cedf9da54b153bfa0541cae80f0ab33b250f2684cfefe6af8acfadb4ef10",
           "excerpt": "$1.3 billion of cash, cash equivalents and short-term investments",
           "rationale": "10-Qの資金・契約・統制とDoW契約、建設投資を実読。現金等13億ドル、長期債務元本10億、設備投資年間500〜600百万ドル、9か月FCF約マイナス421.5百万ドル。会社は近い将来の資金充足を見込むが追加資金調達・費用超過・建設遅延・政府契約・希薄化リスクは残る。有効統制・契約遵守、GM磁石認定完了とQ4販売開始を確認。現時点で重大毀損・重大会計問題の成立とは判断しない。",
-          "checked_at": "2026-11-16T22:02:35.600748+09:00"
+          "checked_at": "2026-11-16T22:21:42.802434+09:00"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "公式IR予定一覧は動的で予定本文を取得できず未公表と確定できない。最新SEC決算11月5日は確認済み。公式予定の空欄だけで30暦日例外を自動適用せず、追加確認まで未承認。input/source_research/2026-11-16-semantic-observations.json"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1801368/000180136826000056/mp-20261105.htm",
+          "evidence_sha256": "0a4c0e2e04287adeb464af8983bfcd63c889603d309a81e0d511f836c83f40c2",
+          "published_at": "2026-11-05T21:04:34.000Z",
+          "excerpt": "November 5, 2026",
+          "rationale": "公式IRのライブ予定一覧にThere are no events scheduled.の明示表示を確認。過去11月5日決算、11月9日・11日の会議も正常に表示され、会議日を決算日と混同しない。 最新決算は11月5日、次回正式日は未公表として明示確認。観測日時・実際のURL・表示証拠は input/source_research/2026-11-16-live-calendar-followup.json。NY11月16日は30暦日以内の既存例外に該当。後に正式日判明時は3米国営業日前から当日の除外を優先。推定日付を作らない。",
+          "checked_at": "2026-11-16T22:21:42.802434+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-05"
         }
       },
       "official_documents": [
