@@ -4,25 +4,26 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "7d86b6c792d12dd68c4791264e42901f84ee30b6dddc66114bf3c52f0b5612b9",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
   "generated_at": "2026-11-16T18:40:42.680376+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "取得済み8-K本文だけでは同一期間の会社売上見通し比較が完了しない。予想が生産量・コストのみの場合も売上非下方修正と同一視せず、公式決算添付資料を確認する。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "石炭価格・操業要因と実際の下落日の対応が未確認。保存日足と公式説明を照合する。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "10-Qの有効統制・債務契約遵守・未使用リボルバーは確認した。Leer South等の操業・火災影響と回復見込みの評価が未完了であり、資金余力だけで通過としない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "公式IR予定一覧・最新決算リリースの確認が不足。次回正式日または既存未公表例外の根拠を収集する。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }
