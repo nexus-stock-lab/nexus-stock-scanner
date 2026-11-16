@@ -4,7 +4,7 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "7d86b6c792d12dd68c4791264e42901f84ee30b6dddc66114bf3c52f0b5612b9",
-  "reviewed_at": "2026-11-16T22:02:35.600748+09:00",
+  "reviewed_at": "2026-11-16T22:21:42.802434+09:00",
   "generated_at": "2026-11-16T18:40:42.680376+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
@@ -19,7 +19,7 @@
       "evidence_sha256": "eb067a68ebb7ae035fb3d6fddc86a344b2494ab1d6552c8986c45080e1394ae1",
       "excerpt": "normal geologic variability and weather-related shipment delays",
       "rationale": "保存日足11月4日80.22→5日75.21、約6.25%下落を当日公式決算と照合。通常の地質条件・天候による出荷遅延、コスト上昇、Q2保険金の反動で前四半期比較が弱含んだ説明がある。Leer Southは再稼働・影響区画封鎖と保険和解を最新10-Qで確認。業務上の一時要因と関連づけるのは審査者の推論であり、全52週下落を説明したとはしない。",
-      "checked_at": "2026-11-16T22:02:35.600748+09:00"
+      "checked_at": "2026-11-16T22:21:42.802434+09:00"
     },
     "no_material_business_impairment": {
       "value": true,
@@ -28,11 +28,19 @@
       "evidence_sha256": "8f948b1c114a578019818c07b58c4b08bbe40f4878c1e6b13fec3cb50af63743",
       "excerpt": "resumed longwall operations",
       "rationale": "10-QのLeer South火災経緯を実読し、機器回収・移設・長壁採掘再開・被災区画恒久封鎖、6月保険和解154.5百万ドルを確認。保険金は反復収益とみなさない。流動性約1028百万ドル、債務契約遵守、有効統制を確認。価格・輸送・地質・再発火災・環境/閉山負担は残るが現在の重大事業毀損・重大会計問題の成立とは判断しない。",
-      "checked_at": "2026-11-16T22:02:35.600748+09:00"
+      "checked_at": "2026-11-16T22:21:42.802434+09:00"
     },
     "next_earnings": {
-      "value": null,
-      "rationale": "公式IRイベント欄はNo events to display、最新ニュースは11月5日。動的一覧の空表示のため完全な未公表確認は未完了。公式IR発表・問い合わせ先の公表資料で次回予定を確認する。input/source_research/2026-11-16-semantic-observations.json"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000067/cnrq32026er-exhibit991.htm",
+      "evidence_sha256": "eb067a68ebb7ae035fb3d6fddc86a344b2494ab1d6552c8986c45080e1394ae1",
+      "published_at": "2026-11-05T11:59:53.000Z",
+      "excerpt": "November 5, 2026",
+      "rationale": "公式IRのライブ予定一覧をクラウドブラウザで確認。CNRは当初Past Events/Novemberが選択されていた。Upcoming Eventsへ切替し、選択可能な2026年11月・12月ともNo events to displayを確認。過去11月5日決算は正常に表示されるため、単なる動的取得失敗と区別。 最新決算は11月5日、次回正式日は未公表として明示確認。観測日時・実際のURL・表示証拠は input/source_research/2026-11-16-live-calendar-followup.json。NY11月16日は30暦日以内の既存例外に該当。後に正式日判明時は3米国営業日前から当日の除外を優先。推定日付を作らない。",
+      "checked_at": "2026-11-16T22:21:42.802434+09:00",
+      "date": "",
+      "next_date_unannounced": true,
+      "last_earnings_date": "2026-11-05"
     }
   },
   "delegation_id": "owner_20261107_paper_only"
