@@ -4,25 +4,26 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "a3a79e02c2a6d84b3df2e19bb8e60dbfcde97d95ff30488e54713f75683df203",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
   "generated_at": "2026-11-16T18:40:39.769326+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "取得済み8-K本文だけでは当期売上予想と前回予想の比較を完了できない。公式決算リリースExhibit99.1の取得・照合が次処理。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "株価下落期間と公式業績説明を対応づける証拠が不足。保存日足の下落日を特定し、同日公式説明を確認する。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "6月期10-Qの統制有効・契約遵守は確認したが、次回通期決算を含めた最新事業リスク評価を完了していない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "公式IRの次回決算発表案内を当日証拠として保存し、3米国営業日前から当日の除外判定へ渡す必要がある。推定日では承認しない。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }
