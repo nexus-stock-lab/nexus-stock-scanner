@@ -229,9 +229,8 @@
   ],
   "execution_note": "次回枠23:45 JSTより前。正式計画・SIP照合・paper_engine登録は既存cycle Actionsのみで処理。過去時刻や将来価格は捏造しない。CURIの前日終値参照R:Rは約0.043で1.5未達だが正式判定価格ではない。正式SIPでstop<entry<=2.6610000133514404の時だけ価格条件を検証する。",
   "remaining_processes": [
-    "既存cycleでCURIの将来枠計画生成",
-    "判定枠直前60秒の有効SIP取引を16分後以降に照合",
-    "paper_engineによる実際の仮想登録または価格条件不成立記録"
+    "23:45 JST以降の各有効枠直前60秒SIPを16分後以降に既存cycleで照合",
+    "paper_engineによる実際の仮想登録または価格条件不成立を確認"
   ],
   "protected_changes": {
     "code": false,
@@ -239,5 +238,31 @@
     "v3_times": false,
     "schedules": false,
     "manual_ledger": false
-  }
+  },
+  "execution_verified_at": "2026-11-16T22:10:33.711477+09:00",
+  "actual_results": {
+    "source_review_run_id": 43872499887,
+    "source_review_result": "SUCCESS",
+    "review_commit": "8f83ad7a51ffe1319a8c555b339933401b91872b",
+    "market_cycle_run_id": 43872918128,
+    "market_cycle_result": "SUCCESS",
+    "cycle_commit": "1980cfc0f274a576cfe7ab07d8c7d499ed493d7b",
+    "new_approval_count": 1,
+    "formal_plan_count": 1,
+    "formal_plan_symbols": [
+      "CURI"
+    ],
+    "plan_path": "input/plans/2026-11-16/0945.json",
+    "plan_prepared_at": "2026-11-16T22:09:20.474431+09:00",
+    "new_paper_registration_count": 0,
+    "ledger_total_count": 1,
+    "sip_status": "PENDING_FUTURE_CHECKPOINT",
+    "tests": "253 tests OK in each #44 and #107",
+    "github_manual_files_readback_matched": 12,
+    "intermediate_failure": {
+      "run_id": 43872387867,
+      "reason": "non-fast-forward push rejected after subsequent user-authorized data commits; latest #44 succeeded"
+    }
+  },
+  "scheduled_followup": "既存23:45正式判定タスクと翌08:00公式審査タスクへ引継ぎ済み。時刻/スケジュールは変更していない。"
 }
