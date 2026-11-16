@@ -4,25 +4,26 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "7bc51558072d411ece7d644593e7dc56af59deec1b2b5e3047d83d8eacc426f9",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
   "generated_at": "2026-11-16T18:41:01.852523+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "最新8-K本文だけでは会社全体の売上見通しと前回の比較を完了できない。公式決算添付・IR資料を取得し、製品量予想と売上予想を区別する。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "輸出・中国顧客・製造投資に関する公式説明と株価下落日の照合が未完了。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "10-Qの有効統制・契約遵守は確認。一方9か月設備投資413.75百万ドル、営業CF使用7.757百万ドル。資金調達・DOD契約・建設実行リスクを総合評価するまで通過させない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "次回決算公式予定・最新IR一覧確認が不足。推定日を作らず、公式根拠を追加取得する。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }
