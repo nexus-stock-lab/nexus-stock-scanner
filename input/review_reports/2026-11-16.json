@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "decision_time_jst": "2026-11-16T23:45:00+09:00",
-  "observed_at": "2026-11-17T04:41:22.515547+09:00",
+  "observed_at": "2026-11-17T07:51:57.449972+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -280,52 +280,12 @@
     },
     {
       "symbol": "CURI",
-      "status": "PASS",
+      "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "0ce6dab07c15985d93f8f75963740cae014f5e4502688af41c13ff726fe36656",
       "reasons": [
-        "Existing intake and earnings policy verified"
+        "ValueError: no future checkpoint in this session"
       ],
-      "assertions": {
-        "guidance_not_lowered": {
-          "value": true,
-          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/pressrelease3q26qcuri-2026.htm",
-          "published_at": "2026-11-12T13:49:17.000Z",
-          "evidence_sha256": "3abba6cb4cd814279fdf397805f4262f0f0b80423f2dcc51981ae75b55a304a7",
-          "excerpt": "$79 - $82 million",
-          "rationale": "同じ2026通期売上予想を8月12日の77〜82百万ドルから11月11日に79〜82へ引上げ、上限維持。前回比較のSEC添付は 41cea0dd6b183cd7e7b7db7a07274f906f06d6af38c01425eb6dfd10421d081f。今回、収集漏れのExhibit99.1をWebで取得・実読した。",
-          "checked_at": "2026-11-16T22:02:35.600748+09:00"
-        },
-        "decline_explanation_verified": {
-          "value": true,
-          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026035114/pressrelease1q26qcuri-2026.htm",
-          "published_at": "2026-05-14T20:12:54.000Z",
-          "evidence_sha256": "233a270c6696b06fe29eda9c69e7e9bb6cafb2af62c38746624862f8433ff0cd",
-          "excerpt": "Q1's sequential revenue decline was anticipated and, we believe, temporary",
-          "rationale": "当日research保存日足の5月14日調整後終値2.9583046436→15日2.3817658424（約19.49%下落）と、5月14日公式決算の前四半期比減収・純損失・SBC増加、一時的減収の経営説明を照合。8月の増収・利益回復、11月の売上20.7百万ドル・利益4.8百万ドルと通期予想引上げで回復を確認。一時的業績弱含みと下落の関連付けは審査者の推論であり、会社が株価下落原因を断定した事実や全期間の下落説明とは主張しない。8月17日など別の急落全ては説明していない。",
-          "checked_at": "2026-11-16T22:02:35.600748+09:00"
-        },
-        "no_material_business_impairment": {
-          "value": true,
-          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073161/curi-20260930.htm",
-          "published_at": "2026-11-12T13:52:02.000Z",
-          "evidence_sha256": "e8a8fd827dd15cbc5b6dafdb06143a8fb4e300b373f9093c2c65b69c54919a79",
-          "excerpt": "will be sufficient to fund our operations, capital expenditures, dividends, and working capital needs for at least the next twelve months",
-          "rationale": "最新10-Qの資金・債務契約・統制・訴訟・集中/ライセンス収益認識を確認。現金等5.6百万ドルと債券投資4.4、未使用信用枠10、借入なし、契約遵守、有効統制、会社の12か月資金見通しを確認。営業CF1.523百万ドルは9か月配当約15より小さく、分配パートナー過払い返還、売掛金増、バーター非現金取引・収益集中・10月人員削減は残存リスクとして明示。これらを無視せず、現時点の重大毀損・重大会計問題・継続企業疑義の成立とは判断しない。追加資金や配当維持を保証しない。 流動資産21.285百万ドルは流動負債27.248を約5.963下回り、過払いを含むOther負債6.266百万ドルの返還を予定。配当等には最低流動性10百万ドルの契約条件もあり、Q4営業CF・回収の継続監視が必要。会社の12か月資金見通しと未使用枠を併せて評価し、資金不足が顕在化したとは認定しない。",
-          "checked_at": "2026-11-16T22:02:35.600748+09:00"
-        },
-        "next_earnings": {
-          "value": true,
-          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/pressrelease3q26qcuri-2026.htm",
-          "published_at": "2026-11-12T13:49:17.000Z",
-          "evidence_sha256": "3abba6cb4cd814279fdf397805f4262f0f0b80423f2dcc51981ae75b55a304a7",
-          "excerpt": "November 11, 2026",
-          "rationale": "公式IRトップの最新ニュースとイベント一覧を実読。There are currently no upcoming events announced. を確認し、次回正式日は未公表。観測証拠は input/source_research/2026-11-16-semantic-observations.json。直近決算11月11日はNY11月16日時点で30暦日以内の既存例外。推定日を設定せず、正式日判明時の3米国営業日前〜当日除外を優先。",
-          "checked_at": "2026-11-16T22:02:35.600748+09:00",
-          "date": "",
-          "next_date_unannounced": true,
-          "last_earnings_date": "2026-11-11"
-        }
-      },
+      "assertions": {},
       "official_documents": [
         {
           "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/curi-20261111.htm",
@@ -373,8 +333,7 @@
         "audit": [],
         "registry_version": "official_ir_20261029_v1",
         "status": "IR_SOURCE_NOT_CONFIGURED"
-      },
-      "packet_sha256": "8d0217d4f7287f6c444a25e0972d41e789d361e63ad934a1acd99b1f8e3a9d9f"
+      }
     },
     {
       "symbol": "IBP",
@@ -586,52 +545,12 @@
     },
     {
       "symbol": "LINC",
-      "status": "PASS",
+      "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "1422bfe68a98f56b41fc3566432682b572a0b4d52fb249cf8c4fcde73a9cf700",
       "reasons": [
-        "Existing intake and earnings policy verified"
+        "ValueError: no future checkpoint in this session"
       ],
-      "assertions": {
-        "guidance_not_lowered": {
-          "value": true,
-          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
-          "evidence_sha256": "afc18ad00cea85b02c76c0fce3b5dd816e33dc5b2e28734662dd5c913949d2da",
-          "excerpt": "raising its full-year 2026 revenue guidance",
-          "rationale": "11月12日に企業IR8月10日と11月9日を再読。同じ2026通期売上590〜600百万ドルから600〜605へ引上げ。学生開始成長率上限14から12%への縮小、EBITDA維持を隠さない。最新11月10日ニュースはHouston校建築表彰で業績予想変更ではない。 11月16日の当日収集SEC原文と照合し、既存審査の根拠を再利用。当日researchに紐づけ直した将来枠のみの審査。",
-          "published_at": "2026-11-09T21:18:52.000Z",
-          "checked_at": "2026-11-16T18:51:01.647806+09:00"
-        },
-        "decline_explanation_verified": {
-          "value": true,
-          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
-          "evidence_sha256": "6a813da8cdd80b00060eb745d398beecde4779923c51ec7b38a4ae498ec7a9df",
-          "excerpt": "affected conversion from enrollment to start.",
-          "rationale": "8月10日決算の入学転換率低下説明と、保存日足8月7日40.99→10日30.77を照合。11月9日の転換率回復と入学者14.2%増を再読し、業務上の一時要因と回復を伴う下落として判断。因果関係の関連付けは審査者の推論であり全下落の説明ではない。証券訴訟は残る。 11月16日の当日収集SEC原文と照合し、既存審査の根拠を再利用。当日researchに紐づけ直した将来枠のみの審査。",
-          "published_at": "2026-08-10T19:09:21.000Z",
-          "checked_at": "2026-11-16T18:51:01.647806+09:00"
-        },
-        "no_material_business_impairment": {
-          "value": true,
-          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
-          "evidence_sha256": "5429d09d2de835b59380b4d7fa95660d6fae076e8b7d5b48c176448d5c17635b",
-          "excerpt": "the Lenders waived",
-          "rationale": "10-Qの資金・債務・認定資格・訴訟・統制を再読。自社株買いによる契約違反は11月6日貸し手免除。営業CF61.515百万ドル、現金20.627、リボルバー未使用115、認定・TitleIV参加資格維持を確認。設備投資がCF超、連邦資金依存、2027規制と証券訴訟のリスクを残すが重大毀損成立とは判断しない。 11月16日の当日収集SEC原文と照合し、既存審査の根拠を再利用。当日researchに紐づけ直した将来枠のみの審査。",
-          "published_at": "2026-11-09T21:58:46.000Z",
-          "checked_at": "2026-11-16T18:51:01.647806+09:00"
-        },
-        "next_earnings": {
-          "value": true,
-          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
-          "evidence_sha256": "afc18ad00cea85b02c76c0fce3b5dd816e33dc5b2e28734662dd5c913949d2da",
-          "excerpt": "November 9, 2026",
-          "rationale": "11月16日18:22 JST取得の公式IR予定一覧に There are currently no events to display. を確認。証拠は input/source_research/2026-11-16-linc-calendar.json。直近決算11月9日は30暦日以内の既存例外に該当。未公表日を推定しない。正式日判明時は3米国営業日前から当日の除外を優先。",
-          "published_at": "2026-11-09T21:18:52.000Z",
-          "checked_at": "2026-11-16T18:51:01.647806+09:00",
-          "date": "",
-          "next_date_unannounced": true,
-          "last_earnings_date": "2026-11-09"
-        }
-      },
+      "assertions": {},
       "official_documents": [
         {
           "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_8k.htm",
@@ -716,8 +635,7 @@
         "registry_version": "official_ir_20261029_v1",
         "status": "IR_COLLECTION_ATTEMPTED",
         "index_evidence_sha256": "e6132b297108ab76429c351a8000d8a6947d83edac69241e2bf7c1e567172dcd"
-      },
-      "packet_sha256": "49ad64cea5db5150a5b2a9170d930d49f78eee7ec62c5116067c3e3c2c84d5f0"
+      }
     },
     {
       "symbol": "LOPE",
@@ -913,9 +831,9 @@
   "remote_verified_count": 0,
   "remote_verification": "NOT_PERFORMED_BY_THIS_LOCAL_PROCESS",
   "counts": {
-    "PASS": 2,
+    "PASS": 0,
     "FAIL": 3,
-    "INSUFFICIENT_EVIDENCE": 4
+    "INSUFFICIENT_EVIDENCE": 6
   },
   "financial_pass_count": 9
 }
