@@ -1,0 +1,243 @@
+{
+  "kind": "SEMANTIC_REVIEW_STAGE_AUDIT",
+  "observed_at": "2026-11-16T22:02:57.887417+09:00",
+  "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
+  "baseline_commit": "84f4093",
+  "reused_failures": [
+    "BL",
+    "LOPE",
+    "KRMN"
+  ],
+  "new_semantically_completed": [
+    "CURI"
+  ],
+  "canonical_counts": {
+    "PASS": 2,
+    "FAIL": 3,
+    "INSUFFICIENT_EVIDENCE": 4
+  },
+  "rows": [
+    {
+      "symbol": "BL",
+      "review_status": "FAIL",
+      "four_item_states": {
+        "guidance_not_lowered": false,
+        "decline_explanation_verified": null,
+        "no_material_business_impairment": null,
+        "next_earnings": null
+      },
+      "blocker_category": "RULE_CONDITION_MISMATCH",
+      "blocker_reason": [
+        "guidance_not_lowered: 同じ2026通期GAAP売上見通しを8月4日の765〜769百万ドルから11月5日に759.5〜761.5へ引下げ。不通過。比較資料 input/official_documents/ff388374f7e10830557f0ab68e77148d9a2ad6cdb50cc0e0c62f73ef9a30fe02.json の同じFull Year 2026を確認。次回公式見通し更新まで承認しない。",
+        "decline_explanation_verified: 既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。",
+        "no_material_business_impairment: 既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。",
+        "next_earnings: 既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
+      ],
+      "technical_levels": {
+        "stop_price": 25.55500030517578,
+        "target_price": 35.27000045776367,
+        "price_date": "2026-11-13",
+        "rules_version": "nexus_rules_20261105_v3"
+      },
+      "reference_close": 29.53,
+      "reference_rr": 1.444025383256665,
+      "max_entry_for_rr_1_5": 29.441000366210936,
+      "price_status": "REFERENCE_ONLY_NOT_CHECKPOINT_SIP",
+      "sip_status": "FUTURE_CHECKPOINT_NOT_YET_OBSERVABLE"
+    },
+    {
+      "symbol": "BRBR",
+      "review_status": "INSUFFICIENT_EVIDENCE",
+      "four_item_states": {
+        "guidance_not_lowered": true,
+        "decline_explanation_verified": null,
+        "no_material_business_impairment": null,
+        "next_earnings": null
+      },
+      "blocker_category": "RULE_CONDITION_MISMATCH",
+      "blocker_reason": "11月18日決算の除外期間",
+      "technical_levels": {
+        "stop_price": 8.920000076293945,
+        "target_price": 11.09000015258789,
+        "price_date": "2026-11-13",
+        "rules_version": "nexus_rules_20261105_v3"
+      },
+      "reference_close": 10.56,
+      "reference_rr": 0.32317083978284655,
+      "max_entry_for_rr_1_5": 9.788000106811523,
+      "price_status": "REFERENCE_ONLY_NOT_CHECKPOINT_SIP",
+      "sip_status": "FUTURE_CHECKPOINT_NOT_YET_OBSERVABLE"
+    },
+    {
+      "symbol": "CNR",
+      "review_status": "INSUFFICIENT_EVIDENCE",
+      "four_item_states": {
+        "guidance_not_lowered": null,
+        "decline_explanation_verified": true,
+        "no_material_business_impairment": true,
+        "next_earnings": null
+      },
+      "blocker_category": "EVIDENCE_OR_SEMANTIC_REVIEW_INCOMPLETE",
+      "blocker_reason": [
+        "guidance_not_lowered: SECのQ3決算添付と補足資料を実読。数量・単価・コスト予想はあるが、同じ対象期間の会社全体の売上予想の非下方修正比較を完了できない。数量予想や契約量から売上予想を捏造しない。資料の取得失敗と、比較可能な総売上予想の不足を分離して保持。",
+        "next_earnings: 公式IRイベント欄はNo events to display、最新ニュースは11月5日。動的一覧の空表示のため完全な未公表確認は未完了。公式IR発表・問い合わせ先の公表資料で次回予定を確認する。input/source_research/2026-11-16-semantic-observations.json"
+      ],
+      "technical_levels": {
+        "stop_price": 73.30999755859375,
+        "target_price": 104.87000274658203,
+        "price_date": "2026-11-13",
+        "rules_version": "nexus_rules_20261105_v3"
+      },
+      "reference_close": 86.21,
+      "reference_rr": 1.4465115670588888,
+      "max_entry_for_rr_1_5": 85.93399963378906,
+      "price_status": "REFERENCE_ONLY_NOT_CHECKPOINT_SIP",
+      "sip_status": "FUTURE_CHECKPOINT_NOT_YET_OBSERVABLE"
+    },
+    {
+      "symbol": "CURI",
+      "review_status": "PASS",
+      "four_item_states": {
+        "guidance_not_lowered": true,
+        "decline_explanation_verified": true,
+        "no_material_business_impairment": true,
+        "next_earnings": true
+      },
+      "blocker_category": "READY_FOR_PROSPECTIVE_PLAN_AND_SIP",
+      "blocker_reason": [
+        "All four explicit assertions validated"
+      ],
+      "technical_levels": {
+        "stop_price": 2.325000047683716,
+        "target_price": 3.1649999618530273,
+        "price_date": "2026-11-13",
+        "rules_version": "nexus_rules_20261105_v3"
+      },
+      "reference_close": 3.13,
+      "reference_rr": 0.04347821605742901,
+      "max_entry_for_rr_1_5": 2.6610000133514404,
+      "price_status": "REFERENCE_ONLY_NOT_CHECKPOINT_SIP",
+      "sip_status": "FUTURE_CHECKPOINT_NOT_YET_OBSERVABLE"
+    },
+    {
+      "symbol": "IBP",
+      "review_status": "INSUFFICIENT_EVIDENCE",
+      "four_item_states": {
+        "guidance_not_lowered": null,
+        "decline_explanation_verified": true,
+        "no_material_business_impairment": true,
+        "next_earnings": true
+      },
+      "blocker_category": "EVIDENCE_OR_SEMANTIC_REVIEW_INCOMPLETE",
+      "blocker_reason": [
+        "guidance_not_lowered: Q3・Q2決算資料、Q3 10-Qと11月12日買収発表を実読。買収による追加売上目標はあるが、会社全体の同一期間の総売上見通し比較を完了できない。正式な総売上見通し不記載を非下方修正とみなさず未承認。次に公式投資家資料の同一期間売上見通しの有無と比較を確認。"
+      ],
+      "technical_levels": {
+        "stop_price": 181.67999267578125,
+        "target_price": 250.4913160812652,
+        "price_date": "2026-11-13",
+        "rules_version": "nexus_rules_20261105_v3"
+      },
+      "reference_close": 229.0,
+      "reference_rr": 0.4541697539058872,
+      "max_entry_for_rr_1_5": 209.20452203797487,
+      "price_status": "REFERENCE_ONLY_NOT_CHECKPOINT_SIP",
+      "sip_status": "FUTURE_CHECKPOINT_NOT_YET_OBSERVABLE"
+    },
+    {
+      "symbol": "KRMN",
+      "review_status": "FAIL",
+      "four_item_states": {
+        "guidance_not_lowered": true,
+        "decline_explanation_verified": null,
+        "no_material_business_impairment": false,
+        "next_earnings": null
+      },
+      "blocker_category": "RULE_CONDITION_MISMATCH",
+      "blocker_reason": [
+        "no_material_business_impairment: 最新10-Qに財務報告内部統制の重大な弱点と開示統制の非有効を明示。改善計画はあるが運用・検証を経た是正完了を確認できず、会計リスク項目を不通過とする。次回10-Q等で是正完了の公式証拠を確認する。",
+        "decline_explanation_verified: 既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。",
+        "next_earnings: 既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
+      ],
+      "technical_levels": {
+        "stop_price": 30.5,
+        "target_price": 55.792999267578125,
+        "price_date": "2026-11-13",
+        "rules_version": "nexus_rules_20261105_v3"
+      },
+      "reference_close": 40.66,
+      "reference_rr": 1.4894684318482414,
+      "max_entry_for_rr_1_5": 40.61719970703125,
+      "price_status": "REFERENCE_ONLY_NOT_CHECKPOINT_SIP",
+      "sip_status": "FUTURE_CHECKPOINT_NOT_YET_OBSERVABLE"
+    },
+    {
+      "symbol": "LOPE",
+      "review_status": "FAIL",
+      "four_item_states": {
+        "guidance_not_lowered": false,
+        "decline_explanation_verified": null,
+        "no_material_business_impairment": null,
+        "next_earnings": null
+      },
+      "blocker_category": "RULE_CONDITION_MISMATCH",
+      "blocker_reason": [
+        "guidance_not_lowered: 同じ2026通期サービス売上見通しが7月30日の1165.3〜1172.3百万ドルから11月4日に1160.7〜1161.7へ下方修正。不通過。比較資料 input/official_documents/80632bc3fd3b3b17760b51a9a1741cc770dba586ab069ea7284df306a0e8adba.json。次回公式見通し更新を待つ。",
+        "decline_explanation_verified: 既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。",
+        "no_material_business_impairment: 既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。",
+        "next_earnings: 既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
+      ],
+      "technical_levels": {
+        "stop_price": 113.83999633789062,
+        "target_price": 167.75999450683594,
+        "price_date": "2026-11-13",
+        "rules_version": "nexus_rules_20261105_v3"
+      },
+      "reference_close": 120.6,
+      "reference_rr": 6.976326769047976,
+      "max_entry_for_rr_1_5": 135.40799560546876,
+      "price_status": "REFERENCE_ONLY_NOT_CHECKPOINT_SIP",
+      "sip_status": "FUTURE_CHECKPOINT_NOT_YET_OBSERVABLE"
+    },
+    {
+      "symbol": "MP",
+      "review_status": "INSUFFICIENT_EVIDENCE",
+      "four_item_states": {
+        "guidance_not_lowered": null,
+        "decline_explanation_verified": null,
+        "no_material_business_impairment": true,
+        "next_earnings": null
+      },
+      "blocker_category": "EVIDENCE_OR_SEMANTIC_REVIEW_INCOMPLETE",
+      "blocker_reason": [
+        "guidance_not_lowered: 取得漏れのSEC決算添付mpmcq32026er.htmをWebで実読。GM認定完了とQ4磁石売上開始は確認したが、会社全体の同じ期間の売上予想比較は未完了。売上実績176%増を将来売上予想の非下方修正と代用しない。",
+        "decline_explanation_verified: 保存日足の11月5日6.04%下落は決算公表21:04Zより前であり、その日の決算を原因と即断しない。最大下落3月30日11.99%等に対応する公式市場/業種・企業要因の証拠が不足。公式発表との時刻関係を調査する。",
+        "next_earnings: 公式IR予定一覧は動的で予定本文を取得できず未公表と確定できない。最新SEC決算11月5日は確認済み。公式予定の空欄だけで30暦日例外を自動適用せず、追加確認まで未承認。input/source_research/2026-11-16-semantic-observations.json"
+      ],
+      "technical_levels": {
+        "stop_price": 31.899999618530273,
+        "target_price": 62.470001220703125,
+        "price_date": "2026-11-13",
+        "rules_version": "nexus_rules_20261105_v3"
+      },
+      "reference_close": 38.76,
+      "reference_rr": 3.456268207323826,
+      "max_entry_for_rr_1_5": 44.128000259399414,
+      "price_status": "REFERENCE_ONLY_NOT_CHECKPOINT_SIP",
+      "sip_status": "FUTURE_CHECKPOINT_NOT_YET_OBSERVABLE"
+    }
+  ],
+  "execution_note": "次回枠23:45 JSTより前。正式計画・SIP照合・paper_engine登録は既存cycle Actionsのみで処理。過去時刻や将来価格は捏造しない。CURIの前日終値参照R:Rは約0.043で1.5未達だが正式判定価格ではない。正式SIPでstop<entry<=2.6610000133514404の時だけ価格条件を検証する。",
+  "remaining_processes": [
+    "既存cycleでCURIの将来枠計画生成",
+    "判定枠直前60秒の有効SIP取引を16分後以降に照合",
+    "paper_engineによる実際の仮想登録または価格条件不成立記録"
+  ],
+  "protected_changes": {
+    "code": false,
+    "rules": false,
+    "v3_times": false,
+    "schedules": false,
+    "manual_ledger": false
+  }
+}
