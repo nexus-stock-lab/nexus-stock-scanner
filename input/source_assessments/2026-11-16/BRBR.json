@@ -4,13 +4,18 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "a3a79e02c2a6d84b3df2e19bb8e60dbfcde97d95ff30488e54713f75683df203",
-  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
+  "reviewed_at": "2026-11-16T22:02:35.600748+09:00",
   "generated_at": "2026-11-16T18:40:39.769326+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "取得済み8-K本文だけでは当期売上予想と前回予想の比較を完了できない。公式決算リリースExhibit99.1の取得・照合が次処理。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1772016/000162828026052137/brbrexh991-q32026earningsr.htm",
+      "published_at": "2026-08-04T11:02:01.000Z",
+      "evidence_sha256": "de3c1b4969f529568c487d2f463ae7d65b219f38cdb573b6dec8cd40f6d44679",
+      "excerpt": "$2.335-$2.375 billion",
+      "rationale": "2026通期売上予想を5月5日2.325〜2.365bから8月4日2.335〜2.375bへ引上げ。比較した公式IR本文は input/source_research/2026-11-16-semantic-observations.json。EBITDA予想下方修正を売上の下方修正と取り違えない。",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00"
     },
     "decline_explanation_verified": {
       "value": null,
@@ -22,7 +27,7 @@
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式IRの次回決算発表案内を当日証拠として保存し、3米国営業日前から当日の除外判定へ渡す必要がある。推定日では承認しない。"
+      "rationale": "公式IRで次回決算を11月18日7:00ETと確認。11月16日は既存3米国営業日前〜当日の除外期間で今回は承認不可。input/source_research/2026-11-16-semantic-observations.jsonに証拠保存。現行IR登録にBRBRがないため正規引用検証へ未接続であり、未承認を維持する。次回決算公表後に新しい財務・見通し・下落理由・リスクを確認する。"
     }
   },
   "delegation_id": "owner_20261107_paper_only"
