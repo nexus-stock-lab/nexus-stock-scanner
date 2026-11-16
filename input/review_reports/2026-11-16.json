@@ -1,0 +1,815 @@
+{
+  "kind": "SOURCE_REVIEW_REPORT",
+  "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
+  "decision_time_jst": "2026-11-16T23:45:00+09:00",
+  "observed_at": "2026-11-16T18:41:06.212607+09:00",
+  "rules_version": "nexus_rules_20261105_v3",
+  "results": [
+    {
+      "symbol": "BL",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "financial_evidence_sha256": "5e21cce45a7683a764580db763b9498e92970695ab50fc05fb518281d4c99e07",
+      "reasons": [
+        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      ],
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "no_material_business_impairment": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "next_earnings": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        }
+      },
+      "official_documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1666134/000117184326007177/f8k_110526.htm",
+          "evidence_sha256": "c69415037f52fe10cc0a1e1e2bd14f1471da20df65d590a8c0e951494fc9d998",
+          "published_at": "2026-11-05T21:06:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1666134/000117184326007177/exh_991.htm",
+          "evidence_sha256": "08c4916ef3c84db08c6e7d72dbb3516bf55b16e6d220a462416cea0beeb3d5b8",
+          "published_at": "2026-11-05T21:06:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1666134/000117184326005201/f8k_080426.htm",
+          "evidence_sha256": "5327cd30c88b67b94315ff96b726324c2f58faf0382e85bdd1bc599fe7c6563f",
+          "published_at": "2026-08-04T20:05:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1666134/000117184326005201/exh_991.htm",
+          "evidence_sha256": "ff388374f7e10830557f0ab68e77148d9a2ad6cdb50cc0e0c62f73ef9a30fe02",
+          "published_at": "2026-08-04T20:05:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1666134/000162828026071672/bl-20260930.htm",
+          "evidence_sha256": "522910ad8c2a154129095dfaa6140b3826e31ac6abb14db82dc4ac5c39555468",
+          "published_at": "2026-11-06T21:06:53.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1666134/000162828026053353/bl-20260630.htm",
+          "evidence_sha256": "e7f6eceddb3705c7f758ab9a7bcccdb6008466876f0013ac65021bae3755c638",
+          "published_at": "2026-08-05T20:10:54.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1666134/000162828026052541/bl-20260731.htm",
+          "evidence_sha256": "42f6f6cdf08d65fdefd388a9c02a5fca6d6821cf30759ad3c34b6b3d682dc23e",
+          "published_at": "2026-08-04T20:05:47.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1666134/000162828026051856/bl-20260731.htm",
+          "evidence_sha256": "451f7c6041ce8aa97d2ab5aa2ac46521103499460eabbbd11d1eaaa9f656d2fd",
+          "published_at": "2026-08-03T20:15:50.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "issuer_ir": {
+        "symbol": "BL",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      }
+    },
+    {
+      "symbol": "BRBR",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "financial_evidence_sha256": "a3a79e02c2a6d84b3df2e19bb8e60dbfcde97d95ff30488e54713f75683df203",
+      "reasons": [
+        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      ],
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "no_material_business_impairment": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "next_earnings": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        }
+      },
+      "official_documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1772016/000162828026052137/brbr-20260804.htm",
+          "evidence_sha256": "8d6de110c0b218636be5607d78dd0ba13947633dd3cd7cfd5fa7640e4e12313b",
+          "published_at": "2026-08-04T11:02:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1772016/000162828026030115/brbr-20260505.htm",
+          "evidence_sha256": "258a66e8b3e93c853dfc1d1e916398cfe1c81ce188f62800416652f0c663b517",
+          "published_at": "2026-05-05T11:01:56.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1772016/000177201626000022/brbr-20260630.htm",
+          "evidence_sha256": "783adb054730c4b04c343ee8559973084b3c3eefddfcd344141b528df249aae2",
+          "published_at": "2026-08-04T14:08:37.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1772016/000177201626000012/brbr-20260331.htm",
+          "evidence_sha256": "b552d6ba89cd203c004c2c5c1ab34f378496117f1c4d05af319be43f7a2de8ed",
+          "published_at": "2026-05-05T14:21:04.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1772016/000162828026047674/brbr-20260708.htm",
+          "evidence_sha256": "af84c5d7f3808aea59d21f106c938464d0f8b0669f9a31716bc5e47417dbdf42",
+          "published_at": "2026-07-08T21:01:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1772016/000162828026045287/brbr-20260624.htm",
+          "evidence_sha256": "fcf37f0a8046b3b5e6a67a5d7bb78cde1dcde3afa830a8af538f4e2d55a06010",
+          "published_at": "2026-06-24T21:25:53.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "issuer_ir": {
+        "symbol": "BRBR",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      }
+    },
+    {
+      "symbol": "CNR",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "financial_evidence_sha256": "7d86b6c792d12dd68c4791264e42901f84ee30b6dddc66114bf3c52f0b5612b9",
+      "reasons": [
+        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      ],
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "no_material_business_impairment": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "next_earnings": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        }
+      },
+      "official_documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000067/cnr-20261105.htm",
+          "evidence_sha256": "32496927baa31087e596a993b141ba912fc38a352606438ee684cadd205b40bc",
+          "published_at": "2026-11-05T11:59:53.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000053/cnr-20260806.htm",
+          "evidence_sha256": "93bb2ce47077aa0a904c76d0a2b181e012ac08be40170f4e2768d5e92c2ea459",
+          "published_at": "2026-08-06T11:06:05.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000068/cnr-20260930.htm",
+          "evidence_sha256": "8f948b1c114a578019818c07b58c4b08bbe40f4878c1e6b13fec3cb50af63743",
+          "published_at": "2026-11-05T12:01:15.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000054/cnr-20260630.htm",
+          "evidence_sha256": "a4ab82b6015aad435684a690e8d89d4d84e9ccfabe6c8233676a6de17d4730ef",
+          "published_at": "2026-08-06T11:07:44.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1710366/000119312526356186/d113945d8k.htm",
+          "evidence_sha256": "b77f08918105c82951ab79f7966cdafe42e2fa69cda3aeaf8460ff0b2f07381d",
+          "published_at": "2026-08-19T12:04:57.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1710366/000119312526356186/d113945dex991.htm",
+          "evidence_sha256": "a5b619596373a18017e08a994360759f9b253c13f4c68aa6edbd1e3f45ff1653",
+          "published_at": "2026-08-19T12:04:57.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000048/cnr-20260604.htm",
+          "evidence_sha256": "1cecbc10290b4adc1e98536268ac4887f75c7949656001fe65ea725b0397d1ac",
+          "published_at": "2026-06-04T20:48:18.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "issuer_ir": {
+        "symbol": "CNR",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      }
+    },
+    {
+      "symbol": "CURI",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "financial_evidence_sha256": "0ce6dab07c15985d93f8f75963740cae014f5e4502688af41c13ff726fe36656",
+      "reasons": [
+        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      ],
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "no_material_business_impairment": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "next_earnings": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        }
+      },
+      "official_documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/curi-20261111.htm",
+          "evidence_sha256": "9af3fcca72ebb581a91b69c00f8cf2d0f62cfd4c6a7bf523bacdf3846d20f4f9",
+          "published_at": "2026-11-12T13:49:17.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026056318/curi-20260812.htm",
+          "evidence_sha256": "cffc42be8a54978b358b2771f10302d1180c570a6019d6eb00ffb02ea74d6146",
+          "published_at": "2026-08-12T20:57:56.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073161/curi-20260930.htm",
+          "evidence_sha256": "e8a8fd827dd15cbc5b6dafdb06143a8fb4e300b373f9093c2c65b69c54919a79",
+          "published_at": "2026-11-12T13:52:02.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026056713/curi-20260630.htm",
+          "evidence_sha256": "1f6bd83a451938f7e2a8b203c56194553a5b170109050c95f261b8614322c9a9",
+          "published_at": "2026-08-13T20:10:25.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026059083/curi-20260826.htm",
+          "evidence_sha256": "0a32f7cf9e37568f44d6e301608ed4bc3d2f5fc959f82753bad6113ca9f688c7",
+          "published_at": "2026-08-26T20:09:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026047438/curi-20260707.htm",
+          "evidence_sha256": "4b0a2070ad2c307f793b50d68720a7c979de4137124887b4d5b641d1f6115c62",
+          "published_at": "2026-07-07T13:02:00.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "issuer_ir": {
+        "symbol": "CURI",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      }
+    },
+    {
+      "symbol": "IBP",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "financial_evidence_sha256": "234e8c6b735c8e66d3f1e2f9ee16485cabd9e59f628cbc5b68642df8ba877e5f",
+      "reasons": [
+        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      ],
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "no_material_business_impairment": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "next_earnings": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        }
+      },
+      "official_documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000162828026070582/ibp-20261105.htm",
+          "evidence_sha256": "cadd18eebcd7436339d7f48f1cb81af334839882befbf6d17f891a30917fe259",
+          "published_at": "2026-11-05T12:31:07.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000162828026070582/ibp-q32026earningsrelease.htm",
+          "evidence_sha256": "eb4b99d4eb9fd791dddbbba8132dd71d858dc21f47b6da38622cafaa1e03ca5a",
+          "published_at": "2026-11-05T12:31:07.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000162828026053848/ibp-20260806.htm",
+          "evidence_sha256": "893839571cacf7ffd16d7fbfc663ca26fef2da866ecef88307e87b37da8b7476",
+          "published_at": "2026-08-06T11:31:44.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000162828026053848/ibp-q22026earningsrelease.htm",
+          "evidence_sha256": "3187701ca7aee68ea008146700d44e031d7a650c6d3edb6264f39555935a4f46",
+          "published_at": "2026-08-06T11:31:44.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000158090526000048/ibp-20260930.htm",
+          "evidence_sha256": "d28c114838a9c0b3ea75a224af8155366bbd49041324d78b8a4f2d2d6b1d480e",
+          "published_at": "2026-11-05T22:00:49.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000158090526000045/ibp-20260630.htm",
+          "evidence_sha256": "10cca9d83c28bddf44cfc33c8310f8486ea3e2235f3ebc3afb6d6bbe14594eaa",
+          "published_at": "2026-08-06T19:05:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000162828026073103/ibp-20261112.htm",
+          "evidence_sha256": "404192a57cbf5513448b79fd116e43f329fbe974762ef479d1889a9ed5e39fa6",
+          "published_at": "2026-11-12T12:31:50.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000162828026073103/ibp-11122026odgpressrelease.htm",
+          "evidence_sha256": "a54590a6d6349d56cd653f763abf6a27680f698f9f6376d0825ee966075a3e1f",
+          "published_at": "2026-11-12T12:31:50.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "issuer_ir": {
+        "symbol": "IBP",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      }
+    },
+    {
+      "symbol": "KRMN",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "financial_evidence_sha256": "ab36e16683b3d61e2f5cd8b124a7a1da6a0f84bcf417ebd0d239e14e5c30e65c",
+      "reasons": [
+        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      ],
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "no_material_business_impairment": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "next_earnings": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        }
+      },
+      "official_documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/2040127/000119312526449899/krmn-20261105.htm",
+          "evidence_sha256": "c63d0ba24fa6f167e46a639766ceab62465505284fd4ffd097063d506fea74ae",
+          "published_at": "2026-11-05T21:17:31.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/2040127/000119312526449899/krmn-ex99_1.htm",
+          "evidence_sha256": "414d2bb888c0c708b1cfdb3cfe7d12f79b220c74a37bb61695821b987f67c094",
+          "published_at": "2026-11-05T21:17:31.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/2040127/000204012726000018/krmn-20260806.htm",
+          "evidence_sha256": "fc171a58488bc57d27d64a717fa6d3d17fe7ad1a06f17a2536cc0bec469e6a54",
+          "published_at": "2026-08-06T20:18:55.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/2040127/000204012726000018/krmn-ex99_1.htm",
+          "evidence_sha256": "cc51d0c69811b87e75dc04e4dd6cd28b7b9c60fb165aa30b2e521d4dd284db4d",
+          "published_at": "2026-08-06T20:18:55.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/2040127/000204012726000018/krmn-ex99_2.htm",
+          "evidence_sha256": "6a3cb16e3255190a4916e078c285b9e266e2ba7f759eeb2372ce58c1c82e3278",
+          "published_at": "2026-08-06T20:18:55.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/2040127/000119312526450476/krmn-20260930.htm",
+          "evidence_sha256": "1688bf929bebbe09969be7af107429aeaa1db2cf2825947bd5ccc4d7750107c7",
+          "published_at": "2026-11-06T02:40:50.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/2040127/000204012726000024/krmn-20260630.htm",
+          "evidence_sha256": "043549601712ecade1e61a130df7ab795195fe041baf29a4ff1eb017771b9d66",
+          "published_at": "2026-08-10T23:13:25.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/2040127/000119312526392480/d98785d8k.htm",
+          "evidence_sha256": "7a597c444be708a9c1838e0d4d1fdc77584e5387ac4b77c012349c6bfda1d7bf",
+          "published_at": "2026-09-16T10:08:18.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "issuer_ir": {
+        "symbol": "KRMN",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      }
+    },
+    {
+      "symbol": "LINC",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "financial_evidence_sha256": "1422bfe68a98f56b41fc3566432682b572a0b4d52fb249cf8c4fcde73a9cf700",
+      "reasons": [
+        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      ],
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "no_material_business_impairment": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "next_earnings": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        }
+      },
+      "official_documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_8k.htm",
+          "evidence_sha256": "6ae94d45f5a520ab3feed60786e5442e3f23cccceca1aa302add204eabdb6bff",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "afc18ad00cea85b02c76c0fce3b5dd816e33dc5b2e28734662dd5c913949d2da",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_8k.htm",
+          "evidence_sha256": "3a8640f27c1f80c56b819cdd1a0277bd6bc9162566cddc5ebebb8f98f8f22510",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+          "evidence_sha256": "6a813da8cdd80b00060eb745d398beecde4779923c51ec7b38a4ae498ec7a9df",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+          "evidence_sha256": "5429d09d2de835b59380b4d7fa95660d6fae076e8b7d5b48c176448d5c17635b",
+          "published_at": "2026-11-09T21:58:46.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031995/ef20075880_10q.htm",
+          "evidence_sha256": "9d8b4683e038019f14f790b7a64b94dd683e10a48174131fe5d611332ac48421",
+          "published_at": "2026-08-10T18:57:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126028230/ef20077785_8k.htm",
+          "evidence_sha256": "474ffb95b076d76fbac58fcc4fb935a3f6173de17aec7add75345d21907610c3",
+          "published_at": "2026-07-10T20:55:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126021084/ef20073367_8k.htm",
+          "evidence_sha256": "2a5bc7e40ea1297b29904c0fcfdd141c0350d7dab32873dcfea449665e12aace",
+          "published_at": "2026-05-13T20:50:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "issuer_ir": {
+        "symbol": "LINC",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [
+          {
+            "source": "https://investors.lincolneducationalservices.com/investor-overview",
+            "status": "IR_UNVERIFIED",
+            "reason": "IR_PUBLICATION_TIME_UNKNOWN"
+          },
+          {
+            "source": "https://investors.lincolneducationalservices.com/stock-information/stock-quote",
+            "status": "IR_UNVERIFIED",
+            "reason": "IR_PUBLICATION_TIME_UNKNOWN"
+          },
+          {
+            "source": "https://investors.lincolneducationalservices.com/financial-information/sec-filings",
+            "status": "IR_UNVERIFIED",
+            "reason": "IR_PUBLICATION_TIME_CONFLICT"
+          },
+          {
+            "source": "https://investors.lincolneducationalservices.com/events-and-presentations/upcoming-events",
+            "status": "IR_UNVERIFIED",
+            "reason": "IR_PUBLICATION_TIME_UNKNOWN"
+          },
+          {
+            "status": "IR_SOURCE_BUDGET_DEFERRED"
+          }
+        ],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_COLLECTION_ATTEMPTED",
+        "index_evidence_sha256": "e6132b297108ab76429c351a8000d8a6947d83edac69241e2bf7c1e567172dcd"
+      }
+    },
+    {
+      "symbol": "LOPE",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "financial_evidence_sha256": "8efabd821976ace5507fa30bce4f4c9e7d2161f11d67758b20fd42d2a4f62bc3",
+      "reasons": [
+        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      ],
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "no_material_business_impairment": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "next_earnings": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        }
+      },
+      "official_documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1434588/000110465926122660/lope-20261104x8k.htm",
+          "evidence_sha256": "9760f379c232d3304e35933fc58687486d4aa5e7f74fb32ff751ffcd9cd1e280",
+          "published_at": "2026-11-04T21:05:24.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1434588/000110465926122660/lope-ex99d1.htm",
+          "evidence_sha256": "c825282101cbcba87bc61088df6dfcce18ee25d0e6a8ed790a433e0985cfc088",
+          "published_at": "2026-11-04T21:05:24.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1434588/000110465926088669/lope-20260730x8k.htm",
+          "evidence_sha256": "5ebdb152effda61eec45278709cb36d6a11818a02f256466021f3f4d3898f0c9",
+          "published_at": "2026-07-30T20:05:27.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1434588/000110465926088669/lope-20260730xex99d1.htm",
+          "evidence_sha256": "80632bc3fd3b3b17760b51a9a1741cc770dba586ab069ea7284df306a0e8adba",
+          "published_at": "2026-07-30T20:05:27.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1434588/000110465926122668/lope-20260930x10q.htm",
+          "evidence_sha256": "09cab23ea745faaf9cb7a5be3a4344bb86c9142a77fe38f2ba1b54a02854bae2",
+          "published_at": "2026-11-04T21:07:36.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1434588/000110465926088674/lope-20260630x10q.htm",
+          "evidence_sha256": "59a5bfd9f7327f2262b18e61b4d41876c5a163b9610bf258132abec9cfb39d10",
+          "published_at": "2026-07-30T20:08:35.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1434588/000110465926112835/lope-20260928x8k.htm",
+          "evidence_sha256": "8fb22b3b72bc51650b61d23038119cde4dae724eba22ee7e7a34d01d3c6caa64",
+          "published_at": "2026-10-01T20:15:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1434588/000110465926100299/lope-20260821x8k.htm",
+          "evidence_sha256": "4da15c034facad636f5a066584d9fe5d0858415f249fd2965757fd4e4f65bfae",
+          "published_at": "2026-08-24T20:05:10.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "issuer_ir": {
+        "symbol": "LOPE",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      }
+    },
+    {
+      "symbol": "MP",
+      "status": "INSUFFICIENT_EVIDENCE",
+      "financial_evidence_sha256": "7bc51558072d411ece7d644593e7dc56af59deec1b2b5e3047d83d8eacc426f9",
+      "reasons": [
+        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
+        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      ],
+      "assertions": {
+        "guidance_not_lowered": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "decline_explanation_verified": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "no_material_business_impairment": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        },
+        "next_earnings": {
+          "value": null,
+          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        }
+      },
+      "official_documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1801368/000180136826000056/mp-20261105.htm",
+          "evidence_sha256": "0a4c0e2e04287adeb464af8983bfcd63c889603d309a81e0d511f836c83f40c2",
+          "published_at": "2026-11-05T21:04:34.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1801368/000180136826000047/mp-20260806.htm",
+          "evidence_sha256": "dcea92db13cd753c1e15bc2676f8b8055428a717341ab3c36b2a2b9e73f37db6",
+          "published_at": "2026-08-06T20:04:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1801368/000180136826000057/mp-20260930.htm",
+          "evidence_sha256": "8680cedf9da54b153bfa0541cae80f0ab33b250f2684cfefe6af8acfadb4ef10",
+          "published_at": "2026-11-05T23:13:56.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1801368/000180136826000048/mp-20260630.htm",
+          "evidence_sha256": "8aa0a229c6c16a10c78413cabdfe95bcc1415a0389f9ee45282dc89b61819cef",
+          "published_at": "2026-08-06T22:15:49.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1801368/000180136826000035/mp-20260609.htm",
+          "evidence_sha256": "f3879b0bfc28009dca27e56c22b765f82890b1a5c1b44b48278f99a6b275b72d",
+          "published_at": "2026-06-10T20:29:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1801368/000119312525287046/d39340d8k.htm",
+          "evidence_sha256": "d2a89b433afaa85a6ab9729a57b6ea84be4b3d52b5e5cec50cd7b512e50bdac6",
+          "published_at": "2025-11-19T13:39:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1801368/000119312525287046/d39340dex991.htm",
+          "evidence_sha256": "77a0e2e94088cbc9cc62827077e9aae941413d35a2cf78381005f6bce1664112",
+          "published_at": "2025-11-19T13:39:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "issuer_ir": {
+        "symbol": "MP",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      }
+    }
+  ],
+  "saved_count": 0,
+  "local_readback_count": 0,
+  "remote_verified_count": 0,
+  "remote_verification": "NOT_PERFORMED_BY_THIS_LOCAL_PROCESS",
+  "counts": {
+    "PASS": 0,
+    "FAIL": 0,
+    "INSUFFICIENT_EVIDENCE": 9
+  },
+  "financial_pass_count": 9
+}
