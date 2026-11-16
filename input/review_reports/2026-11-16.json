@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "decision_time_jst": "2026-11-16T23:45:00+09:00",
-  "observed_at": "2026-11-16T22:26:03.523807+09:00",
+  "observed_at": "2026-11-16T22:29:13.899655+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -381,12 +381,12 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "234e8c6b735c8e66d3f1e2f9ee16485cabd9e59f628cbc5b68642df8ba877e5f",
       "reasons": [
-        "guidance_not_lowered: Q3・Q2決算資料、Q3 10-Qと11月12日買収発表を実読。買収による追加売上目標はあるが、会社全体の同一期間の総売上見通し比較を完了できない。正式な総売上見通し不記載を非下方修正とみなさず未承認。次に公式投資家資料の同一期間売上見通しの有無と比較を確認。"
+        "guidance_not_lowered: Q3・Q2決算資料、Q3 10-Qと11月12日買収発表を実読。買収による追加売上目標はあるが、会社全体の同一期間の総売上見通し比較を完了できない。正式な総売上見通し不記載を非下方修正とみなさず未承認。次に公式投資家資料の同一期間売上見通しの有無と比較を確認。 11月16日22時台、公式Q3投資家説明PDF全28ページをクラウドブラウザで実取得し、14ページの長期枠組みを画像・本文で確認。取得サイズ制限は解消したが、長期同一拠点成長目標を2026通期会社総売上予想に代用できない。証拠: input/source_research/2026-11-16-ibp-presentation-followup.json。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "Q3・Q2決算資料、Q3 10-Qと11月12日買収発表を実読。買収による追加売上目標はあるが、会社全体の同一期間の総売上見通し比較を完了できない。正式な総売上見通し不記載を非下方修正とみなさず未承認。次に公式投資家資料の同一期間売上見通しの有無と比較を確認。"
+          "rationale": "Q3・Q2決算資料、Q3 10-Qと11月12日買収発表を実読。買収による追加売上目標はあるが、会社全体の同一期間の総売上見通し比較を完了できない。正式な総売上見通し不記載を非下方修正とみなさず未承認。次に公式投資家資料の同一期間売上見通しの有無と比較を確認。 11月16日22時台、公式Q3投資家説明PDF全28ページをクラウドブラウザで実取得し、14ページの長期枠組みを画像・本文で確認。取得サイズ制限は解消したが、長期同一拠点成長目標を2026通期会社総売上予想に代用できない。証拠: input/source_research/2026-11-16-ibp-presentation-followup.json。"
         },
         "decline_explanation_verified": {
           "value": true,
@@ -395,7 +395,7 @@
           "evidence_sha256": "eb4b99d4eb9fd791dddbbba8132dd71d858dc21f47b6da38622cafaa1e03ca5a",
           "excerpt": "continued softness in residential construction activity",
           "rationale": "保存日足11月4日235.42→5日223.08（約5.24%下落）と11月5日公式決算を照合。住宅建設の軟調、住宅同一拠点売上2.6%減、燃料/アルミコスト・ミックスで粗利益率31.8%へ低下。一方商業同一拠点売上10.3%増、連結売上増・CF継続。市況・一時的利益率圧迫と下落を関連付けるのは審査者の推論であり、全下落の原因を断定しない。",
-          "checked_at": "2026-11-16T22:02:35.600748+09:00"
+          "checked_at": "2026-11-16T22:25:07.945395+09:00"
         },
         "no_material_business_impairment": {
           "value": true,
@@ -404,7 +404,7 @@
           "evidence_sha256": "d28c114838a9c0b3ea75a224af8155366bbd49041324d78b8a4f2d2d6b1d480e",
           "excerpt": "for at least the next 12 months",
           "rationale": "10-Qの流動性788百万ドル、現金415.9、未使用ABL372.1、有効統制と債務契約遵守・12か月資金見通しを確認。11月12日のOld Dominion買収と追加借入も保存済み公式発表を実読。住宅依存・粗利低下・買収統合・債務増は残るが、現時点の重大毀損・重大会計問題とは判断しない。買収売上を既存事業成長と混同しない。",
-          "checked_at": "2026-11-16T22:02:35.600748+09:00"
+          "checked_at": "2026-11-16T22:25:07.945395+09:00"
         },
         "next_earnings": {
           "value": true,
@@ -413,7 +413,7 @@
           "evidence_sha256": "eb4b99d4eb9fd791dddbbba8132dd71d858dc21f47b6da38622cafaa1e03ca5a",
           "excerpt": "November 5, 2026",
           "rationale": "公式IR予定一覧にMore events are coming soon.、最新決算11月5日を確認。11月12日の買収説明会は次回決算日ではない。次回正式日は未公表として確認し、直近決算から30暦日以内の既存例外。正式日判明時の3営業日除外を優先。input/source_research/2026-11-16-semantic-observations.json",
-          "checked_at": "2026-11-16T22:02:35.600748+09:00",
+          "checked_at": "2026-11-16T22:25:07.945395+09:00",
           "date": "",
           "next_date_unannounced": true,
           "last_earnings_date": "2026-11-05"
