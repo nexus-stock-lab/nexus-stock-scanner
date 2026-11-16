@@ -16,7 +16,7 @@
   "status": "BEFORE_CHECKPOINT_NOT_A_REGISTRATION_FAILURE",
   "cause_classification": {
     "price_rr": "前日終値参照R:Rは不成立だが正式SIP価格がまだ存在しないため判定保留。CURI stop2.325000047683716/target3.1649999618530273、R:R>=1.5の上限価格2.6610000133514404。",
-    "data_acquisition_failure": "当該未来枠のSIP未取得をデータ取得失敗と呼ばない。IBPの公式Q3投資家PDFはWeb取得サイズ19,215,950 bytesで取得制限により本文比較未完了。",
+    "data_acquisition_failure": "当該未来枠のSIP未取得をデータ取得失敗と呼ばない。IBPの19,215,950-byte公式PDFはクラウドブラウザで実取得しサイズ制限を解消。残る売上見通し比較は意味審査の不足であり取得失敗とは区別。",
     "actions_delay": "23:45前なので当該枠の遅延・失敗は未判定。最新#107は成功。",
     "research_delay": "CURIは22:02審査・22:09正式計画で最初の23:45枠より前、現在の時点で審査遅延による取り逃しの実証はない。"
   },
@@ -51,5 +51,10 @@
     "times": false,
     "schedules": false,
     "manual_ledger": false
+  },
+  "ibp_acquisition_update": {
+    "reviewed_at": "2026-11-16T22:25:07.945395+09:00",
+    "status": "DOWNLOAD_SIZE_BLOCKER_RESOLVED_SEMANTIC_COMPARISON_STILL_INCOMPLETE",
+    "evidence": "input/source_research/2026-11-16-ibp-presentation-followup.json"
   }
 }
