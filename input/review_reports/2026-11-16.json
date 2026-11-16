@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "decision_time_jst": "2026-11-16T23:45:00+09:00",
-  "observed_at": "2026-11-16T18:57:42.388414+09:00",
+  "observed_at": "2026-11-16T22:07:51.945587+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -104,15 +104,19 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "a3a79e02c2a6d84b3df2e19bb8e60dbfcde97d95ff30488e54713f75683df203",
       "reasons": [
-        "guidance_not_lowered: 取得済み8-K本文だけでは当期売上予想と前回予想の比較を完了できない。公式決算リリースExhibit99.1の取得・照合が次処理。",
         "decline_explanation_verified: 株価下落期間と公式業績説明を対応づける証拠が不足。保存日足の下落日を特定し、同日公式説明を確認する。",
         "no_material_business_impairment: 6月期10-Qの統制有効・契約遵守は確認したが、次回通期決算を含めた最新事業リスク評価を完了していない。",
-        "next_earnings: 公式IRの次回決算発表案内を当日証拠として保存し、3米国営業日前から当日の除外判定へ渡す必要がある。推定日では承認しない。"
+        "next_earnings: 公式IRで次回決算を11月18日7:00ETと確認。11月16日は既存3米国営業日前〜当日の除外期間で今回は承認不可。input/source_research/2026-11-16-semantic-observations.jsonに証拠保存。現行IR登録にBRBRがないため正規引用検証へ未接続であり、未承認を維持する。次回決算公表後に新しい財務・見通し・下落理由・リスクを確認する。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "取得済み8-K本文だけでは当期売上予想と前回予想の比較を完了できない。公式決算リリースExhibit99.1の取得・照合が次処理。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1772016/000162828026052137/brbrexh991-q32026earningsr.htm",
+          "published_at": "2026-08-04T11:02:01.000Z",
+          "evidence_sha256": "de3c1b4969f529568c487d2f463ae7d65b219f38cdb573b6dec8cd40f6d44679",
+          "excerpt": "$2.335-$2.375 billion",
+          "rationale": "2026通期売上予想を5月5日2.325〜2.365bから8月4日2.335〜2.375bへ引上げ。比較した公式IR本文は input/source_research/2026-11-16-semantic-observations.json。EBITDA予想下方修正を売上の下方修正と取り違えない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
         },
         "decline_explanation_verified": {
           "value": null,
@@ -124,7 +128,7 @@
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式IRの次回決算発表案内を当日証拠として保存し、3米国営業日前から当日の除外判定へ渡す必要がある。推定日では承認しない。"
+          "rationale": "公式IRで次回決算を11月18日7:00ETと確認。11月16日は既存3米国営業日前〜当日の除外期間で今回は承認不可。input/source_research/2026-11-16-semantic-observations.jsonに証拠保存。現行IR登録にBRBRがないため正規引用検証へ未接続であり、未承認を維持する。次回決算公表後に新しい財務・見通し・下落理由・リスクを確認する。"
         }
       },
       "official_documents": [
@@ -181,27 +185,35 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7d86b6c792d12dd68c4791264e42901f84ee30b6dddc66114bf3c52f0b5612b9",
       "reasons": [
-        "guidance_not_lowered: 取得済み8-K本文だけでは同一期間の会社売上見通し比較が完了しない。予想が生産量・コストのみの場合も売上非下方修正と同一視せず、公式決算添付資料を確認する。",
-        "decline_explanation_verified: 石炭価格・操業要因と実際の下落日の対応が未確認。保存日足と公式説明を照合する。",
-        "no_material_business_impairment: 10-Qの有効統制・債務契約遵守・未使用リボルバーは確認した。Leer South等の操業・火災影響と回復見込みの評価が未完了であり、資金余力だけで通過としない。",
-        "next_earnings: 公式IR予定一覧・最新決算リリースの確認が不足。次回正式日または既存未公表例外の根拠を収集する。"
+        "guidance_not_lowered: SECのQ3決算添付と補足資料を実読。数量・単価・コスト予想はあるが、同じ対象期間の会社全体の売上予想の非下方修正比較を完了できない。数量予想や契約量から売上予想を捏造しない。資料の取得失敗と、比較可能な総売上予想の不足を分離して保持。",
+        "next_earnings: 公式IRイベント欄はNo events to display、最新ニュースは11月5日。動的一覧の空表示のため完全な未公表確認は未完了。公式IR発表・問い合わせ先の公表資料で次回予定を確認する。input/source_research/2026-11-16-semantic-observations.json"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "取得済み8-K本文だけでは同一期間の会社売上見通し比較が完了しない。予想が生産量・コストのみの場合も売上非下方修正と同一視せず、公式決算添付資料を確認する。"
+          "rationale": "SECのQ3決算添付と補足資料を実読。数量・単価・コスト予想はあるが、同じ対象期間の会社全体の売上予想の非下方修正比較を完了できない。数量予想や契約量から売上予想を捏造しない。資料の取得失敗と、比較可能な総売上予想の不足を分離して保持。"
         },
         "decline_explanation_verified": {
-          "value": null,
-          "rationale": "石炭価格・操業要因と実際の下落日の対応が未確認。保存日足と公式説明を照合する。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000067/cnrq32026er-exhibit991.htm",
+          "published_at": "2026-11-05T11:59:53.000Z",
+          "evidence_sha256": "eb067a68ebb7ae035fb3d6fddc86a344b2494ab1d6552c8986c45080e1394ae1",
+          "excerpt": "normal geologic variability and weather-related shipment delays",
+          "rationale": "保存日足11月4日80.22→5日75.21、約6.25%下落を当日公式決算と照合。通常の地質条件・天候による出荷遅延、コスト上昇、Q2保険金の反動で前四半期比較が弱含んだ説明がある。Leer Southは再稼働・影響区画封鎖と保険和解を最新10-Qで確認。業務上の一時要因と関連づけるのは審査者の推論であり、全52週下落を説明したとはしない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "10-Qの有効統制・債務契約遵守・未使用リボルバーは確認した。Leer South等の操業・火災影響と回復見込みの評価が未完了であり、資金余力だけで通過としない。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1710366/000171036626000068/cnr-20260930.htm",
+          "published_at": "2026-11-05T12:01:15.000Z",
+          "evidence_sha256": "8f948b1c114a578019818c07b58c4b08bbe40f4878c1e6b13fec3cb50af63743",
+          "excerpt": "resumed longwall operations",
+          "rationale": "10-QのLeer South火災経緯を実読し、機器回収・移設・長壁採掘再開・被災区画恒久封鎖、6月保険和解154.5百万ドルを確認。保険金は反復収益とみなさない。流動性約1028百万ドル、債務契約遵守、有効統制を確認。価格・輸送・地質・再発火災・環境/閉山負担は残るが現在の重大事業毀損・重大会計問題の成立とは判断しない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式IR予定一覧・最新決算リリースの確認が不足。次回正式日または既存未公表例外の根拠を収集する。"
+          "rationale": "公式IRイベント欄はNo events to display、最新ニュースは11月5日。動的一覧の空表示のため完全な未公表確認は未完了。公式IR発表・問い合わせ先の公表資料で次回予定を確認する。input/source_research/2026-11-16-semantic-observations.json"
         }
       },
       "official_documents": [
@@ -261,30 +273,50 @@
     },
     {
       "symbol": "CURI",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "PASS",
       "financial_evidence_sha256": "0ce6dab07c15985d93f8f75963740cae014f5e4502688af41c13ff726fe36656",
       "reasons": [
-        "guidance_not_lowered: 11月11日の8-K本文に決算添付99.1があるが、保存済み本文には売上予想比較の全文がない。添付資料と前回同一期間予想を取得・保存して比較する。",
-        "decline_explanation_verified: 保存日足の下落日と公式業績説明の対応づけが未完了。一般的な成長説明では承認しない。",
-        "no_material_business_impairment: 10-Qの統制有効・契約遵守は確認。9か月営業CF1.523百万ドル、パートナー過払い返還予定、現金余力と配当支出の整合性について追加評価が必要。未承認を維持。",
-        "next_earnings: 次回決算の公式予定または未公表例外の確認が不足。公式IRイベントと最新発表日を確認・保存する。"
+        "All four explicit assertions validated"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "11月11日の8-K本文に決算添付99.1があるが、保存済み本文には売上予想比較の全文がない。添付資料と前回同一期間予想を取得・保存して比較する。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/pressrelease3q26qcuri-2026.htm",
+          "published_at": "2026-11-12T13:49:17.000Z",
+          "evidence_sha256": "3abba6cb4cd814279fdf397805f4262f0f0b80423f2dcc51981ae75b55a304a7",
+          "excerpt": "$79 - $82 million",
+          "rationale": "同じ2026通期売上予想を8月12日の77〜82百万ドルから11月11日に79〜82へ引上げ、上限維持。前回比較のSEC添付は 41cea0dd6b183cd7e7b7db7a07274f906f06d6af38c01425eb6dfd10421d081f。今回、収集漏れのExhibit99.1をWebで取得・実読した。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
         },
         "decline_explanation_verified": {
-          "value": null,
-          "rationale": "保存日足の下落日と公式業績説明の対応づけが未完了。一般的な成長説明では承認しない。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026035114/pressrelease1q26qcuri-2026.htm",
+          "published_at": "2026-05-14T20:12:54.000Z",
+          "evidence_sha256": "233a270c6696b06fe29eda9c69e7e9bb6cafb2af62c38746624862f8433ff0cd",
+          "excerpt": "Q1's sequential revenue decline was anticipated and, we believe, temporary",
+          "rationale": "当日research保存日足の5月14日調整後終値2.9583046436→15日2.3817658424（約19.49%下落）と、5月14日公式決算の前四半期比減収・純損失・SBC増加、一時的減収の経営説明を照合。8月の増収・利益回復、11月の売上20.7百万ドル・利益4.8百万ドルと通期予想引上げで回復を確認。一時的業績弱含みと下落の関連付けは審査者の推論であり、会社が株価下落原因を断定した事実や全期間の下落説明とは主張しない。8月17日など別の急落全ては説明していない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "10-Qの統制有効・契約遵守は確認。9か月営業CF1.523百万ドル、パートナー過払い返還予定、現金余力と配当支出の整合性について追加評価が必要。未承認を維持。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073161/curi-20260930.htm",
+          "published_at": "2026-11-12T13:52:02.000Z",
+          "evidence_sha256": "e8a8fd827dd15cbc5b6dafdb06143a8fb4e300b373f9093c2c65b69c54919a79",
+          "excerpt": "will be sufficient to fund our operations, capital expenditures, dividends, and working capital needs for at least the next twelve months",
+          "rationale": "最新10-Qの資金・債務契約・統制・訴訟・集中/ライセンス収益認識を確認。現金等5.6百万ドルと債券投資4.4、未使用信用枠10、借入なし、契約遵守、有効統制、会社の12か月資金見通しを確認。営業CF1.523百万ドルは9か月配当約15より小さく、分配パートナー過払い返還、売掛金増、バーター非現金取引・収益集中・10月人員削減は残存リスクとして明示。これらを無視せず、現時点の重大毀損・重大会計問題・継続企業疑義の成立とは判断しない。追加資金や配当維持を保証しない。 流動資産21.285百万ドルは流動負債27.248を約5.963下回り、過払いを含むOther負債6.266百万ドルの返還を予定。配当等には最低流動性10百万ドルの契約条件もあり、Q4営業CF・回収の継続監視が必要。会社の12か月資金見通しと未使用枠を併せて評価し、資金不足が顕在化したとは認定しない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "次回決算の公式予定または未公表例外の確認が不足。公式IRイベントと最新発表日を確認・保存する。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/pressrelease3q26qcuri-2026.htm",
+          "published_at": "2026-11-12T13:49:17.000Z",
+          "evidence_sha256": "3abba6cb4cd814279fdf397805f4262f0f0b80423f2dcc51981ae75b55a304a7",
+          "excerpt": "November 11, 2026",
+          "rationale": "公式IRトップの最新ニュースとイベント一覧を実読。There are currently no upcoming events announced. を確認し、次回正式日は未公表。観測証拠は input/source_research/2026-11-16-semantic-observations.json。直近決算11月11日はNY11月16日時点で30暦日以内の既存例外。推定日を設定せず、正式日判明時の3米国営業日前〜当日除外を優先。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-11"
         }
       },
       "official_documents": [
@@ -334,34 +366,51 @@
         "audit": [],
         "registry_version": "official_ir_20261029_v1",
         "status": "IR_SOURCE_NOT_CONFIGURED"
-      }
+      },
+      "packet_sha256": "8d0217d4f7287f6c444a25e0972d41e789d361e63ad934a1acd99b1f8e3a9d9f",
+      "saved_path": "input/review_inbox/2026-11-16/CURI.json"
     },
     {
       "symbol": "IBP",
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "234e8c6b735c8e66d3f1e2f9ee16485cabd9e59f628cbc5b68642df8ba877e5f",
       "reasons": [
-        "guidance_not_lowered: 公式決算資料で同じ対象期間の売上予想の有無と前回比較が未完了。見通し不記載を非下方修正とみなさない。",
-        "decline_explanation_verified: 住宅市場減速・利益率変化を実際の株価下落日に対応づけていない。公式説明と保存日足の照合が必要。",
-        "no_material_business_impairment: 10-Qの契約遵守、有効統制、少なくとも今後12か月の資金余力は確認。住宅市況・買収・債務を含む重大事業リスクの評価が未完了。",
-        "next_earnings: 次回決算の公式日程が未確認。公式IRイベント・最新発表を確認し、既存の除外期間または未公表例外を適用する。"
+        "guidance_not_lowered: Q3・Q2決算資料、Q3 10-Qと11月12日買収発表を実読。買収による追加売上目標はあるが、会社全体の同一期間の総売上見通し比較を完了できない。正式な総売上見通し不記載を非下方修正とみなさず未承認。次に公式投資家資料の同一期間売上見通しの有無と比較を確認。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式決算資料で同じ対象期間の売上予想の有無と前回比較が未完了。見通し不記載を非下方修正とみなさない。"
+          "rationale": "Q3・Q2決算資料、Q3 10-Qと11月12日買収発表を実読。買収による追加売上目標はあるが、会社全体の同一期間の総売上見通し比較を完了できない。正式な総売上見通し不記載を非下方修正とみなさず未承認。次に公式投資家資料の同一期間売上見通しの有無と比較を確認。"
         },
         "decline_explanation_verified": {
-          "value": null,
-          "rationale": "住宅市場減速・利益率変化を実際の株価下落日に対応づけていない。公式説明と保存日足の照合が必要。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000162828026070582/ibp-q32026earningsrelease.htm",
+          "published_at": "2026-11-05T12:31:07.000Z",
+          "evidence_sha256": "eb4b99d4eb9fd791dddbbba8132dd71d858dc21f47b6da38622cafaa1e03ca5a",
+          "excerpt": "continued softness in residential construction activity",
+          "rationale": "保存日足11月4日235.42→5日223.08（約5.24%下落）と11月5日公式決算を照合。住宅建設の軟調、住宅同一拠点売上2.6%減、燃料/アルミコスト・ミックスで粗利益率31.8%へ低下。一方商業同一拠点売上10.3%増、連結売上増・CF継続。市況・一時的利益率圧迫と下落を関連付けるのは審査者の推論であり、全下落の原因を断定しない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "10-Qの契約遵守、有効統制、少なくとも今後12か月の資金余力は確認。住宅市況・買収・債務を含む重大事業リスクの評価が未完了。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000158090526000048/ibp-20260930.htm",
+          "published_at": "2026-11-05T22:00:49.000Z",
+          "evidence_sha256": "d28c114838a9c0b3ea75a224af8155366bbd49041324d78b8a4f2d2d6b1d480e",
+          "excerpt": "for at least the next 12 months",
+          "rationale": "10-Qの流動性788百万ドル、現金415.9、未使用ABL372.1、有効統制と債務契約遵守・12か月資金見通しを確認。11月12日のOld Dominion買収と追加借入も保存済み公式発表を実読。住宅依存・粗利低下・買収統合・債務増は残るが、現時点の重大毀損・重大会計問題とは判断しない。買収売上を既存事業成長と混同しない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
         },
         "next_earnings": {
-          "value": null,
-          "rationale": "次回決算の公式日程が未確認。公式IRイベント・最新発表を確認し、既存の除外期間または未公表例外を適用する。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1580905/000162828026070582/ibp-q32026earningsrelease.htm",
+          "published_at": "2026-11-05T12:31:07.000Z",
+          "evidence_sha256": "eb4b99d4eb9fd791dddbbba8132dd71d858dc21f47b6da38622cafaa1e03ca5a",
+          "excerpt": "November 5, 2026",
+          "rationale": "公式IR予定一覧にMore events are coming soon.、最新決算11月5日を確認。11月12日の買収説明会は次回決算日ではない。次回正式日は未公表として確認し、直近決算から30暦日以内の既存例外。正式日判明時の3営業日除外を優先。input/source_research/2026-11-16-semantic-observations.json",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-05"
         }
       },
       "official_documents": [
@@ -763,27 +812,31 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7bc51558072d411ece7d644593e7dc56af59deec1b2b5e3047d83d8eacc426f9",
       "reasons": [
-        "guidance_not_lowered: 最新8-K本文だけでは会社全体の売上見通しと前回の比較を完了できない。公式決算添付・IR資料を取得し、製品量予想と売上予想を区別する。",
-        "decline_explanation_verified: 輸出・中国顧客・製造投資に関する公式説明と株価下落日の照合が未完了。",
-        "no_material_business_impairment: 10-Qの有効統制・契約遵守は確認。一方9か月設備投資413.75百万ドル、営業CF使用7.757百万ドル。資金調達・DOD契約・建設実行リスクを総合評価するまで通過させない。",
-        "next_earnings: 次回決算公式予定・最新IR一覧確認が不足。推定日を作らず、公式根拠を追加取得する。"
+        "guidance_not_lowered: 取得漏れのSEC決算添付mpmcq32026er.htmをWebで実読。GM認定完了とQ4磁石売上開始は確認したが、会社全体の同じ期間の売上予想比較は未完了。売上実績176%増を将来売上予想の非下方修正と代用しない。",
+        "decline_explanation_verified: 保存日足の11月5日6.04%下落は決算公表21:04Zより前であり、その日の決算を原因と即断しない。最大下落3月30日11.99%等に対応する公式市場/業種・企業要因の証拠が不足。公式発表との時刻関係を調査する。",
+        "next_earnings: 公式IR予定一覧は動的で予定本文を取得できず未公表と確定できない。最新SEC決算11月5日は確認済み。公式予定の空欄だけで30暦日例外を自動適用せず、追加確認まで未承認。input/source_research/2026-11-16-semantic-observations.json"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "最新8-K本文だけでは会社全体の売上見通しと前回の比較を完了できない。公式決算添付・IR資料を取得し、製品量予想と売上予想を区別する。"
+          "rationale": "取得漏れのSEC決算添付mpmcq32026er.htmをWebで実読。GM認定完了とQ4磁石売上開始は確認したが、会社全体の同じ期間の売上予想比較は未完了。売上実績176%増を将来売上予想の非下方修正と代用しない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "輸出・中国顧客・製造投資に関する公式説明と株価下落日の照合が未完了。"
+          "rationale": "保存日足の11月5日6.04%下落は決算公表21:04Zより前であり、その日の決算を原因と即断しない。最大下落3月30日11.99%等に対応する公式市場/業種・企業要因の証拠が不足。公式発表との時刻関係を調査する。"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "10-Qの有効統制・契約遵守は確認。一方9か月設備投資413.75百万ドル、営業CF使用7.757百万ドル。資金調達・DOD契約・建設実行リスクを総合評価するまで通過させない。"
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1801368/000180136826000057/mp-20260930.htm",
+          "published_at": "2026-11-05T23:13:56.000Z",
+          "evidence_sha256": "8680cedf9da54b153bfa0541cae80f0ab33b250f2684cfefe6af8acfadb4ef10",
+          "excerpt": "$1.3 billion of cash, cash equivalents and short-term investments",
+          "rationale": "10-Qの資金・契約・統制とDoW契約、建設投資を実読。現金等13億ドル、長期債務元本10億、設備投資年間500〜600百万ドル、9か月FCF約マイナス421.5百万ドル。会社は近い将来の資金充足を見込むが追加資金調達・費用超過・建設遅延・政府契約・希薄化リスクは残る。有効統制・契約遵守、GM磁石認定完了とQ4販売開始を確認。現時点で重大毀損・重大会計問題の成立とは判断しない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "次回決算公式予定・最新IR一覧確認が不足。推定日を作らず、公式根拠を追加取得する。"
+          "rationale": "公式IR予定一覧は動的で予定本文を取得できず未公表と確定できない。最新SEC決算11月5日は確認済み。公式予定の空欄だけで30暦日例外を自動適用せず、追加確認まで未承認。input/source_research/2026-11-16-semantic-observations.json"
         }
       },
       "official_documents": [
@@ -842,14 +895,14 @@
       }
     }
   ],
-  "saved_count": 0,
-  "local_readback_count": 0,
+  "saved_count": 1,
+  "local_readback_count": 1,
   "remote_verified_count": 0,
   "remote_verification": "NOT_PERFORMED_BY_THIS_LOCAL_PROCESS",
   "counts": {
-    "PASS": 1,
+    "PASS": 2,
     "FAIL": 3,
-    "INSUFFICIENT_EVIDENCE": 5
+    "INSUFFICIENT_EVIDENCE": 4
   },
   "financial_pass_count": 9
 }
