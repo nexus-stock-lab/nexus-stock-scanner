@@ -4,25 +4,36 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "ab36e16683b3d61e2f5cd8b124a7a1da6a0f84bcf417ebd0d239e14e5c30e65c",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
   "generated_at": "2026-11-16T18:40:52.318007+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/2040127/000119312526449899/krmn-ex99_1.htm",
+      "evidence_sha256": "414d2bb888c0c708b1cfdb3cfe7d12f79b220c74a37bb61695821b987f67c094",
+      "excerpt": "Increased fiscal 2026 outlook to $755 million to $760 million in revenue",
+      "rationale": "2026通期売上を前回730〜745百万ドルから755〜760へ引上げ。比較資料 cc51d0c69811b87e75dc04e4dd6cd28b7b9c60fb165aa30b2e521d4dd284db4d。売上見通しは通過するが内部統制問題により総合不通過。",
+      "published_at": "2026-11-05T21:17:31.000Z",
+      "checked_at": "2026-11-16T18:51:01.647806+09:00"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "source": "https://www.sec.gov/Archives/edgar/data/2040127/000119312526450476/krmn-20260930.htm",
+      "evidence_sha256": "1688bf929bebbe09969be7af107429aeaa1db2cf2825947bd5ccc4d7750107c7",
+      "excerpt": "disclosure controls and procedures were not effective as of September 30, 2026",
+      "rationale": "最新10-Qに財務報告内部統制の重大な弱点と開示統制の非有効を明示。改善計画はあるが運用・検証を経た是正完了を確認できず、会計リスク項目を不通過とする。次回10-Q等で是正完了の公式証拠を確認する。",
+      "published_at": "2026-11-06T02:40:50.000Z",
+      "checked_at": "2026-11-16T18:51:01.647806+09:00"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既に確認した独立の不通過理由で総合不通過。この項目は未完了として保持する。次回公式資料の更新で不通過理由が解消した場合に残項目を追加審査し、承認の自動推定は行わない。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }
