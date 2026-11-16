@@ -4,25 +4,26 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "234e8c6b735c8e66d3f1e2f9ee16485cabd9e59f628cbc5b68642df8ba877e5f",
-  "reviewed_at": null,
+  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
   "generated_at": "2026-11-16T18:40:48.787021+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "公式決算資料で同じ対象期間の売上予想の有無と前回比較が未完了。見通し不記載を非下方修正とみなさない。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "住宅市場減速・利益率変化を実際の株価下落日に対応づけていない。公式説明と保存日足の照合が必要。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "10-Qの契約遵守、有効統制、少なくとも今後12か月の資金余力は確認。住宅市況・買収・債務を含む重大事業リスクの評価が未完了。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "次回決算の公式日程が未確認。公式IRイベント・最新発表を確認し、既存の除外期間または未公表例外を適用する。"
     }
-  }
+  },
+  "delegation_id": "owner_20261107_paper_only"
 }
