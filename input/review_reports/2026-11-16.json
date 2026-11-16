@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "decision_time_jst": "2026-11-16T23:45:00+09:00",
-  "observed_at": "2026-11-16T22:07:51.945587+09:00",
+  "observed_at": "2026-11-16T22:09:26.600047+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -276,7 +276,7 @@
       "status": "PASS",
       "financial_evidence_sha256": "0ce6dab07c15985d93f8f75963740cae014f5e4502688af41c13ff726fe36656",
       "reasons": [
-        "All four explicit assertions validated"
+        "Existing intake and earnings policy verified"
       ],
       "assertions": {
         "guidance_not_lowered": {
@@ -367,8 +367,7 @@
         "registry_version": "official_ir_20261029_v1",
         "status": "IR_SOURCE_NOT_CONFIGURED"
       },
-      "packet_sha256": "8d0217d4f7287f6c444a25e0972d41e789d361e63ad934a1acd99b1f8e3a9d9f",
-      "saved_path": "input/review_inbox/2026-11-16/CURI.json"
+      "packet_sha256": "8d0217d4f7287f6c444a25e0972d41e789d361e63ad934a1acd99b1f8e3a9d9f"
     },
     {
       "symbol": "IBP",
@@ -895,8 +894,8 @@
       }
     }
   ],
-  "saved_count": 1,
-  "local_readback_count": 1,
+  "saved_count": 0,
+  "local_readback_count": 0,
   "remote_verified_count": 0,
   "remote_verification": "NOT_PERFORMED_BY_THIS_LOCAL_PROCESS",
   "counts": {
