@@ -4,25 +4,43 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "95fd433dca222f6ae9a83c481e759ffd3a1c924ede49d87d321c7c21a5c7f781",
   "financial_evidence_sha256": "234e8c6b735c8e66d3f1e2f9ee16485cabd9e59f628cbc5b68642df8ba877e5f",
-  "reviewed_at": "2026-11-16T18:51:01.647806+09:00",
+  "reviewed_at": "2026-11-16T22:02:35.600748+09:00",
   "generated_at": "2026-11-16T18:40:48.787021+09:00",
   "reviewer_id": "codex-delegated",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式決算資料で同じ対象期間の売上予想の有無と前回比較が未完了。見通し不記載を非下方修正とみなさない。"
+      "rationale": "Q3・Q2決算資料、Q3 10-Qと11月12日買収発表を実読。買収による追加売上目標はあるが、会社全体の同一期間の総売上見通し比較を完了できない。正式な総売上見通し不記載を非下方修正とみなさず未承認。次に公式投資家資料の同一期間売上見通しの有無と比較を確認。"
     },
     "decline_explanation_verified": {
-      "value": null,
-      "rationale": "住宅市場減速・利益率変化を実際の株価下落日に対応づけていない。公式説明と保存日足の照合が必要。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1580905/000162828026070582/ibp-q32026earningsrelease.htm",
+      "published_at": "2026-11-05T12:31:07.000Z",
+      "evidence_sha256": "eb4b99d4eb9fd791dddbbba8132dd71d858dc21f47b6da38622cafaa1e03ca5a",
+      "excerpt": "continued softness in residential construction activity",
+      "rationale": "保存日足11月4日235.42→5日223.08（約5.24%下落）と11月5日公式決算を照合。住宅建設の軟調、住宅同一拠点売上2.6%減、燃料/アルミコスト・ミックスで粗利益率31.8%へ低下。一方商業同一拠点売上10.3%増、連結売上増・CF継続。市況・一時的利益率圧迫と下落を関連付けるのは審査者の推論であり、全下落の原因を断定しない。",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "10-Qの契約遵守、有効統制、少なくとも今後12か月の資金余力は確認。住宅市況・買収・債務を含む重大事業リスクの評価が未完了。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1580905/000158090526000048/ibp-20260930.htm",
+      "published_at": "2026-11-05T22:00:49.000Z",
+      "evidence_sha256": "d28c114838a9c0b3ea75a224af8155366bbd49041324d78b8a4f2d2d6b1d480e",
+      "excerpt": "for at least the next 12 months",
+      "rationale": "10-Qの流動性788百万ドル、現金415.9、未使用ABL372.1、有効統制と債務契約遵守・12か月資金見通しを確認。11月12日のOld Dominion買収と追加借入も保存済み公式発表を実読。住宅依存・粗利低下・買収統合・債務増は残るが、現時点の重大毀損・重大会計問題とは判断しない。買収売上を既存事業成長と混同しない。",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00"
     },
     "next_earnings": {
-      "value": null,
-      "rationale": "次回決算の公式日程が未確認。公式IRイベント・最新発表を確認し、既存の除外期間または未公表例外を適用する。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/1580905/000162828026070582/ibp-q32026earningsrelease.htm",
+      "published_at": "2026-11-05T12:31:07.000Z",
+      "evidence_sha256": "eb4b99d4eb9fd791dddbbba8132dd71d858dc21f47b6da38622cafaa1e03ca5a",
+      "excerpt": "November 5, 2026",
+      "rationale": "公式IR予定一覧にMore events are coming soon.、最新決算11月5日を確認。11月12日の買収説明会は次回決算日ではない。次回正式日は未公表として確認し、直近決算から30暦日以内の既存例外。正式日判明時の3営業日除外を優先。input/source_research/2026-11-16-semantic-observations.json",
+      "checked_at": "2026-11-16T22:02:35.600748+09:00",
+      "date": "",
+      "next_date_unannounced": true,
+      "last_earnings_date": "2026-11-05"
     }
   },
   "delegation_id": "owner_20261107_paper_only"
