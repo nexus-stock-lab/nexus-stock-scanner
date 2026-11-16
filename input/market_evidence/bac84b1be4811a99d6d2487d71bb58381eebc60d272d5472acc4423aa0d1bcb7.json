@@ -1,0 +1,66 @@
+{
+  "clear": true,
+  "actions": [],
+  "pages": [
+    {
+      "corporate_actions": {
+        "cash_dividends": [
+          {
+            "cusip": "23130Q107",
+            "ex_date": "2025-12-05",
+            "foreign": false,
+            "id": "3e1893f5-c17d-427d-8f38-f32cbb3c90b1",
+            "payable_date": "2025-12-19",
+            "process_date": "2025-12-19",
+            "rate": 0.08,
+            "record_date": "2025-12-05",
+            "special": false,
+            "symbol": "CURI"
+          },
+          {
+            "cusip": "23130Q107",
+            "ex_date": "2026-03-06",
+            "foreign": false,
+            "id": "e5836d9f-0a28-4596-9379-28c888080777",
+            "payable_date": "2026-03-20",
+            "process_date": "2026-03-20",
+            "rate": 0.08,
+            "record_date": "2026-03-06",
+            "special": false,
+            "symbol": "CURI"
+          },
+          {
+            "cusip": "23130Q107",
+            "ex_date": "2026-06-05",
+            "foreign": false,
+            "id": "13f6e160-5e0b-4121-8061-21e205bc9817",
+            "payable_date": "2026-06-22",
+            "process_date": "2026-06-22",
+            "rate": 0.085,
+            "record_date": "2026-06-05",
+            "special": false,
+            "symbol": "CURI"
+          },
+          {
+            "cusip": "23130Q107",
+            "ex_date": "2026-09-04",
+            "foreign": false,
+            "id": "bcc80a95-47d5-4305-bb33-8f4b8f24fffc",
+            "payable_date": "2026-09-18",
+            "process_date": "2026-09-18",
+            "rate": 0.085,
+            "record_date": "2026-09-04",
+            "special": false,
+            "symbol": "CURI"
+          }
+        ]
+      },
+      "next_page_token": null
+    }
+  ],
+  "asof": "2026-11-16T23:45:00+09:00",
+  "complete": true,
+  "source": "https://data.alpaca.markets/v1/corporate-actions",
+  "retrieved_at": "2026-11-16T22:51:40.965738+00:00",
+  "warning": "Corporate-action publication may lag. Reported actions require verified split-basis reconciliation or a hold."
+}

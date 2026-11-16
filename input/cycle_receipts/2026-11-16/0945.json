@@ -1,0 +1,256 @@
+{
+  "decision_time_jst": "2026-11-16T23:45:00+09:00",
+  "plan_sha256": "6ce57903fe591b8131b1c81a692a67ff7b9eaf4ed1b2d8f1f8202ef3f9c5d795",
+  "observed_at": "2026-11-17T07:51:39.995760+09:00",
+  "report": {
+    "decision_time_jst": "2026-11-16T23:45:00+09:00",
+    "paper_only": true,
+    "pending_evidence": [
+      "Official guidance/decline-cause review where evidence is missing"
+    ],
+    "prices": [
+      {
+        "symbol": "CURI",
+        "status": "REFERENCE_OBSERVED",
+        "evidence_uri": "input/market_evidence/a8a98ae2b3881cf7a54cf5250c7f2d581b6683b5d679eea12b547071562b33c0.json",
+        "price": 3.195,
+        "market_time": "2026-11-16T14:44:46.245455929Z",
+        "reference_age_seconds": 13.754544071,
+        "provider_verified": true,
+        "reason": "Reference price verified; entry still requires approved evidence-bearing plan"
+      }
+    ],
+    "registered": null,
+    "session": {
+      "open": true,
+      "session": "2026-11-16",
+      "market_open": "2026-11-16T14:30:00+00:00",
+      "market_close": "2026-11-16T21:00:00+00:00",
+      "source": "exchange_calendars XNYS",
+      "version": "4.13.3"
+    },
+    "research_candidates": 42,
+    "plan_audit": [
+      {
+        "symbol": "STN",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "LWAY",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "CRTO",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "DGXX",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "VKTX",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "LMND",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "NU",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "RMR",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "BL",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "KLAR",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "STVN",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "HOS",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "CAE",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "ABUS",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "JBGS",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "AGRO",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "PRCT",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "IBP",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "LOPE",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "BRBR",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "STNE",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "MP",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "PAHC",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "MH",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "CNR",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "VISN",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "AQST",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "BKD",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "JBSS",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "TRDA",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "ASMB",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "ECC",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "DXYZ",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "TECX",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "AESI",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "ANDE",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "VEL",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "FG",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "DOO",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "RWAY",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      },
+      {
+        "symbol": "KRMN",
+        "status": "BLOCKED",
+        "reason": "official guidance, decline and earnings evidence missing"
+      }
+    ],
+    "disclosure_checks": [
+      {
+        "symbol": "CURI",
+        "status": "NO_NEW_SEC_FILINGS_OBSERVED",
+        "new_accessions": [],
+        "may_register": false,
+        "ir_coverage_verified": false,
+        "source": "https://data.sec.gov/submissions/CIK0001776909.json",
+        "evidence_sha256": "3fbaf49cbe48257ed46c2d6be03942edbbe45e1b75afcd9497d4c73d51b2e936",
+        "retrieved_at": "2026-11-17T07:51:40.820673+09:00"
+      }
+    ],
+    "price_diagnostics_deferred": 41,
+    "status": "VERIFIED_INPUT_READY"
+  },
+  "sha256": "26da5f67c993047506b4d03e35df7c414ddc6049c12574601fd71c6664da6cdf"
+}

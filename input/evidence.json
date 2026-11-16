@@ -1127,6 +1127,188 @@
         "price_date": "2026-11-09",
         "rules_version": "nexus_rules_20261105_v3"
       }
+    },
+    {
+      "symbol": "CURI",
+      "signal": "反発確認",
+      "decision_time_jst": "2026-11-16T23:45:00+09:00",
+      "prepared_at": "2026-11-16T22:09:20.161257+09:00",
+      "stop_price": 2.325000047683716,
+      "target_price": 3.1649999618530273,
+      "checks": {
+        "fundamentals": {
+          "status": "PASS",
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/pressrelease3q26qcuri-2026.htm",
+          "rationale": "{'pass': True, 'revenue_growth_pct': 12.876518328885012, 'operating_income': 3677000.0, 'prior_operating_income': -4491000.0}; 同じ2026通期売上予想を8月12日の77〜82百万ドルから11月11日に79〜82へ引上げ、上限維持。前回比較のSEC添付は 41cea0dd6b183cd7e7b7db7a07274f906f06d6af38c01425eb6dfd10421d081f。今回、収集漏れのExhibit99.1をWebで取得・実読した。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00",
+          "evidence_sha256": "3abba6cb4cd814279fdf397805f4262f0f0b80423f2dcc51981ae75b55a304a7"
+        },
+        "earnings": {
+          "status": "PASS",
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/pressrelease3q26qcuri-2026.htm",
+          "rationale": "公式IRトップの最新ニュースとイベント一覧を実読。There are currently no upcoming events announced. を確認し、次回正式日は未公表。観測証拠は input/source_research/2026-11-16-semantic-observations.json。直近決算11月11日はNY11月16日時点で30暦日以内の既存例外。推定日を設定せず、正式日判明時の3米国営業日前〜当日除外を優先。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00",
+          "evidence_sha256": "3abba6cb4cd814279fdf397805f4262f0f0b80423f2dcc51981ae75b55a304a7",
+          "policy": "UNANNOUNCED_NEXT_DATE_LAST_RESULTS_30D",
+          "last_earnings_date": "2026-11-11",
+          "elapsed_calendar_days": 5,
+          "next_earnings_date": null
+        },
+        "decline_cause": {
+          "status": "PASS",
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026035114/pressrelease1q26qcuri-2026.htm",
+          "rationale": "当日research保存日足の5月14日調整後終値2.9583046436→15日2.3817658424（約19.49%下落）と、5月14日公式決算の前四半期比減収・純損失・SBC増加、一時的減収の経営説明を照合。8月の増収・利益回復、11月の売上20.7百万ドル・利益4.8百万ドルと通期予想引上げで回復を確認。一時的業績弱含みと下落の関連付けは審査者の推論であり、会社が株価下落原因を断定した事実や全期間の下落説明とは主張しない。8月17日など別の急落全ては説明していない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00",
+          "evidence_sha256": "233a270c6696b06fe29eda9c69e7e9bb6cafb2af62c38746624862f8433ff0cd"
+        },
+        "liquidity": {
+          "status": "PASS",
+          "source": "input/research/2026-11-16.json#daily-bars:CURI",
+          "rationale": "Frozen prior-session scan; original signal and liquidity thresholds",
+          "checked_at": "2026-11-16T22:09:20.161257+09:00"
+        },
+        "signal": {
+          "status": "PASS",
+          "source": "input/research/2026-11-16.json#daily-bars:CURI",
+          "rationale": "Frozen prior-session scan; original signal and liquidity thresholds",
+          "checked_at": "2026-11-16T22:09:20.161257+09:00"
+        },
+        "stop": {
+          "status": "PASS",
+          "source": "input/research/2026-11-16.json#daily-bars:CURI",
+          "rationale": "Minimum low of prior 20 completed US sessions",
+          "checked_at": "2026-11-16T22:09:20.161257+09:00"
+        },
+        "target": {
+          "status": "PASS",
+          "source": "input/research/2026-11-16.json#daily-bars:CURI",
+          "rationale": "Maximum high of prior 60 completed US sessions",
+          "checked_at": "2026-11-16T22:09:20.161257+09:00"
+        }
+      },
+      "rules_version": "nexus_rules_20261105_v3",
+      "financials": {
+        "symbol": "CURI",
+        "period_end": "2026-09-30",
+        "prior_period_end": "2025-09-30",
+        "revenue": 20723000,
+        "prior_revenue": 18359000,
+        "operating_income": 3677000,
+        "prior_operating_income": -4491000,
+        "revenue_tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+        "quality": {
+          "pass": true,
+          "revenue_growth_pct": 12.876518328885012,
+          "operating_income": 3677000.0,
+          "prior_operating_income": -4491000.0
+        },
+        "checked_at": "2026-11-16T18:38:57.567307+09:00",
+        "published_at": "2026-11-12T13:52:02.000Z",
+        "evidence_sha256": "0ce6dab07c15985d93f8f75963740cae014f5e4502688af41c13ff726fe36656",
+        "comparison_basis": "SAME_LATEST_FILING",
+        "comparison_accessions": [
+          "0001628280-26-073161"
+        ],
+        "rules_version": "nexus_rules_20261105_v3",
+        "submissions_sha256": "7f8274f4c6b52387e497ec4ab5f3d755bae7df90094c0182fa53b2691a256fb8",
+        "source": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001776909.json",
+        "cik": "0001776909",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/curi-20261111.htm",
+            "evidence_sha256": "9af3fcca72ebb581a91b69c00f8cf2d0f62cfd4c6a7bf523bacdf3846d20f4f9",
+            "published_at": "2026-11-12T13:49:17.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026056318/curi-20260812.htm",
+            "evidence_sha256": "cffc42be8a54978b358b2771f10302d1180c570a6019d6eb00ffb02ea74d6146",
+            "published_at": "2026-08-12T20:57:56.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073161/curi-20260930.htm",
+            "evidence_sha256": "e8a8fd827dd15cbc5b6dafdb06143a8fb4e300b373f9093c2c65b69c54919a79",
+            "published_at": "2026-11-12T13:52:02.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026056713/curi-20260630.htm",
+            "evidence_sha256": "1f6bd83a451938f7e2a8b203c56194553a5b170109050c95f261b8614322c9a9",
+            "published_at": "2026-08-13T20:10:25.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026059083/curi-20260826.htm",
+            "evidence_sha256": "0a32f7cf9e37568f44d6e301608ed4bc3d2f5fc959f82753bad6113ca9f688c7",
+            "published_at": "2026-08-26T20:09:38.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026047438/curi-20260707.htm",
+            "evidence_sha256": "4b0a2070ad2c307f793b50d68720a7c979de4137124887b4d5b641d1f6115c62",
+            "published_at": "2026-07-07T13:02:00.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          }
+        ]
+      },
+      "official_review": {
+        "symbol": "CURI",
+        "rules_version": "nexus_rules_20261105_v3",
+        "financial_evidence_sha256": "0ce6dab07c15985d93f8f75963740cae014f5e4502688af41c13ff726fe36656",
+        "guidance_not_lowered": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/pressrelease3q26qcuri-2026.htm",
+          "published_at": "2026-11-12T13:49:17.000Z",
+          "evidence_sha256": "3abba6cb4cd814279fdf397805f4262f0f0b80423f2dcc51981ae75b55a304a7",
+          "excerpt": "$79 - $82 million",
+          "rationale": "同じ2026通期売上予想を8月12日の77〜82百万ドルから11月11日に79〜82へ引上げ、上限維持。前回比較のSEC添付は 41cea0dd6b183cd7e7b7db7a07274f906f06d6af38c01425eb6dfd10421d081f。今回、収集漏れのExhibit99.1をWebで取得・実読した。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
+        },
+        "decline_explanation_verified": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026035114/pressrelease1q26qcuri-2026.htm",
+          "published_at": "2026-05-14T20:12:54.000Z",
+          "evidence_sha256": "233a270c6696b06fe29eda9c69e7e9bb6cafb2af62c38746624862f8433ff0cd",
+          "excerpt": "Q1's sequential revenue decline was anticipated and, we believe, temporary",
+          "rationale": "当日research保存日足の5月14日調整後終値2.9583046436→15日2.3817658424（約19.49%下落）と、5月14日公式決算の前四半期比減収・純損失・SBC増加、一時的減収の経営説明を照合。8月の増収・利益回復、11月の売上20.7百万ドル・利益4.8百万ドルと通期予想引上げで回復を確認。一時的業績弱含みと下落の関連付けは審査者の推論であり、会社が株価下落原因を断定した事実や全期間の下落説明とは主張しない。8月17日など別の急落全ては説明していない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
+        },
+        "no_material_business_impairment": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073161/curi-20260930.htm",
+          "published_at": "2026-11-12T13:52:02.000Z",
+          "evidence_sha256": "e8a8fd827dd15cbc5b6dafdb06143a8fb4e300b373f9093c2c65b69c54919a79",
+          "excerpt": "will be sufficient to fund our operations, capital expenditures, dividends, and working capital needs for at least the next twelve months",
+          "rationale": "最新10-Qの資金・債務契約・統制・訴訟・集中/ライセンス収益認識を確認。現金等5.6百万ドルと債券投資4.4、未使用信用枠10、借入なし、契約遵守、有効統制、会社の12か月資金見通しを確認。営業CF1.523百万ドルは9か月配当約15より小さく、分配パートナー過払い返還、売掛金増、バーター非現金取引・収益集中・10月人員削減は残存リスクとして明示。これらを無視せず、現時点の重大毀損・重大会計問題・継続企業疑義の成立とは判断しない。追加資金や配当維持を保証しない。 流動資産21.285百万ドルは流動負債27.248を約5.963下回り、過払いを含むOther負債6.266百万ドルの返還を予定。配当等には最低流動性10百万ドルの契約条件もあり、Q4営業CF・回収の継続監視が必要。会社の12か月資金見通しと未使用枠を併せて評価し、資金不足が顕在化したとは認定しない。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00"
+        },
+        "next_earnings": {
+          "value": true,
+          "source": "https://www.sec.gov/Archives/edgar/data/1776909/000162828026073158/pressrelease3q26qcuri-2026.htm",
+          "published_at": "2026-11-12T13:49:17.000Z",
+          "evidence_sha256": "3abba6cb4cd814279fdf397805f4262f0f0b80423f2dcc51981ae75b55a304a7",
+          "excerpt": "November 11, 2026",
+          "rationale": "公式IRトップの最新ニュースとイベント一覧を実読。There are currently no upcoming events announced. を確認し、次回正式日は未公表。観測証拠は input/source_research/2026-11-16-semantic-observations.json。直近決算11月11日はNY11月16日時点で30暦日以内の既存例外。推定日を設定せず、正式日判明時の3米国営業日前〜当日除外を優先。",
+          "checked_at": "2026-11-16T22:02:35.600748+09:00",
+          "date": "",
+          "next_date_unannounced": true,
+          "last_earnings_date": "2026-11-11"
+        },
+        "review_packet_sha256": "8d0217d4f7287f6c444a25e0972d41e789d361e63ad934a1acd99b1f8e3a9d9f",
+        "reviewer_id": "codex-delegated",
+        "reviewed_at": "2026-11-16T22:02:35.600748+09:00",
+        "approval_scope": "US_REGULAR_SESSION",
+        "approval_expires_at": "2026-11-17T05:45:00+09:00",
+        "review_kind": "DELEGATED_SOURCE_REVIEW",
+        "delegation_id": "owner_20261107_paper_only"
+      },
+      "technical_levels": {
+        "stop_price": 2.325000047683716,
+        "target_price": 3.1649999618530273,
+        "price_date": "2026-11-13",
+        "rules_version": "nexus_rules_20261105_v3"
+      }
     }
   ],
   "quotes": [
@@ -1286,6 +1468,32 @@
       "warning": "Paper reference as observed at retrieval; later vendor revisions may differ.",
       "provider_validation": "Alpaca historical SIP; complete pagination; sale/update conditions; XNYS regular session",
       "corporate_evidence_uri": "input/market_evidence/4c7f38c4c5d781390ffe054a02d5682331d47e0dd68f05809f841d110ef4f93c.json"
+    },
+    {
+      "symbol": "CURI",
+      "kind": "trade",
+      "entry_policy": "nexus_asof_60s_v1",
+      "decision_time_jst": "2026-11-16T23:45:00+09:00",
+      "market_time": "2026-11-16T14:44:46.245455929Z",
+      "retrieved_at": "2026-11-17T07:51:40.910362+09:00",
+      "price": 3.195,
+      "source": "Alpaca historical SIP",
+      "evidence_uri": "input/market_evidence/a8a98ae2b3881cf7a54cf5250c7f2d581b6683b5d679eea12b547071562b33c0.json",
+      "history_complete": true,
+      "sale_conditions_verified": true,
+      "latest_valid_trade_verified": true,
+      "provider_verified": true,
+      "trade_id": 182,
+      "exchange": "D",
+      "tape": "C",
+      "conditions": [
+        "@"
+      ],
+      "update_state": null,
+      "reference_age_seconds": 13.754544071,
+      "warning": "Paper reference as observed at retrieval; later vendor revisions may differ.",
+      "provider_validation": "Alpaca historical SIP; complete pagination; sale/update conditions; XNYS regular session",
+      "corporate_evidence_uri": "input/market_evidence/bac84b1be4811a99d6d2487d71bb58381eebc60d272d5472acc4423aa0d1bcb7.json"
     }
   ],
   "streams": {},
