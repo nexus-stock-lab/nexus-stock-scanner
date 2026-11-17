@@ -601,7 +601,8 @@ def main():
     if args.phase == 'prepare':
         research=freeze_research(now,collect_official=True)
         from review_workflow import connected_run
-        connected_run(Path('input/research')/(datetime.fromisoformat(research['decision_time_jst']).date().isoformat()+'.json'),
+        from entry_schedule import session_date
+        connected_run(Path('input/research')/(session_date(datetime.fromisoformat(research['decision_time_jst']))+'.json'),
                       datetime.now(JST), collect=True, promote=True)
         from gemini_review import shadow_reviews
         shadow_reviews(research,datetime.now(JST),Path('input'),Path('output'),
