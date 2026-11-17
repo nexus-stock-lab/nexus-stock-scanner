@@ -1,11 +1,13 @@
 """Regression coverage for delayed prepare, completed candles, and gap reporting."""
 import csv
 import json
+import os
 import tempfile
 import unittest
 from datetime import datetime, timedelta
 from pathlib import Path
 from unittest.mock import patch
+from zoneinfo import ZoneInfo
 
 import exchange_calendars as xcals
 import pandas as pd
@@ -45,7 +47,7 @@ class DelayedPrepareTests(unittest.TestCase):
         at=next_slot(now)
         self.assertEqual(at.isoformat(),'2026-11-17T04:45:00+09:00')
         cal=xcals.get_calendar('XNYS',start='2026-06-01',end='2026-11-16')
-        dates=[s.date().isoformat() for s in cal.sessions if s.date()<at.astimezone(__import__('zoneinfo').ZoneInfo('America/New_York')).date()][-60:]
+        dates=[s.date().isoformat() for s in cal.sessions if s.date()<at.astimezone(ZoneInfo('America/New_York')).date()][-60:]
         bars=[{'date':d,'low':9,'close':10,'high':11} for d in dates]
         self.assertEqual(technical_levels(bars,at)['price_date'],'2026-11-13')
         with tempfile.TemporaryDirectory() as tmp:
@@ -79,3 +81,16 @@ class DelayedPrepareTests(unittest.TestCase):
             now=datetime.fromisoformat(stamp)
             self.assertEqual(session_date(next_slot(now)),expected)
             self.assertGreater(next_slot(now),now)
+
+    def test_prepare_command_connects_review_using_ny_research_key(self):
+        from daily_runner import main
+        snapshot={'decision_time_jst':'2026-11-18T03:45:00+09:00'}
+        old=os.getcwd()
+        with tempfile.TemporaryDirectory() as tmp:
+            try:
+                os.chdir(tmp)
+                with patch('sys.argv',['daily_runner.py','prepare']),patch('daily_runner.freeze_research',return_value=snapshot),patch('review_workflow.connected_run') as review,patch('gemini_review.shadow_reviews'),patch('rolling_runner.prepare_next'),patch('daily_runner.refresh_scenarios'),patch('daily_runner.track_positions'),patch('daily_runner.run'),patch('daily_runner.phone_summary'):
+                    main()
+                self.assertEqual(review.call_args.args[0],Path('input/research/2026-11-17.json'))
+            finally:
+                os.chdir(old)
