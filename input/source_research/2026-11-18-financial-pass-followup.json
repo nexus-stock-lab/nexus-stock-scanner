@@ -1,0 +1,479 @@
+{
+  "kind": "OFFICIAL_SOURCE_SEMANTIC_FOLLOWUP",
+  "observed_at": "2026-11-18T08:50:17.465635+09:00",
+  "reference_research_day": "2026-11-17",
+  "reference_research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+  "reviewed_symbols": 12,
+  "results": [
+    {
+      "symbol": "ATMU",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "ATMU",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "468172520729f3cfade69887f3538e4ca1681439ed3fa1e0f4ec35ed610b50b4",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/1921963/000192196326000079/atmu2026q3quarterly8-kex991.htm",
+            "evidence_sha256": "f3b82ca544315edb1c49ef6ba7f756e3c46feb9bf1deca6c8e51491d1106aa3b",
+            "excerpt": "Total company Net sales expected to be in the range of $2,010 million to $2,035 million",
+            "rationale": "売上見通しQ2 1,975〜2,030百万ドル→Q3 2,010〜2,035百万ドル。",
+            "published_at": "2026-11-06T11:47:15.000Z",
+            "checked_at": "2026-11-18T08:50:17.465635+09:00"
+          },
+          "decline_explanation_verified": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/1921963/000192196326000039/atmu2026q1quarterly8-kex991.htm",
+            "evidence_sha256": "d0c74a2d9e5637c4d16013c146bc0ac6d203a9edca340c6113743d5e336fdfc2",
+            "excerpt": "partially offset by higher logistics and duties costs, lower volumes and other manufacturing costs.",
+            "rationale": "5月1日決算で低数量・物流/関税費用を確認。保存日足の同日16.96%下落と関連付けは審査者推論。最新Q3の有利な数量と利益率回復を確認。 企業が株価下落の因果を断定した記述ではなく、当日公表された営業上の悪材料と保存日足を結び付ける審査者の推論。Q3では数量が有利に転じ、売上・営業CF・利益率の改善を確認した。",
+            "published_at": "2026-05-01T10:51:00.000Z",
+            "checked_at": "2026-11-18T08:50:17.465635+09:00"
+          },
+          "no_material_business_impairment": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/1921963/000192196326000082/atmu-20260930.htm",
+            "evidence_sha256": "78f27951c89967d88dacce8f5201c9bf4dd5b74e2df86293bc872de65fca3269",
+            "excerpt": "Atmus was in compliance with all financial covenants under the Credit Agreement.",
+            "rationale": "10-Qの現金273.3百万ドル、9か月営業CF213.9、債務950、未使用リボルバー500、契約遵守・統制有効を確認。取得/借入増、軟調需要、ERP移行と関税は残存リスク。 会計問題・資金繰り・事業継続の重大毀損が現在成立しているとは判断しない。残存リスクを消去しない。",
+            "published_at": "2026-11-06T18:52:47.000Z",
+            "checked_at": "2026-11-18T08:50:17.465635+09:00"
+          },
+          "next_earnings": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/1921963/000192196326000079/atmu2026q3quarterly8-kex991.htm",
+            "evidence_sha256": "f3b82ca544315edb1c49ef6ba7f756e3c46feb9bf1deca6c8e51491d1106aa3b",
+            "excerpt": "November 6, 2026",
+            "rationale": "公式IRの全16件ニュースと動的予定欄をブラウザ確認。最新決算11月6日で次回正式日未公表。既存30暦日例外の範囲内。 カレンダーと全件ニュースの表示観測を2026-11-18-calendar-checks.jsonに保存。正式日公表後は3営業日前除外を優先。",
+            "published_at": "2026-11-06T11:47:15.000Z",
+            "checked_at": "2026-11-18T08:50:17.465635+09:00",
+            "date": "",
+            "next_date_unannounced": true,
+            "last_earnings_date": "2026-11-06"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "BRBR",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "BRBR",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "e0100a25361757249685ef7ecd1c6583ba875999a79fb8c5222c6439b198fc4f",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": null,
+            "rationale": "8月4日までの比較結果を再利用。ただし当日公表予定の新決算後に最新売上見通しと財務数値の更新が必要。"
+          },
+          "decline_explanation_verified": {
+            "value": null,
+            "rationale": "5月5日の38.77%下落に対する旧決算・利益予想変更の審査は継続。"
+          },
+          "no_material_business_impairment": {
+            "value": null,
+            "rationale": "最新予定決算の公表後にリスク更新を確認。古い四半期だけで本日承認しない。"
+          },
+          "next_earnings": {
+            "value": null,
+            "rationale": "公式企業発表は11月18日07:00 ET決算。対象日は既存の決算除外期間内。未公表扱いや30日例外で回避しない。"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "CDRE",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "CDRE",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "2587575f289ad596fc61b809259c6479c61199562aca2ccc9a019d6bfb8f022b",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/1860543/000110465926122686/cdre-ex99d1.htm",
+            "evidence_sha256": "6a62159ff77da199518f47b62520416709eb822d9fcc03ec7ddb53155e01381c",
+            "excerpt": "expects to generate net sales in 2026 of between $756 million and $769 million",
+            "rationale": "2026通期純売上見通し749〜769→756〜769百万ドル。下限引上げ、上限維持。",
+            "published_at": "2026-11-04T21:15:20.000Z",
+            "checked_at": "2026-11-18T08:50:17.465635+09:00"
+          },
+          "decline_explanation_verified": {
+            "value": null,
+            "rationale": "3月11日の13.47%下落を説明する当時の公式決算/見通しの追加突合が必要。"
+          },
+          "no_material_business_impairment": {
+            "value": null,
+            "rationale": "11月16日8-KでCFO Browersの12月31日退任と暫定CFO Applebyを確認。不同意による辞任ではない。取得企業の統制統合、製品責任、政府需要、債務を含む意味判断は未完了。"
+          },
+          "next_earnings": {
+            "value": null,
+            "rationale": "次回正式日/直近決算30日例外の明示確認が必要。"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "CHRW",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "CHRW",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "c6a05d4f5471046dbadfe3e7106be3f4cdf704cb3d9e5ff91713aa8480de2fe0",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": null,
+            "rationale": "Q2/Q3の増収・利益率目標達成を総売上予想の代わりにしない。同一期間の会社連結売上見通しの比較可能な公式根拠が不足。"
+          },
+          "decline_explanation_verified": {
+            "value": null,
+            "rationale": "7月30日の15.44%下落に対しQ2の運転資本/営業CF減少と株主還元を追加分析する。"
+          },
+          "no_material_business_impairment": {
+            "value": null,
+            "rationale": "最新10-Qの流動性、信用枠、運転資本と還元負担の総合判断が未完了。"
+          },
+          "next_earnings": {
+            "value": null,
+            "rationale": "次回正式日または未公表の明示確認が必要。"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "HUBS",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "HUBS",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "2fd57152dc1e4a083aece27686890d41a276b832473dd421b3db1438161a031d",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/1404655/000119312526457055/d77303dex991.htm",
+            "evidence_sha256": "ffc049a1da44b59de72e669e396fc7b3a25e944a0a00f5183265e3ff5256b8f4",
+            "excerpt": "HubSpot today reaffirmed the financial guidance for the fourth quarter and full year 2026",
+            "rationale": "Q2の2026売上3.678〜3.686b→Q3 3.685〜3.687b、11月12日再確認。",
+            "published_at": "2026-11-12T13:08:29.000Z",
+            "checked_at": "2026-11-18T08:50:17.465635+09:00"
+          },
+          "decline_explanation_verified": {
+            "value": null,
+            "rationale": "8月6日の19.10%下落とQ2当時の成長率/AI競争の公式説明を追加照合する。"
+          },
+          "no_material_business_impairment": {
+            "value": null,
+            "rationale": "4,152,355バイトの最新10-Qを全文再取得。現金1,121.342m、短期投資175.414m、9か月営業CF659.607mと有効な統制を確認。11月12日のCEO即日交代とCFO退任予定を含む意味判断は未完了。"
+          },
+          "next_earnings": {
+            "value": null,
+            "rationale": "公式IRがこのクラウドブラウザを拒否したため再試行しない。SEC等の一次資料からの正式次回日確認が不足。"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "IBP",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "IBP",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "6ab912c844f2344c889b54e1ce3504db1a240f9641f59776808f0dcca47d79ea",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": null,
+            "rationale": "既存の不足を再確認。会社全体の売上見通しと買収対象の年商/買収目標を混同しない。比較できる公式総売上予想が不足。"
+          },
+          "decline_explanation_verified": {
+            "value": null,
+            "rationale": "既存3項目の確認履歴を再利用対象とする。5月7日の27.57%下落の旧審査は新しい開示との再照合が必要。"
+          },
+          "no_material_business_impairment": {
+            "value": null,
+            "rationale": "最新10-Qの統制有効を確認。住宅需要と買収・借入の再確認が必要。11月16日の新しい8-Kも未審査項目として残す。"
+          },
+          "next_earnings": {
+            "value": null,
+            "rationale": "既存の未公表確認履歴は保存。新しい予定がないことの明示的更新が必要。"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "KAI",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "KAI",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "f18111fce9e82e4a8327a9c6187beba51d84b0573091c0579ba0cb76ebcdab74",
+        "reviewed_at": "2026-11-18T07:03:01.889928+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/886346/000088634626000059/kaiform8kex991q326.htm",
+            "evidence_sha256": "7222673628bae9621d1cb0485b4d79ac91d2bd17f57e38d67618fdc6e0892f4a",
+            "excerpt": "We expect revenue of $1.195 to $1.210 billion in 2026, revised from our previous guidance of $1.190 to $1.210 billion",
+            "rationale": "同一2026通期の売上レンジをQ2とQ3のSEC決算原文で比較。下限引上げ、上限維持。EPSやセグメント売上を全社売上の代用にしていない。",
+            "published_at": "2026-11-03T21:44:55.000Z",
+            "checked_at": "2026-11-18T07:03:01.889928+09:00"
+          },
+          "decline_explanation_verified": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/886346/000088634626000055/kaiform09102026ex99_ceotra.htm",
+            "evidence_sha256": "daec907532b554208044b3499887c16de1724856202088540d3ed4ab9596bbd8",
+            "excerpt": "as part of a succession plan adopted by the board of directors.",
+            "rationale": "保存日足の最大下落は9月11日、前日比-6.963%。前日引け後9月10日の公式CEO承継発表と照合し、計画的な経営移行に伴う不確実性が下落要因と判断する。因果の関連付けは審査者の推論であり、企業による株価原因の断定でも全期間の下落の説明でもない。後継Colwellの社内経歴とPowellの会長移行、11月3日の売上・受注記録更新および見通し引上げを再読し、持続的な事業崩壊とは判断しない。",
+            "published_at": "2026-09-10T20:42:43.000Z",
+            "checked_at": "2026-11-18T07:03:01.889928+09:00"
+          },
+          "no_material_business_impairment": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/886346/000088634626000064/kai-20261003.htm",
+            "evidence_sha256": "3ba5d89ffe8451af0542096f913ac9fb2a02b6fcee58f99464a18f99e54a613d",
+            "excerpt": "our leverage ratio was 1.49 and we were in compliance with our debt covenants.",
+            "rationale": "10-Qの資金・負債・統制・訴訟・需要変動を再読。現金133.9百万ドル、9か月営業CF138.3百万ドル、レバレッジ1.49、契約遵守、開示統制有効を確認。借入455百万ドル、取得に伴うのれん・無形資産、関税・中国・資本財受注変動、通常訴訟および経営移行の残存リスクを保持する。好業績や警告語の不存在だけで判断せず、現在の重大毀損成立は確認しない。",
+            "published_at": "2026-11-10T19:15:12.000Z",
+            "checked_at": "2026-11-18T07:03:01.889928+09:00"
+          },
+          "next_earnings": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/886346/000088634626000059/kaiform8kex991q326.htm",
+            "evidence_sha256": "7222673628bae9621d1cb0485b4d79ac91d2bd17f57e38d67618fdc6e0892f4a",
+            "excerpt": "November 3, 2026",
+            "rationale": "当日取得の公式News & Eventsで最新決算11月3日、次回予定欄More events are coming soon.を確認。次回正式日を推定せず未公表と明示し、既存の直近決算30暦日例外だけを適用。新しいresearch・新しいNY日への承認流用はしない。カレンダー取得証拠は2026-11-18-kai-calendar.json。",
+            "published_at": "2026-11-03T21:44:55.000Z",
+            "checked_at": "2026-11-18T07:03:01.889928+09:00",
+            "date": "",
+            "next_date_unannounced": true,
+            "last_earnings_date": "2026-11-03"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "LINC",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "LINC",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "5de4ebde97a0b3bf91ae42a4068d741bb204620efa96e754cdd76b02bf1a72b7",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+            "evidence_sha256": "77c3dbfc781c79ad806c9fa36aaa1db9371f82f1c2fa353db46177e6f27ddf6e",
+            "excerpt": "raising its full-year 2026 revenue guidance",
+            "rationale": "既存審査再利用、2026売上590〜600→600〜605百万ドル。",
+            "published_at": "2026-11-09T21:18:52.000Z",
+            "checked_at": "2026-11-18T08:50:17.465635+09:00"
+          },
+          "decline_explanation_verified": {
+            "value": null,
+            "rationale": "既存の8月10日入学転換率低下説明と後続回復の審査を保持。"
+          },
+          "no_material_business_impairment": {
+            "value": null,
+            "rationale": "既存の借入契約違反免除・資金・認定・規制と訴訟の審査を保持。現時点で既存OPEN、2件目に数えない。"
+          },
+          "next_earnings": {
+            "value": null,
+            "rationale": "新しいカレンダーの明示確認前は日付や承認を自動付け替えしない。"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "QXO",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "QXO",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "893b3fa4f2ca2eff30c42469261f721e4e22be0cec990518687ef5d5cb083b05",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": null,
+            "rationale": "最新11月12日正式決算本文へのリンク見落としを解消。買収を含む実績の大幅増加や10年後50b目標を当期の会社売上予想の代用にしない。"
+          },
+          "decline_explanation_verified": {
+            "value": null,
+            "rationale": "2月5日の9.04%下落の当時の公式原因資料が不足。"
+          },
+          "no_material_business_impairment": {
+            "value": null,
+            "rationale": "買収統合、借入と優先株、比較基準の変化、条件付取引の最新10-Q/8-K審査が未完了。"
+          },
+          "next_earnings": {
+            "value": null,
+            "rationale": "正式次回日/直近決算例外の明示確認が必要。"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "RRX",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "RRX",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "d33f9046579f87faad3f11673d4fa7c4d1a7a3468cf8a8db2f52c7bb24b701de",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": null,
+            "rationale": "11月3日決算添付リンク見落としを解消。EPS予想の引上げは売上予想非下方修正の証明にならない。"
+          },
+          "decline_explanation_verified": {
+            "value": null,
+            "rationale": "8月5日の16.72%下落と当時の公式説明の突合が必要。"
+          },
+          "no_material_business_impairment": {
+            "value": null,
+            "rationale": "最新決算でAMSを中心とする119百万ドルののれん減損を確認。非現金という理由だけで重大毀損なしにしない。対象事業の継続見通しと全社への影響審査が必要。"
+          },
+          "next_earnings": {
+            "value": null,
+            "rationale": "正式次回日/直近決算例外の明示確認が必要。"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "TPR",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "TPR",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "fd03ac92ee4a0562ba8ef5dbd23376ec8052acc4255bd26c56ecfc552b06dae2",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": true,
+            "source": "https://www.sec.gov/Archives/edgar/data/1116132/000114036126042034/ef20084882_ex99-1.htm",
+            "evidence_sha256": "39f6ca828d31c7ce76705496043671d3db503e7500cf188e48953135a8d0c722",
+            "excerpt": "Revenue of approximately $8.5 billion to $8.6 billion",
+            "rationale": "同一FY2027売上8.4〜8.5b→8.5〜8.6b。52週比較ベースを維持。",
+            "published_at": "2026-11-05T11:45:31.000Z",
+            "checked_at": "2026-11-18T08:50:17.465635+09:00"
+          },
+          "decline_explanation_verified": {
+            "value": null,
+            "rationale": "8月13日の16.49%下落に対するKate Spade/関税・当初FY2027見通しの説明を追加審査。決算日との一致だけで原因確認を完了にしない。"
+          },
+          "no_material_business_impairment": {
+            "value": null,
+            "rationale": "最新10-Qの現金599m、短期投資183m、9月期営業CF197m、借入制限遵守・統制有効を確認。ブランド低迷/関税/在庫と債務の残存リスクを追加評価。"
+          },
+          "next_earnings": {
+            "value": true,
+            "date": "2027-02-04",
+            "source": "https://www.sec.gov/Archives/edgar/data/1116132/000114036126042034/ef20084882_ex99-1.htm",
+            "evidence_sha256": "39f6ca828d31c7ce76705496043671d3db503e7500cf188e48953135a8d0c722",
+            "excerpt": "The Company expects to report fiscal 2027 second quarter results on Thursday, February 4, 2027.",
+            "rationale": "公式SECと企業IRが2027年2月4日の次回決算を明記。推定日付ではない。",
+            "published_at": "2026-11-05T11:45:31.000Z",
+            "checked_at": "2026-11-18T08:50:17.465635+09:00"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    },
+    {
+      "symbol": "TRC",
+      "assessment": {
+        "kind": "SOURCE_ASSESSMENT",
+        "symbol": "TRC",
+        "rules_version": "nexus_rules_20261105_v3",
+        "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
+        "financial_evidence_sha256": "be8fb4216fd3ac30568da71d491b150ff9f911dd5a8488a9654f247e22ede975",
+        "reviewed_at": "2026-11-18T08:50:17.465635+09:00",
+        "reviewer_id": "codex-delegated",
+        "delegation_id": "owner_20261107_paper_only",
+        "assertions": {
+          "guidance_not_lowered": {
+            "value": null,
+            "rationale": "Q2/Q3のBuilding 1Bの2027年前半完成計画と反復収入の見通しを比較。全社売上予想の比較可能な根拠は不足。"
+          },
+          "decline_explanation_verified": {
+            "value": null,
+            "rationale": "3月18日の3.80%下落に対応する公式原因・市場/業種の一次根拠が不足。"
+          },
+          "no_material_business_impairment": {
+            "value": null,
+            "rationale": "最新10-Qの統制有効・JV契約遵守は確認。開発認可/訴訟、作物・水販売の変動、資金需要の審査は未完了。"
+          },
+          "next_earnings": {
+            "value": null,
+            "rationale": "次回正式日/直近決算例外の明示確認が必要。"
+          }
+        }
+      },
+      "next_processing": "新researchの当該銘柄・財務ハッシュ・最新開示を明示照合し、不足項目だけ追加審査。過去承認を行わない。"
+    }
+  ],
+  "may_register": false,
+  "approval_status": "REFERENCE_REVIEW_ONLY_UNTIL_CURRENT_RESEARCH_AND_EXISTING_INTAKE_VALIDATE",
+  "new_review_saves_before_this_report": [
+    "833b760"
+  ],
+  "technical_recovery_commits": [
+    "3f4b112",
+    "061ae06",
+    "34c195e"
+  ],
+  "rules_times_schedule_unchanged": true,
+  "semantic_four_items_complete": 2,
+  "semantic_incomplete": 10,
+  "approved_for_current_session": 0
+}
