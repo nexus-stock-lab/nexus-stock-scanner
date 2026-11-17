@@ -32,8 +32,11 @@ def write_json(path, value):
 
 def freeze_research(now, root=Path('input'), out=Path('output'), collect_official=False):
     """Immutable date-keyed research snapshot, not an approved plan or fill."""
-    at = next_decision(now)
-    date = at.date().isoformat()
+    from entry_schedule import next_slot, session_date
+    # Use the same prospective v3 session as the review and rolling planner.
+    # JST midnight must not switch an active NY session to tomorrow's bars.
+    at = next_slot(now)
+    date = session_date(at)
     path = root/'research'/f'{date}.json'
     if path.exists():
         return json.loads(path.read_text())
@@ -66,7 +69,8 @@ def freeze_research(now, root=Path('input'), out=Path('output'), collect_officia
                 technical_levels(value['market_data'].get(symbol,{}).get('bars',[]),at)
                 ready.append(symbol)
             except ValueError as exc:
-                rejected.append({'symbol':symbol,'reason':str(exc)})
+                rejected.append({'symbol':symbol,'reason':str(exc),
+                    **daily_bar_gaps(value['market_data'].get(symbol,{}).get('bars',[]),at)})
         write_json(out/'preparation_status.json',{
             'decision_time_jst':at.isoformat(),
             'status':'BAR_HISTORY_READY' if ready else 'NO_COMPLETE_BAR_HISTORY_RETRY_REQUIRED',
@@ -108,6 +112,20 @@ def freeze_research(now, root=Path('input'), out=Path('output'), collect_officia
     value['snapshot_sha256']=digest({k:v for k,v in value.items() if k!='snapshot_sha256'})
     write_json(path, value)
     return value
+
+
+def daily_bar_gaps(bars, at):
+    """Diagnostic only: never fills missing candles or relaxes technical_levels."""
+    import exchange_calendars as xcals
+    from zoneinfo import ZoneInfo
+    day = at.astimezone(ZoneInfo('America/New_York')).date()
+    cal = xcals.get_calendar('XNYS',start=str(day-timedelta(days=130)),end=str(day))
+    expected = [s.date().isoformat() for s in cal.sessions if s.date()<day][-60:]
+    available = {b.get('date') for b in bars if isinstance(b,dict)}
+    return {'required_last_session':expected[-1] if expected else None,
+            'missing_20_sessions':[d for d in expected[-20:] if d not in available],
+            'missing_60_sessions':[d for d in expected if d not in available],
+            'bars_sha256':digest(bars)}
 
 
 def digest_symbol(symbol):

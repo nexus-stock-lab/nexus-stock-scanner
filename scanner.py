@@ -6,7 +6,8 @@ import logging
 import os
 import re
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from functools import lru_cache
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -68,15 +69,29 @@ def universe():
     return df, counts
 
 
-def evaluate(stock, prices):
-    # Yahoo's current-session daily candle has partial volume before the close.
-    # Exclude all bars dated today in New York, even if a market has already closed.
-    # This deliberately produces a previous-session research scan, NOT a 23:45 fill.
-    ny_today = datetime.now(timezone.utc).astimezone(ZoneInfo("America/New_York")).date()
+@lru_cache(maxsize=8)
+def session_close(day):
+    import exchange_calendars as xcals
+    cal = xcals.get_calendar('XNYS',start=str(day-timedelta(days=7)),end=str(day+timedelta(days=7)))
+    return cal.schedule.loc[str(day),'close'].to_pydatetime() if cal.is_session(str(day)) else None
+
+
+def completed_daily_prices(prices, now):
+    """Keep today's candle only after its actual XNYS close (including half days)."""
+    if now.tzinfo is None:
+        raise ValueError('timezone required')
+    ny_today = now.astimezone(ZoneInfo("America/New_York")).date()
+    closed = session_close(ny_today)
+    include_today = closed is not None and now >= closed
     dates = pd.to_datetime(prices.index)
     if dates.tz is not None:
         dates = dates.tz_convert("America/New_York")
-    prices = prices.loc[[day.date() < ny_today for day in dates]]
+    return prices.loc[[day.date()<ny_today or (include_today and day.date()==ny_today) for day in dates]]
+
+
+def evaluate(stock, prices):
+    # Partial daily candles never become research or an entry price.
+    prices = completed_daily_prices(prices, datetime.now(timezone.utc))
     prices = prices.dropna(subset=["Close", "Low", "High", "Volume"])
     if len(prices) < 55:
         raise ValueError("insufficient_history")
