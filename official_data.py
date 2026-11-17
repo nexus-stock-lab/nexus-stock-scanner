@@ -18,6 +18,7 @@ from strategy_rules import VERSION, financial_quality
 
 REVENUE_TAGS = ('RevenueFromContractWithCustomerExcludingAssessedTax',
                 'RevenueFromContractWithCustomerIncludingAssessedTax', 'Revenues', 'SalesRevenueNet')
+MAX_SEC_DOCUMENT_BYTES = 8_000_000
 
 
 class NoSecRedirect(HTTPRedirectHandler):
@@ -223,22 +224,30 @@ def collect_documents(submissions, cik, at, now, root, symbol=None, clock=None):
     class DocumentParser(HTMLParser):
         def __init__(self):
             super().__init__();self.parts=[];self.links=[];self.skip=0;self.anchor=None
+            self.rows=[];self.exhibit_links=[]
         def handle_starttag(self,tag,attrs):
             attrs=dict(attrs)
             if tag in ('script','style'):
                 self.skip+=1
             if tag=='a':
                 self.anchor=[attrs.get('href',''),'']
+            if tag=='tr':self.rows.append([[],[]])
         def handle_endtag(self,tag):
             if tag in ('script','style'):
                 self.skip=max(0,self.skip-1)
             if tag=='a' and self.anchor is not None:
                 self.links.append(tuple(self.anchor));self.anchor=None
+                for row in self.rows:row[1].append(self.links[-1][0])
+            if tag=='tr' and self.rows:
+                text,links=self.rows.pop()
+                if re.search(r'(?<![\d.])99\s*[.\-]\s*0?1(?!\d)', ' '.join(text)):
+                    self.exhibit_links.extend(links)
         def handle_data(self,data):
             if not self.skip:
                 self.parts.append(data)
             if self.anchor is not None:
                 self.anchor[1]+=data
+            for row in self.rows:row[0].append(data)
     recent=submissions['filings']['recent'];items=[]
     for i,acc in enumerate(recent['accessionNumber']):
         accepted=recent['acceptanceDateTime'][i]
@@ -272,8 +281,8 @@ def collect_documents(submissions, cik, at, now, root, symbol=None, clock=None):
                 with sec_open(req,timeout=10) as response:
                     if not response.url.startswith(base):
                         raise ValueError('unexpected archive redirect')
-                    raw=response.read(4_000_001)
-                    if len(raw)>4_000_000:
+                    raw=response.read(MAX_SEC_DOCUMENT_BYTES+1)
+                    if len(raw)>MAX_SEC_DOCUMENT_BYTES:
                         raise ValueError('source too large; do not silently truncate')
                 parser=DocumentParser();parser.feed(raw.decode('utf-8',errors='replace'))
                 text=' '.join(' '.join(parser.parts).split())
@@ -289,6 +298,9 @@ def collect_documents(submissions, cik, at, now, root, symbol=None, clock=None):
                 for href,label in parser.links:
                     if '99.1' in label or '99.01' in label or '99-1' in href.lower() or 'ex99' in href.lower():
                         queue.append(urljoin(url,href))
+                # SEC exhibit numbers are often in a separate table cell from
+                # the descriptive link (RRX/QXO); never follow unrelated rows.
+                queue.extend(urljoin(url,href) for href in parser.exhibit_links)
             except Exception as exc:
                 result.append({'source':url,'status':'UNVERIFIED','reason':type(exc).__name__})
     return result
