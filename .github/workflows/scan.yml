@@ -30,6 +30,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.ref_name }}
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -106,6 +107,7 @@ jobs:
           PY
           if ! git diff --cached --quiet; then
             git commit -m "Persist source review inventory and validated review packets"
+            git pull --rebase --autostash origin "$BRANCH"
             git push origin "HEAD:$BRANCH"
           fi
       - name: Persist Gemini request budget even on failure
@@ -125,6 +127,7 @@ jobs:
           PY
           if ! git diff --cached --quiet; then
             git commit -m "Persist Gemini shadow request budget and public evidence"
+            git pull --rebase --autostash origin "$BRANCH"
             git push origin "HEAD:$BRANCH"
           fi
       - name: Persist research, raw evidence and paper ledger on current branch
@@ -137,6 +140,7 @@ jobs:
           git add input/
           if ! git diff --cached --quiet; then
             git commit -m "Persist NEXUS research, market evidence and paper ledger"
+            git pull --rebase --autostash origin "$BRANCH"
             git push origin "HEAD:$BRANCH"
           fi
       - name: Show phone-readable result
