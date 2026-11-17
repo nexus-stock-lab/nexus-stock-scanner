@@ -4,25 +4,48 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "883f94cd0608c7d6973c53c99e1095e7499a8812a5306630764d1cc7ac88f2cc",
   "financial_evidence_sha256": "f18111fce9e82e4a8327a9c6187beba51d84b0573091c0579ba0cb76ebcdab74",
-  "reviewed_at": null,
-  "generated_at": "2026-11-18T03:24:59.855229+09:00",
-  "reviewer_id": "unassigned",
+  "reviewed_at": "2026-11-18T07:03:01.889928+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/886346/000088634626000059/kaiform8kex991q326.htm",
+      "evidence_sha256": "7222673628bae9621d1cb0485b4d79ac91d2bd17f57e38d67618fdc6e0892f4a",
+      "excerpt": "We expect revenue of $1.195 to $1.210 billion in 2026, revised from our previous guidance of $1.190 to $1.210 billion",
+      "rationale": "同一2026通期の売上レンジをQ2とQ3のSEC決算原文で比較。下限引上げ、上限維持。EPSやセグメント売上を全社売上の代用にしていない。",
+      "published_at": "2026-11-03T21:44:55.000Z",
+      "checked_at": "2026-11-18T07:03:01.889928+09:00"
     },
     "decline_explanation_verified": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/886346/000088634626000055/kaiform09102026ex99_ceotra.htm",
+      "evidence_sha256": "daec907532b554208044b3499887c16de1724856202088540d3ed4ab9596bbd8",
+      "excerpt": "as part of a succession plan adopted by the board of directors.",
+      "rationale": "保存日足の最大下落は9月11日、前日比-6.963%。前日引け後9月10日の公式CEO承継発表と照合し、計画的な経営移行に伴う不確実性が下落要因と判断する。因果の関連付けは審査者の推論であり、企業による株価原因の断定でも全期間の下落の説明でもない。後継Colwellの社内経歴とPowellの会長移行、11月3日の売上・受注記録更新および見通し引上げを再読し、持続的な事業崩壊とは判断しない。",
+      "published_at": "2026-09-10T20:42:43.000Z",
+      "checked_at": "2026-11-18T07:03:01.889928+09:00"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/886346/000088634626000064/kai-20261003.htm",
+      "evidence_sha256": "3ba5d89ffe8451af0542096f913ac9fb2a02b6fcee58f99464a18f99e54a613d",
+      "excerpt": "our leverage ratio was 1.49 and we were in compliance with our debt covenants.",
+      "rationale": "10-Qの資金・負債・統制・訴訟・需要変動を再読。現金133.9百万ドル、9か月営業CF138.3百万ドル、レバレッジ1.49、契約遵守、開示統制有効を確認。借入455百万ドル、取得に伴うのれん・無形資産、関税・中国・資本財受注変動、通常訴訟および経営移行の残存リスクを保持する。好業績や警告語の不存在だけで判断せず、現在の重大毀損成立は確認しない。",
+      "published_at": "2026-11-10T19:15:12.000Z",
+      "checked_at": "2026-11-18T07:03:01.889928+09:00"
     },
     "next_earnings": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "source": "https://www.sec.gov/Archives/edgar/data/886346/000088634626000059/kaiform8kex991q326.htm",
+      "evidence_sha256": "7222673628bae9621d1cb0485b4d79ac91d2bd17f57e38d67618fdc6e0892f4a",
+      "excerpt": "November 3, 2026",
+      "rationale": "当日取得の公式News & Eventsで最新決算11月3日、次回予定欄More events are coming soon.を確認。次回正式日を推定せず未公表と明示し、既存の直近決算30暦日例外だけを適用。新しいresearch・新しいNY日への承認流用はしない。カレンダー取得証拠は2026-11-18-kai-calendar.json。",
+      "published_at": "2026-11-03T21:44:55.000Z",
+      "checked_at": "2026-11-18T07:03:01.889928+09:00",
+      "date": "",
+      "next_date_unannounced": true,
+      "last_earnings_date": "2026-11-03"
     }
   }
 }
