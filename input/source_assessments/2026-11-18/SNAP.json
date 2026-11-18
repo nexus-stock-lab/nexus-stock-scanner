@@ -4,25 +4,25 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "financial_evidence_sha256": "4e7ac6c95c49a9596bc030c626b88f825223650b44711dd23b9d2aee9dd482b0",
-  "reviewed_at": null,
-  "generated_at": "2026-11-18T09:04:20.556549+09:00",
-  "reviewer_id": "unassigned",
+  "reviewed_at": "2026-11-18T09:24:24.460918+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "Q3売上14.31%増と営業黒字だけでは売上見通し非下方修正の根拠にならない。同一対象四半期の公式売上予想比較が未完。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "11月5日14.02%下落に対応するNov4決算の広告・ユーザー・見通し要因の意味判断が未完。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "広告需要・競争・株式報酬/希薄化・負債と流動性の最新10-Q審査が未完。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "公式次回決算日又は未公表の明示確認が未完。"
     }
   }
 }
