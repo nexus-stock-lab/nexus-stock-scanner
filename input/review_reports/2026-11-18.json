@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "decision_time_jst": "2026-11-18T23:45:00+09:00",
-  "observed_at": "2026-11-18T09:31:53.251407+09:00",
+  "observed_at": "2026-11-18T09:35:23.572007+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -486,7 +486,7 @@
         "guidance_not_lowered: 保存済みAug19/Q2とMay20/Q1の同一FY会社売上見通し比較が未完。11月17日8-Kは幹部交代であり決算ガイダンスとして扱わない。",
         "decline_explanation_verified: 株価下落日に対応する公式需要・住宅市場・予想変更原因の追加突合が必要。",
         "no_material_business_impairment: 需要循環・買収統合・借入・幹部交代の最新公式資料リスク評価が未完。",
-        "next_earnings: 11月18日決算とする第三者推定があるが公式corporate.lowes.comで正式確認できるまで未承認。未確認の日付を確定しない。"
+        "next_earnings: 公式Lowe's Corporateの11月11日発表で11月18日09:00ETのQ3決算説明会を確認。第三者推定ではない。同日決算の既存除外基準を維持し承認しない。新決算公表後に売上見通し・財務/リスクを再審査する。検索経由の公式確認結果をinput/source_research/2026-11-18-LOW-earnings.jsonへ保存。直接HTTP取得は403であり未取得本文のハッシュ/公表時刻は作らない。4項目未完のため機械承認は行わない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
@@ -503,7 +503,7 @@
         },
         "next_earnings": {
           "value": null,
-          "rationale": "11月18日決算とする第三者推定があるが公式corporate.lowes.comで正式確認できるまで未承認。未確認の日付を確定しない。"
+          "rationale": "公式Lowe's Corporateの11月11日発表で11月18日09:00ETのQ3決算説明会を確認。第三者推定ではない。同日決算の既存除外基準を維持し承認しない。新決算公表後に売上見通し・財務/リスクを再審査する。検索経由の公式確認結果をinput/source_research/2026-11-18-LOW-earnings.jsonへ保存。直接HTTP取得は403であり未取得本文のハッシュ/公表時刻は作らない。4項目未完のため機械承認は行わない。"
         }
       },
       "official_documents": [
