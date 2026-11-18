@@ -4,25 +4,30 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "financial_evidence_sha256": "bbcc7b51f4b14a85aa0fc753fa87d417856fa30f3107fc629fcef155525ecef7",
-  "reviewed_at": null,
-  "generated_at": "2026-11-18T09:04:17.299575+09:00",
-  "reviewer_id": "unassigned",
+  "reviewed_at": "2026-11-18T09:24:24.460918+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "Q3通期売上730〜760百万ドル据置を確認したが前回同一レンジとの厳密比較は未完。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "9月3日44.03%下落に対するPhase3不達の具体的発表日照合は未完。裁判勧誘記事を公式原因の代用にしない。"
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "rationale": "最新10-QがAngelman Phase3の主要・副次評価項目不達とプログラム縮小終了を明記。主要後期開発資産の喪失を一時的需給悪化として扱わず重大事業毀損ありと判定。Q3承認申請/新製品の好材料も当該試験成功に置換しない。",
+      "source": "https://www.sec.gov/Archives/edgar/data/1515673/000119312526445718/rare-20260930.htm",
+      "evidence_sha256": "4a5baa0c804e8d1b169993977ece2ba505baa8e9766ae3a62d2328642bfeb71b",
+      "excerpt": "the Phase 3 study for Angelman syndrome did not achieve its primary or secondary endpoints, therefore the Company is in the process of winding down the program.",
+      "published_at": "2026-11-03T23:07:13.000Z",
+      "checked_at": "2026-11-18T09:24:24.460918+09:00"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "公式次回決算日又は未公表確認は未完。重大事業毀損不通過は確定し、未確認項目は未確認のまま保持。"
     }
   }
 }
