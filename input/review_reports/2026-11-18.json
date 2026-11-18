@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "decision_time_jst": "2026-11-18T23:45:00+09:00",
-  "observed_at": "2026-11-19T03:16:58.626799+09:00",
+  "observed_at": "2026-11-19T06:22:18.429500+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -757,52 +757,12 @@
     },
     {
       "symbol": "TNC",
-      "status": "PASS",
+      "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "b085c68e5172d93330f863ace7d417c4eb24e92b0485a67790d29181d85e8c5e",
       "reasons": [
-        "Existing intake and earnings policy verified"
+        "ValueError: no future checkpoint in this session"
       ],
-      "assertions": {
-        "guidance_not_lowered": {
-          "value": true,
-          "rationale": "2026通期会社売上Q4初回1,240〜1,280百万ドル→Q2 1,270〜1,310→Q3同レンジ維持。EPS/EBITDA見通しはQ2に下方修正されており隠さない。既存の売上見通し基準を変更しない。",
-          "source": "https://www.sec.gov/Archives/edgar/data/97134/000009713426000027/tnc-20261102xexx991.htm",
-          "evidence_sha256": "75e83aaabe3d3f0c79256cabe9f3694cefec7667f70e29612e89d91701b39156",
-          "excerpt": "2026 Guidance Ranges Net sales $1,270 - $1,310",
-          "published_at": "2026-11-02T21:34:11.000Z",
-          "checked_at": "2026-11-18T09:24:24.460918+09:00"
-        },
-        "decline_explanation_verified": {
-          "value": true,
-          "rationale": "保存日足Feb24前日比-23.43%は前NY日引け後の公式ERP生産停止・Q4売上11.3%減・EPS悪化開示に整合する。Aug6の11.86%下落もAug5 ERP/EMEA費用とEBITDA引下げに整合。関連付けは審査者推論で企業が株価原因を断定したものではない。最新Q3の受注9.5%増・売上6.2%増・EBITDA前四半期35.3→48.8百万ドル回復を確認し、恒久的事業崩壊とは判断しない。",
-          "source": "https://www.sec.gov/Archives/edgar/data/97134/000009713426000004/tnc-20260223xexx991.htm",
-          "evidence_sha256": "19dab54022787f3f49b71306050c3daa51f251670ba180bacd427d689c11d877",
-          "excerpt": "performance fell short of expectations due to production disruptions during the North America ERP transition",
-          "published_at": "2026-02-24T00:02:30.000Z",
-          "checked_at": "2026-11-18T09:24:24.460918+09:00"
-        },
-        "no_material_business_impairment": {
-          "value": true,
-          "rationale": "最新10-Q：現金75.3百万ドル、未使用信用枠289.4、債務358.7、12か月返済0.4、covenant遵守、統制有効。9か月営業CF14.3(前年50.8)と運転資本増、ERP/部品制約、EMEA/APAC需要軟化、OWT特許敗訴引当20.5+利息0.5、控訴/20.3保証、CFO退任計画を残存リスクとして評価。利益回復・流動性を含む総合判断で現時点の重大会計/資金繰り/継続事業毀損成立は認めない。警告語不存在や非現金だけの判断ではない。",
-          "source": "https://www.sec.gov/Archives/edgar/data/97134/000009713426000029/tnc-20260930.htm",
-          "evidence_sha256": "7d97560d853970c2b62fc1ebe3023a34de5d15f09e2d78c0b784d54df650b4cb",
-          "excerpt": "We were in compliance with the above financial covenants as of September 30, 2026.",
-          "published_at": "2026-11-03T18:03:07.000Z",
-          "checked_at": "2026-11-18T09:24:24.460918+09:00"
-        },
-        "next_earnings": {
-          "value": true,
-          "rationale": "公式IRの2026全21ニュースとNov2026〜Feb2027カレンダーを実ブラウザ確認。次回決算の正式日掲載なし、最終発表Nov2を確認。既存30暦日例外の範囲内。新しい発表があれば3営業日前除外を優先し再審査。観測証拠input/source_research/2026-11-18-TNC-calendar.json。",
-          "source": "https://www.sec.gov/Archives/edgar/data/97134/000009713426000027/tnc-20261102.htm",
-          "evidence_sha256": "17d5a95cf605ecbfd7557daf58330390e494a95f05cc4c25af888c9bbcf4b551",
-          "excerpt": "November 2, 2026",
-          "published_at": "2026-11-02T21:34:11.000Z",
-          "checked_at": "2026-11-18T09:24:24.460918+09:00",
-          "date": "",
-          "next_date_unannounced": true,
-          "last_earnings_date": "2026-11-02"
-        }
-      },
+      "assertions": {},
       "official_documents": [
         {
           "source": "https://www.sec.gov/Archives/edgar/data/97134/000009713426000027/tnc-20261102.htm",
@@ -862,8 +822,7 @@
         "audit": [],
         "registry_version": "official_ir_20261029_v1",
         "status": "IR_SOURCE_NOT_CONFIGURED"
-      },
-      "packet_sha256": "99c0f65b5c6f26928b5293d07f5434a9022db03623589f697dc4a5ea67098101"
+      }
     },
     {
       "symbol": "TSCO",
@@ -968,9 +927,9 @@
   "remote_verified_count": 0,
   "remote_verification": "NOT_PERFORMED_BY_THIS_LOCAL_PROCESS",
   "counts": {
-    "PASS": 1,
+    "PASS": 0,
     "FAIL": 2,
-    "INSUFFICIENT_EVIDENCE": 7
+    "INSUFFICIENT_EVIDENCE": 8
   },
   "financial_pass_count": 10
 }
