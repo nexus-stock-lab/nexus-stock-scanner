@@ -4,25 +4,30 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "financial_evidence_sha256": "42ca34d3cdccf7529ae6c0f6e32a46f0fab27659e24450b882ad269dfda5e323",
-  "reviewed_at": null,
-  "generated_at": "2026-11-18T09:04:26.401491+09:00",
-  "reviewer_id": "unassigned",
+  "reviewed_at": "2026-11-18T09:24:24.460918+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "rationale": "2026通期会社売上成長予想はQ1 +4〜6%からQ2 +2.5〜3.5%へ引下げ、Q3でも低いレンジを維持。最新の据置だけで過去の未回復下方修正を通過扱いしない。",
+      "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000069/ex991-q32026earningsrelease.htm",
+      "evidence_sha256": "df0d8a5206399e9abb34c7f5b945eb7bbb691c8539c813586d9065ec5b4d08bb",
+      "excerpt": "Net Sales +2.5% to +3.5%",
+      "published_at": "2026-10-22T11:26:41.000Z",
+      "checked_at": "2026-11-18T09:24:24.460918+09:00"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "4月21日11.69%下落と当時Q1の来店数減・固定費レバレッジ・関税を追加突合。July23下方修正をApr21価格の直接原因と偽らない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "Petsense閉店・減損、営業CF減少と統制/資金評価は一部確認に留まる。guidance不通過のため承認不可。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "次回公式決算日未確認。guidance不通過は確定し、未確認項目は未確認のまま保持。"
     }
   }
 }
