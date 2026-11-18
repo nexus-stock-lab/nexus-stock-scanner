@@ -4,25 +4,25 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "financial_evidence_sha256": "74373f60ba2042d3f5c54516fd28eeadee94467fd9eaf78e8e6bd8d571c87a5a",
-  "reviewed_at": null,
-  "generated_at": "2026-11-18T09:03:54.180933+09:00",
-  "reviewer_id": "unassigned",
+  "reviewed_at": "2026-11-18T09:24:24.460918+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "同一期間の会社連結売上予想の比較可能な公式根拠が不足。Q2/Q3増収・利益率目標達成を総売上予想の代用にしない。保存済み11月18日followupを再利用し、予想有無の確認を継続。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "7月30日15.44%下落について、Q2運転資本・営業CF減少と還元負担の関係が未解決。当該公式決算の追加突合へ引継ぎ。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "最新10-Qの流動性・信用枠・運転資本と株主還元の総合判断が未完。取得済み本文を再利用し未確認箇所を読む。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "公式次回決算日又は直近決算30日例外の明示確認が未完。"
     }
   }
 }
