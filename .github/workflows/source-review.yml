@@ -61,6 +61,7 @@ jobs:
           changed=git('diff','--cached','--name-only').decode().splitlines()
           if changed:
               subprocess.run(['git','commit','-m','Persist official source review evidence and verified approvals'],check=True)
+              subprocess.run(['git','pull','--rebase','--autostash','origin',os.environ['BRANCH']],check=True)
               subprocess.run(['git','push','origin','HEAD:'+os.environ['BRANCH']],check=True)
           head=git('rev-parse','HEAD').decode().strip()
           subprocess.run(['git','fetch','origin',os.environ['BRANCH']],check=True)
