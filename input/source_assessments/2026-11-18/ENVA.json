@@ -4,25 +4,25 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "financial_evidence_sha256": "7296fc0ef516dfb6c3d3c9b6034e5497dc73c3d4681b731d9264e6b16e8c9bb6",
-  "reviewed_at": null,
-  "generated_at": "2026-11-18T09:04:01.996215+09:00",
-  "reviewer_id": "unassigned",
+  "reviewed_at": "2026-11-18T09:24:24.460918+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "Q3売上25.73%増は予想非下方修正を意味しない。Q2/Q3同一期間会社売上予想の比較が未完。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "9月15日23.43%下落について当時の公式原因資料との突合が未完。該当日付のSEC/IRを優先。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "信用損失・規制・資金調達/証券化と流動性の最新10-Q評価が未完。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "公式次回決算日又は未公表の明示確認が未完。"
     }
   }
 }
