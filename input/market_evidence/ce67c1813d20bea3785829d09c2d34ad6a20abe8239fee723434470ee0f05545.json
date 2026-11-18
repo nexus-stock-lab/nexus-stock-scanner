@@ -1,0 +1,66 @@
+{
+  "clear": true,
+  "actions": [],
+  "pages": [
+    {
+      "corporate_actions": {
+        "cash_dividends": [
+          {
+            "cusip": "880345103",
+            "ex_date": "2025-11-28",
+            "foreign": false,
+            "id": "9b6d6e03-74a9-42e9-a669-10b99be63da1",
+            "payable_date": "2025-12-15",
+            "process_date": "2025-12-15",
+            "rate": 0.31,
+            "record_date": "2025-11-28",
+            "special": false,
+            "symbol": "TNC"
+          },
+          {
+            "cusip": "880345103",
+            "ex_date": "2026-02-27",
+            "foreign": false,
+            "id": "05700b2f-2e05-4cd0-84d2-2c167337acc5",
+            "payable_date": "2026-03-16",
+            "process_date": "2026-03-16",
+            "rate": 0.31,
+            "record_date": "2026-02-27",
+            "special": false,
+            "symbol": "TNC"
+          },
+          {
+            "cusip": "880345103",
+            "ex_date": "2026-05-29",
+            "foreign": false,
+            "id": "82e590de-f645-4875-84b4-8a951a7b1a20",
+            "payable_date": "2026-06-15",
+            "process_date": "2026-06-15",
+            "rate": 0.31,
+            "record_date": "2026-05-29",
+            "special": false,
+            "symbol": "TNC"
+          },
+          {
+            "cusip": "880345103",
+            "ex_date": "2026-08-31",
+            "foreign": false,
+            "id": "8c1e18e8-8330-4b5f-bb9b-5ed72a46ce84",
+            "payable_date": "2026-09-15",
+            "process_date": "2026-09-15",
+            "rate": 0.31,
+            "record_date": "2026-08-31",
+            "special": false,
+            "symbol": "TNC"
+          }
+        ]
+      },
+      "next_page_token": null
+    }
+  ],
+  "asof": "2026-11-19T03:45:00+09:00",
+  "complete": true,
+  "source": "https://data.alpaca.markets/v1/corporate-actions",
+  "retrieved_at": "2026-11-18T21:22:13.401531+00:00",
+  "warning": "Corporate-action publication may lag. Reported actions require verified split-basis reconciliation or a hold."
+}
