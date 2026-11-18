@@ -4,25 +4,25 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "financial_evidence_sha256": "ddc23b8c3face2697a462458418c6a1170ab552a9ed33998002057f808b1bc35",
-  "reviewed_at": null,
-  "generated_at": "2026-11-18T09:03:57.990716+09:00",
-  "reviewer_id": "unassigned",
+  "reviewed_at": "2026-11-18T09:24:24.460918+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "Q3とQ2の会社売上見通しを比較する根拠不足。既存の中期店舗/小売売上目標を連結売上予想の代用にしない。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "4月27日8.84%下落の公式当時決算・ガイダンスの追加突合が必要。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "フランチャイズ依存、借入・証券化債務、需要/価格と営業CFの最新リスク評価未完。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "公式ir.dominos.com/events-and-presentations/eventsで次回正式日を確認する。前回決算から30日超のため未公表例外を自動適用しない。"
     }
   }
 }
