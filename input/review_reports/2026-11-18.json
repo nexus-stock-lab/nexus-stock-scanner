@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "decision_time_jst": "2026-11-18T23:45:00+09:00",
-  "observed_at": "2026-11-18T09:29:39.404337+09:00",
+  "observed_at": "2026-11-18T09:31:53.251407+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -188,27 +188,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "7296fc0ef516dfb6c3d3c9b6034e5497dc73c3d4681b731d9264e6b16e8c9bb6",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: Q3売上25.73%増は予想非下方修正を意味しない。Q2/Q3同一期間会社売上予想の比較が未完。",
+        "decline_explanation_verified: 9月15日23.43%下落について当時の公式原因資料との突合が未完。該当日付のSEC/IRを優先。",
+        "no_material_business_impairment: 信用損失・規制・資金調達/証券化と流動性の最新10-Q評価が未完。",
+        "next_earnings: 公式次回決算日又は未公表の明示確認が未完。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "Q3売上25.73%増は予想非下方修正を意味しない。Q2/Q3同一期間会社売上予想の比較が未完。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "9月15日23.43%下落について当時の公式原因資料との突合が未完。該当日付のSEC/IRを優先。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "信用損失・規制・資金調達/証券化と流動性の最新10-Q評価が未完。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "公式次回決算日又は未公表の明示確認が未完。"
         }
       },
       "official_documents": [
@@ -369,27 +369,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "41b22c7e2b24115b1bcde9f4ec2e5f8bec48b06b6777db739c4debfda5e5971a",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 過去の売上見通し引上げ審査は保存済み。再取得された公式本文ハッシュが変化したため本文の意味同一性を再確認するまで新規承認しない。",
+        "decline_explanation_verified: 既存保有LINCの過去審査を再利用するが新researchへの承認付替えは行わない。",
+        "no_material_business_impairment: 既存仮想建玉は1件。#115でSIP追跡がconflicting trade identityとして安全停止。価格データの識別衝突を別途解消し、台帳は手動編集しない。",
+        "next_earnings: 最新公式カレンダーの明示確認が必要。LINCを新規2件目として数えない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "過去の売上見通し引上げ審査は保存済み。再取得された公式本文ハッシュが変化したため本文の意味同一性を再確認するまで新規承認しない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "既存保有LINCの過去審査を再利用するが新researchへの承認付替えは行わない。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "既存仮想建玉は1件。#115でSIP追跡がconflicting trade identityとして安全停止。価格データの識別衝突を別途解消し、台帳は手動編集しない。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "最新公式カレンダーの明示確認が必要。LINCを新規2件目として数えない。"
         }
       },
       "official_documents": [
@@ -483,27 +483,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "4bc1bc077a895e633e636082b4ab1a52d6494e5cdac4158742d31ca36fcb850c",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 保存済みAug19/Q2とMay20/Q1の同一FY会社売上見通し比較が未完。11月17日8-Kは幹部交代であり決算ガイダンスとして扱わない。",
+        "decline_explanation_verified: 株価下落日に対応する公式需要・住宅市場・予想変更原因の追加突合が必要。",
+        "no_material_business_impairment: 需要循環・買収統合・借入・幹部交代の最新公式資料リスク評価が未完。",
+        "next_earnings: 11月18日決算とする第三者推定があるが公式corporate.lowes.comで正式確認できるまで未承認。未確認の日付を確定しない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "保存済みAug19/Q2とMay20/Q1の同一FY会社売上見通し比較が未完。11月17日8-Kは幹部交代であり決算ガイダンスとして扱わない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "株価下落日に対応する公式需要・住宅市場・予想変更原因の追加突合が必要。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "需要循環・買収統合・借入・幹部交代の最新公式資料リスク評価が未完。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "11月18日決算とする第三者推定があるが公式corporate.lowes.comで正式確認できるまで未承認。未確認の日付を確定しない。"
         }
       },
       "official_documents": [
