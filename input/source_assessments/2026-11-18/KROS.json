@@ -4,25 +4,25 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "financial_evidence_sha256": "40484abdd13d587631ac8ed2a8a01b9318d62dedb78a3eda63d7ef775a8309a4",
-  "reviewed_at": null,
-  "generated_at": "2026-11-18T09:04:05.129116+09:00",
-  "reviewer_id": "unassigned",
+  "reviewed_at": "2026-11-18T09:24:24.460918+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "最新11月16日Takedaマイルストーン20百万ドルと2029年までの資金見通しを確認。ただしライセンス収入と継続売上の比較基準を明示した同一期間の会社売上予想根拠が不足。次はNov16開示とQ3の売上予想有無を追加確認。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "3月5日14.96%・11月5日12.74%下落の当時の公式原因資料との突合未完。次は当該決算・治験開示だけを確認。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "rinvatercept/elriterceptの試験・提携依存、過去中止プログラムの現在への影響の評価未完。資金年数だけで重大毀損なしにしない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "公式次回決算日又は未公表の明示確認が未完。"
     }
   }
 }
