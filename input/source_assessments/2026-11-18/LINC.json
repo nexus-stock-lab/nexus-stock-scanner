@@ -4,25 +4,25 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "financial_evidence_sha256": "41b22c7e2b24115b1bcde9f4ec2e5f8bec48b06b6777db739c4debfda5e5971a",
-  "reviewed_at": null,
-  "generated_at": "2026-11-18T09:04:09.619044+09:00",
-  "reviewer_id": "unassigned",
+  "reviewed_at": "2026-11-18T09:24:24.460918+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "過去の売上見通し引上げ審査は保存済み。再取得された公式本文ハッシュが変化したため本文の意味同一性を再確認するまで新規承認しない。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既存保有LINCの過去審査を再利用するが新researchへの承認付替えは行わない。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "既存仮想建玉は1件。#115でSIP追跡がconflicting trade identityとして安全停止。価格データの識別衝突を別途解消し、台帳は手動編集しない。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "最新公式カレンダーの明示確認が必要。LINCを新規2件目として数えない。"
     }
   }
 }
