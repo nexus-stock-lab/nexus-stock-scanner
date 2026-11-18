@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "decision_time_jst": "2026-11-18T23:45:00+09:00",
-  "observed_at": "2026-11-18T09:27:48.451540+09:00",
+  "observed_at": "2026-11-18T09:29:39.404337+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -10,27 +10,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "74373f60ba2042d3f5c54516fd28eeadee94467fd9eaf78e8e6bd8d571c87a5a",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 同一期間の会社連結売上予想の比較可能な公式根拠が不足。Q2/Q3増収・利益率目標達成を総売上予想の代用にしない。保存済み11月18日followupを再利用し、予想有無の確認を継続。",
+        "decline_explanation_verified: 7月30日15.44%下落について、Q2運転資本・営業CF減少と還元負担の関係が未解決。当該公式決算の追加突合へ引継ぎ。",
+        "no_material_business_impairment: 最新10-Qの流動性・信用枠・運転資本と株主還元の総合判断が未完。取得済み本文を再利用し未確認箇所を読む。",
+        "next_earnings: 公式次回決算日又は直近決算30日例外の明示確認が未完。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "同一期間の会社連結売上予想の比較可能な公式根拠が不足。Q2/Q3増収・利益率目標達成を総売上予想の代用にしない。保存済み11月18日followupを再利用し、予想有無の確認を継続。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "7月30日15.44%下落について、Q2運転資本・営業CF減少と還元負担の関係が未解決。当該公式決算の追加突合へ引継ぎ。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "最新10-Qの流動性・信用枠・運転資本と株主還元の総合判断が未完。取得済み本文を再利用し未確認箇所を読む。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "公式次回決算日又は直近決算30日例外の明示確認が未完。"
         }
       },
       "official_documents": [
@@ -99,27 +99,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "ddc23b8c3face2697a462458418c6a1170ab552a9ed33998002057f808b1bc35",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: Q3とQ2の会社売上見通しを比較する根拠不足。既存の中期店舗/小売売上目標を連結売上予想の代用にしない。",
+        "decline_explanation_verified: 4月27日8.84%下落の公式当時決算・ガイダンスの追加突合が必要。",
+        "no_material_business_impairment: フランチャイズ依存、借入・証券化債務、需要/価格と営業CFの最新リスク評価未完。",
+        "next_earnings: 公式ir.dominos.com/events-and-presentations/eventsで次回正式日を確認する。前回決算から30日超のため未公表例外を自動適用しない。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "Q3とQ2の会社売上見通しを比較する根拠不足。既存の中期店舗/小売売上目標を連結売上予想の代用にしない。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "4月27日8.84%下落の公式当時決算・ガイダンスの追加突合が必要。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "フランチャイズ依存、借入・証券化債務、需要/価格と営業CFの最新リスク評価未完。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "公式ir.dominos.com/events-and-presentations/eventsで次回正式日を確認する。前回決算から30日超のため未公表例外を自動適用しない。"
         }
       },
       "official_documents": [
@@ -277,27 +277,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "40484abdd13d587631ac8ed2a8a01b9318d62dedb78a3eda63d7ef775a8309a4",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 最新11月16日Takedaマイルストーン20百万ドルと2029年までの資金見通しを確認。ただしライセンス収入と継続売上の比較基準を明示した同一期間の会社売上予想根拠が不足。次はNov16開示とQ3の売上予想有無を追加確認。",
+        "decline_explanation_verified: 3月5日14.96%・11月5日12.74%下落の当時の公式原因資料との突合未完。次は当該決算・治験開示だけを確認。",
+        "no_material_business_impairment: rinvatercept/elriterceptの試験・提携依存、過去中止プログラムの現在への影響の評価未完。資金年数だけで重大毀損なしにしない。",
+        "next_earnings: 公式次回決算日又は未公表の明示確認が未完。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "最新11月16日Takedaマイルストーン20百万ドルと2029年までの資金見通しを確認。ただしライセンス収入と継続売上の比較基準を明示した同一期間の会社売上予想根拠が不足。次はNov16開示とQ3の売上予想有無を追加確認。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "3月5日14.96%・11月5日12.74%下落の当時の公式原因資料との突合未完。次は当該決算・治験開示だけを確認。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "rinvatercept/elriterceptの試験・提携依存、過去中止プログラムの現在への影響の評価未完。資金年数だけで重大毀損なしにしない。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "公式次回決算日又は未公表の明示確認が未完。"
         }
       },
       "official_documents": [
@@ -569,30 +569,35 @@
     },
     {
       "symbol": "RARE",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "bbcc7b51f4b14a85aa0fc753fa87d417856fa30f3107fc629fcef155525ecef7",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "no_material_business_impairment: 最新10-QがAngelman Phase3の主要・副次評価項目不達とプログラム縮小終了を明記。主要後期開発資産の喪失を一時的需給悪化として扱わず重大事業毀損ありと判定。Q3承認申請/新製品の好材料も当該試験成功に置換しない。",
+        "guidance_not_lowered: Q3通期売上730〜760百万ドル据置を確認したが前回同一レンジとの厳密比較は未完。",
+        "decline_explanation_verified: 9月3日44.03%下落に対するPhase3不達の具体的発表日照合は未完。裁判勧誘記事を公式原因の代用にしない。",
+        "next_earnings: 公式次回決算日又は未公表確認は未完。重大事業毀損不通過は確定し、未確認項目は未確認のまま保持。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "Q3通期売上730〜760百万ドル据置を確認したが前回同一レンジとの厳密比較は未完。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "9月3日44.03%下落に対するPhase3不達の具体的発表日照合は未完。裁判勧誘記事を公式原因の代用にしない。"
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": false,
+          "rationale": "最新10-QがAngelman Phase3の主要・副次評価項目不達とプログラム縮小終了を明記。主要後期開発資産の喪失を一時的需給悪化として扱わず重大事業毀損ありと判定。Q3承認申請/新製品の好材料も当該試験成功に置換しない。",
+          "source": "https://www.sec.gov/Archives/edgar/data/1515673/000119312526445718/rare-20260930.htm",
+          "evidence_sha256": "4a5baa0c804e8d1b169993977ece2ba505baa8e9766ae3a62d2328642bfeb71b",
+          "excerpt": "the Phase 3 study for Angelman syndrome did not achieve its primary or secondary endpoints, therefore the Company is in the process of winding down the program.",
+          "published_at": "2026-11-03T23:07:13.000Z",
+          "checked_at": "2026-11-18T09:24:24.460918+09:00"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "公式次回決算日又は未公表確認は未完。重大事業毀損不通過は確定し、未確認項目は未確認のまま保持。"
         }
       },
       "official_documents": [
@@ -686,27 +691,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "4e7ac6c95c49a9596bc030c626b88f825223650b44711dd23b9d2aee9dd482b0",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: Q3売上14.31%増と営業黒字だけでは売上見通し非下方修正の根拠にならない。同一対象四半期の公式売上予想比較が未完。",
+        "decline_explanation_verified: 11月5日14.02%下落に対応するNov4決算の広告・ユーザー・見通し要因の意味判断が未完。",
+        "no_material_business_impairment: 広告需要・競争・株式報酬/希薄化・負債と流動性の最新10-Q審査が未完。",
+        "next_earnings: 公式次回決算日又は未公表の明示確認が未完。"
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "Q3売上14.31%増と営業黒字だけでは売上見通し非下方修正の根拠にならない。同一対象四半期の公式売上予想比較が未完。"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "11月5日14.02%下落に対応するNov4決算の広告・ユーザー・見通し要因の意味判断が未完。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "広告需要・競争・株式報酬/希薄化・負債と流動性の最新10-Q審査が未完。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "公式次回決算日又は未公表の明示確認が未完。"
         }
       },
       "official_documents": [
@@ -775,7 +780,7 @@
       "status": "PASS",
       "financial_evidence_sha256": "b085c68e5172d93330f863ace7d417c4eb24e92b0485a67790d29181d85e8c5e",
       "reasons": [
-        "All four explicit assertions validated"
+        "Existing intake and earnings policy verified"
       ],
       "assertions": {
         "guidance_not_lowered": {
@@ -878,35 +883,39 @@
         "registry_version": "official_ir_20261029_v1",
         "status": "IR_SOURCE_NOT_CONFIGURED"
       },
-      "packet_sha256": "99c0f65b5c6f26928b5293d07f5434a9022db03623589f697dc4a5ea67098101",
-      "saved_path": "input/review_inbox/2026-11-18/TNC.json"
+      "packet_sha256": "99c0f65b5c6f26928b5293d07f5434a9022db03623589f697dc4a5ea67098101"
     },
     {
       "symbol": "TSCO",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "42ca34d3cdccf7529ae6c0f6e32a46f0fab27659e24450b882ad269dfda5e323",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: 2026通期会社売上成長予想はQ1 +4〜6%からQ2 +2.5〜3.5%へ引下げ、Q3でも低いレンジを維持。最新の据置だけで過去の未回復下方修正を通過扱いしない。",
+        "decline_explanation_verified: 4月21日11.69%下落と当時Q1の来店数減・固定費レバレッジ・関税を追加突合。July23下方修正をApr21価格の直接原因と偽らない。",
+        "no_material_business_impairment: Petsense閉店・減損、営業CF減少と統制/資金評価は一部確認に留まる。guidance不通過のため承認不可。",
+        "next_earnings: 次回公式決算日未確認。guidance不通過は確定し、未確認項目は未確認のまま保持。"
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": false,
+          "rationale": "2026通期会社売上成長予想はQ1 +4〜6%からQ2 +2.5〜3.5%へ引下げ、Q3でも低いレンジを維持。最新の据置だけで過去の未回復下方修正を通過扱いしない。",
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000069/ex991-q32026earningsrelease.htm",
+          "evidence_sha256": "df0d8a5206399e9abb34c7f5b945eb7bbb691c8539c813586d9065ec5b4d08bb",
+          "excerpt": "Net Sales +2.5% to +3.5%",
+          "published_at": "2026-10-22T11:26:41.000Z",
+          "checked_at": "2026-11-18T09:24:24.460918+09:00"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "4月21日11.69%下落と当時Q1の来店数減・固定費レバレッジ・関税を追加突合。July23下方修正をApr21価格の直接原因と偽らない。"
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "Petsense閉店・減損、営業CF減少と統制/資金評価は一部確認に留まる。guidance不通過のため承認不可。"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "次回公式決算日未確認。guidance不通過は確定し、未確認項目は未確認のまま保持。"
         }
       },
       "official_documents": [
@@ -974,14 +983,14 @@
       }
     }
   ],
-  "saved_count": 1,
-  "local_readback_count": 1,
+  "saved_count": 0,
+  "local_readback_count": 0,
   "remote_verified_count": 0,
   "remote_verification": "NOT_PERFORMED_BY_THIS_LOCAL_PROCESS",
   "counts": {
     "PASS": 1,
-    "FAIL": 0,
-    "INSUFFICIENT_EVIDENCE": 9
+    "FAIL": 2,
+    "INSUFFICIENT_EVIDENCE": 7
   },
   "financial_pass_count": 10
 }
