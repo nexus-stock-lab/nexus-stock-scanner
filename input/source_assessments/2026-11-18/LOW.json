@@ -4,7 +4,7 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "financial_evidence_sha256": "4bc1bc077a895e633e636082b4ab1a52d6494e5cdac4158742d31ca36fcb850c",
-  "reviewed_at": "2026-11-18T09:24:24.460918+09:00",
+  "reviewed_at": "2026-11-18T00:33:16.069331+00:00",
   "reviewer_id": "codex-delegated",
   "delegation_id": "owner_20261107_paper_only",
   "assertions": {
@@ -22,7 +22,7 @@
     },
     "next_earnings": {
       "value": null,
-      "rationale": "11月18日決算とする第三者推定があるが公式corporate.lowes.comで正式確認できるまで未承認。未確認の日付を確定しない。"
+      "rationale": "公式Lowe's Corporateの11月11日発表で11月18日09:00ETのQ3決算説明会を確認。第三者推定ではない。同日決算の既存除外基準を維持し承認しない。新決算公表後に売上見通し・財務/リスクを再審査する。検索経由の公式確認結果をinput/source_research/2026-11-18-LOW-earnings.jsonへ保存。直接HTTP取得は403であり未取得本文のハッシュ/公表時刻は作らない。4項目未完のため機械承認は行わない。"
     }
   }
 }
