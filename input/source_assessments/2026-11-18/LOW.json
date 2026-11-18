@@ -4,25 +4,25 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "5c5dc7cdfa5ff2aa4cd4d51cba51c7ffc5b2538c1d631b162924258593420414",
   "financial_evidence_sha256": "4bc1bc077a895e633e636082b4ab1a52d6494e5cdac4158742d31ca36fcb850c",
-  "reviewed_at": null,
-  "generated_at": "2026-11-18T09:04:12.651259+09:00",
-  "reviewer_id": "unassigned",
+  "reviewed_at": "2026-11-18T09:24:24.460918+09:00",
+  "reviewer_id": "codex-delegated",
+  "delegation_id": "owner_20261107_paper_only",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "保存済みAug19/Q2とMay20/Q1の同一FY会社売上見通し比較が未完。11月17日8-Kは幹部交代であり決算ガイダンスとして扱わない。"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "株価下落日に対応する公式需要・住宅市場・予想変更原因の追加突合が必要。"
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "需要循環・買収統合・借入・幹部交代の最新公式資料リスク評価が未完。"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "11月18日決算とする第三者推定があるが公式corporate.lowes.comで正式確認できるまで未承認。未確認の日付を確定しない。"
     }
   }
 }
