@@ -130,7 +130,8 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
             ir=[x for x in refs if x not in sec]
             bundle=public_bundle(symbol,{**f,'official_documents':sec or f.get('official_documents',[])},
                 session_slots(at.astimezone(__import__('entry_schedule').NY).date())[-1],current,root,
-                ir_documents=ir or research.get('issuer_ir',{}).get(symbol,{}).get('documents',[]))
+                ir_documents=ir or research.get('issuer_ir',{}).get(symbol,{}).get('documents',[]),
+                deduplicate=True)
             key=digest({'version':VERSION_ID,'bundle':bundle,'financial':f['evidence_sha256'],
                         'research':research['snapshot_sha256']})
             cache=root/'automated_review_cache'/(key+'.json')

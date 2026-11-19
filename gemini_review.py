@@ -75,12 +75,12 @@ def write_json(path, value):
     temp.write_text(json.dumps(value,ensure_ascii=False,indent=2),encoding='utf-8');temp.replace(path)
 
 
-def public_bundle(symbol, financials, at, now, root, ir_documents=()):
+def public_bundle(symbol, financials, at, now, root, ir_documents=(), *, deduplicate=False):
     if not re.fullmatch(r'[A-Z][A-Z0-9.]{0,14}',symbol) or financials['symbol']!=symbol:
         raise ReviewBlocked('SYMBOL_MISMATCH')
     if timestamp_ns(now.isoformat())>timestamp_ns(at.isoformat()):
         raise ReviewBlocked('DECISION_ALREADY_PASSED')
-    cik=str(int(financials['cik']));docs=[];seen=set()
+    cik=str(int(financials['cik']));docs=[];seen=set();contents=set()
     if not 0<int(cik)<10_000_000_000:raise ReviewBlocked('INVALID_SEC_ENTITY')
     tagged=[(d,False) for d in financials.get('official_documents',[])]+[(d,True) for d in ir_documents]
     for item,is_ir in tagged:
@@ -106,6 +106,12 @@ def public_bundle(symbol, financials, at, now, root, ir_documents=()):
         if not timestamp_ns(d['published_at'])<=timestamp_ns(d['retrieved_at'])<=timestamp_ns(now.isoformat()):
             raise ReviewBlocked('SOURCE_TIME_INVALID')
         if not isinstance(d['text'],str) or not d['text'].strip():raise ReviewBlocked('EMPTY_DOCUMENT')
+        # Recollection changes receipt hashes, not necessarily the public text.
+        # Validate every receipt first; only identical source/publication/text
+        # triples can share one model citation. Distinct revisions stay intact.
+        content=(d['source'],d['published_at'],d['text'])
+        if deduplicate and content in contents:continue
+        contents.add(content)
         # Explicit whitelist: no financial account, ledger, email, images or environment values.
         docs.append({'document_id':sha,'source':d['source'],'published_at':d['published_at'],'text':d['text']})
     if not docs:raise ReviewBlocked('NO_VERIFIED_PUBLIC_DOCUMENTS')
