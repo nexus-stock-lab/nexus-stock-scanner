@@ -1,0 +1,36 @@
+{
+  "assessment": {
+    "symbol": "CELH",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents do not contain explicit quantitative revenue guidance or explicit statements reaffirming or lowering prior revenue guidance.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The documents mention a securities class action alleging stock price declines following reports of marketing and safety inquiries, but do not contain company confirmation or verified evidence establishing market/sector or temporary factors as the cause of a stock decline.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied filings are interim reports (Form 10-Q and Form 8-K) and do not include the full Annual Report or comprehensive disclosures required to completely rule out bankruptcy, going-concern doubts, major accounting problems, or guidance cuts across all required scopes.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "There is no announcement in the provided documents stating the specific date for the next future earnings release.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "f378e8f24bfb40e99d7f44c446e7273de7e03f9f5a0a766d61442d4a6cad667f"
+}

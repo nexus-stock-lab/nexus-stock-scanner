@@ -1,0 +1,58 @@
+{
+  "assessment": {
+    "symbol": "BLBD",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "SUPPORTED",
+        "rationale": "In the Q3 2026 earnings release dated August 5, 2026, the company reaffirmed net revenue guidance at ~$1.75 Billion and raised full-year 2026 Adjusted EBITDA guidance from ~$245 million to ~$247 million.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "87b79cfb8e7f48d88555e5db603c193e05493caff9d810f39090477c6259a1c7",
+            "excerpt": "2026 Guidance is being raised to Net Revenue at ~$1.75 Billion and Adj. EBITDA to ~$245 million."
+          },
+          {
+            "document_id": "7414a7403aae3c524c25d6c3c889550352304b4fd710abcd839ce100a61b381b",
+            "excerpt": "With the record first nine months we have delivered, we are raising our full-year 2026 Adj. EBITDA guidance. The updated 2026 Guidance is Net Revenue at ~$1.75 Billion and Adj. EBITDA to ~$247 million."
+          }
+        ]
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents contain discussions of business operations, supply chain constraints, tariffs, and a temporary deferral/slowdown in bus orders, but do not discuss or explain a decline in the company's stock price.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "SUPPORTED",
+        "rationale": "The disclosures show profitable operations (net income of $245.3 million and operating cash flow of $115.4 million for the nine months ended June 27, 2026), compliance with all debt covenants, absence of going-concern doubts or bankruptcy, an upgraded credit agreement extending maturity to 2031 with increased capacity to $600 million, and raised EBITDA guidance.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "7414a7403aae3c524c25d6c3c889550352304b4fd710abcd839ce100a61b381b",
+            "excerpt": "With the record first nine months we have delivered, we are raising our full-year 2026 Adj. EBITDA guidance. The updated 2026 Guidance is Net Revenue at ~$1.75 Billion and Adj. EBITDA to ~$247 million."
+          },
+          {
+            "document_id": "ca5db491c1ac75d9b3fd4c5d025e15c173307e59a7e6f64dee5239166823c363",
+            "excerpt": "At June 27, 2026, Borrower and the guarantors under the Credit Agreement were in compliance with all covenants."
+          },
+          {
+            "document_id": "532e8095effe526f8e7be420c2494607647507556a5a1224199016eb73887ce5",
+            "excerpt": "The Second Amendment extends the maturity date for both the revolving facility and the term facility under the Amended Credit Agreement from November 17, 2028 to September 30, 2031. The total amount available under the Senior Secured Credit Facilities increases to $600 million from the previous $250 million."
+          }
+        ]
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "There is no announcement in the provided documents of a future earnings release date.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "0008b7de202655c8a58f6a6a774e192a530c74e3bfb53da98d34149f58fadcda"
+}

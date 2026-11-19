@@ -4,25 +4,38 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "fb1dad767ba4c09e6d1e6a6166675aa6c5f04bc97125324fc71049d05ea91c9b",
   "financial_evidence_sha256": "1fdd711f5231ab957636568ae9350e83015ef4a3d163fce7c3dd954610e24708",
-  "reviewed_at": null,
-  "generated_at": "2026-11-19T21:14:45.614375+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "gemini-delegated",
+  "delegation_id": "owner_20261120_official_paper_automation",
+  "reviewed_at": "2026-11-20T04:53:34.251871+09:00",
+  "approval_scope": "US_REGULAR_SESSION",
+  "decision_time_jst": "2026-11-20T05:45:00+09:00",
+  "automated_evidence_sha256": "29d6c90788c629012bdd8e77c0716c246ce7cc3b3f2a4ea90374d436df4adc55",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "rationale": "In the Q2 2026 earnings release (August 6, 2026), full year 2026 revenue guidance was provided as $4,445 million to $4,530 million. In the Q3 2026 earnings release (November 5, 2026), full year 2026 revenue guidance was lowered to $4,440 million to $4,465 million. / verifier: Full-year 2026 revenue guidance was lowered from $4,445 to $4,530 million (provided in Q2 2026 earnings) to $4,440 to $4,465 million (provided in Q3 2026 earnings).",
+      "source": "https://www.sec.gov/Archives/edgar/data/1086222/000108622226000083/exhibit991-q22026.htm",
+      "evidence_sha256": "efb727dc8e1d7a705ad060cf0d11b104e093b2100e4de53f941a4ae0e8c976c5",
+      "excerpt": "Year Ending December 31, 2026 Low End High End Low End High End Revenue (in millions) $ 1,105 $ 1,130 $ 4,445 $ 4,530",
+      "published_at": "2026-08-06T20:07:38.000Z",
+      "checked_at": "2026-11-20T04:53:34.251871+09:00"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The supplied documents contain generic risk factors about stock price volatility and market fluctuations, but do not verify or explicitly support market/sector or temporary factors as the cause of an actual stock decline. / verifier: The documents do not state that a decline in the company's stock price occurred, nor do they explicitly attribute a stock decline to market/sector or temporary factors."
     },
     "no_material_business_impairment": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": false,
+      "rationale": "The criterion requires evidence addressing whether latest guidance was cut. Official full-year 2026 revenue guidance was cut from $4,445-$4,530 million reported in August 2026 down to $4,440-$4,465 million reported in November 2026. / verifier: The latest full-year 2026 revenue guidance was cut (both low and high ends lowered) in the latest disclosures, contradicting the condition of no guidance cuts.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1086222/000108622226000083/exhibit991-q22026.htm",
+      "evidence_sha256": "efb727dc8e1d7a705ad060cf0d11b104e093b2100e4de53f941a4ae0e8c976c5",
+      "excerpt": "Year Ending December 31, 2026 Low End High End Low End High End Revenue (in millions) $ 1,105 $ 1,130 $ 4,445 $ 4,530",
+      "published_at": "2026-08-06T20:07:38.000Z",
+      "checked_at": "2026-11-20T04:53:34.251871+09:00"
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "No future earnings release date is explicitly announced in the provided documents. / verifier: There is no announcement in the provided documents of a specific future earnings release date."
     }
   }
 }

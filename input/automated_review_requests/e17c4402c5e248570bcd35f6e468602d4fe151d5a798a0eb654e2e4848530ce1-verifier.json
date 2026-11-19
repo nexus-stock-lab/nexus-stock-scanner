@@ -1,0 +1,54 @@
+{
+  "assessment": {
+    "symbol": "AKAM",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "CONTRADICTED",
+        "rationale": "Full-year 2026 revenue guidance was lowered from $4,445 to $4,530 million (provided in Q2 2026 earnings) to $4,440 to $4,465 million (provided in Q3 2026 earnings).",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "efb727dc8e1d7a705ad060cf0d11b104e093b2100e4de53f941a4ae0e8c976c5",
+            "excerpt": "Revenue (in millions) $ 1,105 $ 1,130 $ 4,445 $ 4,530"
+          },
+          {
+            "document_id": "72fb336159a3ea06ae59a2c57355be3ae8b06fade7d171dd03be3d5728349efe",
+            "excerpt": "Revenue (in millions) $ 1,145 $ 1,170 $ 4,440 $ 4,465"
+          }
+        ]
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The documents do not state that a decline in the company's stock price occurred, nor do they explicitly attribute a stock decline to market/sector or temporary factors.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "CONTRADICTED",
+        "rationale": "The latest full-year 2026 revenue guidance was cut (both low and high ends lowered) in the latest disclosures, contradicting the condition of no guidance cuts.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "efb727dc8e1d7a705ad060cf0d11b104e093b2100e4de53f941a4ae0e8c976c5",
+            "excerpt": "Revenue (in millions) $ 1,105 $ 1,130 $ 4,445 $ 4,530"
+          },
+          {
+            "document_id": "72fb336159a3ea06ae59a2c57355be3ae8b06fade7d171dd03be3d5728349efe",
+            "excerpt": "Revenue (in millions) $ 1,145 $ 1,170 $ 4,440 $ 4,465"
+          }
+        ]
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "There is no announcement in the provided documents of a specific future earnings release date.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "f885f5c88630bab8362dd38244d91052be7e53a7cc2820e3e59116b80c0b8362"
+}

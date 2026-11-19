@@ -2,35 +2,45 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "fb1dad767ba4c09e6d1e6a6166675aa6c5f04bc97125324fc71049d05ea91c9b",
   "decision_time_jst": "2026-11-19T23:45:00+09:00",
-  "observed_at": "2026-11-20T04:44:23.765253+09:00",
+  "observed_at": "2026-11-20T05:09:28.075608+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
       "symbol": "AKAM",
-      "status": "INSUFFICIENT_EVIDENCE",
+      "status": "FAIL",
       "financial_evidence_sha256": "1fdd711f5231ab957636568ae9350e83015ef4a3d163fce7c3dd954610e24708",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: In the Q2 2026 earnings release (August 6, 2026), full year 2026 revenue guidance was provided as $4,445 million to $4,530 million. In the Q3 2026 earnings release (November 5, 2026), full year 2026 revenue guidance was lowered to $4,440 million to $4,465 million. / verifier: Full-year 2026 revenue guidance was lowered from $4,445 to $4,530 million (provided in Q2 2026 earnings) to $4,440 to $4,465 million (provided in Q3 2026 earnings).",
+        "no_material_business_impairment: The criterion requires evidence addressing whether latest guidance was cut. Official full-year 2026 revenue guidance was cut from $4,445-$4,530 million reported in August 2026 down to $4,440-$4,465 million reported in November 2026. / verifier: The latest full-year 2026 revenue guidance was cut (both low and high ends lowered) in the latest disclosures, contradicting the condition of no guidance cuts.",
+        "decline_explanation_verified: The supplied documents contain generic risk factors about stock price volatility and market fluctuations, but do not verify or explicitly support market/sector or temporary factors as the cause of an actual stock decline. / verifier: The documents do not state that a decline in the company's stock price occurred, nor do they explicitly attribute a stock decline to market/sector or temporary factors.",
+        "next_earnings: No future earnings release date is explicitly announced in the provided documents. / verifier: There is no announcement in the provided documents of a specific future earnings release date."
       ],
       "assertions": {
         "guidance_not_lowered": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": false,
+          "rationale": "In the Q2 2026 earnings release (August 6, 2026), full year 2026 revenue guidance was provided as $4,445 million to $4,530 million. In the Q3 2026 earnings release (November 5, 2026), full year 2026 revenue guidance was lowered to $4,440 million to $4,465 million. / verifier: Full-year 2026 revenue guidance was lowered from $4,445 to $4,530 million (provided in Q2 2026 earnings) to $4,440 to $4,465 million (provided in Q3 2026 earnings).",
+          "source": "https://www.sec.gov/Archives/edgar/data/1086222/000108622226000083/exhibit991-q22026.htm",
+          "evidence_sha256": "efb727dc8e1d7a705ad060cf0d11b104e093b2100e4de53f941a4ae0e8c976c5",
+          "excerpt": "Year Ending December 31, 2026 Low End High End Low End High End Revenue (in millions) $ 1,105 $ 1,130 $ 4,445 $ 4,530",
+          "published_at": "2026-08-06T20:07:38.000Z",
+          "checked_at": "2026-11-20T04:53:34.251871+09:00"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The supplied documents contain generic risk factors about stock price volatility and market fluctuations, but do not verify or explicitly support market/sector or temporary factors as the cause of an actual stock decline. / verifier: The documents do not state that a decline in the company's stock price occurred, nor do they explicitly attribute a stock decline to market/sector or temporary factors."
         },
         "no_material_business_impairment": {
-          "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "value": false,
+          "rationale": "The criterion requires evidence addressing whether latest guidance was cut. Official full-year 2026 revenue guidance was cut from $4,445-$4,530 million reported in August 2026 down to $4,440-$4,465 million reported in November 2026. / verifier: The latest full-year 2026 revenue guidance was cut (both low and high ends lowered) in the latest disclosures, contradicting the condition of no guidance cuts.",
+          "source": "https://www.sec.gov/Archives/edgar/data/1086222/000108622226000083/exhibit991-q22026.htm",
+          "evidence_sha256": "efb727dc8e1d7a705ad060cf0d11b104e093b2100e4de53f941a4ae0e8c976c5",
+          "excerpt": "Year Ending December 31, 2026 Low End High End Low End High End Revenue (in millions) $ 1,105 $ 1,130 $ 4,445 $ 4,530",
+          "published_at": "2026-08-06T20:07:38.000Z",
+          "checked_at": "2026-11-20T04:53:34.251871+09:00"
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "No future earnings release date is explicitly announced in the provided documents. / verifier: There is no announcement in the provided documents of a specific future earnings release date."
         }
       },
       "official_documents": [
@@ -102,31 +112,31 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "256b6302119922a164e290d556b4eba3a831f0649eeca46e7091fa9aeb7988ed",
       "reasons": [
-        "decline_explanation_verified: The provided documents do not mention or explain any decline in the company's stock price. / verifier: There is no discussion or verification in the supplied documents explaining the causes of a stock price decline.",
-        "no_material_business_impairment: The provided documents do not contain comprehensive disclosures addressing bankruptcy, going-concern assessments, or an exhaustive review of material business impairments. / verifier: The provided documents do not include full annual audit disclosures, complete going-concern assessments, or comprehensive subsequent reviews of potential major accounting/legal impairments beyond the Q3 10-Q and specific subsequent 8-Ks.",
-        "next_earnings: The documents do not contain any announcement of a future earnings release date beyond the decision date. / verifier: None of the provided documents state an announced future earnings release date."
+        "decline_explanation_verified: The supplied documents contain discussions of business operations, supply chain constraints, tariffs, and a temporary deferral/slowdown in bus orders, but do not discuss or explain a decline in the company's stock price. / verifier: None of the provided documents mention or explain a decline in the stock price.",
+        "no_material_business_impairment: Independent semantic passes disagree; approval withheld.",
+        "next_earnings: There is no announcement in the provided documents of a future earnings release date. / verifier: There is no announcement of a future earnings release date in the supplied filings."
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": true,
-          "rationale": "In the fiscal 2026 third-quarter results release dated August 5, 2026, the company reaffirmed net revenue guidance at ~$1.75 Billion (consistent with the updated revenue guidance provided in the fiscal 2026 second quarter release) while raising Adj. EBITDA guidance. / verifier: The company's latest official guidance for fiscal 2026 net revenue was maintained at ~$1.75 Billion (and Adj. EBITDA guidance was raised to ~$247 million), matching the previously raised revenue guidance of ~$1.75 Billion from Q2.",
+          "rationale": "In the Q3 2026 earnings release dated August 5, 2026, the company reaffirmed net revenue guidance at ~$1.75 Billion and raised full-year 2026 Adjusted EBITDA guidance from ~$245 million to ~$247 million. / verifier: In the Q3 fiscal 2026 results release, the full-year 2026 revenue guidance was reaffirmed at ~$1.75 Billion, consistent with the previous guidance given in the Q2 results release of Net Revenue at ~$1.75 Billion.",
           "source": "https://www.sec.gov/Archives/edgar/data/1589526/000158952626000028/a2026q2resultsreleaseex991.htm",
           "evidence_sha256": "87b79cfb8e7f48d88555e5db603c193e05493caff9d810f39090477c6259a1c7",
           "excerpt": "2026 Guidance is being raised to Net Revenue at ~$1.75 Billion and Adj. EBITDA to ~$245 million.",
           "published_at": "2026-05-06T20:19:17.000Z",
-          "checked_at": "2026-11-20T04:44:22.104079+09:00"
+          "checked_at": "2026-11-20T04:58:05.629180+09:00"
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "The provided documents do not mention or explain any decline in the company's stock price. / verifier: There is no discussion or verification in the supplied documents explaining the causes of a stock price decline."
+          "rationale": "The supplied documents contain discussions of business operations, supply chain constraints, tariffs, and a temporary deferral/slowdown in bus orders, but do not discuss or explain a decline in the company's stock price. / verifier: None of the provided documents mention or explain a decline in the stock price."
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "The provided documents do not contain comprehensive disclosures addressing bankruptcy, going-concern assessments, or an exhaustive review of material business impairments. / verifier: The provided documents do not include full annual audit disclosures, complete going-concern assessments, or comprehensive subsequent reviews of potential major accounting/legal impairments beyond the Q3 10-Q and specific subsequent 8-Ks."
+          "rationale": "Independent semantic passes disagree; approval withheld."
         },
         "next_earnings": {
           "value": null,
-          "rationale": "The documents do not contain any announcement of a future earnings release date beyond the decision date. / verifier: None of the provided documents state an announced future earnings release date."
+          "rationale": "There is no announcement in the provided documents of a future earnings release date. / verifier: There is no announcement of a future earnings release date in the supplied filings."
         }
       },
       "official_documents": [
@@ -1544,8 +1554,8 @@
   "remote_verification": "NOT_PERFORMED_BY_THIS_LOCAL_PROCESS",
   "counts": {
     "PASS": 0,
-    "FAIL": 0,
-    "INSUFFICIENT_EVIDENCE": 16
+    "FAIL": 1,
+    "INSUFFICIENT_EVIDENCE": 15
   },
   "financial_pass_count": 16
 }

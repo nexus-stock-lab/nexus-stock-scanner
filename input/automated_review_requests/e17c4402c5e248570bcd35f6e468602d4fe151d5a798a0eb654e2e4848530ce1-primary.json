@@ -1,0 +1,54 @@
+{
+  "assessment": {
+    "symbol": "AKAM",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "CONTRADICTED",
+        "rationale": "In the Q2 2026 earnings release (August 6, 2026), full year 2026 revenue guidance was provided as $4,445 million to $4,530 million. In the Q3 2026 earnings release (November 5, 2026), full year 2026 revenue guidance was lowered to $4,440 million to $4,465 million.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "efb727dc8e1d7a705ad060cf0d11b104e093b2100e4de53f941a4ae0e8c976c5",
+            "excerpt": "Year Ending December 31, 2026 Low End High End Low End High End Revenue (in millions) $ 1,105 $ 1,130 $ 4,445 $ 4,530"
+          },
+          {
+            "document_id": "72fb336159a3ea06ae59a2c57355be3ae8b06fade7d171dd03be3d5728349efe",
+            "excerpt": "Year Ending December 31, 2026 Low End High End Low End High End Revenue (in millions) $ 1,145 $ 1,170 $ 4,440 $ 4,465"
+          }
+        ]
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents contain generic risk factors about stock price volatility and market fluctuations, but do not verify or explicitly support market/sector or temporary factors as the cause of an actual stock decline.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "CONTRADICTED",
+        "rationale": "The criterion requires evidence addressing whether latest guidance was cut. Official full-year 2026 revenue guidance was cut from $4,445-$4,530 million reported in August 2026 down to $4,440-$4,465 million reported in November 2026.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "efb727dc8e1d7a705ad060cf0d11b104e093b2100e4de53f941a4ae0e8c976c5",
+            "excerpt": "Year Ending December 31, 2026 Low End High End Low End High End Revenue (in millions) $ 1,105 $ 1,130 $ 4,445 $ 4,530"
+          },
+          {
+            "document_id": "72fb336159a3ea06ae59a2c57355be3ae8b06fade7d171dd03be3d5728349efe",
+            "excerpt": "Year Ending December 31, 2026 Low End High End Low End High End Revenue (in millions) $ 1,145 $ 1,170 $ 4,440 $ 4,465"
+          }
+        ]
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "No future earnings release date is explicitly announced in the provided documents.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "1d5605f84fad672d383c87cca446813275ba903b1a41413467dca3bf6f7e0641"
+}

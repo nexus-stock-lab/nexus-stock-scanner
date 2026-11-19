@@ -1,0 +1,45 @@
+{
+  "assessment": {
+    "symbol": "BLBD",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "SUPPORTED",
+        "rationale": "In the Q3 fiscal 2026 results release, the full-year 2026 revenue guidance was reaffirmed at ~$1.75 Billion, consistent with the previous guidance given in the Q2 results release of Net Revenue at ~$1.75 Billion.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "7414a7403aae3c524c25d6c3c889550352304b4fd710abcd839ce100a61b381b",
+            "excerpt": "The updated 2026 Guidance is Net Revenue at ~$1.75 Billion and Adj. EBITDA to ~$247 million."
+          },
+          {
+            "document_id": "87b79cfb8e7f48d88555e5db603c193e05493caff9d810f39090477c6259a1c7",
+            "excerpt": "2026 Guidance is being raised to Net Revenue at ~$1.75 Billion and Adj. EBITDA to ~$245 million."
+          }
+        ]
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "None of the provided documents mention or explain a decline in the stock price.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents do not include disclosures addressing going-concern or complete evaluations of material business impairments and major accounting issues across the latest required full scope.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "There is no announcement of a future earnings release date in the supplied filings.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "49d5ede4e3015f7d5fb9d00b30c8d2c706eefde937b0a88be602ea786431a133"
+}
