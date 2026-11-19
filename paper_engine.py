@@ -159,6 +159,8 @@ def settle(ledger, streams, now):
         if trade['status'] != 'OPEN':
             continue
         try:
+            if trade['trade_id'] not in streams:
+                raise ValueError('verified tracking history missing; cursor unchanged')
             stream = streams[trade['trade_id']]
             split=stream.get('split_history')
             if split is not None:

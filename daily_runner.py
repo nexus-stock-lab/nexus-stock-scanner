@@ -470,7 +470,15 @@ def track_positions(now, root=Path('input'), out=Path('output'), fetch_interval=
                        'query':'https://data.alpaca.markets/v2/stocks/'+trade['symbol']+'/trades',
                        'pagination_complete':raw['complete'],'corporate_evidence':str(ca_path)}
                 proof_path=root/'market_evidence'/f'{digest(proof)}.json'
-                stream=normalized_stream(raw,ca,str(proof_path))
+                try:
+                    stream=normalized_stream(raw,ca,str(proof_path))
+                except ValueError as exc:
+                    # A hash alone cannot explain a conflicting provider ID.
+                    # Keep the exact public-data interval for diagnosis/retry,
+                    # but never pass it to settlement or advance the cursor.
+                    failed_path=root/'market_evidence'/f'{digest(raw)}.json'
+                    write_json(failed_path,raw)
+                    raise ValueError(str(exc)+'; rejected interval evidence: '+str(failed_path)) from exc
                 # Store exact selected exit evidence; source data for non-exit
                 # prints are attested by a hash/range rather than bloating git.
                 write_json(proof_path,proof)
@@ -622,7 +630,8 @@ def main():
     else:
         (Path('output')/'verified_evidence.json').unlink(missing_ok=True)
     refresh_scenarios(datetime.now(JST))
-    track_positions(datetime.now(JST),clock=lambda:datetime.now(JST))
+    tracking=track_positions(datetime.now(JST),clock=lambda:datetime.now(JST))
+    print(json.dumps({'tracking':tracking},ensure_ascii=False))
     run(datetime.now(JST))
     status_path=Path('output/daily_status.json')
     if status_path.exists():
