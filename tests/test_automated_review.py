@@ -95,6 +95,25 @@ class AutomatedReviewTests(unittest.TestCase):
         self.execute()
         self.assertEqual(self.calls,[])
 
+    def test_exhausted_budget_still_checks_cached_later_issuer(self):
+        other = copy.deepcopy(self.fixture.financials)
+        other['symbol'] = 'AAA'
+        self.fixture.research['financials']['AAA'] = other
+        # Seed the saved response under the final research hash.
+        self.fixture.seal()
+        from gemini_review import ReviewBlocked
+        def request(bundle, key, role):
+            if bundle['symbol'] == 'AAA':
+                raise ReviewBlocked('GEMINI_HTTP_503')
+            return self.request(bundle, key, role)
+        self.execute(request)
+        self.calls.clear()
+        with patch('automated_review.reserve_request', side_effect=ReviewBlocked('DAILY_REVIEW_BUDGET_DEFERRED')):
+            result = self.execute()
+        self.assertEqual(result['results'][0]['reason'], 'DAILY_REVIEW_BUDGET_DEFERRED')
+        self.assertEqual(result['results'][1]['status'], 'SUPPORTED_PENDING_EXISTING_INTAKE')
+        self.assertEqual(self.calls, [])
+
     def test_recollected_receipt_keeps_proof_and_existing_intake_verifiable(self):
         doc=json.loads(self.document.read_text())
         doc['retrieved_at']=(self.now-timedelta(seconds=1)).isoformat()
