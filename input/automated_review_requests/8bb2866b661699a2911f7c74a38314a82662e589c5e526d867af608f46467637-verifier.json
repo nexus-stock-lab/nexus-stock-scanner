@@ -1,0 +1,45 @@
+{
+  "assessment": {
+    "symbol": "BLBD",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "SUPPORTED",
+        "rationale": "The company's latest official guidance for fiscal 2026 net revenue was maintained at ~$1.75 Billion (and Adj. EBITDA guidance was raised to ~$247 million), matching the previously raised revenue guidance of ~$1.75 Billion from Q2.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "7414a7403aae3c524c25d6c3c889550352304b4fd710abcd839ce100a61b381b",
+            "excerpt": "With the record first nine months we have delivered, we are raising our full-year 2026 Adj. EBITDA guidance. The updated 2026 Guidance is Net Revenue at ~$1.75 Billion and Adj. EBITDA to ~$247 million."
+          },
+          {
+            "document_id": "87b79cfb8e7f48d88555e5db603c193e05493caff9d810f39090477c6259a1c7",
+            "excerpt": "2026 Guidance is being raised to Net Revenue at ~$1.75 Billion and Adj. EBITDA to ~$245 million."
+          }
+        ]
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "There is no discussion or verification in the supplied documents explaining the causes of a stock price decline.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not include full annual audit disclosures, complete going-concern assessments, or comprehensive subsequent reviews of potential major accounting/legal impairments beyond the Q3 10-Q and specific subsequent 8-Ks.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "None of the provided documents state an announced future earnings release date.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "44641ac4cab4085be16446a7844eb7272788a7bf55623de787bc4243b6d7fe27"
+}

@@ -4,25 +4,33 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "fb1dad767ba4c09e6d1e6a6166675aa6c5f04bc97125324fc71049d05ea91c9b",
   "financial_evidence_sha256": "256b6302119922a164e290d556b4eba3a831f0649eeca46e7091fa9aeb7988ed",
-  "reviewed_at": null,
-  "generated_at": "2026-11-19T21:14:49.443551+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "gemini-delegated",
+  "delegation_id": "owner_20261120_official_paper_automation",
+  "reviewed_at": "2026-11-20T04:44:22.104079+09:00",
+  "approval_scope": "US_REGULAR_SESSION",
+  "decision_time_jst": "2026-11-20T05:45:00+09:00",
+  "automated_evidence_sha256": "19f2ca343b0ad2934a8f6e5f2a804f3a36ea0777d8b42b6008ff6f2567132e99",
   "assertions": {
     "guidance_not_lowered": {
-      "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "value": true,
+      "rationale": "In the fiscal 2026 third-quarter results release dated August 5, 2026, the company reaffirmed net revenue guidance at ~$1.75 Billion (consistent with the updated revenue guidance provided in the fiscal 2026 second quarter release) while raising Adj. EBITDA guidance. / verifier: The company's latest official guidance for fiscal 2026 net revenue was maintained at ~$1.75 Billion (and Adj. EBITDA guidance was raised to ~$247 million), matching the previously raised revenue guidance of ~$1.75 Billion from Q2.",
+      "source": "https://www.sec.gov/Archives/edgar/data/1589526/000158952626000028/a2026q2resultsreleaseex991.htm",
+      "evidence_sha256": "87b79cfb8e7f48d88555e5db603c193e05493caff9d810f39090477c6259a1c7",
+      "excerpt": "2026 Guidance is being raised to Net Revenue at ~$1.75 Billion and Adj. EBITDA to ~$245 million.",
+      "published_at": "2026-05-06T20:19:17.000Z",
+      "checked_at": "2026-11-20T04:44:22.104079+09:00"
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The provided documents do not mention or explain any decline in the company's stock price. / verifier: There is no discussion or verification in the supplied documents explaining the causes of a stock price decline."
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The provided documents do not contain comprehensive disclosures addressing bankruptcy, going-concern assessments, or an exhaustive review of material business impairments. / verifier: The provided documents do not include full annual audit disclosures, complete going-concern assessments, or comprehensive subsequent reviews of potential major accounting/legal impairments beyond the Q3 10-Q and specific subsequent 8-Ks."
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The documents do not contain any announcement of a future earnings release date beyond the decision date. / verifier: None of the provided documents state an announced future earnings release date."
     }
   }
 }
