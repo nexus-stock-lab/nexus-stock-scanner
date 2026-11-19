@@ -117,6 +117,7 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
     after=state.get('last_symbol','')
     candidates=[s for s in candidates if s>after]+[s for s in candidates if s<=after]
     collected={x['symbol']:x for x in (queue or {}).get('results',[])}
+    requests_blocked = None
     for symbol in candidates:
         path=root/'source_assessments'/day/(symbol+'.json')
         existing=strict_json(path.read_text()) if path.exists() else {}
@@ -145,6 +146,8 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                         response=strict_json(response_path.read_text())
                         validate_assessment(response['assessment'],bundle)
                     else:
+                        if requests_blocked:
+                            raise ReviewBlocked(requests_blocked)
                         reserve_request(root,clock(),digest({'request':key,'role':role}))
                         try:
                             response=requester(bundle,os.environ['GEMINI_API_KEY'],role)
@@ -171,12 +174,14 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
             values=[x['value'] for x in assessment['assertions'].values()]
             status['results'].append({'symbol':symbol,'status':'SUPPORTED_PENDING_EXISTING_INTAKE' if all(x is True for x in values)
                 else 'FAIL' if any(x is False for x in values) else 'INSUFFICIENT_EVIDENCE'})
-            state['last_symbol']=symbol;write_json(state_path,state)
         except (ValueError,KeyError,TypeError,OSError) as exc:
             reason=str(exc) if isinstance(exc,ReviewBlocked) else type(exc).__name__
             status['results'].append({'symbol':symbol,'status':'HELD','reason':reason})
             if reason in ('GEMINI_HTTP_429','GEMINI_HTTP_401','GEMINI_HTTP_403','DAILY_REVIEW_BUDGET_DEFERRED'):
-                break
+                # A provider hold must not prevent validation of saved evidence.
+                # Resume network work from the first deferred issuer next time.
+                requests_blocked = reason
+        if not requests_blocked:
             state['last_symbol']=symbol;write_json(state_path,state)
     status['status']='COMPLETED_WITH_EXPLICIT_HOLDS'
     return status
