@@ -56,6 +56,30 @@ class GeminiSafetyTests(unittest.TestCase):
 
     def requester(self,bundle,key):return validate_assessment(assessment(),bundle)
 
+    def test_recollected_identical_text_is_sent_once_after_validation(self):
+        original=self.financials['official_documents'][0]
+        d=json.loads((self.root/'official_documents'/f"{original['evidence_sha256']}.json").read_text())
+        d['retrieved_at']=(NOW-timedelta(minutes=1)).isoformat()
+        sha=digest(d)
+        (self.root/'official_documents'/f'{sha}.json').write_text(json.dumps(d))
+        receipt={**original,'evidence_sha256':sha}
+        self.financials['official_documents'].append(receipt)
+        self.assertEqual(public_bundle('AAPL',self.financials,AT,NOW,self.root,deduplicate=True),self.bundle)
+        # An altered receipt must not hide behind identical public text.
+        receipt['published_at']=NOW.isoformat()
+        with self.assertRaises(ReviewBlocked):public_bundle('AAPL',self.financials,AT,NOW,self.root,deduplicate=True)
+
+    def test_different_revision_is_not_removed_as_a_duplicate(self):
+        original=self.financials['official_documents'][0]
+        d=json.loads((self.root/'official_documents'/f"{original['evidence_sha256']}.json").read_text())
+        d['text']+=' Additional adverse disclosure.'
+        sha=digest(d)
+        (self.root/'official_documents'/f'{sha}.json').write_text(json.dumps(d))
+        self.financials['official_documents'].append({**original,'evidence_sha256':sha})
+        b=public_bundle('AAPL',self.financials,AT,NOW,self.root,deduplicate=True)
+        self.assertEqual(len(b['documents']),2)
+        self.assertIn('Additional adverse disclosure.',b['documents'][1]['text'])
+
     def test_payload_whitelist_excludes_accounts_environment_and_extra_fields(self):
         sent={}
         def transport(req,timeout):

@@ -95,6 +95,20 @@ class AutomatedReviewTests(unittest.TestCase):
         self.execute()
         self.assertEqual(self.calls,[])
 
+    def test_recollected_receipt_keeps_proof_and_existing_intake_verifiable(self):
+        doc=json.loads(self.document.read_text())
+        doc['retrieved_at']=(self.now-timedelta(seconds=1)).isoformat()
+        sha=digest(doc)
+        write_verified(self.root/'official_documents'/(sha+'.json'),doc)
+        self.fixture.financials['official_documents'].append({
+            **self.fixture.financials['official_documents'][0],'evidence_sha256':sha})
+        self.fixture.seal()
+        self.execute()
+        proof=json.loads(next((self.root/'automated_reviews').glob('*.json')).read_text())
+        self.assertEqual(len(proof['bundle']['documents']),1)
+        self.assertEqual(inventory(self.fixture.research,AT-timedelta(seconds=1),
+                                   self.root,promote=True)['saved_count'],1)
+
     def test_explicit_codex_review_is_not_overwritten(self):
         original=self.fixture.assessment(None)
         self.execute()
