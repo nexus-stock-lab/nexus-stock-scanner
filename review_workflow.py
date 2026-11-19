@@ -152,9 +152,14 @@ def inventory(research, now, root=Path('input'), promote=False):
                 assessment.get('symbol') != symbol or assessment.get('rules_version') != VERSION or
                 assessment.get('research_sha256') != research['snapshot_sha256'] or
                 assessment.get('financial_evidence_sha256') != financials['evidence_sha256'] or
-                assessment.get('reviewer_id') != 'codex-delegated' or
-                assessment.get('delegation_id') != DELEGATION):
+                (assessment.get('reviewer_id'),assessment.get('delegation_id')) not in (
+                    ('codex-delegated',DELEGATION),
+                    ('gemini-delegated','owner_20261120_official_paper_automation'))):
                 raise ValueError('assessment identity, research binding or reviewer invalid')
+            if assessment.get('reviewer_id')=='gemini-delegated':
+                from automated_review import verify_proof
+                from entry_schedule import next_slot
+                verify_proof(assessment,financials,next_slot(now),now,root)
             stamp = assessment['reviewed_at']
             require_current_disclosures(symbol,stamp,root,day)
             if timestamp_ns(stamp) > timestamp_ns(now.isoformat()):
@@ -190,6 +195,8 @@ def inventory(research, now, root=Path('input'), promote=False):
             packet = {k:assessment[k] for k in ('symbol','rules_version','financial_evidence_sha256',
                        'reviewed_at','reviewer_id','delegation_id','assertions')}
             packet.update(kind='DELEGATED_SOURCE_REVIEW', decision_time_jst=at.isoformat())
+            if assessment.get('reviewer_id')=='gemini-delegated':
+                packet['automated_evidence_sha256']=assessment['automated_evidence_sha256']
             validation_at = at
             scoped = assessment.get('approval_scope') is not None
             if scoped:
@@ -204,7 +211,7 @@ def inventory(research, now, root=Path('input'), promote=False):
             # Validate in a temporary intake before touching the real inbox.
             with tempfile.TemporaryDirectory() as folder:
                 staging = Path(folder)
-                for name in ('official_documents','issuer_ir_sources'):
+                for name in ('official_documents','issuer_ir_sources','automated_reviews'):
                     if (root/name).exists():
                         (staging/name).symlink_to((root/name).resolve(), target_is_directory=True)
                 candidate = staging/'review_inbox'/(day if scoped else at.date().isoformat())/(symbol+'.json')
@@ -350,6 +357,15 @@ def connected_run(research_path, now, root=Path('input'), out=Path('output'),
     reference_only=reuse_research and research_day != target_day
     if reference_only:promote=False
     queue = collect_assessments(research,now,root,clock=clock,reference_only=reference_only,**collectors) if collect else None
+    import os
+    automatic=None
+    if not reference_only and os.getenv('NEXUS_AUTOMATED_REVIEW_ENABLED')=='true':
+        from automated_review import run as automated_run
+        if queue is None:
+            saved_queue=Path(root)/'review_tasks'/(research_day+'.json')
+            queue=read(saved_queue) if saved_queue.exists() else None
+        automatic=automated_run(research,now,root,queue=queue,clock=clock)
+        write_verified(Path(out)/'automated_review_status.json',automatic)
     completed = clock() if clock else datetime.now(now.tzinfo)
     report = run(research_path,completed,root,promote)
     status = {'kind':'CONNECTED_SOURCE_REVIEW_STATUS', 'observed_at':completed.isoformat(),
@@ -357,7 +373,8 @@ def connected_run(research_path, now, root=Path('input'), out=Path('output'),
               'research_mode':'PRIOR_RESEARCH_REFERENCE_ONLY' if reference_only else 'CURRENT_RESEARCH',
               'promotion_enabled':promote, 'target_session_date':target_day,
               'collection':queue, 'review':report,
-              'semantic_review':'EXPLICIT_WORK_REVIEWER_REQUIRED_FOR_PENDING_ITEMS',
+              'semantic_review':'AUTOMATED_SOURCE_ONLY_TWO_PASS' if automatic else 'EXPLICIT_WORK_REVIEWER_REQUIRED_FOR_PENDING_ITEMS',
+              'automated_review':automatic,
               'ledger_writes':0, 'orders':0}
     write_verified(Path(out)/'source_review_status.json',status)
     lines = ['# 公式資料審査', '',

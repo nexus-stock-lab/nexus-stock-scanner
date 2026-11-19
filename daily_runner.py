@@ -618,6 +618,10 @@ def main():
         from rolling_runner import prepare_next
         prepare_next(datetime.now(JST),clock=lambda:datetime.now(JST))
     elif args.phase=='cycle':
+        from review_workflow import connected_run, current_research_path
+        current=current_research_path(now)
+        if current.exists() and os.getenv('NEXUS_AUTOMATED_REVIEW_ENABLED')=='true':
+            connected_run(current,now,collect=False,promote=True)
         from rolling_runner import cycle
         cycle(now,clock=lambda:datetime.now(JST))
     elif args.phase == 'finalize':

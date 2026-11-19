@@ -1,6 +1,8 @@
 """Intake for explicitly confirmed, source-backed qualitative reviews.
 
-This is a repository-authored review interface, NOT a Gemini promotion path.
+This is a repository-authored review interface. Raw SHADOW responses are not
+promoted. Owner-authorized machine reviews require a separately verified
+two-pass semantic receipt and retain their actual machine reviewer identity.
 It verifies provenance and binding, not the truth of a reviewer's reasoning.
 No orders, ledger updates, network access or automatic semantic clearance.
 """
@@ -43,10 +45,15 @@ def load_confirmed_review(symbol,financials,at,now,root=Path('input'),session_sc
               'financial_evidence_sha256','reviewed_at','reviewer_id','assertions'}
     delegated=isinstance(packet,dict) and packet.get('kind')=='DELEGATED_SOURCE_REVIEW'
     if delegated:required=required|{'delegation_id'}
+    if delegated and packet.get('reviewer_id')=='gemini-delegated':
+        required=required|{'automated_evidence_sha256'}
     if not isinstance(packet,dict) or set(packet) not in (required,required|{'approval_scope'}):
         raise ValueError('review packet schema invalid')
     if delegated:
-        if packet['delegation_id']!=DELEGATION or packet.get('reviewer_id')!='codex-delegated':
+        if packet.get('reviewer_id')=='gemini-delegated':
+            from automated_review import verify_proof
+            verify_proof(packet,financials,at,now,root)
+        elif packet['delegation_id']!=DELEGATION or packet.get('reviewer_id')!='codex-delegated':
             raise ValueError('delegated review needs owner authorization and truthful reviewer identity')
     elif packet['kind']!='CONFIRMED_SOURCE_REVIEW':
         raise ValueError('review packet needs explicit semantic confirmation')
