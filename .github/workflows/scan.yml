@@ -24,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 300
     env:
+      NEXUS_AUTOMATED_REVIEW_ENABLED: 'true'
       NEXUS_EVENT_SCHEDULE: ${{ github.event.schedule }}
       PHASE: ${{ github.event_name == 'schedule' && (github.event.schedule == '0 9 * * 1-5' && 'prepare' || 'cycle') || inputs.phase }}
     steps:
@@ -102,7 +103,7 @@ jobs:
           python - <<'PY'
           import subprocess
           from pathlib import Path
-          paths=[str(p) for p in (Path('input/review_reports'),Path('input/source_assessments'),Path('input/review_inbox')) if p.exists()]
+          paths=[str(p) for p in (Path('input/review_reports'),Path('input/source_assessments'),Path('input/review_inbox'),Path('input/automated_reviews'),Path('input/automated_review_requests'),Path('input/automated_review_cache'),Path('input/automated_review_state.json'),Path('input/gemini_usage.json')) if p.exists()]
           if paths: subprocess.run(['git','add','--',*paths],check=True)
           PY
           if ! git diff --cached --quiet; then
@@ -110,7 +111,7 @@ jobs:
             python git_persistence.py
           fi
       - name: Persist Gemini request budget even on failure
-        if: always() && (env.PHASE == 'gemini_probe' || env.PHASE == 'gemini_ir_probe' || vars.NEXUS_GEMINI_SHADOW_ENABLED == 'true')
+        if: always() && (env.PHASE == 'gemini_probe' || env.PHASE == 'gemini_ir_probe' || vars.NEXUS_GEMINI_SHADOW_ENABLED == 'true' || env.NEXUS_AUTOMATED_REVIEW_ENABLED == 'true')
         env:
           BRANCH: ${{ github.ref_name }}
         run: |
@@ -120,6 +121,7 @@ jobs:
           from pathlib import Path
           import os, subprocess
           targets=[Path('input/gemini_usage.json'),Path('input/gemini_reviews'),Path('input/gemini_rejections')]
+          targets += [Path('input/automated_reviews'),Path('input/automated_review_requests'),Path('input/automated_review_cache'),Path('input/automated_review_state.json')]
           if os.environ['PHASE'] in ('gemini_probe','gemini_ir_probe'): targets += [Path('input/official_documents'),Path('input/official_evidence'),Path('input/issuer_ir_sources')]
           paths=[str(p) for p in targets if p.exists()]
           if paths: subprocess.run(['git','add','--',*paths],check=True)
@@ -156,6 +158,7 @@ jobs:
           path: |
             output/summary.md
             output/gemini_review_status.json
+            output/automated_review_status.json
             output/gemini_probe.json
             output/issuer_ir_probe.json
             output/issuer_ir_status.json

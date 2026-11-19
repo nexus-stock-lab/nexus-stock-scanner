@@ -18,6 +18,8 @@ concurrency:
 jobs:
   review:
     runs-on: ubuntu-latest
+    env:
+      NEXUS_AUTOMATED_REVIEW_ENABLED: 'true'
     timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
@@ -34,6 +36,8 @@ jobs:
       - name: Collect and intake current financial-pass reviews without trading
         env:
           NEXUS_SEC_USER_AGENT: ${{ secrets.NEXUS_SEC_USER_AGENT || vars.NEXUS_SEC_USER_AGENT }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          NEXUS_GEMINI_FREE_TIER_CONFIRMED: ${{ vars.NEXUS_GEMINI_FREE_TIER_CONFIRMED }}
         run: python review_workflow.py --reuse-research --collect --promote
       - name: Persist only review evidence and verify GitHub readback
         env:
@@ -49,6 +53,8 @@ jobs:
           paths=['input/research','input/source_assessments','input/review_inbox','input/review_reports',
                  'input/source_review_runs','input/review_tasks','input/official_documents',
                  'input/official_evidence','input/issuer_ir_sources']
+          paths += ['input/automated_reviews','input/automated_review_requests','input/automated_review_cache',
+                    'input/automated_review_state.json','input/gemini_usage.json']
           paths=[p for p in paths if Path(p).exists()]
           # No staging of the whole input tree: the paper ledger, rules and plans
           # are not writable outputs of this workflow.
@@ -88,12 +94,16 @@ jobs:
           if [ -f output/source_review_persistence.json ]; then
             cat output/source_review_persistence.json >> "$GITHUB_STEP_SUMMARY"
           fi
+          if [ -f output/automated_review_status.json ]; then
+            cat output/automated_review_status.json >> "$GITHUB_STEP_SUMMARY"
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: official-source-review-results
           path: |
             output/source_review_status.json
+            output/automated_review_status.json
             output/source_review_summary.md
             output/source_review_persistence.json
           if-no-files-found: warn
