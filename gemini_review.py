@@ -75,7 +75,8 @@ def write_json(path, value):
     temp.write_text(json.dumps(value,ensure_ascii=False,indent=2),encoding='utf-8');temp.replace(path)
 
 
-def public_bundle(symbol, financials, at, now, root, ir_documents=(), *, deduplicate=False):
+def public_bundle(symbol, financials, at, now, root, ir_documents=(), *,
+                  deduplicate=False, max_context_bytes=MAX_CONTEXT_BYTES):
     if not re.fullmatch(r'[A-Z][A-Z0-9.]{0,14}',symbol) or financials['symbol']!=symbol:
         raise ReviewBlocked('SYMBOL_MISMATCH')
     if timestamp_ns(now.isoformat())>timestamp_ns(at.isoformat()):
@@ -117,7 +118,7 @@ def public_bundle(symbol, financials, at, now, root, ir_documents=(), *, dedupli
     if not docs:raise ReviewBlocked('NO_VERIFIED_PUBLIC_DOCUMENTS')
     bundle={'symbol':symbol,'decision_time_jst':at.isoformat(),'documents':docs}
     context_bytes=len(json.dumps(bundle,ensure_ascii=False).encode())
-    if context_bytes>MAX_CONTEXT_BYTES:
+    if context_bytes>max_context_bytes:
         error=ReviewBlocked('SOURCE_CONTEXT_TOO_LARGE_NO_TRUNCATION')
         error.context_bytes=context_bytes
         raise error

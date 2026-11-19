@@ -17,6 +17,10 @@ from paper_engine import digest
 from historical_probe import timestamp_ns
 from strategy_rules import VERSION
 
+# Full UTF-8 source text, with headroom below the model's documented input
+# limit of 1,048,576 tokens even at one token per byte.
+MAX_AUTOMATED_CONTEXT_BYTES = 1_024_000
+
 REVIEWER = 'gemini-delegated'
 DELEGATION = 'owner_20261120_official_paper_automation'
 VERSION_ID = 'source_only_two_pass_v1'
@@ -90,7 +94,8 @@ def verify_proof(record, financials, at, now, root):
     ir=[d for d in references if d not in sec]
     rebuilt=public_bundle(record['symbol'],{**financials,'official_documents':sec},
         datetime.fromisoformat(proof['bundle']['decision_time_jst']),
-        datetime.fromisoformat(proof['checked_at']),Path(root),ir_documents=ir)
+        datetime.fromisoformat(proof['checked_at']),Path(root),ir_documents=ir,
+        max_context_bytes=MAX_AUTOMATED_CONTEXT_BYTES)
     if rebuilt!=proof['bundle']:raise ValueError('automated review source bundle changed')
     if assertions_from_proof(proof)!=record['assertions']:raise ValueError('automated review assertions changed')
     return proof
@@ -132,7 +137,7 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
             bundle=public_bundle(symbol,{**f,'official_documents':sec or f.get('official_documents',[])},
                 session_slots(at.astimezone(__import__('entry_schedule').NY).date())[-1],current,root,
                 ir_documents=ir or research.get('issuer_ir',{}).get(symbol,{}).get('documents',[]),
-                deduplicate=True)
+                deduplicate=True,max_context_bytes=MAX_AUTOMATED_CONTEXT_BYTES)
             key=digest({'version':VERSION_ID,'bundle':bundle,'financial':f['evidence_sha256'],
                         'research':research['snapshot_sha256']})
             cache=root/'automated_review_cache'/(key+'.json')
