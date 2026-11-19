@@ -273,6 +273,24 @@ class PipelineTests(unittest.TestCase):
         row=list(csv.DictReader(Path('input/trades.csv').read_text().splitlines()))[0]
         self.assertEqual(row['status'],'OPEN');self.assertEqual(row['tracked_through_jst'],old_cursor)
 
+    def test_conflicting_provider_interval_is_archived_without_advancing_cursor(self):
+        rows=self.enter();before=Path('input/trades.csv').read_bytes()
+        now=AT+timedelta(hours=1)
+        def conflicting(symbol,start,end,*args):
+            common={'i':7,'x':'V','z':'C','c':['@']}
+            return {'symbol':symbol,'start':start.isoformat(),'end':end.isoformat(),
+                    'complete':True,'feed':'sip','retrieved_at':now.isoformat(),
+                    'trades':[{**common,'t':(start+timedelta(seconds=1)).isoformat(),'p':100},
+                              {**common,'t':(start+timedelta(seconds=2)).isoformat(),'p':101}]}
+        report=track_positions(now,fetch_interval=conflicting,
+                               fetch_corporate=lambda *a:{'clear':True,'pages':[]})
+        self.assertEqual(report['positions'][0]['status'],'BLOCKED')
+        reason=report['positions'][0]['reason']
+        self.assertIn('conflicting trade identity; rejected interval evidence:',reason)
+        archived=Path(reason.split('rejected interval evidence: ')[1])
+        self.assertEqual(len(json.loads(archived.read_text())['trades']),2)
+        self.assertEqual(Path('input/trades.csv').read_bytes(),before)
+
     def test_bounded_replay_resumes_without_restarting_again(self):
         self.late_impairment();now=AT+timedelta(hours=1)
         def empty(symbol,start,end,*args):

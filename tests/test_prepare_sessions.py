@@ -89,7 +89,7 @@ class DelayedPrepareTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             try:
                 os.chdir(tmp)
-                with patch('sys.argv',['daily_runner.py','prepare']),patch('daily_runner.freeze_research',return_value=snapshot),patch('review_workflow.connected_run') as review,patch('gemini_review.shadow_reviews'),patch('rolling_runner.prepare_next'),patch('daily_runner.refresh_scenarios'),patch('daily_runner.track_positions'),patch('daily_runner.run'),patch('daily_runner.phone_summary'):
+                with patch('sys.argv',['daily_runner.py','prepare']),patch('daily_runner.freeze_research',return_value=snapshot),patch('review_workflow.connected_run') as review,patch('gemini_review.shadow_reviews'),patch('rolling_runner.prepare_next'),patch('daily_runner.refresh_scenarios'),patch('daily_runner.track_positions',return_value={'positions':[]}),patch('daily_runner.run'),patch('daily_runner.phone_summary'):
                     main()
                 self.assertEqual(review.call_args.args[0],Path('input/research/2026-11-17.json'))
             finally:

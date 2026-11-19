@@ -66,6 +66,11 @@ class EngineTests(unittest.TestCase):
         rows=self.entry(); closed,_=settle(rows,self.stream(rows,[125]),NOW)
         self.assertEqual(closed[0]['exit_reason'],'TARGET')
         self.assertEqual(statistics(closed)['by_signal']['反発初動']['wins'],1)
+    def test_missing_tracking_history_reports_cause_without_changing_position(self):
+        rows=self.entry()
+        pending,audit=settle(rows,{},NOW)
+        self.assertEqual(pending,rows)
+        self.assertEqual(audit[0]['reason'],'verified tracking history missing; cursor unchanged')
     def test_deadline_and_no_quote(self):
         rows=self.entry(); at=instant(rows[0]['deadline_jst'])
         closed,_=settle(rows,self.stream(rows,[105],[at]),at)
