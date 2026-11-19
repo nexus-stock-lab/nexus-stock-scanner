@@ -132,3 +132,20 @@ class AutomatedReviewTests(unittest.TestCase):
             return r
         self.assertEqual(self.execute(invalid)['results'][0]['status'],'HELD')
         self.assertFalse((self.root/'review_inbox').exists())
+
+    def test_provider_failure_is_paced_before_the_next_issuer(self):
+        from gemini_review import ReviewBlocked
+        other=copy.deepcopy(self.fixture.financials);other['symbol']='AAA'
+        self.fixture.research['financials']['AAA']=other;self.fixture.seal()
+        current=[self.now];sleeps=[]
+        def sleep(seconds):
+            sleeps.append(seconds);current[0]+=timedelta(seconds=seconds)
+        def request(bundle,key,role):
+            if bundle['symbol']=='AAA':raise ReviewBlocked('GEMINI_HTTP_503')
+            return self.request(bundle,key,role)
+        result=run(self.fixture.research,self.now,self.root,requester=request,
+                   clock=lambda:current[0],sleeper=sleep)
+        self.assertEqual(result['results'][0]['reason'],'GEMINI_HTTP_503')
+        self.assertEqual(result['results'][1]['status'],'SUPPORTED_PENDING_EXISTING_INTAKE')
+        self.assertEqual(sleeps,[7,7,7])
+        self.assertEqual(self.calls,['primary','verifier'])
