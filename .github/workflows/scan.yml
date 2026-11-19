@@ -107,8 +107,7 @@ jobs:
           PY
           if ! git diff --cached --quiet; then
             git commit -m "Persist source review inventory and validated review packets"
-            git pull --rebase --autostash origin "$BRANCH"
-            git push origin "HEAD:$BRANCH"
+            python git_persistence.py
           fi
       - name: Persist Gemini request budget even on failure
         if: always() && (env.PHASE == 'gemini_probe' || env.PHASE == 'gemini_ir_probe' || vars.NEXUS_GEMINI_SHADOW_ENABLED == 'true')
@@ -127,8 +126,7 @@ jobs:
           PY
           if ! git diff --cached --quiet; then
             git commit -m "Persist Gemini shadow request budget and public evidence"
-            git pull --rebase --autostash origin "$BRANCH"
-            git push origin "HEAD:$BRANCH"
+            python git_persistence.py
           fi
       - name: Persist research, raw evidence and paper ledger on current branch
         if: success() && env.PHASE != 'gemini_probe' && env.PHASE != 'gemini_ir_probe'
@@ -140,8 +138,7 @@ jobs:
           git add input/
           if ! git diff --cached --quiet; then
             git commit -m "Persist NEXUS research, market evidence and paper ledger"
-            git pull --rebase --autostash origin "$BRANCH"
-            git push origin "HEAD:$BRANCH"
+            python git_persistence.py
           fi
       - name: Show phone-readable result
         if: always()
