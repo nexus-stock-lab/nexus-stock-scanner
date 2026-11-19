@@ -146,10 +146,14 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                         validate_assessment(response['assessment'],bundle)
                     else:
                         reserve_request(root,clock(),digest({'request':key,'role':role}))
-                        response=requester(bundle,os.environ['GEMINI_API_KEY'],role)
-                        validate_assessment(response['assessment'],bundle)
-                        write_json(response_path,response)
-                        sleeper(7)
+                        try:
+                            response=requester(bundle,os.environ['GEMINI_API_KEY'],role)
+                            validate_assessment(response['assessment'],bundle)
+                            write_json(response_path,response)
+                        finally:
+                            # A failed provider call also consumed a request slot.
+                            # Pace the next issuer instead of cascading rate holds.
+                            sleeper(7)
                     responses.append(response)
                 proof={'version':VERSION_ID,'symbol':symbol,'model':MODEL,'bundle':bundle,
                     'financial_evidence_sha256':f['evidence_sha256'],'research_sha256':research['snapshot_sha256'],
