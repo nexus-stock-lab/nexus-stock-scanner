@@ -168,3 +168,28 @@ class AutomatedReviewTests(unittest.TestCase):
         self.assertEqual(result['results'][1]['status'],'SUPPORTED_PENDING_EXISTING_INTAKE')
         self.assertEqual(sleeps,[7,7,7])
         self.assertEqual(self.calls,['primary','verifier'])
+
+    def test_repeated_provider_failures_stop_requests_and_resume_next_run(self):
+        from gemini_review import ReviewBlocked
+        for symbol in ('AAA', 'BBB'):
+            self.fixture.research['financials'][symbol] = {
+                **self.fixture.financials, 'symbol': symbol}
+        self.fixture.seal()
+        attempted = []
+
+        def unavailable(bundle, key, role):
+            attempted.append(bundle['symbol'])
+            reason = 'GEMINI_HTTP_503' if bundle['symbol'] == 'AAA' else 'GEMINI_TIMEOUT_UNVERIFIED'
+            raise ReviewBlocked(reason)
+
+        result = self.execute(unavailable)
+        self.assertEqual(attempted, ['AAA', 'BBB'])
+        self.assertEqual(result['results'][-1]['reason'], 'GEMINI_PROVIDER_DEFERRED')
+        self.assertFalse((self.root/'review_inbox').exists())
+        state = json.loads((self.root/'automated_review_state.json').read_text())
+        self.assertEqual(state['last_symbol'], 'BBB')
+
+        self.now += timedelta(minutes=2)
+        self.tick = 0
+        self.execute(unavailable)
+        self.assertEqual(attempted, ['AAA', 'BBB', 'TEST', 'AAA'])

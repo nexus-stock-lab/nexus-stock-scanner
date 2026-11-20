@@ -6,7 +6,7 @@ import unittest
 from datetime import timedelta
 from pathlib import Path
 from paper_engine import digest
-from review_workflow import inventory, write_verified
+from review_workflow import inventory, run, write_verified
 from review_intake import NAMES, DELEGATION
 from strategy_rules import VERSION
 from test_strategy_rules import AT, inputs
@@ -57,6 +57,22 @@ class WorkflowTests(unittest.TestCase):
         self.assessment(None);r=self.run_report(True)
         self.assertEqual(r['counts']['INSUFFICIENT_EVIDENCE'],1)
         self.assertFalse((self.root/'review_inbox').exists())
+    def test_inventory_refresh_preserves_review_diagnostic_for_same_snapshot(self):
+        research_path = self.root/'research.json'
+        diagnostic = {'results': [{'symbol': 'TEST', 'status': 'HELD',
+                                  'reason': 'GEMINI_HTTP_503'}]}
+        write_verified(research_path, self.research)
+        run(research_path, self.now, self.root, promote=True, automated_review=diagnostic)
+
+        refreshed = run(research_path, self.now, self.root, promote=True)
+        self.assertEqual(refreshed['automated_review'], diagnostic)
+        self.assertEqual(refreshed['saved_count'], 0)
+
+        self.research['rows'] = [{'symbol': 'TEST'}]
+        self.seal()
+        write_verified(research_path, self.research)
+        refreshed = run(research_path, self.now, self.root, promote=True)
+        self.assertNotIn('automated_review', refreshed)
     def test_supported_false_is_fail_without_approval(self):
         self.assessment(False);r=self.run_report(True)
         self.assertEqual(r['counts']['FAIL'],1)
