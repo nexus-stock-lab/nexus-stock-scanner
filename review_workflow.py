@@ -233,10 +233,22 @@ def inventory(research, now, root=Path('input'), promote=False):
     return report
 
 
-def run(research_path, now, root=Path('input'), promote=False):
+def run(research_path, now, root=Path('input'), promote=False, *, automated_review=None):
     report = inventory(read(Path(research_path)), now, root, promote)
     day = datetime.fromisoformat(report['decision_time_jst']).astimezone(ZoneInfo('America/New_York')).date()
-    write_verified(Path(root)/'review_reports'/(str(day)+'.json'), report)
+    path = Path(root)/'review_reports'/(str(day)+'.json')
+    # Inventory is also refreshed by the planner. Preserve diagnostics from
+    # the last actual review of this snapshot, independently of eligibility.
+    if automated_review is None and path.exists():
+        try:
+            previous = read(path)
+        except ValueError:
+            previous = {}
+        if previous.get('research_sha256') == report['research_sha256']:
+            automated_review = previous.get('automated_review')
+    if automated_review is not None:
+        report['automated_review'] = automated_review
+    write_verified(path, report)
     return report
 
 
@@ -367,7 +379,7 @@ def connected_run(research_path, now, root=Path('input'), out=Path('output'),
         automatic=automated_run(research,now,root,queue=queue,clock=clock)
         write_verified(Path(out)/'automated_review_status.json',automatic)
     completed = clock() if clock else datetime.now(now.tzinfo)
-    report = run(research_path,completed,root,promote)
+    report = run(research_path,completed,root,promote,automated_review=automatic)
     status = {'kind':'CONNECTED_SOURCE_REVIEW_STATUS', 'observed_at':completed.isoformat(),
               'research_path':str(research_path),'research_sha256':research['snapshot_sha256'],
               'research_mode':'PRIOR_RESEARCH_REFERENCE_ONLY' if reference_only else 'CURRENT_RESEARCH',

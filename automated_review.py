@@ -24,6 +24,11 @@ MAX_AUTOMATED_CONTEXT_BYTES = 1_024_000
 REVIEWER = 'gemini-delegated'
 DELEGATION = 'owner_20261120_official_paper_automation'
 VERSION_ID = 'source_only_two_pass_v1'
+TRANSIENT_PROVIDER_ERRORS = {
+    'GEMINI_HTTP_500', 'GEMINI_HTTP_502', 'GEMINI_HTTP_503', 'GEMINI_HTTP_504',
+    'GEMINI_TIMEOUT_UNVERIFIED', 'GEMINI_NETWORK_UNVERIFIED',
+}
+CONSECUTIVE_PROVIDER_FAILURE_LIMIT = 2
 
 
 def interpret(bundle, key, role):
@@ -123,12 +128,14 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
     candidates=[s for s in candidates if s>after]+[s for s in candidates if s<=after]
     collected={x['symbol']:x for x in (queue or {}).get('results',[])}
     requests_blocked = None
+    transient_failures = 0
     for symbol in candidates:
         path=root/'source_assessments'/day/(symbol+'.json')
         existing=strict_json(path.read_text()) if path.exists() else {}
         if existing.get('reviewer_id') not in (None,'unassigned',REVIEWER):
             status['results'].append({'symbol':symbol,'status':'EXPLICIT_REVIEW_PRESERVED'});continue
         f=research['financials'][symbol];current=clock()
+        provider_held_here = False
         try:
             # The collection receipts supplement, never mutate, frozen financials.
             refs=collected.get(symbol,{}).get('documents',[])
@@ -156,6 +163,7 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                         reserve_request(root,clock(),digest({'request':key,'role':role}))
                         try:
                             response=requester(bundle,os.environ['GEMINI_API_KEY'],role)
+                            transient_failures = 0
                             validate_assessment(response['assessment'],bundle)
                             write_json(response_path,response)
                         finally:
@@ -186,7 +194,14 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                 # A provider hold must not prevent validation of saved evidence.
                 # Resume network work from the first deferred issuer next time.
                 requests_blocked = reason
-        if not requests_blocked:
+            elif reason in TRANSIENT_PROVIDER_ERRORS:
+                transient_failures += 1
+                if transient_failures >= CONSECUTIVE_PROVIDER_FAILURE_LIMIT:
+                    requests_blocked = 'GEMINI_PROVIDER_DEFERRED'
+                    provider_held_here = True
+        # Advance through attempted issuers, even during transient failures.
+        # A new run starts with untouched work before circling back to retries.
+        if not requests_blocked or provider_held_here:
             state['last_symbol']=symbol;write_json(state_path,state)
     status['status']='COMPLETED_WITH_EXPLICIT_HOLDS'
     return status
