@@ -144,6 +144,24 @@ class AutomatedReviewTests(unittest.TestCase):
                    requester=lambda *a:self.fail('no past-session requests'))
         self.assertEqual(result['status'],'CURRENT_SESSION_RESEARCH_REQUIRED')
 
+    def test_next_session_research_can_be_reviewed_after_previous_close(self):
+        self.now = AT-timedelta(hours=17)
+        document = json.loads(self.document.read_text())
+        document['published_at'] = (self.now-timedelta(hours=2)).isoformat()
+        document['retrieved_at'] = (self.now-timedelta(hours=1)).isoformat()
+        sha = digest(document)
+        self.document = self.root/'official_documents'/(sha+'.json')
+        write_verified(self.document, document)
+        self.fixture.financials['official_documents'][0].update(
+            evidence_sha256=sha, published_at=document['published_at'])
+        self.fixture.seal()
+
+        result = self.execute()
+        self.assertEqual(self.calls, ['primary', 'verifier'])
+        self.assertEqual(result['results'][0]['status'], 'SUPPORTED_PENDING_EXISTING_INTAKE')
+        report = inventory(self.fixture.research, self.clock(), self.root, promote=True)
+        self.assertEqual(report['saved_count'], 1)
+
     def test_fabricated_quote_is_held_without_approval(self):
         def invalid(bundle,key,role):
             r=self.request(bundle,key,role)
