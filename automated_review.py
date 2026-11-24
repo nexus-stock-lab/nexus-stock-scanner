@@ -115,7 +115,9 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
             'reviewer_id':REVIEWER,'model':MODEL,'results':[],'may_register':False}
     if digest({k:v for k,v in research.items() if k!='snapshot_sha256'})!=research.get('snapshot_sha256'):
         raise ValueError('research snapshot proof mismatch')
-    if session_date(datetime.fromisoformat(research['decision_time_jst']))!=day or session_date(now)!=day:
+    # After the last checkpoint, prepare can already freeze the next
+    # session's research. Match its checkpoint, not the wall-clock date.
+    if session_date(datetime.fromisoformat(research['decision_time_jst']))!=day:
         status['status']='CURRENT_SESSION_RESEARCH_REQUIRED';return status
     if os.getenv('NEXUS_AUTOMATED_REVIEW_ENABLED')!='true':
         status['status']='DISABLED';return status
