@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "739821be202e0f11db37536288a374674aa81436e5f275a20023c32513555393",
   "decision_time_jst": "2026-11-24T23:45:00+09:00",
-  "observed_at": "2026-11-24T14:55:32.630455+09:00",
+  "observed_at": "2026-11-25T05:26:38.650471+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -672,44 +672,44 @@
   "financial_pass_count": 7,
   "automated_review": {
     "kind": "AUTOMATED_SEMANTIC_REVIEW",
-    "observed_at": "2026-11-24T14:49:47.630303+09:00",
+    "observed_at": "2026-11-25T05:25:37.305235+09:00",
     "reviewer_id": "gemini-delegated",
     "model": "gemini-3.8-flash",
     "results": [
       {
-        "symbol": "MCFT",
-        "status": "HELD",
-        "reason": "GEMINI_TIMEOUT_UNVERIFIED"
-      },
-      {
-        "symbol": "MCHP",
+        "symbol": "NRG",
         "status": "HELD",
         "reason": "GEMINI_HTTP_503"
       },
       {
-        "symbol": "NRG",
-        "status": "HELD",
-        "reason": "GEMINI_PROVIDER_DEFERRED"
-      },
-      {
         "symbol": "NTCT",
         "status": "HELD",
-        "reason": "GEMINI_PROVIDER_DEFERRED"
+        "reason": "GEMINI_HTTP_429"
       },
       {
         "symbol": "TTMI",
         "status": "HELD",
-        "reason": "GEMINI_PROVIDER_DEFERRED"
+        "reason": "GEMINI_HTTP_429"
       },
       {
         "symbol": "DPZ",
         "status": "HELD",
-        "reason": "GEMINI_PROVIDER_DEFERRED"
+        "reason": "GEMINI_HTTP_429"
       },
       {
         "symbol": "LINC",
         "status": "HELD",
-        "reason": "GEMINI_PROVIDER_DEFERRED"
+        "reason": "GEMINI_HTTP_429"
+      },
+      {
+        "symbol": "MCFT",
+        "status": "HELD",
+        "reason": "GEMINI_HTTP_429"
+      },
+      {
+        "symbol": "MCHP",
+        "status": "HELD",
+        "reason": "GEMINI_HTTP_429"
       }
     ],
     "may_register": false,
