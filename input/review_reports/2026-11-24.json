@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "739821be202e0f11db37536288a374674aa81436e5f275a20023c32513555393",
   "decision_time_jst": "2026-11-24T23:45:00+09:00",
-  "observed_at": "2026-11-24T06:24:23.424057+09:00",
+  "observed_at": "2026-11-24T09:46:25.914738+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -672,7 +672,7 @@
   "financial_pass_count": 7,
   "automated_review": {
     "kind": "AUTOMATED_SEMANTIC_REVIEW",
-    "observed_at": "2026-11-24T06:23:35.141482+09:00",
+    "observed_at": "2026-11-24T09:46:19.763515+09:00",
     "reviewer_id": "gemini-delegated",
     "model": "gemini-3.8-flash",
     "results": [],
