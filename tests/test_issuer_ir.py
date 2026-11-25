@@ -74,6 +74,17 @@ class IRTests(unittest.TestCase):
         def transport(req,timeout):return Reply(req.full_url,('<a href="'+ARTICLE+'">News</a>').encode() if req.full_url==INDEX else HTML)
         r=collect_issuer_ir('APLD',AT,NOW,self.root,transport,clock=lambda:AT+timedelta(seconds=1))
         self.assertFalse(r['documents']);self.assertEqual(r['audit'][0]['reason'],'IR_SOURCE_NOT_AVAILABLE_ASOF')
+    def test_feed_corroborates_local_article_timestamp(self):
+        config=REGISTRY['NTCT']
+        article=config['prefix']+'2026/earnings/default.aspx'
+        feed=f'<rss><channel><item><link>{article}</link><pubDate>Wed, 28 Oct 2026 16:00:00 -0400</pubDate></item></channel></rss>'
+        for hour, expected in [('16', True), ('17', False)]:
+            pages={config['index']: '<html></html>', config['feed_url']: feed,
+                   article: f'<time datetime="2026-10-28T{hour}:00:00"></time><time datetime="2026">2026</time><p>News</p>'}
+            result=collect_issuer_ir('NTCT', AT, NOW, self.root,
+                lambda req,timeout: Reply(req.full_url, pages[req.full_url].encode()), clock=lambda:NOW)
+            self.assertEqual(bool(result['documents']), expected)
+
     def test_explicit_rss_publication_works_but_xml_entities_do_not(self):
         feed=REGISTRY['APLD']['prefix']+'rss'
         index=('<link type="application/rss+xml" href="'+feed+'">').encode()

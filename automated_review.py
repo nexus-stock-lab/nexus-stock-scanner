@@ -138,6 +138,7 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
             status['results'].append({'symbol':symbol,'status':'EXPLICIT_REVIEW_PRESERVED'});continue
         f=research['financials'][symbol];current=clock()
         provider_held_here = False
+        attempted_roles = []
         try:
             # The collection receipts supplement, never mutate, frozen financials.
             refs=collected.get(symbol,{}).get('documents',[])
@@ -164,6 +165,7 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                             raise ReviewBlocked(requests_blocked)
                         reserve_request(root,clock(),digest({'request':key,'role':role}))
                         try:
+                            attempted_roles.append(role)
                             response=requester(bundle,os.environ['GEMINI_API_KEY'],role)
                             transient_failures = 0
                             validate_assessment(response['assessment'],bundle)
@@ -191,7 +193,7 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                 else 'FAIL' if any(x is False for x in values) else 'INSUFFICIENT_EVIDENCE'})
         except (ValueError,KeyError,TypeError,OSError) as exc:
             reason=str(exc) if isinstance(exc,ReviewBlocked) else type(exc).__name__
-            status['results'].append({'symbol':symbol,'status':'HELD','reason':reason})
+            status['results'].append({'symbol':symbol,'status':'HELD','reason':reason,'attempted_roles':attempted_roles})
             if reason in ('GEMINI_HTTP_429','GEMINI_HTTP_401','GEMINI_HTTP_403','DAILY_REVIEW_BUDGET_DEFERRED'):
                 # A provider hold must not prevent validation of saved evidence.
                 # Resume network work from the first deferred issuer next time.
