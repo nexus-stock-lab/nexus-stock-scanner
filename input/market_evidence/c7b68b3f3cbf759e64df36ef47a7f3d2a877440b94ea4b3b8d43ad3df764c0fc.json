@@ -1,0 +1,15 @@
+{
+  "clear": true,
+  "actions": [],
+  "pages": [
+    {
+      "corporate_actions": {},
+      "next_page_token": null
+    }
+  ],
+  "asof": "2026-11-26T07:12:02.071106+09:00",
+  "complete": true,
+  "source": "https://data.alpaca.markets/v1/corporate-actions",
+  "retrieved_at": "2026-11-25T22:28:02.155919+00:00",
+  "warning": "Corporate-action publication may lag. Reported actions require verified split-basis reconciliation or a hold."
+}
