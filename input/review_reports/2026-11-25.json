@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "9e41da0946c6d18e5f226752635502957f9a14b6d11db13aaabc3b876eb51f06",
   "decision_time_jst": "2026-11-25T23:45:00+09:00",
-  "observed_at": "2026-11-25T15:00:38.825891+09:00",
+  "observed_at": "2026-11-25T23:54:15.735340+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -1404,98 +1404,108 @@
   "financial_pass_count": 15,
   "automated_review": {
     "kind": "AUTOMATED_SEMANTIC_REVIEW",
-    "observed_at": "2026-11-25T14:59:34.891704+09:00",
+    "observed_at": "2026-11-25T23:53:06.306496+09:00",
     "reviewer_id": "gemini-delegated",
     "model": "gemini-3.8-flash",
     "results": [
       {
         "symbol": "PINS",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
-        "attempted_roles": []
+        "reason": "GEMINI_HTTP_503",
+        "attempted_roles": [
+          "verifier"
+        ],
+        "provider_diagnostics": {
+          "retry_after_seconds": 30
+        }
       },
       {
         "symbol": "SNDX",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
-        "attempted_roles": []
+        "reason": "GEMINI_HTTP_429",
+        "attempted_roles": [
+          "primary"
+        ],
+        "provider_diagnostics": {
+          "retry_after_seconds": 51
+        }
       },
       {
         "symbol": "WINA",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "XFOR",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "BCC",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "CPRT",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "CRSP",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "FRNM",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "GAP",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "GLUE",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "HRMY",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "LINC",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "MLM",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "NAMS",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       },
       {
         "symbol": "PHAT",
         "status": "HELD",
-        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
       }
     ],
