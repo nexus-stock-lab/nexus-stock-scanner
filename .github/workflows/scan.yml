@@ -38,11 +38,7 @@ jobs:
       - name: Install dependencies
         timeout-minutes: 10
         run: |
-          case "$PHASE" in
-            gemini_probe|gemini_ir_probe|ir_probe)
-              python -m pip install "exchange_calendars>=4.5,<5" "PyYAML>=6.0,<7" ;;
-            *) python -m pip install -r requirements.txt ;;
-          esac
+          python -m pip install -r requirements.txt
       - name: Test paper engine
         run: python -m unittest discover -s tests -v
       - name: Scan broad universe using existing rules
