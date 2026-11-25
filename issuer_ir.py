@@ -54,6 +54,9 @@ REGISTRY.update({
     'MCHP': {'index': 'https://ir.microchip.com/news-events/press-releases', 'feed_prefix': 'https://ir.microchip.com/news-events/press-releases/rss', 'prefix': 'https://ir.microchip.com/news-events/press-releases/detail/'},
     'NRG': {'index': 'https://investors.nrg.com/investor-news-releases', 'prefix': 'https://investors.nrg.com/news-releases/news-release-details/'},
     'NTCT': {'feed_url': 'https://ir.netscout.com/rss/pressrelease.aspx', 'index': 'https://ir.netscout.com/overview/default.aspx', 'prefix': 'https://ir.netscout.com/news/news-details/'},
+    'PINS': {'index': 'https://investor.pinterestinc.com/news-and-events/press-releases/',
+             'feed_url': 'https://investor.pinterestinc.com/rss/pressrelease.aspx',
+             'prefix': 'https://investor.pinterestinc.com/news-and-events/press-releases/press-releases-details/'},
     'TTMI': {'index': 'https://investors.ttm.com/news-events/press-releases', 'feed_prefix': 'https://investors.ttm.com/news-events/press-releases/rss', 'prefix': 'https://investors.ttm.com/news-events/press-releases/detail/'},
 })
 LIMIT=4_000_000
