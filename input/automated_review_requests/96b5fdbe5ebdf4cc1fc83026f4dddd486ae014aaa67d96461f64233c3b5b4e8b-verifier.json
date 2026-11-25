@@ -1,0 +1,37 @@
+{
+  "assessment": {
+    "symbol": "WINA",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not contain explicit numerical revenue guidance for the company's full fiscal year or future periods, nor do they contain a formal guidance reaffirmation.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not contain disclosures explaining or attributing any stock price decline to market, sector, or temporary operational factors.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided text includes recent Form 10-Q disclosures for Q2 and Q3 2026, but lacks full financial audited statements (such as a 10-K) or complete coverage required to definitively confirm the absence of material business impairments across all necessary operational metrics.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided filings mention past earnings release dates and dividend payment/record dates, but do not state an explicitly announced future earnings release date.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "b60a18a5a0a217a5b38826266f3dcc65fb4e5e7767da0d3a07fe34e3a58f3e38",
+  "model": "gemini-3.6-flash"
+}

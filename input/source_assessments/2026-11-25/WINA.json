@@ -4,25 +4,28 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "9e41da0946c6d18e5f226752635502957f9a14b6d11db13aaabc3b876eb51f06",
   "financial_evidence_sha256": "8e4d3ff2bbefd30052198c7c5e671250fa6a7527a3ccdcbd8e96284d06bb58f1",
-  "reviewed_at": null,
-  "generated_at": "2026-11-25T14:19:44.200915+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "gemini-delegated",
+  "delegation_id": "owner_20261120_official_paper_automation",
+  "reviewed_at": "2026-11-26T04:35:15.179155+09:00",
+  "approval_scope": "US_REGULAR_SESSION",
+  "decision_time_jst": "2026-11-26T05:45:00+09:00",
+  "automated_evidence_sha256": "08a187af18183d7232ec909c78c56e5ae9f644c63d3d4773f2c1cac967fd374b",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The provided documents do not contain explicit numerical revenue guidance or explicit guidance reaffirmation for the period. / verifier: The provided documents do not contain explicit numerical revenue guidance for the company's full fiscal year or future periods, nor do they contain a formal guidance reaffirmation."
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The provided documents do not mention a stock price decline or provide verified market/sector explanations for any stock decline. / verifier: The provided documents do not contain disclosures explaining or attributing any stock price decline to market, sector, or temporary operational factors."
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The provided texts consist of interim 8-K and 10-Q reports, but the full scope of latest disclosures (such as the latest annual 10-K report) is inadequate/incomplete to definitively prove the absence of material business impairments. / verifier: The provided text includes recent Form 10-Q disclosures for Q2 and Q3 2026, but lacks full financial audited statements (such as a 10-K) or complete coverage required to definitively confirm the absence of material business impairments across all necessary operational metrics."
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The provided documents do not disclose an explicitly announced future earnings release date. / verifier: The provided filings mention past earnings release dates and dividend payment/record dates, but do not state an explicitly announced future earnings release date."
     }
   }
 }

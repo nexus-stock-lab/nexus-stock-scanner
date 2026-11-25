@@ -1,0 +1,37 @@
+{
+  "assessment": {
+    "symbol": "BCC",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided text contains fourth quarter 2026 EBITDA guidance (Total Company EBITDA of $32 - $54 million), but it does not provide official numeric revenue guidance for the current or previous periods to compare, nor an explicit reaffirmation of revenue guidance.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not contain disclosures explaining or confirming a stock price decline driven by market/sector or temporary factors.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The available excerpts represent only a selection of interim 8-K press releases and 10-Q reports, which is inadequate in scope to verify the complete absence of material business impairments, going-concern uncertainties, or major accounting problems across all latest disclosures.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "There is no explicit future earnings release date announced in the provided documents.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "c4ca0f04a919f837599532c159b3ad50116b17981329a6c2a2e1e63c70dd087d",
+  "model": "gemini-3.6-flash"
+}

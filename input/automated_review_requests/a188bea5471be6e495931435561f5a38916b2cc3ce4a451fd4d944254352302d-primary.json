@@ -1,0 +1,37 @@
+{
+  "assessment": {
+    "symbol": "BCC",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "UNKNOWN",
+        "rationale": "The company provides EBITDA guidance for Q4 2026 and Q3 2026, but specific overall revenue guidance figures are not provided in the supplied text to compare or verify whether revenue guidance has been lowered or reaffirmed.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents discuss macroeconomic factors impacting demand, such as interest rates, fuel prices, and inflation, but do not provide explicit text addressing or verifying a specific market decline in the issuer's stock price.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "While the quarterly documents show positive net income and ongoing liquidity, the provided selection of documents may be incomplete to definitively exclude all potential material accounting problems or business impairments across all latest potential disclosures.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents contain details for past earnings conference calls (such as November 3, 2026) and dividend dates, but do not state an explicitly announced future earnings release date.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "c971e0e7f553db52d3507ac317f5e946be210f30fd25af4b01a5bfd33579c9c3",
+  "model": "gemini-3.6-flash"
+}

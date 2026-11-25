@@ -1,0 +1,42 @@
+{
+  "assessment": {
+    "symbol": "CPRT",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not contain explicit revenue guidance or revenue guidance reaffirmations for the company.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not contain an explicit explanation attributing a stock price decline to market, sector, or temporary factors.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "SUPPORTED",
+        "rationale": "The company's Form 10-K for the fiscal year ended July 31, 2026, includes an unqualified audit opinion from Ernst & Young LLP attesting that the consolidated financial statements present fairly in all material respects the financial position of the company and that effective internal control over financial reporting was maintained.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "0e0d75a52dca4a1b0e0113a752a1e559c5b2a5bf3f01427697b8861905fc812b",
+            "excerpt": "In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company at July 31, 2026 and 2025, and the results of its operations and its cash flows for each of the three years in the period ended July 31, 2026, in conformity with U.S. generally accepted accounting principles."
+          }
+        ]
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not contain an explicitly announced future earnings release date.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "5aa31627f56ef0e1d3d51789eb7e75f17a03acb00350e5d2897b05fae18c9281",
+  "model": "gemini-3.6-flash"
+}

@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "9e41da0946c6d18e5f226752635502957f9a14b6d11db13aaabc3b876eb51f06",
   "decision_time_jst": "2026-11-25T23:45:00+09:00",
-  "observed_at": "2026-11-25T23:54:15.735340+09:00",
+  "observed_at": "2026-11-26T04:37:56.334289+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -10,27 +10,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "d272d894260572fd9b2e5262ab0d2bbd78f08a96aae33a7ca723132509c213d9",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: The company provides EBITDA guidance for Q4 2026 and Q3 2026, but specific overall revenue guidance figures are not provided in the supplied text to compare or verify whether revenue guidance has been lowered or reaffirmed. / verifier: The provided text contains fourth quarter 2026 EBITDA guidance (Total Company EBITDA of $32 - $54 million), but it does not provide official numeric revenue guidance for the current or previous periods to compare, nor an explicit reaffirmation of revenue guidance.",
+        "decline_explanation_verified: The provided documents discuss macroeconomic factors impacting demand, such as interest rates, fuel prices, and inflation, but do not provide explicit text addressing or verifying a specific market decline in the issuer's stock price. / verifier: The provided documents do not contain disclosures explaining or confirming a stock price decline driven by market/sector or temporary factors.",
+        "no_material_business_impairment: While the quarterly documents show positive net income and ongoing liquidity, the provided selection of documents may be incomplete to definitively exclude all potential material accounting problems or business impairments across all latest potential disclosures. / verifier: The available excerpts represent only a selection of interim 8-K press releases and 10-Q reports, which is inadequate in scope to verify the complete absence of material business impairments, going-concern uncertainties, or major accounting problems across all latest disclosures.",
+        "next_earnings: The supplied documents contain details for past earnings conference calls (such as November 3, 2026) and dividend dates, but do not state an explicitly announced future earnings release date. / verifier: There is no explicit future earnings release date announced in the provided documents."
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The company provides EBITDA guidance for Q4 2026 and Q3 2026, but specific overall revenue guidance figures are not provided in the supplied text to compare or verify whether revenue guidance has been lowered or reaffirmed. / verifier: The provided text contains fourth quarter 2026 EBITDA guidance (Total Company EBITDA of $32 - $54 million), but it does not provide official numeric revenue guidance for the current or previous periods to compare, nor an explicit reaffirmation of revenue guidance."
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The provided documents discuss macroeconomic factors impacting demand, such as interest rates, fuel prices, and inflation, but do not provide explicit text addressing or verifying a specific market decline in the issuer's stock price. / verifier: The provided documents do not contain disclosures explaining or confirming a stock price decline driven by market/sector or temporary factors."
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "While the quarterly documents show positive net income and ongoing liquidity, the provided selection of documents may be incomplete to definitively exclude all potential material accounting problems or business impairments across all latest potential disclosures. / verifier: The available excerpts represent only a selection of interim 8-K press releases and 10-Q reports, which is inadequate in scope to verify the complete absence of material business impairments, going-concern uncertainties, or major accounting problems across all latest disclosures."
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The supplied documents contain details for past earnings conference calls (such as November 3, 2026) and dividend dates, but do not state an explicitly announced future earnings release date. / verifier: There is no explicit future earnings release date announced in the provided documents."
         }
       },
       "official_documents": [
@@ -1212,27 +1212,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "8e4d3ff2bbefd30052198c7c5e671250fa6a7527a3ccdcbd8e96284d06bb58f1",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: The provided documents do not contain explicit numerical revenue guidance or explicit guidance reaffirmation for the period. / verifier: The provided documents do not contain explicit numerical revenue guidance for the company's full fiscal year or future periods, nor do they contain a formal guidance reaffirmation.",
+        "decline_explanation_verified: The provided documents do not mention a stock price decline or provide verified market/sector explanations for any stock decline. / verifier: The provided documents do not contain disclosures explaining or attributing any stock price decline to market, sector, or temporary operational factors.",
+        "no_material_business_impairment: The provided texts consist of interim 8-K and 10-Q reports, but the full scope of latest disclosures (such as the latest annual 10-K report) is inadequate/incomplete to definitively prove the absence of material business impairments. / verifier: The provided text includes recent Form 10-Q disclosures for Q2 and Q3 2026, but lacks full financial audited statements (such as a 10-K) or complete coverage required to definitively confirm the absence of material business impairments across all necessary operational metrics.",
+        "next_earnings: The provided documents do not disclose an explicitly announced future earnings release date. / verifier: The provided filings mention past earnings release dates and dividend payment/record dates, but do not state an explicitly announced future earnings release date."
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The provided documents do not contain explicit numerical revenue guidance or explicit guidance reaffirmation for the period. / verifier: The provided documents do not contain explicit numerical revenue guidance for the company's full fiscal year or future periods, nor do they contain a formal guidance reaffirmation."
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The provided documents do not mention a stock price decline or provide verified market/sector explanations for any stock decline. / verifier: The provided documents do not contain disclosures explaining or attributing any stock price decline to market, sector, or temporary operational factors."
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The provided texts consist of interim 8-K and 10-Q reports, but the full scope of latest disclosures (such as the latest annual 10-K report) is inadequate/incomplete to definitively prove the absence of material business impairments. / verifier: The provided text includes recent Form 10-Q disclosures for Q2 and Q3 2026, but lacks full financial audited statements (such as a 10-K) or complete coverage required to definitively confirm the absence of material business impairments across all necessary operational metrics."
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The provided documents do not disclose an explicitly announced future earnings release date. / verifier: The provided filings mention past earnings release dates and dividend payment/record dates, but do not state an explicitly announced future earnings release date."
         }
       },
       "official_documents": [
@@ -1404,108 +1404,107 @@
   "financial_pass_count": 15,
   "automated_review": {
     "kind": "AUTOMATED_SEMANTIC_REVIEW",
-    "observed_at": "2026-11-25T23:53:06.306496+09:00",
+    "observed_at": "2026-11-26T04:26:51.501264+09:00",
     "reviewer_id": "gemini-delegated",
     "model": "gemini-3.8-flash",
     "results": [
       {
-        "symbol": "PINS",
+        "symbol": "SNDX",
+        "status": "HELD",
+        "reason": "GEMINI_TIMEOUT_UNVERIFIED",
+        "attempted_roles": [
+          "primary",
+          "primary"
+        ]
+      },
+      {
+        "symbol": "WINA",
+        "status": "INSUFFICIENT_EVIDENCE"
+      },
+      {
+        "symbol": "XFOR",
         "status": "HELD",
         "reason": "GEMINI_HTTP_503",
         "attempted_roles": [
-          "verifier"
+          "primary"
         ],
         "provider_diagnostics": {
           "retry_after_seconds": 30
         }
       },
       {
-        "symbol": "SNDX",
-        "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
-        "attempted_roles": [
-          "primary"
-        ],
-        "provider_diagnostics": {
-          "retry_after_seconds": 51
-        }
-      },
-      {
-        "symbol": "WINA",
-        "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
-        "attempted_roles": []
-      },
-      {
-        "symbol": "XFOR",
-        "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
-        "attempted_roles": []
-      },
-      {
         "symbol": "BCC",
-        "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
-        "attempted_roles": []
+        "status": "INSUFFICIENT_EVIDENCE"
       },
       {
         "symbol": "CPRT",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
-        "attempted_roles": []
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "attempted_roles": [
+          "primary"
+        ],
+        "provider_diagnostics": {
+          "input_tokens": 137465
+        }
       },
       {
         "symbol": "CRSP",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "FRNM",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "GAP",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "GLUE",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "HRMY",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "LINC",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "MLM",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "NAMS",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "PHAT",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
+        "attempted_roles": []
+      },
+      {
+        "symbol": "PINS",
+        "status": "HELD",
+        "reason": "DAILY_REVIEW_BUDGET_DEFERRED",
         "attempted_roles": []
       }
     ],

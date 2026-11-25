@@ -1,0 +1,37 @@
+{
+  "assessment": {
+    "symbol": "WINA",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not contain explicit numerical revenue guidance or explicit guidance reaffirmation for the period.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not mention a stock price decline or provide verified market/sector explanations for any stock decline.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided texts consist of interim 8-K and 10-Q reports, but the full scope of latest disclosures (such as the latest annual 10-K report) is inadequate/incomplete to definitively prove the absence of material business impairments.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not disclose an explicitly announced future earnings release date.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "6cdec54a1a00af8085e89dd036f7d758cd9ea7edad847849758722008c5bf762",
+  "model": "gemini-3.6-flash"
+}
