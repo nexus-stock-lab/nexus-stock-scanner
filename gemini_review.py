@@ -166,7 +166,7 @@ class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self,*args,**kwargs):raise ReviewBlocked('GEMINI_REDIRECT_REJECTED')
 
 
-def post_json(payload,key,transport=None,timeout=120):
+def post_json(payload,key,transport=None,timeout=120, diagnostics=None):
     """Fixed destination, no redirect/storage/tools; never return raw error bodies."""
     if not key or len(key)>256 or any(ord(c)<33 or ord(c)>126 for c in key):
         raise ReviewBlocked('GEMINI_KEY_MISSING_OR_INVALID')
@@ -176,7 +176,29 @@ def post_json(payload,key,transport=None,timeout=120):
         with (transport or build_opener(NoRedirect()).open)(req,timeout=timeout) as response:
             if response.url!=ENDPOINT:raise ReviewBlocked('GEMINI_ENDPOINT_MISMATCH')
             raw=response.read(256_001)
-    except HTTPError as exc:raise ReviewBlocked(f'GEMINI_HTTP_{int(exc.code)}') from None
+    except HTTPError as exc:
+        if diagnostics is not None and exc.code in (429, 503):
+            retry = exc.headers.get('Retry-After', '') if exc.headers else ''
+            if re.fullmatch(r'[0-9]{1,9}', retry):
+                diagnostics['retry_after_seconds'] = int(retry)
+            try:
+                details = json.loads(exc.read(32768)).get('error', {}).get('details', [])
+                quota_ids = []
+                for detail in details:
+                    if detail.get('@type') == 'type.googleapis.com/google.rpc.RetryInfo':
+                        delay = detail.get('retryDelay', '')
+                        if re.fullmatch(r'[0-9]{1,9}(?:\.[0-9]{1,9})?s', delay):
+                            diagnostics['google_retry_delay'] = delay
+                    if detail.get('@type') == 'type.googleapis.com/google.rpc.QuotaFailure':
+                        for violation in detail.get('violations', []):
+                            quota_id = violation.get('quotaId', '')
+                            if re.fullmatch(r'[A-Za-z0-9_]{1,150}', quota_id):
+                                quota_ids.append(quota_id)
+                if quota_ids:
+                    diagnostics['quota_ids'] = quota_ids
+            except (ValueError, AttributeError, TypeError, OSError):
+                pass
+        raise ReviewBlocked(f'GEMINI_HTTP_{int(exc.code)}') from None
     except TimeoutError:raise ReviewBlocked('GEMINI_TIMEOUT_UNVERIFIED') from None
     except URLError as exc:
         code='GEMINI_TIMEOUT_UNVERIFIED' if isinstance(exc.reason,TimeoutError) else 'GEMINI_NETWORK_UNVERIFIED'
@@ -197,6 +219,10 @@ def post_json(payload,key,transport=None,timeout=120):
                 if not isinstance(part,dict) or part.get('type')!='text' or not isinstance(part.get('text'),str):raise ReviewBlocked('GEMINI_UNEXPECTED_OUTPUT')
                 texts.append(part.get('text',''))
     if len(texts)!=1:raise ReviewBlocked('GEMINI_AMBIGUOUS_OUTPUT')
+    if diagnostics is not None and isinstance(outer.get('usage'), dict):
+        tokens = outer['usage'].get('total_input_tokens')
+        if type(tokens) is int and tokens >= 0:
+            diagnostics['input_tokens'] = tokens
     return strict_json(texts[0]),digest(outer)
 
 
@@ -230,7 +256,7 @@ def reserve_request(root,now,request_sha):
     write_json(budget_path,budget)
 
 
-def connectivity_check(now,root,key,free_tier_confirmed,transport=None):
+def connectivity_check(now,root,key,free_tier_confirmed,transport=None,diagnostics=None):
     """Tiny generation, no documents/accounts; success is NOT a research clearance."""
     if free_tier_confirmed is not True:raise ReviewBlocked('FREE_TIER_NOT_CONFIRMED')
     if not key:raise ReviewBlocked('GEMINI_KEY_MISSING_OR_INVALID')
@@ -242,7 +268,7 @@ def connectivity_check(now,root,key,free_tier_confirmed,transport=None):
                  'required':['status'],'additionalProperties':False}}}
     request_sha=digest({'kind':'connectivity_only','payload':payload})
     reserve_request(root,now,request_sha)
-    value,response_sha=post_json(payload,key,transport)
+    value,response_sha=post_json(payload,key,transport,diagnostics=diagnostics)
     if value!={'status':'READY'}:raise ReviewBlocked('GEMINI_CONNECTION_RESPONSE_INVALID')
     return {'status':'AUTHENTICATED_GENERATION_VERIFIED','model':MODEL,
             'provider_response_sha256':response_sha,'semantic_verified':False,'may_register':False}
