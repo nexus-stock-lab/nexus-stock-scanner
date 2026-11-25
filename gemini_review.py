@@ -207,7 +207,7 @@ def post_json(payload,key,transport=None,timeout=120, diagnostics=None):
     if len(raw)>256_000:raise ReviewBlocked('GEMINI_RESPONSE_TOO_LARGE')
     outer=strict_json(raw)
     if not isinstance(outer,dict):raise ReviewBlocked('GEMINI_RESPONSE_SCHEMA_INVALID')
-    if outer.get('status')!='completed' or outer.get('model')!=MODEL:
+    if outer.get('status')!='completed' or outer.get('model')!=payload['model']:
         raise ReviewBlocked('GEMINI_RESPONSE_NOT_COMPLETED_OR_WRONG_MODEL')
     texts=[]
     if not isinstance(outer.get('steps'),list):raise ReviewBlocked('GEMINI_RESPONSE_SCHEMA_INVALID')
@@ -260,7 +260,8 @@ def connectivity_check(now,root,key,free_tier_confirmed,transport=None,diagnosti
     """Tiny generation, no documents/accounts; success is NOT a research clearance."""
     if free_tier_confirmed is not True:raise ReviewBlocked('FREE_TIER_NOT_CONFIRMED')
     if not key:raise ReviewBlocked('GEMINI_KEY_MISSING_OR_INVALID')
-    payload={'model':MODEL,'input':'Connection test only. Return {"status":"READY"}.',
+    model = 'gemini-3.6-flash'
+    payload={'model':model,'input':'Connection test only. Return {"status":"READY"}.',
              'store':False,'stream':False,'background':False,
              'generation_config':{'max_output_tokens':128,'thinking_level':'low'},
              'response_format':{'type':'text','mime_type':'application/json','schema':{
@@ -270,7 +271,7 @@ def connectivity_check(now,root,key,free_tier_confirmed,transport=None,diagnosti
     reserve_request(root,now,request_sha)
     value,response_sha=post_json(payload,key,transport,diagnostics=diagnostics)
     if value!={'status':'READY'}:raise ReviewBlocked('GEMINI_CONNECTION_RESPONSE_INVALID')
-    return {'status':'AUTHENTICATED_GENERATION_VERIFIED','model':MODEL,
+    return {'status':'AUTHENTICATED_GENERATION_VERIFIED','model':model,
             'provider_response_sha256':response_sha,'semantic_verified':False,'may_register':False}
 
 
