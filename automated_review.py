@@ -7,7 +7,7 @@ Human/codex attestations are never forged or overwritten.
 import json
 import os
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from gemini_review import (MODEL, INSTRUCTIONS, SCHEMA, NAMES, ReviewBlocked,
@@ -132,7 +132,11 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
     after=state.get('last_symbol','')
     candidates=[s for s in candidates if s>after]+[s for s in candidates if s<=after]
     collected={x['symbol']:x for x in (queue or {}).get('results',[])}
-    requests_blocked = None
+    retry_at = state.get("provider_retry_at")
+    requests_blocked = (
+        "GEMINI_PROVIDER_COOLDOWN" if retry_at and timestamp_ns(now.isoformat()) < timestamp_ns(retry_at)
+        else None
+    )
     transient_failures = 0
     active_model = MODEL
     for symbol in candidates:
@@ -229,6 +233,12 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                 # A provider hold must not prevent validation of saved evidence.
                 # Resume network work from the first deferred issuer next time.
                 requests_blocked = reason
+                if reason == 'GEMINI_HTTP_429' and attempted_roles:
+                    retry_seconds = max(diagnostics.get('retry_after_seconds', 0),
+                                        float(diagnostics.get('google_retry_delay', '0s')[:-1]))
+                    if retry_seconds:
+                        state['provider_retry_at'] = (clock() + timedelta(seconds=retry_seconds)).isoformat()
+                        write_json(state_path, state)
             elif reason in TRANSIENT_PROVIDER_ERRORS:
                 transient_failures += 1
                 if transient_failures >= CONSECUTIVE_PROVIDER_FAILURE_LIMIT:

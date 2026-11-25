@@ -47,6 +47,28 @@ class AutomatedReviewTests(unittest.TestCase):
         return run(self.fixture.research,self.now,self.root,requester=requester or self.request,
                    clock=self.clock,sleeper=lambda _:None)
 
+    def test_provider_retry_after_survives_restart_and_reuses_primary(self):
+        from gemini_review import ReviewBlocked
+        def provider(payload, key, *, timeout, diagnostics):
+            role = 'primary' if not self.calls else 'verifier'
+            if role == 'verifier' and self.calls.count('verifier') == 0:
+                self.calls.append(role)
+                diagnostics['retry_after_seconds'] = 51
+                raise ReviewBlocked('GEMINI_HTTP_429')
+            reply = self.request(payload, key, role)
+            return reply['assessment'], reply['provider_response_sha256']
+
+        def attempt():
+            return run(self.fixture.research, self.now, self.root,
+                       clock=self.clock, sleeper=lambda _: None)
+        with patch('automated_review.post_json', side_effect=provider):
+            self.assertEqual(attempt()['results'][0]['reason'], 'GEMINI_HTTP_429')
+            self.assertEqual(attempt()['results'][0]['reason'], 'GEMINI_PROVIDER_COOLDOWN')
+            self.assertEqual(self.calls, ['primary', 'verifier'])
+            self.now += timedelta(minutes=2)
+            self.assertEqual(attempt()['results'][0]['status'], 'SUPPORTED_PENDING_EXISTING_INTAKE')
+            self.assertEqual(self.calls, ['primary', 'verifier', 'verifier'])
+
     def test_two_actual_responses_use_existing_linc_intake_and_preserve_ledger(self):
         result=self.execute()
         self.assertEqual(self.calls,['primary','verifier'])
