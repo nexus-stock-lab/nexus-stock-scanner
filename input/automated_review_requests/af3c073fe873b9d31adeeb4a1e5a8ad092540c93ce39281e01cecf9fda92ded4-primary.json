@@ -1,0 +1,42 @@
+{
+  "assessment": {
+    "symbol": "PINS",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "SUPPORTED",
+        "rationale": "In the latest Q3 2026 press release (Exhibit 99.1 filed Oct 29, 2026), the company issued Q4 2026 revenue guidance of $1,425 million to $1,475 million. This represents an updated forward range provided for the subsequent period rather than a reduction of previously announced full-year or quarter-specific guidance.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "522402107665c2be9a5de4911f053e557f54334352c01d2b1cdfc71b0b818b40",
+            "excerpt": "For Q4 2026, we expect revenue to be in the range of $1,425 million to $1,475 million, representing 8% - 12% growth year over year, which assumes a modest headwind from foreign exchange based on current spot rates."
+          }
+        ]
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The submitted SEC filings and IR documents do not discuss or provide explicit explanations verifying a market/sector or temporary cause for a specific stock price decline.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "Although the supplied documents cover recent quarterly financials through Q3 2026 showing operational profitability ($30.3 million operating income) and liquid asset balances, the document selection is incomplete to prove the complete absence of material business impairments, going concern issues, or major accounting problems across all scopes.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "None of the provided documents state an explicitly announced future earnings release date.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "5838f10ef258e2161edb32e7090b18e4aca82e5ff11743e74ce66515f90f6ef6",
+  "model": "gemini-3.6-flash"
+}

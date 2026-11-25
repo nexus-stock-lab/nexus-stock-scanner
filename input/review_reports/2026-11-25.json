@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "9e41da0946c6d18e5f226752635502957f9a14b6d11db13aaabc3b876eb51f06",
   "decision_time_jst": "2026-11-25T23:45:00+09:00",
-  "observed_at": "2026-11-25T14:20:09.950028+09:00",
+  "observed_at": "2026-11-25T14:52:53.747040+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -1404,24 +1404,18 @@
   "financial_pass_count": 15,
   "automated_review": {
     "kind": "AUTOMATED_SEMANTIC_REVIEW",
-    "observed_at": "2026-11-25T14:18:40.065384+09:00",
+    "observed_at": "2026-11-25T14:51:03.715632+09:00",
     "reviewer_id": "gemini-delegated",
     "model": "gemini-3.8-flash",
     "results": [
-      {
-        "symbol": "PHAT",
-        "status": "HELD",
-        "reason": "GEMINI_HTTP_503",
-        "attempted_roles": [
-          "primary"
-        ]
-      },
       {
         "symbol": "PINS",
         "status": "HELD",
         "reason": "GEMINI_HTTP_429",
         "attempted_roles": [
-          "primary"
+          "primary",
+          "primary",
+          "verifier"
         ]
       },
       {
@@ -1498,6 +1492,12 @@
       },
       {
         "symbol": "NAMS",
+        "status": "HELD",
+        "reason": "GEMINI_HTTP_429",
+        "attempted_roles": []
+      },
+      {
+        "symbol": "PHAT",
         "status": "HELD",
         "reason": "GEMINI_HTTP_429",
         "attempted_roles": []
