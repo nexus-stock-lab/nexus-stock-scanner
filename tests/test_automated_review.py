@@ -202,6 +202,7 @@ class AutomatedReviewTests(unittest.TestCase):
 
         result = self.execute(unavailable)
         self.assertEqual(attempted, ['AAA', 'BBB'])
+        self.assertEqual([r['attempted_roles'] for r in result['results']], [['primary'], ['primary'], []])
         self.assertEqual(result['results'][-1]['reason'], 'GEMINI_PROVIDER_DEFERRED')
         self.assertFalse((self.root/'review_inbox').exists())
         state = json.loads((self.root/'automated_review_state.json').read_text())

@@ -42,10 +42,19 @@ REGISTRY.update({
     'COLL': {'index':'https://ir.collegiumpharma.com/press-releases', 'prefix':'https://ir.collegiumpharma.com/'},
     'DAN': {'index':'https://danaincorporated.gcs-web.com/upcoming-events', 'prefix':'https://danaincorporated.gcs-web.com/news-releases/'},
     'RARE': {'index':'https://ir.ultragenyx.com/press-releases', 'prefix':'https://ir.ultragenyx.com/'},
-    'LINC': {'index':'https://investors.lincolneducationalservices.com/news-releases', 'prefix':'https://investors.lincolneducationalservices.com/'},
+    'LINC': {'article_prefix':'https://investors.lincolneducationalservices.com/news-releases/news-release-details/', 'index':'https://investors.lincolneducationalservices.com/news-releases', 'prefix':'https://investors.lincolneducationalservices.com/'},
     'FLOC': {'index':'https://ir.flowco-inc.com/news-events/events-and-presentations/default.aspx', 'prefix':'https://ir.flowco-inc.com/'},
     'AAON': {'index':'https://investors.theaaongroup.com/overview/default.aspx', 'prefix':'https://investors.theaaongroup.com/'},
     'FOUR': {'index':'https://investors.shift4.com/news-events/press-releases', 'prefix':'https://investors.shift4.com/news-events/'},
+})
+# Restrict discovery to release articles on each issuer's own site.
+REGISTRY.update({
+    'DPZ': {'index': 'https://ir.dominos.com/', 'prefix': 'https://ir.dominos.com/news-releases/news-release-details/'},
+    'MCFT': {'index': 'https://investors.mcbh.com/overview/default.aspx', 'prefix': 'https://investors.mcbh.com/news/news-details/'},
+    'MCHP': {'index': 'https://ir.microchip.com/news-events/press-releases', 'feed_prefix': 'https://ir.microchip.com/news-events/press-releases/rss', 'prefix': 'https://ir.microchip.com/news-events/press-releases/detail/'},
+    'NRG': {'index': 'https://investors.nrg.com/investor-news-releases', 'prefix': 'https://investors.nrg.com/news-releases/news-release-details/'},
+    'NTCT': {'feed_url': 'https://ir.netscout.com/rss/pressrelease.aspx', 'index': 'https://ir.netscout.com/overview/default.aspx', 'prefix': 'https://ir.netscout.com/news/news-details/'},
+    'TTMI': {'index': 'https://investors.ttm.com/news-events/press-releases', 'feed_prefix': 'https://investors.ttm.com/news-events/press-releases/rss', 'prefix': 'https://investors.ttm.com/news-events/press-releases/detail/'},
 })
 LIMIT=4_000_000
 
@@ -59,6 +68,7 @@ def allowed(url,config,index=False,feed=False):
     if p.scheme!='https' or p.username or p.password or p.port or p.query or p.fragment or '..' in p.path or '%' in p.path:
         return False
     if index:return url==config['index']
+    if feed and url==config.get('feed_url'):return p.netloc==urlsplit(config['index']).netloc
     prefixes=[config['prefix']]+([config['feed_prefix']] if feed and 'feed_prefix' in config else [])
     return any(url.startswith(prefix) for prefix in prefixes) and p.netloc==urlsplit(config['index']).netloc
 
@@ -171,10 +181,12 @@ def collect_issuer_ir(symbol,at,now,root,transport=None,clock=None):
             return sha
         report['index_evidence_sha256']=save_source(config['index'],raw)
         page=Page();page.feed(raw.decode('utf-8',errors='strict'))
-        candidates=[];feed_candidates=[]
+        candidates=[];feed_candidates=[config['feed_url']] if config.get('feed_url') else []
         for href,kind in page.links:
             url=urljoin(config['index'],href)
             is_feed=kind=='feed' or url.endswith(('/rss','.xml'))
+            if not is_feed and not url.startswith(config.get('article_prefix', config['prefix'])):
+                continue
             if allowed(url,config,feed=is_feed):
                 (feed_candidates if is_feed else candidates).append(url)
         seen=set();published_by_url={};budget=4
@@ -200,8 +212,15 @@ def collect_issuer_ir(symbol,at,now,root,transport=None,clock=None):
             try:
                 body=fetch(url,config,transport)
                 p=Page();p.feed(body.decode('utf-8',errors='strict'))
-                dates=[publication(d) for d in p.dates]
-                if url in published_by_url:dates.append(published_by_url[url])
+                feed_date=published_by_url.get(url)
+                dates=[]
+                for raw_date in p.dates:
+                    # Equisolve repeats its RSS timestamp without a zone and
+                    # displays a year-only time element in the page footer.
+                    if feed_date and raw_date in (str(feed_date.year), feed_date.replace(tzinfo=None).isoformat()):
+                        continue
+                    dates.append(publication(raw_date))
+                if feed_date:dates.append(feed_date)
                 if not dates:raise IRBlocked('IR_PUBLICATION_TIME_UNKNOWN')
                 # Conflicting publication dates are a hold, not a convenient earliest date.
                 if len({d.date() for d in dates})!=1:raise IRBlocked('IR_PUBLICATION_TIME_CONFLICT')
