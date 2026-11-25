@@ -351,7 +351,7 @@ class GeminiSafetyTests(unittest.TestCase):
             self.assertNotIn('documents',payload['input'])
             self.assertNotIn('fixture-key',json.dumps(payload))
             self.assertFalse(payload['store'])
-            return Response({'model':MODEL,'status':'completed','steps':[{'type':'model_output',
+            return Response({'model':'gemini-3.6-flash','status':'completed','steps':[{'type':'model_output',
                 'content':[{'type':'text','text':'{"status":"READY"}'}]}]})
         r=connectivity_check(NOW,self.root,'fixture-key',True,transport)
         self.assertEqual(r['status'],'AUTHENTICATED_GENERATION_VERIFIED')
