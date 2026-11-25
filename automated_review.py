@@ -29,19 +29,20 @@ TRANSIENT_PROVIDER_ERRORS = {
     'GEMINI_TIMEOUT_UNVERIFIED', 'GEMINI_NETWORK_UNVERIFIED',
 }
 CONSECUTIVE_PROVIDER_FAILURE_LIMIT = 2
+FALLBACK_MODEL = 'gemini-3.6-flash'
 
 
-def interpret(bundle, key, role):
+def interpret(bundle, key, role, *, model=MODEL, diagnostics=None):
     instruction = INSTRUCTIONS + ('\nIndependently perform the four semantic assessments. '
         'Act as a skeptical verifier: check contrary evidence, scope and uncertainties. '
         'Do not assume positive financial numbers establish any qualitative assertion.'
         if role == 'verifier' else '\nPerform the primary semantic assessment.')
-    value, sha = post_json({'model': MODEL, 'input': instruction+'\nPUBLIC_SOURCE_DATA:\n'+
+    value, sha = post_json({'model': model, 'input': instruction+'\nPUBLIC_SOURCE_DATA:\n'+
         json.dumps(bundle, ensure_ascii=False), 'store': False, 'stream': False,
         'background': False, 'generation_config': {'max_output_tokens':4096, 'thinking_level':'low'},
-        'response_format': {'type':'text','mime_type':'application/json','schema':SCHEMA}}, key, timeout=300)
+        'response_format': {'type':'text','mime_type':'application/json','schema':SCHEMA}}, key, timeout=300, diagnostics=diagnostics)
     validate_assessment(value, bundle)
-    return {'assessment': value, 'provider_response_sha256': sha}
+    return {'assessment': value, 'provider_response_sha256': sha, 'model': model}
 
 
 def assertions_from_proof(proof):
@@ -52,6 +53,8 @@ def assertions_from_proof(proof):
     if not proof.get('free_tier_confirmed'):
         raise ValueError('automated review free tier not confirmed')
     for response in proof['responses']:
+        if response.get('model', MODEL) not in (MODEL, FALLBACK_MODEL):
+            raise ValueError('unexpected semantic review model')
         validate_assessment(response['assessment'],bundle)
         if not __import__('re').fullmatch('[0-9a-f]{64}',str(response.get('provider_response_sha256'))):
             raise ValueError('actual provider response hash required')
@@ -131,6 +134,7 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
     collected={x['symbol']:x for x in (queue or {}).get('results',[])}
     requests_blocked = None
     transient_failures = 0
+    active_model = MODEL
     for symbol in candidates:
         path=root/'source_assessments'/day/(symbol+'.json')
         existing=strict_json(path.read_text()) if path.exists() else {}
@@ -166,7 +170,29 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                         reserve_request(root,clock(),digest({'request':key,'role':role}))
                         try:
                             attempted_roles.append(role)
-                            response=requester(bundle,os.environ['GEMINI_API_KEY'],role)
+                            api_key = os.environ['GEMINI_API_KEY']
+                            if requester is interpret:
+                                diagnostics = {}
+                                try:
+                                    response = interpret(bundle, api_key, role, model=active_model,
+                                                         diagnostics=diagnostics)
+                                except ReviewBlocked as exc:
+                                    if str(exc) != 'GEMINI_HTTP_503' or active_model != MODEL:
+                                        raise
+                                    delay = max(30, diagnostics.get('retry_after_seconds', 0),
+                                                float(diagnostics.get('google_retry_delay', '0s')[:-1]))
+                                    if delay > 60:
+                                        raise
+                                    sleeper(delay)
+                                    if clock() >= at:
+                                        raise
+                                    reserve_request(root, clock(), digest({
+                                        'request': key, 'role': role, 'model': FALLBACK_MODEL}))
+                                    active_model = FALLBACK_MODEL
+                                    attempted_roles.append(role)
+                                    response = interpret(bundle, api_key, role, model=active_model)
+                            else:
+                                response = requester(bundle, api_key, role)
                             transient_failures = 0
                             validate_assessment(response['assessment'],bundle)
                             write_json(response_path,response)
