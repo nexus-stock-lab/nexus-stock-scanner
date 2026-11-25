@@ -143,6 +143,7 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
         f=research['financials'][symbol];current=clock()
         provider_held_here = False
         attempted_roles = []
+        diagnostics = {}
         try:
             # The collection receipts supplement, never mutate, frozen financials.
             refs=collected.get(symbol,{}).get('documents',[])
@@ -172,7 +173,9 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                             attempted_roles.append(role)
                             api_key = os.environ['GEMINI_API_KEY']
                             if requester is interpret:
-                                diagnostics = {}
+                                diagnostics.clear()
+                                if role == 'verifier' and responses[0].get('model') == FALLBACK_MODEL:
+                                    active_model = FALLBACK_MODEL
                                 try:
                                     response = interpret(bundle, api_key, role, model=active_model,
                                                          diagnostics=diagnostics)
@@ -190,7 +193,9 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                                         'request': key, 'role': role, 'model': FALLBACK_MODEL}))
                                     active_model = FALLBACK_MODEL
                                     attempted_roles.append(role)
-                                    response = interpret(bundle, api_key, role, model=active_model)
+                                    diagnostics.clear()
+                                    response = interpret(bundle, api_key, role, model=active_model,
+                                                         diagnostics=diagnostics)
                             else:
                                 response = requester(bundle, api_key, role)
                             transient_failures = 0
@@ -219,7 +224,7 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
                 else 'FAIL' if any(x is False for x in values) else 'INSUFFICIENT_EVIDENCE'})
         except (ValueError,KeyError,TypeError,OSError) as exc:
             reason=str(exc) if isinstance(exc,ReviewBlocked) else type(exc).__name__
-            status['results'].append({'symbol':symbol,'status':'HELD','reason':reason,'attempted_roles':attempted_roles})
+            status['results'].append({'symbol':symbol,'status':'HELD','reason':reason,'attempted_roles':attempted_roles, **({'provider_diagnostics': diagnostics} if diagnostics else {})})
             if reason in ('GEMINI_HTTP_429','GEMINI_HTTP_401','GEMINI_HTTP_403','DAILY_REVIEW_BUDGET_DEFERRED'):
                 # A provider hold must not prevent validation of saved evidence.
                 # Resume network work from the first deferred issuer next time.
