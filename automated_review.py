@@ -132,6 +132,36 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
     after=state.get('last_symbol','')
     candidates=[s for s in candidates if s>after]+[s for s in candidates if s<=after]
     collected={x['symbol']:x for x in (queue or {}).get('results',[])}
+    def review_input(symbol, financials, observed):
+        # The collection receipts supplement, never mutate, frozen financials.
+        refs=collected.get(symbol,{}).get('documents',[])
+        sec=[x for x in refs if x.get('source','').startswith('https://www.sec.gov/')]
+        ir=[x for x in refs if x not in sec]
+        bundle=public_bundle(symbol,{**financials,'official_documents':sec or financials.get('official_documents',[])},
+            session_slots(at.astimezone(__import__('entry_schedule').NY).date())[-1],observed,root,
+            ir_documents=ir or research.get('issuer_ir',{}).get(symbol,{}).get('documents',[]),
+            deduplicate=True,max_context_bytes=MAX_AUTOMATED_CONTEXT_BYTES)
+        key=digest({'version':VERSION_ID,'bundle':bundle,'financial':financials['evidence_sha256'],
+                    'research':research['snapshot_sha256']})
+        return bundle, key
+
+    priority_observed = clock()
+
+    def has_pending_verifier(symbol):
+        try:
+            bundle, key = review_input(symbol, research['financials'][symbol], priority_observed)
+            requests = root/'automated_review_requests'
+            primary = requests/(key+'-primary.json')
+            if not primary.exists() or (requests/(key+'-verifier.json')).exists():
+                return False
+            validate_assessment(strict_json(primary.read_text())['assessment'], bundle)
+            return True
+        except (ValueError, KeyError, TypeError, OSError):
+            return False
+
+    # Preserve the round-robin order within each group, but spend the next
+    # available request on completing an already validated first pass.
+    candidates.sort(key=lambda symbol: not has_pending_verifier(symbol))
     retry_at = state.get("provider_retry_at")
     requests_blocked = (
         "GEMINI_PROVIDER_COOLDOWN" if retry_at and timestamp_ns(now.isoformat()) < timestamp_ns(retry_at)
@@ -149,16 +179,7 @@ def run(research, now, root=Path('input'), *, queue=None, requester=interpret,
         attempted_roles = []
         diagnostics = {}
         try:
-            # The collection receipts supplement, never mutate, frozen financials.
-            refs=collected.get(symbol,{}).get('documents',[])
-            sec=[x for x in refs if x.get('source','').startswith('https://www.sec.gov/')]
-            ir=[x for x in refs if x not in sec]
-            bundle=public_bundle(symbol,{**f,'official_documents':sec or f.get('official_documents',[])},
-                session_slots(at.astimezone(__import__('entry_schedule').NY).date())[-1],current,root,
-                ir_documents=ir or research.get('issuer_ir',{}).get(symbol,{}).get('documents',[]),
-                deduplicate=True,max_context_bytes=MAX_AUTOMATED_CONTEXT_BYTES)
-            key=digest({'version':VERSION_ID,'bundle':bundle,'financial':f['evidence_sha256'],
-                        'research':research['snapshot_sha256']})
+            bundle, key = review_input(symbol, f, current)
             cache=root/'automated_review_cache'/(key+'.json')
             if cache.exists():
                 proof=strict_json(cache.read_text())
