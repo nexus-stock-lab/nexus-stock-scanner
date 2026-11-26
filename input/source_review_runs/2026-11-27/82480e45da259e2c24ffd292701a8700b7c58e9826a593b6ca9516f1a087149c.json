@@ -1,0 +1,3907 @@
+{
+  "kind": "SOURCE_REVIEW_QUEUE",
+  "research_sha256": "3ae7f44f96267269e2be41246b21fb034cf2ff4f36a20d62ac00edfd84c2ff98",
+  "decision_time_jst": "2026-11-27T23:45:00+09:00",
+  "started_at": "2026-11-27T04:19:49.181214+09:00",
+  "may_register": false,
+  "reference_only": false,
+  "collection_deadline_jst": "2026-11-28T02:45:00+09:00",
+  "results": [
+    {
+      "symbol": "CBRE",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000028/cbre-20261022.htm",
+          "evidence_sha256": "0bc73d4699799f906fd295250daebdf6dd1a704953cde4c5877217aa32ce3afc",
+          "published_at": "2026-10-22T11:03:46.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000028/cbre-20261022x8kexx991.htm",
+          "evidence_sha256": "c51f10f76ff2445ca33a878d825aa623b4f497d7ef900e2e56f3e0e67492deb1",
+          "published_at": "2026-10-22T11:03:46.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000021/cbre-20260729.htm",
+          "evidence_sha256": "28dfa99a94d050d7d2c428c25563d446dda90a475cd7784a646ede05cf22ef61",
+          "published_at": "2026-07-29T11:02:05.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000021/cbre-20260723x8kexx991.htm",
+          "evidence_sha256": "d798108e01fa36bc85c91b558abaf24a0aad15469625988db24d67a0f6a905f4",
+          "published_at": "2026-07-29T11:02:05.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000031/cbre-20260930.htm",
+          "evidence_sha256": "98f887a8488b4ffebf883016a6065eb018b3cba2012bbd0a4905844be4ef0ee9",
+          "published_at": "2026-10-22T20:41:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000024/cbre-20260630.htm",
+          "evidence_sha256": "5fe1dcefe2b27095d3583e361230bf7ccc72b51ae1adebb9c059cb2e7972463a",
+          "published_at": "2026-07-29T20:42:19.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000119312526450081/cbre-20261105.htm",
+          "evidence_sha256": "cfc3d7ded1fceeb1e03ae025bca055367712bfbe6c377e41ef205d2a8e692604",
+          "published_at": "2026-11-05T22:00:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000119312526436371/cbre-20261027.htm",
+          "evidence_sha256": "5960780a30be0a8619cef02577b5d30af8ad766101baea958156228aeba395bb",
+          "published_at": "2026-10-28T21:13:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000028/cbre-20261022.htm",
+          "evidence_sha256": "9ef0910c7c4ea67c4a686343512d8873836653d3eeedf0f6ac5989033cac30a0",
+          "published_at": "2026-10-22T11:03:46.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000028/cbre-20261022x8kexx991.htm",
+          "evidence_sha256": "7b0745e644a3ef6ac6ad709084c6efc9ff89c0f211d6d4368e1d70f571dfb88f",
+          "published_at": "2026-10-22T11:03:46.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000021/cbre-20260729.htm",
+          "evidence_sha256": "3ed46b2195bfb03f02f4dad316f3e8ef7f63e83ed90d1a2d13a7c154e26984f0",
+          "published_at": "2026-07-29T11:02:05.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000021/cbre-20260723x8kexx991.htm",
+          "evidence_sha256": "de0594ebaa6ada1075a302eda5768802090f4d3b5b84274b15273dc5908a2b52",
+          "published_at": "2026-07-29T11:02:05.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000031/cbre-20260930.htm",
+          "evidence_sha256": "c471bc037eba21a78aeed5c2c90dacea388ab9b091e3b28d952deb9af77c17b2",
+          "published_at": "2026-10-22T20:41:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000024/cbre-20260630.htm",
+          "evidence_sha256": "8a1b91816a58ab96fe8fa8701e007e9b30c9233fd0ee0c615b0183fcabe702c7",
+          "published_at": "2026-07-29T20:42:19.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000119312526450081/cbre-20261105.htm",
+          "evidence_sha256": "e0f6f0bef9ca4102c9daa40b9b429c65a45202ae0d67bf67519bf52a207b10a4",
+          "published_at": "2026-11-05T22:00:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1138118/000119312526436371/cbre-20261027.htm",
+          "evidence_sha256": "6cc6ab927380a89015bd103f929afbf41428c4f80ea7f5a4db471bde66328f29",
+          "published_at": "2026-10-28T21:13:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "CBRE",
+        "cik": "0001138118",
+        "source": "https://data.sec.gov/submissions/CIK0001138118.json",
+        "submissions_sha256": "3481751594f9c0acc402eb4905b6a1ebb6b0215b5a96e2eabc69a0d9f4c50864",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000028/cbre-20261022.htm",
+            "evidence_sha256": "9ef0910c7c4ea67c4a686343512d8873836653d3eeedf0f6ac5989033cac30a0",
+            "published_at": "2026-10-22T11:03:46.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000028/cbre-20261022x8kexx991.htm",
+            "evidence_sha256": "7b0745e644a3ef6ac6ad709084c6efc9ff89c0f211d6d4368e1d70f571dfb88f",
+            "published_at": "2026-10-22T11:03:46.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000021/cbre-20260729.htm",
+            "evidence_sha256": "3ed46b2195bfb03f02f4dad316f3e8ef7f63e83ed90d1a2d13a7c154e26984f0",
+            "published_at": "2026-07-29T11:02:05.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000021/cbre-20260723x8kexx991.htm",
+            "evidence_sha256": "de0594ebaa6ada1075a302eda5768802090f4d3b5b84274b15273dc5908a2b52",
+            "published_at": "2026-07-29T11:02:05.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000031/cbre-20260930.htm",
+            "evidence_sha256": "c471bc037eba21a78aeed5c2c90dacea388ab9b091e3b28d952deb9af77c17b2",
+            "published_at": "2026-10-22T20:41:29.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1138118/000113811826000024/cbre-20260630.htm",
+            "evidence_sha256": "8a1b91816a58ab96fe8fa8701e007e9b30c9233fd0ee0c615b0183fcabe702c7",
+            "published_at": "2026-07-29T20:42:19.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1138118/000119312526450081/cbre-20261105.htm",
+            "evidence_sha256": "e0f6f0bef9ca4102c9daa40b9b429c65a45202ae0d67bf67519bf52a207b10a4",
+            "published_at": "2026-11-05T22:00:14.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1138118/000119312526436371/cbre-20261027.htm",
+            "evidence_sha256": "6cc6ab927380a89015bd103f929afbf41428c4f80ea7f5a4db471bde66328f29",
+            "published_at": "2026-10-28T21:13:01.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "CBRE",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "944f4e056e7e8963d131b73cfe45eb2ba0b98bf8112518e9eaabae7f0885c722",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "CSGP",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000078/csgp-20261027.htm",
+          "evidence_sha256": "1fabc1207e0adf343fd7154d7d01f5f573f5f2c81274d854535e1f3f7ae8b67c",
+          "published_at": "2026-10-27T20:05:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000078/q32026earningspressrelease.htm",
+          "evidence_sha256": "d8fc437e85ed3c493cafb9209b4a4452d3fd539d04bba08d0116788d3bcf14a5",
+          "published_at": "2026-10-27T20:05:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000061/csgp-20260728.htm",
+          "evidence_sha256": "fb04a472e178684b54375b378b0d718bbbfa241a3cba89cbbd3626ef08101c64",
+          "published_at": "2026-07-28T20:05:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000061/q2fy262026earningspressr.htm",
+          "evidence_sha256": "bbcb5dc79390f5f742f1bb7df7d0351c3cf3ea7581bad9e69e19175d33f0ef8a",
+          "published_at": "2026-07-28T20:05:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000083/csgp-20260930.htm",
+          "evidence_sha256": "965c30e59d6951891d5a787022e7ccf862de5147187ddcdf3263ab76306a3e5a",
+          "published_at": "2026-10-28T21:11:13.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000066/csgp-20260630.htm",
+          "evidence_sha256": "2aafcccbe4c0b93bd3337caf3f86db9c27025fc71b8660d384587576b4ffcc97",
+          "published_at": "2026-07-29T20:06:11.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000072/csgp-20260821.htm",
+          "evidence_sha256": "b8616f2e5a62053586afba9fb0d3cf5dac87fabac8010ddc00f3f4552738f5e4",
+          "published_at": "2026-08-21T20:03:36.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000072/costargroupcompletesacqu.htm",
+          "evidence_sha256": "01a1820a767e880eb09dcb82c90eedf651be6bce9a074e598908fda8951d5cae",
+          "published_at": "2026-08-21T20:03:36.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000078/csgp-20261027.htm",
+          "evidence_sha256": "495855218837c93407b150b29a3b44e841bb73f6f3ad55fe4536ef2e9fe0cbfd",
+          "published_at": "2026-10-27T20:05:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000078/q32026earningspressrelease.htm",
+          "evidence_sha256": "fc1fa8ed694f4cab6e0994258eacbc3aa911e8c4503abc38ec9d78de8e36a9b4",
+          "published_at": "2026-10-27T20:05:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000061/csgp-20260728.htm",
+          "evidence_sha256": "7f5c6446ccc49309094bc28fb8d80d4560bc5d47ff6a3b4153a6b6c168be8301",
+          "published_at": "2026-07-28T20:05:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000061/q2fy262026earningspressr.htm",
+          "evidence_sha256": "1aee3b21bc4583a3b55694dd95cd83683df72cedc6a003bd987d85d792e28829",
+          "published_at": "2026-07-28T20:05:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000083/csgp-20260930.htm",
+          "evidence_sha256": "961385fbc5c8548c052b9b392777b77d770232633160fac592e8117d46ba9890",
+          "published_at": "2026-10-28T21:11:13.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000066/csgp-20260630.htm",
+          "evidence_sha256": "439863bf81d55180e98231ba1d0b3e2443efd0b2a6dc81b5a76976d54e9341e6",
+          "published_at": "2026-07-29T20:06:11.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000072/csgp-20260821.htm",
+          "evidence_sha256": "cfed7e9e353fb75b552917d768a38796b24082af116687d87dcad32857e176c4",
+          "published_at": "2026-08-21T20:03:36.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000072/costargroupcompletesacqu.htm",
+          "evidence_sha256": "6d00befed98ee0ca651ab70bf91ca8bf9b206734a764510f4c42498f15cbca70",
+          "published_at": "2026-08-21T20:03:36.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "CSGP",
+        "cik": "0001057352",
+        "source": "https://data.sec.gov/submissions/CIK0001057352.json",
+        "submissions_sha256": "5099e0aa7b96780679736803b7c7041ff403d35e60a667f8a518dec9e3e2ce11",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000078/csgp-20261027.htm",
+            "evidence_sha256": "495855218837c93407b150b29a3b44e841bb73f6f3ad55fe4536ef2e9fe0cbfd",
+            "published_at": "2026-10-27T20:05:41.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000078/q32026earningspressrelease.htm",
+            "evidence_sha256": "fc1fa8ed694f4cab6e0994258eacbc3aa911e8c4503abc38ec9d78de8e36a9b4",
+            "published_at": "2026-10-27T20:05:41.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000061/csgp-20260728.htm",
+            "evidence_sha256": "7f5c6446ccc49309094bc28fb8d80d4560bc5d47ff6a3b4153a6b6c168be8301",
+            "published_at": "2026-07-28T20:05:38.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000061/q2fy262026earningspressr.htm",
+            "evidence_sha256": "1aee3b21bc4583a3b55694dd95cd83683df72cedc6a003bd987d85d792e28829",
+            "published_at": "2026-07-28T20:05:38.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000083/csgp-20260930.htm",
+            "evidence_sha256": "961385fbc5c8548c052b9b392777b77d770232633160fac592e8117d46ba9890",
+            "published_at": "2026-10-28T21:11:13.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000066/csgp-20260630.htm",
+            "evidence_sha256": "439863bf81d55180e98231ba1d0b3e2443efd0b2a6dc81b5a76976d54e9341e6",
+            "published_at": "2026-07-29T20:06:11.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000072/csgp-20260821.htm",
+            "evidence_sha256": "cfed7e9e353fb75b552917d768a38796b24082af116687d87dcad32857e176c4",
+            "published_at": "2026-08-21T20:03:36.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1057352/000105735226000072/costargroupcompletesacqu.htm",
+            "evidence_sha256": "6d00befed98ee0ca651ab70bf91ca8bf9b206734a764510f4c42498f15cbca70",
+            "published_at": "2026-08-21T20:03:36.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "CSGP",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "d92e539eb4d60bd841e6614fe010f9e10040caa756da5f9960e9146ae8299322",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "CTRI",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000135/ctri-20261105.htm",
+          "evidence_sha256": "27f382e5f91785bcf2cc0901d864569002f05a3b68b5914c8f2a5eb2e201b6b1",
+          "published_at": "2026-11-05T13:15:35.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000135/centuriholdingsincex-991xq.htm",
+          "evidence_sha256": "b8f5025b08b6a634efa43a6cdf9bd7452f666a42c1df722aba2e58ac41749676",
+          "published_at": "2026-11-05T13:15:35.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000088/ctri-20260804.htm",
+          "evidence_sha256": "2960f3a5f310647f7b38831df7f7b5aff7dd162197b96aa2dd384870c45629c9",
+          "published_at": "2026-08-04T12:05:56.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000088/centuriholdingsincex-991xq.htm",
+          "evidence_sha256": "d363bf0c10e78ea95b9bf77e44a7c558edde96e60f07dcb62f3592baaf5c922a",
+          "published_at": "2026-08-04T12:05:56.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000137/ctri-20260927.htm",
+          "evidence_sha256": "d463f8ce344f4b4fee7189af8467d3d9d1c0142d985101663b01a3ede9ea4dae",
+          "published_at": "2026-11-05T20:06:31.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000089/ctri-20260628.htm",
+          "evidence_sha256": "e44512aa626eb95221205c658cf8d33ee7e9efd5b23ffa2e007e04223bae224d",
+          "published_at": "2026-08-04T12:07:34.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000108/ctri-20260812.htm",
+          "evidence_sha256": "8801f0f20915ac26a5f0b28e6a2eb2c81ab4bf962e7807070c538ba6fd46da9e",
+          "published_at": "2026-08-12T20:21:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000108/exhibit991filed08122026.htm",
+          "evidence_sha256": "13c1132e33b660020a50725844c4a2c9290395fee8eb9ef13f8dac07c8a55cae",
+          "published_at": "2026-08-12T20:21:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000135/ctri-20261105.htm",
+          "evidence_sha256": "5a6efdd840db0f0e9fc06dfe58e6bbef83759b640c363dccf11164c82d552e3d",
+          "published_at": "2026-11-05T13:15:35.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000135/centuriholdingsincex-991xq.htm",
+          "evidence_sha256": "03c6e8d6b10c5123ec98496834312f38e6a2748a4662c900ce2527006e808c2e",
+          "published_at": "2026-11-05T13:15:35.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000088/ctri-20260804.htm",
+          "evidence_sha256": "2a8df229ee71bbea2a6405b71d9c394dd0afdd7c1642129b49357a920d15cf3a",
+          "published_at": "2026-08-04T12:05:56.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000088/centuriholdingsincex-991xq.htm",
+          "evidence_sha256": "1cdeb8e6d62a676ca073c7da3fc9faf2a5c650e56c235b4662828c3f05074b5c",
+          "published_at": "2026-08-04T12:05:56.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000137/ctri-20260927.htm",
+          "evidence_sha256": "fdba87b5656f5c237f32e4120cf9cc7f86662762b1e19a7f8db75710a73b9126",
+          "published_at": "2026-11-05T20:06:31.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000089/ctri-20260628.htm",
+          "evidence_sha256": "e6b05c328cee466252d28516a83b0e1e6d1488606dc2053eca5e109230f7d7e5",
+          "published_at": "2026-08-04T12:07:34.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000108/ctri-20260812.htm",
+          "evidence_sha256": "3c1fe0a0dea8d09c6bc6fde0ea3f1da6275f3edea3e9e8c76cc628e6fdf851e1",
+          "published_at": "2026-08-12T20:21:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000108/exhibit991filed08122026.htm",
+          "evidence_sha256": "6c7400d0a5c271892a1da2c547d3cbdcfd1440d69ff98aaceb174f20bbbf7781",
+          "published_at": "2026-08-12T20:21:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "CTRI",
+        "cik": "0001981599",
+        "source": "https://data.sec.gov/submissions/CIK0001981599.json",
+        "submissions_sha256": "2e776724408a9b136994038eb315a92ef032fb762d9afcfc1c11ce1c998a4915",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000135/ctri-20261105.htm",
+            "evidence_sha256": "5a6efdd840db0f0e9fc06dfe58e6bbef83759b640c363dccf11164c82d552e3d",
+            "published_at": "2026-11-05T13:15:35.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000135/centuriholdingsincex-991xq.htm",
+            "evidence_sha256": "03c6e8d6b10c5123ec98496834312f38e6a2748a4662c900ce2527006e808c2e",
+            "published_at": "2026-11-05T13:15:35.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000088/ctri-20260804.htm",
+            "evidence_sha256": "2a8df229ee71bbea2a6405b71d9c394dd0afdd7c1642129b49357a920d15cf3a",
+            "published_at": "2026-08-04T12:05:56.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000088/centuriholdingsincex-991xq.htm",
+            "evidence_sha256": "1cdeb8e6d62a676ca073c7da3fc9faf2a5c650e56c235b4662828c3f05074b5c",
+            "published_at": "2026-08-04T12:05:56.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000137/ctri-20260927.htm",
+            "evidence_sha256": "fdba87b5656f5c237f32e4120cf9cc7f86662762b1e19a7f8db75710a73b9126",
+            "published_at": "2026-11-05T20:06:31.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000089/ctri-20260628.htm",
+            "evidence_sha256": "e6b05c328cee466252d28516a83b0e1e6d1488606dc2053eca5e109230f7d7e5",
+            "published_at": "2026-08-04T12:07:34.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000108/ctri-20260812.htm",
+            "evidence_sha256": "3c1fe0a0dea8d09c6bc6fde0ea3f1da6275f3edea3e9e8c76cc628e6fdf851e1",
+            "published_at": "2026-08-12T20:21:33.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1981599/000198159926000108/exhibit991filed08122026.htm",
+            "evidence_sha256": "6c7400d0a5c271892a1da2c547d3cbdcfd1440d69ff98aaceb174f20bbbf7781",
+            "published_at": "2026-08-12T20:21:33.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "CTRI",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "2c41601c4bcca2adb61641a63c07039247a4eb6f7774b47fce166629917d39dd",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "EXE",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000067/exe-20261027.htm",
+          "evidence_sha256": "ec83fdce07c30ecde1fac1e2e19b6eb719c77760a4496fe11adaa5111fce98e3",
+          "published_at": "2026-10-27T20:03:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000067/exe-ex_991x20260930x8kxpr.htm",
+          "evidence_sha256": "e29359d5c38b6321b2367409f357a5af23f07f14a2e4da8b4f1b21e9e09f4c29",
+          "published_at": "2026-10-27T20:03:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000046/exe-20260728.htm",
+          "evidence_sha256": "f59550556223aab167a5a613a2728399f816ba3e89ad9c65f9ae40b819bff4de",
+          "published_at": "2026-07-28T20:02:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000046/exe-ex_991x20260630x8kxpr.htm",
+          "evidence_sha256": "f08b143d8fe89009e85d56bd6209bcb7eaa37751f6b1d75438fcd9a9e03627fb",
+          "published_at": "2026-07-28T20:02:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000068/exe-20260930.htm",
+          "evidence_sha256": "7abb9df0fd5c7d4ee6c8765c8acc1fdb8a8049bda17af5edfa99ab35c4e0f19e",
+          "published_at": "2026-10-27T20:05:16.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000047/exe-20260630.htm",
+          "evidence_sha256": "c85ae82e565d52c72dea5374ba066242a6686de083e2c1819568094777793ede",
+          "published_at": "2026-07-28T20:03:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000110465926130590/tm2630337d1_8k.htm",
+          "evidence_sha256": "85aea1dc5d771bbe62a81195560e891c86b18b5f334ee0eab2c377b91e42e138",
+          "published_at": "2026-11-20T21:01:25.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000110465926116739/tm2627775d1_8k.htm",
+          "evidence_sha256": "6aa56c5402f8ed892dd8dbfd169c37fbca8f2c918a011c8dd07f818eab886222",
+          "published_at": "2026-10-19T12:09:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000067/exe-20261027.htm",
+          "evidence_sha256": "610076fede867844cb44a79ad688de794d6307eeb8b07d93908ccdfe7e8403a5",
+          "published_at": "2026-10-27T20:03:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000067/exe-ex_991x20260930x8kxpr.htm",
+          "evidence_sha256": "f2922b1a72763e3b4bdf96992572216555987cb702d47d8232060df26b61309e",
+          "published_at": "2026-10-27T20:03:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000046/exe-20260728.htm",
+          "evidence_sha256": "71cbea8bd30ffcc135b0f614580a130a1b7d04143a1a8b02a7c3721b873e487b",
+          "published_at": "2026-07-28T20:02:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000046/exe-ex_991x20260630x8kxpr.htm",
+          "evidence_sha256": "80729981a322497ce79193fc1b77f83f30611c09bd91f19f67e5847ccb2e8336",
+          "published_at": "2026-07-28T20:02:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000068/exe-20260930.htm",
+          "evidence_sha256": "eae64f867a6041490f0ba87590e9bcd4ecc0d250f57759d090f854090df4ce15",
+          "published_at": "2026-10-27T20:05:16.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000047/exe-20260630.htm",
+          "evidence_sha256": "6246484e8b01009422a8057952c4956a57819b393b4e9243a5cb394f0c73f811",
+          "published_at": "2026-07-28T20:03:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000110465926130590/tm2630337d1_8k.htm",
+          "evidence_sha256": "71c9c01d980795ce9e1b6cc1ee2d1d6b973c9a1effc7187fbc10585a5bc104a2",
+          "published_at": "2026-11-20T21:01:25.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/895126/000110465926116739/tm2627775d1_8k.htm",
+          "evidence_sha256": "f70bd3e32a5febb91482871b43c6563c6dd90a6de344ba916387c6d39432db07",
+          "published_at": "2026-10-19T12:09:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "EXE",
+        "cik": "0000895126",
+        "source": "https://data.sec.gov/submissions/CIK0000895126.json",
+        "submissions_sha256": "3194d114a0cfbe60159051ac4c6253b1a40926ef3761ae1a4d10f745c8d4ed9e",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000067/exe-20261027.htm",
+            "evidence_sha256": "610076fede867844cb44a79ad688de794d6307eeb8b07d93908ccdfe7e8403a5",
+            "published_at": "2026-10-27T20:03:12.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000067/exe-ex_991x20260930x8kxpr.htm",
+            "evidence_sha256": "f2922b1a72763e3b4bdf96992572216555987cb702d47d8232060df26b61309e",
+            "published_at": "2026-10-27T20:03:12.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000046/exe-20260728.htm",
+            "evidence_sha256": "71cbea8bd30ffcc135b0f614580a130a1b7d04143a1a8b02a7c3721b873e487b",
+            "published_at": "2026-07-28T20:02:12.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000046/exe-ex_991x20260630x8kxpr.htm",
+            "evidence_sha256": "80729981a322497ce79193fc1b77f83f30611c09bd91f19f67e5847ccb2e8336",
+            "published_at": "2026-07-28T20:02:12.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000068/exe-20260930.htm",
+            "evidence_sha256": "eae64f867a6041490f0ba87590e9bcd4ecc0d250f57759d090f854090df4ce15",
+            "published_at": "2026-10-27T20:05:16.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/895126/000089512626000047/exe-20260630.htm",
+            "evidence_sha256": "6246484e8b01009422a8057952c4956a57819b393b4e9243a5cb394f0c73f811",
+            "published_at": "2026-07-28T20:03:43.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/895126/000110465926130590/tm2630337d1_8k.htm",
+            "evidence_sha256": "71c9c01d980795ce9e1b6cc1ee2d1d6b973c9a1effc7187fbc10585a5bc104a2",
+            "published_at": "2026-11-20T21:01:25.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/895126/000110465926116739/tm2627775d1_8k.htm",
+            "evidence_sha256": "f70bd3e32a5febb91482871b43c6563c6dd90a6de344ba916387c6d39432db07",
+            "published_at": "2026-10-19T12:09:38.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "EXE",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "b56c8c5eafef0569c8e906a3380edfba06f1a7650b07fdacb75f6b8b8e1b310a",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "FND",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068242/fnd-20261027.htm",
+          "evidence_sha256": "17cac011c8f258c3d50b5a71afc613e970cc5c7e85dc0b390a8e8f9a355a3ed4",
+          "published_at": "2026-10-29T20:13:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068242/fnd-20260924x8kxex991.htm",
+          "evidence_sha256": "6161ba26c945e0c48a64852de85afa537259687b9f7f5dd2f0c360f4fa5a0411",
+          "published_at": "2026-10-29T20:13:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068242/fnd-20260924x8kex992.htm",
+          "evidence_sha256": "65ef19ffcd683e6df20461b18129e8c6523c18e39d4ae196ad2a9bbbc43bd57d",
+          "published_at": "2026-10-29T20:13:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026051055/fnd-20260730.htm",
+          "evidence_sha256": "bacd56f4db563101c6bdf354b3b940ab202215f2979d15ad56a35baa2c499f16",
+          "published_at": "2026-07-30T20:11:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026051055/fnd-20260625x8kxex991.htm",
+          "evidence_sha256": "3f4babd3d1624f7dbfab923ab93049c3016275816fefb264bd7c2e7c839033ea",
+          "published_at": "2026-07-30T20:11:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068259/fnd-20260924.htm",
+          "evidence_sha256": "2ac653421e74d4b0d9d354a6a39a08fecb2a4eb669758bb443d120e8ac67ccee",
+          "published_at": "2026-10-29T20:19:06.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026051069/fnd-20260625.htm",
+          "evidence_sha256": "860646399704ed56ca7759f1175f893ef96858dfb99ecd994f87b764d88a397a",
+          "published_at": "2026-07-30T20:17:32.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026045555/fnd-20260624.htm",
+          "evidence_sha256": "3455adcb415720af0beeeaa7d744336f10ff208e26bf01b8836057ed6fe6f118",
+          "published_at": "2026-06-25T20:38:44.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068242/fnd-20261027.htm",
+          "evidence_sha256": "181b40502621bd4bb991d79c4df437c97f0d1a1ee6e67e21919b3d5d5bcef8b8",
+          "published_at": "2026-10-29T20:13:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068242/fnd-20260924x8kxex991.htm",
+          "evidence_sha256": "8d3a7c76d0e3611d2e941af800b7ed683456fc54611351ebc0f876b52dbea1a9",
+          "published_at": "2026-10-29T20:13:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068242/fnd-20260924x8kex992.htm",
+          "evidence_sha256": "0e12632bf9344a612e330e00dc25f93c94dd51e7851ccffac6f3914433ebd6b3",
+          "published_at": "2026-10-29T20:13:33.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026051055/fnd-20260730.htm",
+          "evidence_sha256": "7d861fa9692fc2bb467532c548683b805ae7269f6d03500bfb76c4b46dc31473",
+          "published_at": "2026-07-30T20:11:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026051055/fnd-20260625x8kxex991.htm",
+          "evidence_sha256": "857ccd11b2750a6e0e7430b619b8a1b978eaad765ba667463b0b15365e9f1317",
+          "published_at": "2026-07-30T20:11:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068259/fnd-20260924.htm",
+          "evidence_sha256": "7708100f4cade1c9adfca44c4b0b875a5ee9c300c0473fd89bae69fa8206b08b",
+          "published_at": "2026-10-29T20:19:06.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026051069/fnd-20260625.htm",
+          "evidence_sha256": "98fe8e8e7c37a4eb075fff06c18d3d53ff141cfe18043eb18371e073bf472a59",
+          "published_at": "2026-07-30T20:17:32.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026045555/fnd-20260624.htm",
+          "evidence_sha256": "aee73303bbce37b97752284d715fe50d4e46a2419c36070922394427e40069a8",
+          "published_at": "2026-06-25T20:38:44.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "FND",
+        "cik": "0001507079",
+        "source": "https://data.sec.gov/submissions/CIK0001507079.json",
+        "submissions_sha256": "a70d1d80534e34818c8b7a867e88fe6b22c16c9f7f4aa4e9ed7f8afc26bb8e46",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068242/fnd-20261027.htm",
+            "evidence_sha256": "181b40502621bd4bb991d79c4df437c97f0d1a1ee6e67e21919b3d5d5bcef8b8",
+            "published_at": "2026-10-29T20:13:33.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068242/fnd-20260924x8kxex991.htm",
+            "evidence_sha256": "8d3a7c76d0e3611d2e941af800b7ed683456fc54611351ebc0f876b52dbea1a9",
+            "published_at": "2026-10-29T20:13:33.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068242/fnd-20260924x8kex992.htm",
+            "evidence_sha256": "0e12632bf9344a612e330e00dc25f93c94dd51e7851ccffac6f3914433ebd6b3",
+            "published_at": "2026-10-29T20:13:33.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026051055/fnd-20260730.htm",
+            "evidence_sha256": "7d861fa9692fc2bb467532c548683b805ae7269f6d03500bfb76c4b46dc31473",
+            "published_at": "2026-07-30T20:11:38.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026051055/fnd-20260625x8kxex991.htm",
+            "evidence_sha256": "857ccd11b2750a6e0e7430b619b8a1b978eaad765ba667463b0b15365e9f1317",
+            "published_at": "2026-07-30T20:11:38.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026068259/fnd-20260924.htm",
+            "evidence_sha256": "7708100f4cade1c9adfca44c4b0b875a5ee9c300c0473fd89bae69fa8206b08b",
+            "published_at": "2026-10-29T20:19:06.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026051069/fnd-20260625.htm",
+            "evidence_sha256": "98fe8e8e7c37a4eb075fff06c18d3d53ff141cfe18043eb18371e073bf472a59",
+            "published_at": "2026-07-30T20:17:32.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1507079/000162828026045555/fnd-20260624.htm",
+            "evidence_sha256": "aee73303bbce37b97752284d715fe50d4e46a2419c36070922394427e40069a8",
+            "published_at": "2026-06-25T20:38:44.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "FND",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "d01b15b0ef3f18bb29772e9f4154482c8fb767184646974784be5175d35c13c6",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "GTY",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427933/gty-20261021.htm",
+          "evidence_sha256": "6edf4a7f03620d6a0c9026353d3de2ec162ded0c2c0627866a65ab1b6817acd4",
+          "published_at": "2026-10-21T20:45:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427933/gty-ex99_1.htm",
+          "evidence_sha256": "20046bf5f883cc18b6c43675af30dd94a9ed2d187b7da21669de7aee06dd8c02",
+          "published_at": "2026-10-21T20:45:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526312471/gty-20260722.htm",
+          "evidence_sha256": "286513b450389226c9ede3f91b5ea14c0f7d960aedd2eb92be683e4e00874d12",
+          "published_at": "2026-07-22T20:40:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526312471/gty-ex99_1.htm",
+          "evidence_sha256": "c0b4029d53e219957fa220a3a5c9d0587151f2c0d2735534c65295fc130da9e9",
+          "published_at": "2026-07-22T20:40:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526428988/gty-20260930.htm",
+          "evidence_sha256": "ce061d1affa529b369052c9acd03e9b2975e5175c76603efb95f285089a38002",
+          "published_at": "2026-10-22T20:30:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526314247/gty-20260630.htm",
+          "evidence_sha256": "3347586a83ca098e8c04314771366dacf734f568dc07f7b2a8d7ead26e3b3951",
+          "published_at": "2026-07-23T20:45:36.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427946/gty-20261021.htm",
+          "evidence_sha256": "64fbc50c4cbdf0ddb31576c2c1d0d7b2b4e2f8e1f7e4595761717929e53a3a2c",
+          "published_at": "2026-10-21T20:50:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427946/gty-ex99_1.htm",
+          "evidence_sha256": "5ce91e371d37e6668ce29dcb119efc8988037d5ab7fecba78959fd7b1e395abb",
+          "published_at": "2026-10-21T20:50:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427933/gty-20261021.htm",
+          "evidence_sha256": "0d0f87007f7ce167bd9aea44cb650d3eb6809fbf634ea53de6974bc1a6347bfd",
+          "published_at": "2026-10-21T20:45:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427933/gty-ex99_1.htm",
+          "evidence_sha256": "c41ee984dcb7275f60125e581e48cfadd54b27ad783ce307cb022f9292fa0284",
+          "published_at": "2026-10-21T20:45:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526312471/gty-20260722.htm",
+          "evidence_sha256": "5876d26991bcd082227b268d1dd6848d121a8cd23c67b8f116d79bb6e6db8555",
+          "published_at": "2026-07-22T20:40:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526312471/gty-ex99_1.htm",
+          "evidence_sha256": "970bad07198e2f5ab04edf911816cf697bf2333663a545b99f5468040cf712d1",
+          "published_at": "2026-07-22T20:40:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526428988/gty-20260930.htm",
+          "evidence_sha256": "2b33bb7dc68c59a18d3e17960aabbb597bbe87e4a4f695efcdd2f8d086a5f60f",
+          "published_at": "2026-10-22T20:30:38.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526314247/gty-20260630.htm",
+          "evidence_sha256": "7ffa53912815212dd72f69769ec2557f7e1aed57d38a86dfd850181a01abc976",
+          "published_at": "2026-07-23T20:45:36.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427946/gty-20261021.htm",
+          "evidence_sha256": "838f2b47f38ca1959951763d247f2fb7aaa4c429f34e1c4c795dd013006cc4b8",
+          "published_at": "2026-10-21T20:50:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427946/gty-ex99_1.htm",
+          "evidence_sha256": "7a926cdbde80b78c055feb833fe9561fbc52696cc2296518e32c56a6dccadf42",
+          "published_at": "2026-10-21T20:50:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "GTY",
+        "cik": "0001052752",
+        "source": "https://data.sec.gov/submissions/CIK0001052752.json",
+        "submissions_sha256": "e262fcbf0f2812ebbcf96a98475f4939b0fa824956c78699f626c269a8e7f93b",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427933/gty-20261021.htm",
+            "evidence_sha256": "0d0f87007f7ce167bd9aea44cb650d3eb6809fbf634ea53de6974bc1a6347bfd",
+            "published_at": "2026-10-21T20:45:14.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427933/gty-ex99_1.htm",
+            "evidence_sha256": "c41ee984dcb7275f60125e581e48cfadd54b27ad783ce307cb022f9292fa0284",
+            "published_at": "2026-10-21T20:45:14.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526312471/gty-20260722.htm",
+            "evidence_sha256": "5876d26991bcd082227b268d1dd6848d121a8cd23c67b8f116d79bb6e6db8555",
+            "published_at": "2026-07-22T20:40:14.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526312471/gty-ex99_1.htm",
+            "evidence_sha256": "970bad07198e2f5ab04edf911816cf697bf2333663a545b99f5468040cf712d1",
+            "published_at": "2026-07-22T20:40:14.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526428988/gty-20260930.htm",
+            "evidence_sha256": "2b33bb7dc68c59a18d3e17960aabbb597bbe87e4a4f695efcdd2f8d086a5f60f",
+            "published_at": "2026-10-22T20:30:38.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526314247/gty-20260630.htm",
+            "evidence_sha256": "7ffa53912815212dd72f69769ec2557f7e1aed57d38a86dfd850181a01abc976",
+            "published_at": "2026-07-23T20:45:36.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427946/gty-20261021.htm",
+            "evidence_sha256": "838f2b47f38ca1959951763d247f2fb7aaa4c429f34e1c4c795dd013006cc4b8",
+            "published_at": "2026-10-21T20:50:28.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1052752/000119312526427946/gty-ex99_1.htm",
+            "evidence_sha256": "7a926cdbde80b78c055feb833fe9561fbc52696cc2296518e32c56a6dccadf42",
+            "published_at": "2026-10-21T20:50:28.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "GTY",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "1320ba9ba5708e95d5fae54e4fddd8cbaa3329ad67a0315195fab01c8ca14649",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "HCC",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447189/hcc-20261104.htm",
+          "evidence_sha256": "3fefd72c99e862486c544800eb0f7b1ee19f88b98bafc370d515f88b59a2a9c1",
+          "published_at": "2026-11-04T21:04:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447189/hcc-ex99_1.htm",
+          "evidence_sha256": "53c22ad069f9bec7e550efab5f1addcfe3e4567d6e21dc85c4f890b0dd1cf118",
+          "published_at": "2026-11-04T21:04:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335017/hcc-20260805.htm",
+          "evidence_sha256": "e4c77d24d0c32dddcb79e053c01938bb0c4a0461b3af441e719828b2c1a0946a",
+          "published_at": "2026-08-05T20:03:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335017/hcc-ex99_1.htm",
+          "evidence_sha256": "779c317578d06d46ef622e695f3b4bb31ff57b82557a7f3ccd70420e78a70a5c",
+          "published_at": "2026-08-05T20:03:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447481/hcc-20260930.htm",
+          "evidence_sha256": "bce99a9aa2ee2ff6902798c0a542527fd917281225546c1fde2efaca36402b01",
+          "published_at": "2026-11-04T21:43:44.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335324/hcc-20260630.htm",
+          "evidence_sha256": "2d7077545a5c947057d53e1f2944def9b6804c7498c9181a696af4c104b6beab",
+          "published_at": "2026-08-05T20:43:48.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335324/hcc-ex95.htm",
+          "evidence_sha256": "2a0618aec4d9b380b083f0eadf5c4f2cc32e7b71712cd9c320bbba478581bc99",
+          "published_at": "2026-08-05T20:43:48.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000169130326000011/hcc-20260420.htm",
+          "evidence_sha256": "c38bb0da23b0ab14bc333127f6bd425d2b386c761634af8c3e989a831972e5fa",
+          "published_at": "2026-04-21T14:20:07.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447189/hcc-20261104.htm",
+          "evidence_sha256": "3cf21ebc61824ed5ac60b6fa2c4161a28dc191b443d566bcd5cd432db5eaaa00",
+          "published_at": "2026-11-04T21:04:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447189/hcc-ex99_1.htm",
+          "evidence_sha256": "bcdd27f10aa971599ded897ede0c23541c610eab48ef391db942b54fef2b692c",
+          "published_at": "2026-11-04T21:04:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335017/hcc-20260805.htm",
+          "evidence_sha256": "edb5ca466946307c044aa864d7a6cb1da5807a702b0e3f6125ed81ce22c23bae",
+          "published_at": "2026-08-05T20:03:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335017/hcc-ex99_1.htm",
+          "evidence_sha256": "c863b4155e7011afadb3e0870567048a9d069b011cfeb41573ff4c5dc1814151",
+          "published_at": "2026-08-05T20:03:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447481/hcc-20260930.htm",
+          "evidence_sha256": "7a5619623e19b6d74df59b2e127feac09890979c08780ca4c20778fa9b961167",
+          "published_at": "2026-11-04T21:43:44.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335324/hcc-20260630.htm",
+          "evidence_sha256": "4715660d36cf0e5e4a97ed8e8958f19b244a9ca2371f296f027eb8cf5cbc96a0",
+          "published_at": "2026-08-05T20:43:48.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335324/hcc-ex95.htm",
+          "evidence_sha256": "8f17d7eb1ce037ca3838937d5df931eff25eda9c160d0a5708d2fba2f24dd38e",
+          "published_at": "2026-08-05T20:43:48.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1691303/000169130326000011/hcc-20260420.htm",
+          "evidence_sha256": "9fa47a23b65d9697354514b20a336ac2a09f038fc25b4da05e570830be93ac1d",
+          "published_at": "2026-04-21T14:20:07.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "HCC",
+        "cik": "0001691303",
+        "source": "https://data.sec.gov/submissions/CIK0001691303.json",
+        "submissions_sha256": "d999a7cf1ba1e57ab79f57ef98de5b895b816f95de6a26da2c25ed54ff67111f",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447189/hcc-20261104.htm",
+            "evidence_sha256": "3cf21ebc61824ed5ac60b6fa2c4161a28dc191b443d566bcd5cd432db5eaaa00",
+            "published_at": "2026-11-04T21:04:22.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447189/hcc-ex99_1.htm",
+            "evidence_sha256": "bcdd27f10aa971599ded897ede0c23541c610eab48ef391db942b54fef2b692c",
+            "published_at": "2026-11-04T21:04:22.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335017/hcc-20260805.htm",
+            "evidence_sha256": "edb5ca466946307c044aa864d7a6cb1da5807a702b0e3f6125ed81ce22c23bae",
+            "published_at": "2026-08-05T20:03:41.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335017/hcc-ex99_1.htm",
+            "evidence_sha256": "c863b4155e7011afadb3e0870567048a9d069b011cfeb41573ff4c5dc1814151",
+            "published_at": "2026-08-05T20:03:41.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526447481/hcc-20260930.htm",
+            "evidence_sha256": "7a5619623e19b6d74df59b2e127feac09890979c08780ca4c20778fa9b961167",
+            "published_at": "2026-11-04T21:43:44.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335324/hcc-20260630.htm",
+            "evidence_sha256": "4715660d36cf0e5e4a97ed8e8958f19b244a9ca2371f296f027eb8cf5cbc96a0",
+            "published_at": "2026-08-05T20:43:48.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1691303/000119312526335324/hcc-ex95.htm",
+            "evidence_sha256": "8f17d7eb1ce037ca3838937d5df931eff25eda9c160d0a5708d2fba2f24dd38e",
+            "published_at": "2026-08-05T20:43:48.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1691303/000169130326000011/hcc-20260420.htm",
+            "evidence_sha256": "9fa47a23b65d9697354514b20a336ac2a09f038fc25b4da05e570830be93ac1d",
+            "published_at": "2026-04-21T14:20:07.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "HCC",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "2679503e438c75209aae60471afb0aaaebdf56e7de4e568f37a183f9de450057",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "HSY",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026068046/hsy-20261029.htm",
+          "evidence_sha256": "d5dd5c24dc7b7aaba9151cd48f321155f7eb43e99c0582febabc7520453108cd",
+          "published_at": "2026-10-29T12:27:18.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026068046/exhibit991_2026xq3.htm",
+          "evidence_sha256": "a7c340557d7f3e926e3303ee6ccc35b945568be7a285120ffa2866643014d787",
+          "published_at": "2026-10-29T12:27:18.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026050769/hsy-20260730.htm",
+          "evidence_sha256": "c10fdfa3e900d659c889a6292abe6d4903e2b20dda2ddc9e33e56a24934ddbad",
+          "published_at": "2026-07-30T10:48:34.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026050769/exhibit991_2026xq2.htm",
+          "evidence_sha256": "4054edb23b104aa04e174a9327e1c02fd541e14c085f411f28a6a2b1a3311fb9",
+          "published_at": "2026-07-30T10:48:34.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026068136/hsy-20260927.htm",
+          "evidence_sha256": "2bed6233e17a60f8af949a21cf2cae6e1f452e2e6848a0d171868d5c8ce634e7",
+          "published_at": "2026-10-29T17:45:58.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026050900/hsy-20260628.htm",
+          "evidence_sha256": "c4fab2c2afa9e17a45c306fb017f942e3800275ee570ab4b9f6f5a69c3fa407e",
+          "published_at": "2026-07-30T14:32:59.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026060131/hsy-20260902.htm",
+          "evidence_sha256": "01feabc2354978430eaf7f9cab011f9c13b5a2ae27d0a353f9f664a2bd0ad95f",
+          "published_at": "2026-09-02T20:31:40.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026060131/exhibit991-pressreleasedat.htm",
+          "evidence_sha256": "47fb44a89f09cc7a30583f1a1e47131b15342a572575aa715c88e49c07287b43",
+          "published_at": "2026-09-02T20:31:40.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026068046/hsy-20261029.htm",
+          "evidence_sha256": "5cf3c027656cfaf8a4a4d608770e35a629d7a21b4a5a736b29f34da913f87560",
+          "published_at": "2026-10-29T12:27:18.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026068046/exhibit991_2026xq3.htm",
+          "evidence_sha256": "dac80a2de7e90498bc1b61b92cccc09a5de9d41fc0637a8b8078eedc1df73413",
+          "published_at": "2026-10-29T12:27:18.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026050769/hsy-20260730.htm",
+          "evidence_sha256": "b84cc978258778da5945064acad3f8541f71d40b2ca868014d98c61e57e67685",
+          "published_at": "2026-07-30T10:48:34.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026050769/exhibit991_2026xq2.htm",
+          "evidence_sha256": "8d517e957fbfc3a91afeb974445452dde3e163dc66c33c6bb99d5359a146af6a",
+          "published_at": "2026-07-30T10:48:34.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026068136/hsy-20260927.htm",
+          "evidence_sha256": "b2cb9494719727d9b126b1105a251597420342134a6858a32f24df62d701338f",
+          "published_at": "2026-10-29T17:45:58.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026050900/hsy-20260628.htm",
+          "evidence_sha256": "33aae54ce7c5b3e67f3464119e8a99357c71bd68b11403727e779d4850cf7bf0",
+          "published_at": "2026-07-30T14:32:59.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026060131/hsy-20260902.htm",
+          "evidence_sha256": "5d9ae0154aabd2d8fa6ba4e1aa6aa334ace9876fb9354a34a5fbc4366cdde40c",
+          "published_at": "2026-09-02T20:31:40.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026060131/exhibit991-pressreleasedat.htm",
+          "evidence_sha256": "ca5fc5f3cb65ef21455c2fede0e8383d29dd2fb60722a0f37f8fd2541a4d9d49",
+          "published_at": "2026-09-02T20:31:40.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "HSY",
+        "cik": "0000047111",
+        "source": "https://data.sec.gov/submissions/CIK0000047111.json",
+        "submissions_sha256": "eeb8c8a514ae12cb4d64d82ae945d94350d163b0a43fb956f7947aed09a59dbf",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026068046/hsy-20261029.htm",
+            "evidence_sha256": "5cf3c027656cfaf8a4a4d608770e35a629d7a21b4a5a736b29f34da913f87560",
+            "published_at": "2026-10-29T12:27:18.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026068046/exhibit991_2026xq3.htm",
+            "evidence_sha256": "dac80a2de7e90498bc1b61b92cccc09a5de9d41fc0637a8b8078eedc1df73413",
+            "published_at": "2026-10-29T12:27:18.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026050769/hsy-20260730.htm",
+            "evidence_sha256": "b84cc978258778da5945064acad3f8541f71d40b2ca868014d98c61e57e67685",
+            "published_at": "2026-07-30T10:48:34.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026050769/exhibit991_2026xq2.htm",
+            "evidence_sha256": "8d517e957fbfc3a91afeb974445452dde3e163dc66c33c6bb99d5359a146af6a",
+            "published_at": "2026-07-30T10:48:34.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026068136/hsy-20260927.htm",
+            "evidence_sha256": "b2cb9494719727d9b126b1105a251597420342134a6858a32f24df62d701338f",
+            "published_at": "2026-10-29T17:45:58.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026050900/hsy-20260628.htm",
+            "evidence_sha256": "33aae54ce7c5b3e67f3464119e8a99357c71bd68b11403727e779d4850cf7bf0",
+            "published_at": "2026-07-30T14:32:59.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026060131/hsy-20260902.htm",
+            "evidence_sha256": "5d9ae0154aabd2d8fa6ba4e1aa6aa334ace9876fb9354a34a5fbc4366cdde40c",
+            "published_at": "2026-09-02T20:31:40.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/47111/000162828026060131/exhibit991-pressreleasedat.htm",
+            "evidence_sha256": "ca5fc5f3cb65ef21455c2fede0e8383d29dd2fb60722a0f37f8fd2541a4d9d49",
+            "published_at": "2026-09-02T20:31:40.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "HSY",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "d15602fc3617d85fc7683d9c57aa1a0cead457e530c7479992ddc0563256f094",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "LINC",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_8k.htm",
+          "evidence_sha256": "4405411c38f7c7442b9bded2fe9b6e018d8729667fc666ea695af46e7081407c",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "ce36597dbcb15fdb15f838ef0ae41d4aa1ec540b3b9aae947b6616e7820b6e8c",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_8k.htm",
+          "evidence_sha256": "fb10726ca41e91596e0e89a333dc13420991aee5f73a4e3249c8f109a7c1ff01",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+          "evidence_sha256": "c78ffedbb6c2d8fcaf1ffad2370fac20c34dc406f67271f6cab8943ab120a9e0",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+          "evidence_sha256": "54b25287067829f2937bfc14ac369fcc0366ae7ab11f37011c7e22c2f4f3a100",
+          "published_at": "2026-11-09T21:58:46.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031995/ef20075880_10q.htm",
+          "evidence_sha256": "6568242b8fe9293060eea98cc5edb0ec81ebd8c8937dadcbf9a510e715d10adc",
+          "published_at": "2026-08-10T18:57:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126028230/ef20077785_8k.htm",
+          "evidence_sha256": "72b59a243e275b2f31fea686002a3695bf5aaf6ac54a1ff421205df67b6775ff",
+          "published_at": "2026-07-10T20:55:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126021084/ef20073367_8k.htm",
+          "evidence_sha256": "73edaa57100e3234e496f45b96d5029cbfbf7384dfb9537a90995ca0b96293e4",
+          "published_at": "2026-05-13T20:50:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_8k.htm",
+          "evidence_sha256": "f26d8f1412bec8f09d1c6b756e718f9d1f494c8b0984775600cd16e563cc7531",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "70eb67c4cc4a56f311cff53056a402ec5102dc22c5d7c2648b86dcf524b94879",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_8k.htm",
+          "evidence_sha256": "34da4deff8458c4b373b7c59f4943bdf363f976a8f6b5f23bd18068014cf10b7",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+          "evidence_sha256": "26d8a99cb1243243bf8451dd44815d89fe524ec712cc3bcf7b60f67b4ba592f6",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+          "evidence_sha256": "fd79b0c607d94bf5731a881dde54bad7cf7d47d10b6549e1c9cf04795901fe25",
+          "published_at": "2026-11-09T21:58:46.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031995/ef20075880_10q.htm",
+          "evidence_sha256": "173dfe90c3a42a4c6cfbb0e6cc1867a8529d33a47f8d9da6e1190fbf2451ff0f",
+          "published_at": "2026-08-10T18:57:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126028230/ef20077785_8k.htm",
+          "evidence_sha256": "39d7064fc6492a2dcd6cd7951f9ce21abcd4fbebdb02553eb3d740c3721a28c8",
+          "published_at": "2026-07-10T20:55:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126021084/ef20073367_8k.htm",
+          "evidence_sha256": "f6b6ed5d8fbe0f377e24b1cbd010095434a080aa1a571c9c74ee07d5a9ec3380",
+          "published_at": "2026-05-13T20:50:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-techs-houston-campus-recognized-excellence-design-and",
+          "published_at": "2026-11-10T12:00:41-05:00",
+          "evidence_sha256": "4fc791164c9034c3dcd48546746c8a7bc9020e7c342bd1654eedf7892d9f1ea1",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-educational-services-reports-strong-third-quarter-0",
+          "published_at": "2026-11-09T08:01:04-05:00",
+          "evidence_sha256": "713c8ca0ad320f467d811754ba67018bfe00d47d0f8b97ea229f10ac8a7d6de1",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-tech-expands-career-training-program-address-new-jerseys",
+          "published_at": "2026-10-29T10:35:20-04:00",
+          "evidence_sha256": "fba906239a1d18da4fa4bd750c35fbf162969994b2b76a660a8ea4b78b876eee",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-tech-and-abb-establish-strategic-technician-talent",
+          "published_at": "2026-10-22T11:33:01-04:00",
+          "evidence_sha256": "ac5863393dc755cb647c8229fcef895bb5b086873cffca6b6de87c80accc1858",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "LINC",
+        "cik": "0001286613",
+        "source": "https://data.sec.gov/submissions/CIK0001286613.json",
+        "submissions_sha256": "8752933f8dc4d0dffc4f812d26c3a2440466019fad4bd72444d04e94fa37f6fd",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_8k.htm",
+            "evidence_sha256": "f26d8f1412bec8f09d1c6b756e718f9d1f494c8b0984775600cd16e563cc7531",
+            "published_at": "2026-11-09T21:18:52.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+            "evidence_sha256": "70eb67c4cc4a56f311cff53056a402ec5102dc22c5d7c2648b86dcf524b94879",
+            "published_at": "2026-11-09T21:18:52.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_8k.htm",
+            "evidence_sha256": "34da4deff8458c4b373b7c59f4943bdf363f976a8f6b5f23bd18068014cf10b7",
+            "published_at": "2026-08-10T19:09:21.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+            "evidence_sha256": "26d8a99cb1243243bf8451dd44815d89fe524ec712cc3bcf7b60f67b4ba592f6",
+            "published_at": "2026-08-10T19:09:21.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+            "evidence_sha256": "fd79b0c607d94bf5731a881dde54bad7cf7d47d10b6549e1c9cf04795901fe25",
+            "published_at": "2026-11-09T21:58:46.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031995/ef20075880_10q.htm",
+            "evidence_sha256": "173dfe90c3a42a4c6cfbb0e6cc1867a8529d33a47f8d9da6e1190fbf2451ff0f",
+            "published_at": "2026-08-10T18:57:43.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126028230/ef20077785_8k.htm",
+            "evidence_sha256": "39d7064fc6492a2dcd6cd7951f9ce21abcd4fbebdb02553eb3d740c3721a28c8",
+            "published_at": "2026-07-10T20:55:28.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126021084/ef20073367_8k.htm",
+            "evidence_sha256": "f6b6ed5d8fbe0f377e24b1cbd010095434a080aa1a571c9c74ee07d5a9ec3380",
+            "published_at": "2026-05-13T20:50:22.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "LINC",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [
+          {
+            "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-techs-houston-campus-recognized-excellence-design-and",
+            "published_at": "2026-11-10T12:00:41-05:00",
+            "evidence_sha256": "4fc791164c9034c3dcd48546746c8a7bc9020e7c342bd1654eedf7892d9f1ea1",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-educational-services-reports-strong-third-quarter-0",
+            "published_at": "2026-11-09T08:01:04-05:00",
+            "evidence_sha256": "713c8ca0ad320f467d811754ba67018bfe00d47d0f8b97ea229f10ac8a7d6de1",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-tech-expands-career-training-program-address-new-jerseys",
+            "published_at": "2026-10-29T10:35:20-04:00",
+            "evidence_sha256": "fba906239a1d18da4fa4bd750c35fbf162969994b2b76a660a8ea4b78b876eee",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-tech-and-abb-establish-strategic-technician-talent",
+            "published_at": "2026-10-22T11:33:01-04:00",
+            "evidence_sha256": "ac5863393dc755cb647c8229fcef895bb5b086873cffca6b6de87c80accc1858",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          }
+        ],
+        "audit": [
+          {
+            "status": "IR_SOURCE_BUDGET_DEFERRED"
+          }
+        ],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_COLLECTION_ATTEMPTED",
+        "index_evidence_sha256": "8eb4ae6982e54631db349487dfd42bd0a85aee3f05ab9d1ea5f30ef6f258c15a"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "8b383dd0696696f36e8ed8da3ac46ae7be6db4c3c0dcc369effa2b9f928555bc",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_BUDGET_DEFERRED"
+        },
+        {
+          "status": "IR_COLLECTION_ATTEMPTED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "MKC",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000326/mkc-20261001.htm",
+          "evidence_sha256": "fe6ccdb858b69de4854ff504e32c7f974cee57edd26ee97454b56577049f3451",
+          "published_at": "2026-10-01T11:31:11.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000326/mkcreportssolidthirdquar.htm",
+          "evidence_sha256": "102577b6499dd3138837d942691e9e9cdf5d4068005d714c8b93996437c358dc",
+          "published_at": "2026-10-01T11:31:11.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000270/mkc-20260625.htm",
+          "evidence_sha256": "f1bac0cabe3d342a79477264f49a9d5a94745c9ede0c69863202123fdf08694d",
+          "published_at": "2026-06-25T11:24:39.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000270/mkcreportsstrongsecondqu.htm",
+          "evidence_sha256": "805f38160ccaa2ed1bb79ddc12884827d514919d796fe58365871edd9951ec91",
+          "published_at": "2026-06-25T11:24:39.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000329/mkc-20260831.htm",
+          "evidence_sha256": "b05e9b320c62272fcc70af484290320f39acc211604d7b3c108c9f2311f24f2c",
+          "published_at": "2026-10-01T20:36:23.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000274/mkc-20260531.htm",
+          "evidence_sha256": "2c3a0375ab07f1db9eff459b083c50baa093316f0e08ff38529dd1cd69a239fc",
+          "published_at": "2026-06-25T20:37:02.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000322/mkc-20260924.htm",
+          "evidence_sha256": "760d1e116034c04395dec0490749cd8d592b194e43daac1f06deeec0b9aa24fb",
+          "published_at": "2026-09-28T20:38:05.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000305/mkc-20260825.htm",
+          "evidence_sha256": "bba56ee8c16df8d0835c6ab43d8d4cd8c08b57e776517558cd542da906a06fcf",
+          "published_at": "2026-08-28T20:16:15.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000326/mkc-20261001.htm",
+          "evidence_sha256": "50a29534edddc083d4ca4c8a8b3c5632c913305c0c8fac2ee50788447d941808",
+          "published_at": "2026-10-01T11:31:11.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000326/mkcreportssolidthirdquar.htm",
+          "evidence_sha256": "3a2a5816c80bbc97075f7e32fea63843edefcda7212c35a70fcf144a4e5ae167",
+          "published_at": "2026-10-01T11:31:11.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000270/mkc-20260625.htm",
+          "evidence_sha256": "41a7f1033023ac8202e63450b517652be59161da40799ecc01b9b095983f9f94",
+          "published_at": "2026-06-25T11:24:39.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000270/mkcreportsstrongsecondqu.htm",
+          "evidence_sha256": "00d5b5d09a44065ae8e8727cdd01f6450caf6033481efd5dfadf59b471790027",
+          "published_at": "2026-06-25T11:24:39.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000329/mkc-20260831.htm",
+          "evidence_sha256": "5d2b4a79861ca21c7254e4e899dd464a007390f06a0b30b05fbe61aac4801188",
+          "published_at": "2026-10-01T20:36:23.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000274/mkc-20260531.htm",
+          "evidence_sha256": "04a0dff7e158fffa7a85c62d58bd80d3c3e3ea8afb8ed4a6a1119dec5c8cda8a",
+          "published_at": "2026-06-25T20:37:02.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000322/mkc-20260924.htm",
+          "evidence_sha256": "f32c0357c3c71e928306495f265fb7cce2115cfdeb27b867954645786cacd7d5",
+          "published_at": "2026-09-28T20:38:05.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000305/mkc-20260825.htm",
+          "evidence_sha256": "d627f4b9c23c625cbff315768516b6379854df6c2acad917bc02a3aa1c9ae092",
+          "published_at": "2026-08-28T20:16:15.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "MKC",
+        "cik": "0000063754",
+        "source": "https://data.sec.gov/submissions/CIK0000063754.json",
+        "submissions_sha256": "182884c8212cf244cee2a569fb99c2a447a82ced7f78d0351dcd4bf5c1bd9ffd",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000326/mkc-20261001.htm",
+            "evidence_sha256": "50a29534edddc083d4ca4c8a8b3c5632c913305c0c8fac2ee50788447d941808",
+            "published_at": "2026-10-01T11:31:11.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000326/mkcreportssolidthirdquar.htm",
+            "evidence_sha256": "3a2a5816c80bbc97075f7e32fea63843edefcda7212c35a70fcf144a4e5ae167",
+            "published_at": "2026-10-01T11:31:11.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000270/mkc-20260625.htm",
+            "evidence_sha256": "41a7f1033023ac8202e63450b517652be59161da40799ecc01b9b095983f9f94",
+            "published_at": "2026-06-25T11:24:39.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000270/mkcreportsstrongsecondqu.htm",
+            "evidence_sha256": "00d5b5d09a44065ae8e8727cdd01f6450caf6033481efd5dfadf59b471790027",
+            "published_at": "2026-06-25T11:24:39.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000329/mkc-20260831.htm",
+            "evidence_sha256": "5d2b4a79861ca21c7254e4e899dd464a007390f06a0b30b05fbe61aac4801188",
+            "published_at": "2026-10-01T20:36:23.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000274/mkc-20260531.htm",
+            "evidence_sha256": "04a0dff7e158fffa7a85c62d58bd80d3c3e3ea8afb8ed4a6a1119dec5c8cda8a",
+            "published_at": "2026-06-25T20:37:02.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000322/mkc-20260924.htm",
+            "evidence_sha256": "f32c0357c3c71e928306495f265fb7cce2115cfdeb27b867954645786cacd7d5",
+            "published_at": "2026-09-28T20:38:05.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/63754/000006375426000305/mkc-20260825.htm",
+            "evidence_sha256": "d627f4b9c23c625cbff315768516b6379854df6c2acad917bc02a3aa1c9ae092",
+            "published_at": "2026-08-28T20:16:15.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "MKC",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "8e6d78a4a714ad16ad30a5460a96102581660ccda7d2e9852a53ef136ffec9e4",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "MLI",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000038/mli-20261020.htm",
+          "evidence_sha256": "09fd41b73af27a989c41d1b4987824e0593ee320b1f59913196d9f84429656d8",
+          "published_at": "2026-10-20T15:03:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000038/exhibit991q32026earningsre.htm",
+          "evidence_sha256": "ebfc8b4a85ae51be8d0fbb96ca23fc1d2066e4b90ed408c1d8344a97a6611d82",
+          "published_at": "2026-10-20T15:03:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000029/mli-20260721.htm",
+          "evidence_sha256": "99a95d7a8726e5da5fdcc5517c59edee38c4f003f06cb51590188859c8151b95",
+          "published_at": "2026-07-21T16:09:15.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000029/exhibit991q22026earningsre.htm",
+          "evidence_sha256": "68c014404de3a97ad334b7cea3b01c5e877a3163d0268a4055aa6311a5053215",
+          "published_at": "2026-07-21T16:09:15.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000041/mli-20260926.htm",
+          "evidence_sha256": "369fb1072d318e1e67595833cc5f2fadf1737ab975403f565aafd9a108e6f4d2",
+          "published_at": "2026-10-21T20:28:48.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000032/mli-20260627.htm",
+          "evidence_sha256": "488bb0154c53c8bfbf6af6c9741d4fb57bbd9cb3dd4cecf644f28e1193010c54",
+          "published_at": "2026-07-22T20:17:32.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000044/mli-20261106.htm",
+          "evidence_sha256": "a1b82a986e17d7e71639c3efd76290548c6210f87037f596e8ec763399e00e35",
+          "published_at": "2026-11-09T17:37:10.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000044/ex-99_1q42026dividend.htm",
+          "evidence_sha256": "b07ed2a3509f2208065ef150150d8f8a4d175af74ed19d731996a2425d15f9cf",
+          "published_at": "2026-11-09T17:37:10.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000038/mli-20261020.htm",
+          "evidence_sha256": "b3acb6d4a231c4f101924026407ea5b808bdbbf9d8dec44b044dd743c19659fb",
+          "published_at": "2026-10-20T15:03:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000038/exhibit991q32026earningsre.htm",
+          "evidence_sha256": "b45881ab110e0c436424b529f0be740bd9a61c510a7c75a3703c0e43f04b21b8",
+          "published_at": "2026-10-20T15:03:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000029/mli-20260721.htm",
+          "evidence_sha256": "5554b3613742b909a924cc38a244e87e31df1d6c8ec8ef33b1f87fa1fa6e1f09",
+          "published_at": "2026-07-21T16:09:15.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000029/exhibit991q22026earningsre.htm",
+          "evidence_sha256": "8d974b92ea9cc88fa394873ac828957d72ec36719238fcc0e9e60da5a61b7ce3",
+          "published_at": "2026-07-21T16:09:15.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000041/mli-20260926.htm",
+          "evidence_sha256": "70d6ca0302442084f983e5371331e44c282aa08c92317ba3a35865b1e22e8f26",
+          "published_at": "2026-10-21T20:28:48.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000032/mli-20260627.htm",
+          "evidence_sha256": "6ca3dd30ce046bba3ca23f65783c6b89d1ece2a64c4fe3d5b8bad12591f8af1b",
+          "published_at": "2026-07-22T20:17:32.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000044/mli-20261106.htm",
+          "evidence_sha256": "c40a33eb544354cb3391119da029f8b9a9c58e3b3db4be220b11649f0bd4530b",
+          "published_at": "2026-11-09T17:37:10.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000044/ex-99_1q42026dividend.htm",
+          "evidence_sha256": "9783dcfb2eb5d475e65687ae8d31322d28ffd0420577bb6b59c84ecdc97cf5c3",
+          "published_at": "2026-11-09T17:37:10.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "MLI",
+        "cik": "0000089439",
+        "source": "https://data.sec.gov/submissions/CIK0000089439.json",
+        "submissions_sha256": "03a328495403a84e0cc498d02b251c782b0e0ae1aeb176657c3f45e0ce483af8",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000038/mli-20261020.htm",
+            "evidence_sha256": "b3acb6d4a231c4f101924026407ea5b808bdbbf9d8dec44b044dd743c19659fb",
+            "published_at": "2026-10-20T15:03:29.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000038/exhibit991q32026earningsre.htm",
+            "evidence_sha256": "b45881ab110e0c436424b529f0be740bd9a61c510a7c75a3703c0e43f04b21b8",
+            "published_at": "2026-10-20T15:03:29.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000029/mli-20260721.htm",
+            "evidence_sha256": "5554b3613742b909a924cc38a244e87e31df1d6c8ec8ef33b1f87fa1fa6e1f09",
+            "published_at": "2026-07-21T16:09:15.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000029/exhibit991q22026earningsre.htm",
+            "evidence_sha256": "8d974b92ea9cc88fa394873ac828957d72ec36719238fcc0e9e60da5a61b7ce3",
+            "published_at": "2026-07-21T16:09:15.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000041/mli-20260926.htm",
+            "evidence_sha256": "70d6ca0302442084f983e5371331e44c282aa08c92317ba3a35865b1e22e8f26",
+            "published_at": "2026-10-21T20:28:48.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000032/mli-20260627.htm",
+            "evidence_sha256": "6ca3dd30ce046bba3ca23f65783c6b89d1ece2a64c4fe3d5b8bad12591f8af1b",
+            "published_at": "2026-07-22T20:17:32.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000044/mli-20261106.htm",
+            "evidence_sha256": "c40a33eb544354cb3391119da029f8b9a9c58e3b3db4be220b11649f0bd4530b",
+            "published_at": "2026-11-09T17:37:10.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/89439/000008943926000044/ex-99_1q42026dividend.htm",
+            "evidence_sha256": "9783dcfb2eb5d475e65687ae8d31322d28ffd0420577bb6b59c84ecdc97cf5c3",
+            "published_at": "2026-11-09T17:37:10.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "MLI",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "d84397772feb0cbb44ed76aa67dee8bdcb9de56cd2acc067c52bcfce799530e9",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "PATH",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000047/path-20260901.htm",
+          "evidence_sha256": "73ec16a62195f0602772fb07530efe999860ac55b0c0f4c50f31a06460480f44",
+          "published_at": "2026-09-03T20:23:47.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000047/path-2026731xex991.htm",
+          "evidence_sha256": "14fc28cc69aac3c781acb92a63f02385ea9edad818a2d3639507d5f5651d2d82",
+          "published_at": "2026-09-03T20:23:47.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000047/path-2026903xex992.htm",
+          "evidence_sha256": "1dd1b1b5294640d2ff9cd9dfd804eac7b3432e5a321bb759d2af03dc2f5fa930",
+          "published_at": "2026-09-03T20:23:47.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000037/path-20260528.htm",
+          "evidence_sha256": "7d6e6c0837136054e93c4f13eba0e0b3ac3c038c400fa93cc97980b35e3a9f96",
+          "published_at": "2026-05-28T20:14:39.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000037/path-2026430xex991.htm",
+          "evidence_sha256": "5a765b63eb6e17a926d6c33891ef266b36a256a481fe778b8a79f7c12523e0c6",
+          "published_at": "2026-05-28T20:14:39.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000050/path-20260731.htm",
+          "evidence_sha256": "c1526f34fe2af636b1c32ba8e1ff13354615fc1391c3c5cf2d03b1edcb563c5d",
+          "published_at": "2026-09-08T21:22:17.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000041/path-20260430.htm",
+          "evidence_sha256": "2d48697b7374f4b736b4faea8574c38b4f9dd8ccdd0035f0646d0ebf9620db38",
+          "published_at": "2026-06-04T20:36:53.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000043/path-20260625.htm",
+          "evidence_sha256": "9fa9056fbf26bc58c79dd2acec1a0f473acd602f31af66f871efe856e7c14c7c",
+          "published_at": "2026-06-29T20:29:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000047/path-20260901.htm",
+          "evidence_sha256": "724f3c0c43a909f877f5d1a16b21338b7564bd5a1e9d1138ed8febca94ab3880",
+          "published_at": "2026-09-03T20:23:47.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000047/path-2026731xex991.htm",
+          "evidence_sha256": "2e06a3b82c71b8c2642291d4db256fa822af20fb7d8d94fd69598362e082ee4b",
+          "published_at": "2026-09-03T20:23:47.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000047/path-2026903xex992.htm",
+          "evidence_sha256": "68cb569c66ecc9026763a40553c747cdfe9ccd115ec681c3b4ebf0f8fb9f2ebc",
+          "published_at": "2026-09-03T20:23:47.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000037/path-20260528.htm",
+          "evidence_sha256": "67a1a442e6a700ff46ce5ad956da53ae0ee4c4234c68759f19a298f15078caaf",
+          "published_at": "2026-05-28T20:14:39.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000037/path-2026430xex991.htm",
+          "evidence_sha256": "27f37656777e32fb967462779cf305d9877d430335a9a9b02d6410050d1ac5b3",
+          "published_at": "2026-05-28T20:14:39.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000050/path-20260731.htm",
+          "evidence_sha256": "b161c5bc2d758b0da9f166bde346f6422bc4c453400c24c34116cc9b1665cdf3",
+          "published_at": "2026-09-08T21:22:17.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000041/path-20260430.htm",
+          "evidence_sha256": "c8bcb8530e3740ae94d1f58b01712e4779ea0a41dcc82ee20b7886a449f257dd",
+          "published_at": "2026-06-04T20:36:53.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000043/path-20260625.htm",
+          "evidence_sha256": "41dd88a36c331f6bb64c70c415352d07410ada7a5b410ee8697191de82741a2c",
+          "published_at": "2026-06-29T20:29:14.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "PATH",
+        "cik": "0001734722",
+        "source": "https://data.sec.gov/submissions/CIK0001734722.json",
+        "submissions_sha256": "02979d797a3a81608f5e7a4d389cb571180998b5c39f29d63c86e85e635ad836",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000047/path-20260901.htm",
+            "evidence_sha256": "724f3c0c43a909f877f5d1a16b21338b7564bd5a1e9d1138ed8febca94ab3880",
+            "published_at": "2026-09-03T20:23:47.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000047/path-2026731xex991.htm",
+            "evidence_sha256": "2e06a3b82c71b8c2642291d4db256fa822af20fb7d8d94fd69598362e082ee4b",
+            "published_at": "2026-09-03T20:23:47.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000047/path-2026903xex992.htm",
+            "evidence_sha256": "68cb569c66ecc9026763a40553c747cdfe9ccd115ec681c3b4ebf0f8fb9f2ebc",
+            "published_at": "2026-09-03T20:23:47.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000037/path-20260528.htm",
+            "evidence_sha256": "67a1a442e6a700ff46ce5ad956da53ae0ee4c4234c68759f19a298f15078caaf",
+            "published_at": "2026-05-28T20:14:39.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000037/path-2026430xex991.htm",
+            "evidence_sha256": "27f37656777e32fb967462779cf305d9877d430335a9a9b02d6410050d1ac5b3",
+            "published_at": "2026-05-28T20:14:39.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000050/path-20260731.htm",
+            "evidence_sha256": "b161c5bc2d758b0da9f166bde346f6422bc4c453400c24c34116cc9b1665cdf3",
+            "published_at": "2026-09-08T21:22:17.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000041/path-20260430.htm",
+            "evidence_sha256": "c8bcb8530e3740ae94d1f58b01712e4779ea0a41dcc82ee20b7886a449f257dd",
+            "published_at": "2026-06-04T20:36:53.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1734722/000173472226000043/path-20260625.htm",
+            "evidence_sha256": "41dd88a36c331f6bb64c70c415352d07410ada7a5b410ee8697191de82741a2c",
+            "published_at": "2026-06-29T20:29:14.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "PATH",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "f037be522c01ec3a2161e410fd991d41222c3b26964a0b33f7e4f08de542bc97",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "PINS",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000151/pins-20261029.htm",
+          "evidence_sha256": "283ce16c38ac4956f6c48f89cba2365b9d586953cb6ecd7bd631a77f777f0b9b",
+          "published_at": "2026-10-29T20:07:13.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000151/q3-26xpressrelease.htm",
+          "evidence_sha256": "5e189d18097e13425c4458568a8b81a192309b1c136de9030b8baae88bf696f9",
+          "published_at": "2026-10-29T20:07:13.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000102/pins-20260804.htm",
+          "evidence_sha256": "45faf6ec1d2b7a25aee44aaf87eec7535a32cc64e82e4ed93b16dd7cd158baa9",
+          "published_at": "2026-08-04T20:10:11.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000102/q2-26xpressrelease.htm",
+          "evidence_sha256": "12ce9bd6ee9ef3b81765b53776d8606e5f2ec5545b807b56079281cac234c668",
+          "published_at": "2026-08-04T20:10:11.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000153/pins-20260930.htm",
+          "evidence_sha256": "a254384b4f3bbe3fe697bdfd802653b3582f2ee3214f8e385e472e5d519cc511",
+          "published_at": "2026-10-29T20:18:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000104/pins-20260630.htm",
+          "evidence_sha256": "20d610cb03738387bccf813e5eeab89d01317dd6a0bf88082db76890e013d85b",
+          "published_at": "2026-08-04T20:16:02.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000162828026075546/pins-20261118.htm",
+          "evidence_sha256": "ff9648bd4475125095017f3858097dd33be364c8ddcd4122d2852451f45f4a3b",
+          "published_at": "2026-11-23T22:00:23.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000143/pins-20261015.htm",
+          "evidence_sha256": "502ce788a1cc4357487be6f8bb71d680ae8b5146108712b455b0a64bc83fdd7a",
+          "published_at": "2026-10-15T20:36:58.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000151/pins-20261029.htm",
+          "evidence_sha256": "bacfb541663c02331ac07318b439afa753b7650e2548512b52068aebe22addc6",
+          "published_at": "2026-10-29T20:07:13.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000151/q3-26xpressrelease.htm",
+          "evidence_sha256": "ba1b5a6621c0fb6ecd1f9f7309b60984af53fee6de3ef17d6098421b2eb26c27",
+          "published_at": "2026-10-29T20:07:13.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000102/pins-20260804.htm",
+          "evidence_sha256": "21bb15750fa8a20352e8ee5044ea13f96adaf2447ae594350eec1c13a3e7d194",
+          "published_at": "2026-08-04T20:10:11.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000102/q2-26xpressrelease.htm",
+          "evidence_sha256": "456cef5821cb33ab9530ede8d0fe0796799d3ec6bd626cbd3c9a52e3aaf3bd6a",
+          "published_at": "2026-08-04T20:10:11.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000153/pins-20260930.htm",
+          "evidence_sha256": "3caace411c4ff9e680b1e8b1df94928e13d1cd17a101605c36c8875dc04560b1",
+          "published_at": "2026-10-29T20:18:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000104/pins-20260630.htm",
+          "evidence_sha256": "37bdab353c6b9d9a382a181e150694ae707955d7c5aa56b38b3b6f69971d6e60",
+          "published_at": "2026-08-04T20:16:02.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000162828026075546/pins-20261118.htm",
+          "evidence_sha256": "014f174b51766152c68194009d440138889982dcecbc2807a2e0377a19a30381",
+          "published_at": "2026-11-23T22:00:23.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000143/pins-20261015.htm",
+          "evidence_sha256": "7e41c4dc152ec25b2226f3bcdf361316358a8b693c9f2bd176cfc7cef2830fb5",
+          "published_at": "2026-10-15T20:36:58.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investor.pinterestinc.com/news-and-events/press-releases/press-releases-details/2026/Pinterest-to-Announce-Third-Quarter-2026-Results/default.aspx",
+          "published_at": "2026-10-19T16:06:00-04:00",
+          "evidence_sha256": "db1f4297ae79a7e6fa43ae91433c994178dc78dbfd1837d9289ee391c3e8cd9d",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investor.pinterestinc.com/news-and-events/press-releases/press-releases-details/2026/Pinterest-Appoints-James-Dibbo-Chief-Financial-Officer/default.aspx",
+          "published_at": "2026-10-05T16:15:00-04:00",
+          "evidence_sha256": "05469ca391620790c65879a1a3997fd5e588ab28fc26cceef613ba5683604866",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investor.pinterestinc.com/news-and-events/press-releases/press-releases-details/2026/Pinterest-to-Participate-in-the-Goldman-Sachs-Communacopia--Technology-Conference/default.aspx",
+          "published_at": "2026-08-13T16:06:00-04:00",
+          "evidence_sha256": "7dda9cf50fcc053ca6b07d8cc1a94780628ef4b81970684e155cf0c9918f31b4",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "PINS",
+        "cik": "0001506293",
+        "source": "https://data.sec.gov/submissions/CIK0001506293.json",
+        "submissions_sha256": "dbe43e623ef3c0ec4f81ad180c4507c58575971b759d0379035c4c1fa8b1839c",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000151/pins-20261029.htm",
+            "evidence_sha256": "bacfb541663c02331ac07318b439afa753b7650e2548512b52068aebe22addc6",
+            "published_at": "2026-10-29T20:07:13.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000151/q3-26xpressrelease.htm",
+            "evidence_sha256": "ba1b5a6621c0fb6ecd1f9f7309b60984af53fee6de3ef17d6098421b2eb26c27",
+            "published_at": "2026-10-29T20:07:13.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000102/pins-20260804.htm",
+            "evidence_sha256": "21bb15750fa8a20352e8ee5044ea13f96adaf2447ae594350eec1c13a3e7d194",
+            "published_at": "2026-08-04T20:10:11.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000102/q2-26xpressrelease.htm",
+            "evidence_sha256": "456cef5821cb33ab9530ede8d0fe0796799d3ec6bd626cbd3c9a52e3aaf3bd6a",
+            "published_at": "2026-08-04T20:10:11.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000153/pins-20260930.htm",
+            "evidence_sha256": "3caace411c4ff9e680b1e8b1df94928e13d1cd17a101605c36c8875dc04560b1",
+            "published_at": "2026-10-29T20:18:12.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000104/pins-20260630.htm",
+            "evidence_sha256": "37bdab353c6b9d9a382a181e150694ae707955d7c5aa56b38b3b6f69971d6e60",
+            "published_at": "2026-08-04T20:16:02.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1506293/000162828026075546/pins-20261118.htm",
+            "evidence_sha256": "014f174b51766152c68194009d440138889982dcecbc2807a2e0377a19a30381",
+            "published_at": "2026-11-23T22:00:23.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1506293/000150629326000143/pins-20261015.htm",
+            "evidence_sha256": "7e41c4dc152ec25b2226f3bcdf361316358a8b693c9f2bd176cfc7cef2830fb5",
+            "published_at": "2026-10-15T20:36:58.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "PINS",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [
+          {
+            "source": "https://investor.pinterestinc.com/news-and-events/press-releases/press-releases-details/2026/Pinterest-to-Announce-Third-Quarter-2026-Results/default.aspx",
+            "published_at": "2026-10-19T16:06:00-04:00",
+            "evidence_sha256": "db1f4297ae79a7e6fa43ae91433c994178dc78dbfd1837d9289ee391c3e8cd9d",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://investor.pinterestinc.com/news-and-events/press-releases/press-releases-details/2026/Pinterest-Appoints-James-Dibbo-Chief-Financial-Officer/default.aspx",
+            "published_at": "2026-10-05T16:15:00-04:00",
+            "evidence_sha256": "05469ca391620790c65879a1a3997fd5e588ab28fc26cceef613ba5683604866",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://investor.pinterestinc.com/news-and-events/press-releases/press-releases-details/2026/Pinterest-to-Participate-in-the-Goldman-Sachs-Communacopia--Technology-Conference/default.aspx",
+            "published_at": "2026-08-13T16:06:00-04:00",
+            "evidence_sha256": "7dda9cf50fcc053ca6b07d8cc1a94780628ef4b81970684e155cf0c9918f31b4",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          }
+        ],
+        "audit": [
+          {
+            "status": "IR_SOURCE_BUDGET_DEFERRED"
+          }
+        ],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_COLLECTION_ATTEMPTED",
+        "index_evidence_sha256": "cfc03c00ee0a7927f01e1151bdc62969f293b5572a558daca58530e739df99b8",
+        "feed_evidence_sha256": "c8a057001c7493b81a127318043743d9dbcc5707d3c985fbdb7385b8cda2849c"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "737c7754ecbe49a1b7251a653ecf118f87b294a17d060ffdbab7a87b09ecb53c",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_BUDGET_DEFERRED"
+        },
+        {
+          "status": "IR_COLLECTION_ATTEMPTED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "QXO",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026073410/qxo-20261112.htm",
+          "evidence_sha256": "66f414eab0f0575df4fd113720f155e837b87c91319ee2e8a278a337e4477b77",
+          "published_at": "2026-11-12T21:15:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026073410/qxoq3-26earningsrelease.htm",
+          "evidence_sha256": "e5c72f791783ad873a55b5f5904f3ed370346553518d050cb52bc1b7aa7ea22a",
+          "published_at": "2026-11-12T21:15:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026071846/qxo-20261109.htm",
+          "evidence_sha256": "283044debe4991042d02302c700ad69dc6be3ef48ec3a5e46316890d752af842",
+          "published_at": "2026-11-09T11:02:42.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026071846/qxoq3-26preliminaryresults.htm",
+          "evidence_sha256": "96e78ebe08e694538c2b93ed4832eefddb486193666b6781211812a68d4fe5b9",
+          "published_at": "2026-11-09T11:02:42.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026073568/qxo-20260930.htm",
+          "evidence_sha256": "092177cf09f155de76bbc76d1850433d931b1388e6b5c125407f4fee50520c21",
+          "published_at": "2026-11-13T12:01:19.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026056919/qxo-20260630.htm",
+          "evidence_sha256": "dac903d3ab331b56e2662e6ec2e186f0948cfc922f0db4a091a0ed4fee619462",
+          "published_at": "2026-08-14T11:01:24.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000110465926125578/tm2629649d1_8k.htm",
+          "evidence_sha256": "b6cda3c91c066ba3b88ff53bb28402cf4920dac98dc9bcce27235a27c0d1d296",
+          "published_at": "2026-11-12T11:06:02.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000110465926125578/tm2629649d1_ex99-1.htm",
+          "evidence_sha256": "b961e9578619070d1c0002594c6de7b760ebef3d9550647affbc681d7f8ad0bc",
+          "published_at": "2026-11-12T11:06:02.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026073410/qxo-20261112.htm",
+          "evidence_sha256": "e2627db366388c579be5943742bc6daf53674cc70ad485b4cc3e6f000f0fb607",
+          "published_at": "2026-11-12T21:15:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026073410/qxoq3-26earningsrelease.htm",
+          "evidence_sha256": "4c00612bd182e0e133db928390d172917acfd6ea225497ff17eaa827f9200ebb",
+          "published_at": "2026-11-12T21:15:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026071846/qxo-20261109.htm",
+          "evidence_sha256": "6a05d579cd78f0aa4d9d217034d32625239b0c9355401ed1c6fa5d5bccdd0672",
+          "published_at": "2026-11-09T11:02:42.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026071846/qxoq3-26preliminaryresults.htm",
+          "evidence_sha256": "49c7b67a9eeac0d82f853e7d784835ce2e54fc2db6e2386d25297e651d63f1ab",
+          "published_at": "2026-11-09T11:02:42.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026073568/qxo-20260930.htm",
+          "evidence_sha256": "b3af207f96aef147d1ced52d1fdd065258058c048ea889da21c98f509f13934c",
+          "published_at": "2026-11-13T12:01:19.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026056919/qxo-20260630.htm",
+          "evidence_sha256": "1262c84993e380d81338bb49a117bac24155374262d2e6811176a5ffd57a7781",
+          "published_at": "2026-08-14T11:01:24.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000110465926125578/tm2629649d1_8k.htm",
+          "evidence_sha256": "4473692bf3640fc64c33e616f570047fdcbb1bfc7f57c25b35b23e2e9581b525",
+          "published_at": "2026-11-12T11:06:02.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1236275/000110465926125578/tm2629649d1_ex99-1.htm",
+          "evidence_sha256": "6bf34e8dc4eb7625a8a11aab2c5f70d7e9a7c9f8fef60533769ed4b38e14badb",
+          "published_at": "2026-11-12T11:06:02.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "QXO",
+        "cik": "0001236275",
+        "source": "https://data.sec.gov/submissions/CIK0001236275.json",
+        "submissions_sha256": "7ba332be93df26a37586aa3fdbcc09a9f87b9b13f4c75bdd68f30e2ae630ada4",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026073410/qxo-20261112.htm",
+            "evidence_sha256": "e2627db366388c579be5943742bc6daf53674cc70ad485b4cc3e6f000f0fb607",
+            "published_at": "2026-11-12T21:15:43.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026073410/qxoq3-26earningsrelease.htm",
+            "evidence_sha256": "4c00612bd182e0e133db928390d172917acfd6ea225497ff17eaa827f9200ebb",
+            "published_at": "2026-11-12T21:15:43.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026071846/qxo-20261109.htm",
+            "evidence_sha256": "6a05d579cd78f0aa4d9d217034d32625239b0c9355401ed1c6fa5d5bccdd0672",
+            "published_at": "2026-11-09T11:02:42.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026071846/qxoq3-26preliminaryresults.htm",
+            "evidence_sha256": "49c7b67a9eeac0d82f853e7d784835ce2e54fc2db6e2386d25297e651d63f1ab",
+            "published_at": "2026-11-09T11:02:42.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026073568/qxo-20260930.htm",
+            "evidence_sha256": "b3af207f96aef147d1ced52d1fdd065258058c048ea889da21c98f509f13934c",
+            "published_at": "2026-11-13T12:01:19.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1236275/000162828026056919/qxo-20260630.htm",
+            "evidence_sha256": "1262c84993e380d81338bb49a117bac24155374262d2e6811176a5ffd57a7781",
+            "published_at": "2026-08-14T11:01:24.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1236275/000110465926125578/tm2629649d1_8k.htm",
+            "evidence_sha256": "4473692bf3640fc64c33e616f570047fdcbb1bfc7f57c25b35b23e2e9581b525",
+            "published_at": "2026-11-12T11:06:02.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1236275/000110465926125578/tm2629649d1_ex99-1.htm",
+            "evidence_sha256": "6bf34e8dc4eb7625a8a11aab2c5f70d7e9a7c9f8fef60533769ed4b38e14badb",
+            "published_at": "2026-11-12T11:06:02.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "QXO",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "72773ef9e720b2f3dbd17867569b244342b72df8ee2fbe88b8923c163ab547e4",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "TSCO",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000069/tsco-20261022.htm",
+          "evidence_sha256": "12e300bdcd04649bbdbec4d270eafc0a9d4f1987eeb1a72cbf23c627b5336dd3",
+          "published_at": "2026-10-22T11:26:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000069/ex991-q32026earningsrelease.htm",
+          "evidence_sha256": "4a6185f9b02b8993d7e6b9572947b484ce0dc20767e467274918aaef8a4649a3",
+          "published_at": "2026-10-22T11:26:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000052/tsco-20260723.htm",
+          "evidence_sha256": "fc3396ea62547d6ccade4667f47ddce692885a2194e6154e33ff51b7446ff640",
+          "published_at": "2026-07-23T11:03:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000052/ex991-q22026earningsrelease.htm",
+          "evidence_sha256": "ac5f65af12bf2e0cb06f1f7a26aa42615bd59f03cac7dcc8922015850269fdd8",
+          "published_at": "2026-07-23T11:03:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000079/tsco-20260926.htm",
+          "evidence_sha256": "e7961659434f7a1d41aec2121fe431de5ede48f14fb14cc79046139ac5619d62",
+          "published_at": "2026-11-05T21:15:45.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000059/tsco-20260627.htm",
+          "evidence_sha256": "298dde2bfbe47c242920bd7c2df05290af3cf7bcf90a5fdd9969964081a691a2",
+          "published_at": "2026-08-06T20:31:54.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000076/tsco-20261104.htm",
+          "evidence_sha256": "c0faebfcb104cb8ee5beb9e98f1c03064989c074cbe02de74a2815a0cdaca57d",
+          "published_at": "2026-11-05T14:07:25.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000076/a1152026tsco-ex991.htm",
+          "evidence_sha256": "02f58fa0617c339c4032b8d9e26b6a5797f59e52f5cc2712099fbcc42e4e5ff4",
+          "published_at": "2026-11-05T14:07:25.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000069/tsco-20261022.htm",
+          "evidence_sha256": "02442182c409215c014686128184964904bbca51b80293bc9b97599dc1dc7e73",
+          "published_at": "2026-10-22T11:26:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000069/ex991-q32026earningsrelease.htm",
+          "evidence_sha256": "320791cee0f2c4b502b440fe307eba3c72c346d1fffbe8ca9e37a4680093c456",
+          "published_at": "2026-10-22T11:26:41.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000052/tsco-20260723.htm",
+          "evidence_sha256": "d7a9caecb6c55e51411ebbb899812b6ca82250089534fe23d5550e61b8ad008e",
+          "published_at": "2026-07-23T11:03:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000052/ex991-q22026earningsrelease.htm",
+          "evidence_sha256": "9a470c6e25def55fd930f5e5618a37c3d782dde09eb189c86d1d613544d37710",
+          "published_at": "2026-07-23T11:03:12.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000079/tsco-20260926.htm",
+          "evidence_sha256": "e973ec3bb58d6db664e35c588f8c6907b48255744b9308cbea531a020e8d7bf4",
+          "published_at": "2026-11-05T21:15:45.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000059/tsco-20260627.htm",
+          "evidence_sha256": "df94bd9bb44e9f16231a4784153f10f935f3a79b15a6502f609abc24c22403be",
+          "published_at": "2026-08-06T20:31:54.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000076/tsco-20261104.htm",
+          "evidence_sha256": "7c428e8f171893506696c976269537017d52f976b77e842ecfb4facbed4d83c7",
+          "published_at": "2026-11-05T14:07:25.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000076/a1152026tsco-ex991.htm",
+          "evidence_sha256": "54a6b758093d1d5cdf3126c452979e476e2e967163a704b505e12667d918cef3",
+          "published_at": "2026-11-05T14:07:25.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "TSCO",
+        "cik": "0000916365",
+        "source": "https://data.sec.gov/submissions/CIK0000916365.json",
+        "submissions_sha256": "d8cee46ede2270bdcd9462ac0f8bdf0ac24b27e0d4e725fda3008bed295e9b0f",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000069/tsco-20261022.htm",
+            "evidence_sha256": "02442182c409215c014686128184964904bbca51b80293bc9b97599dc1dc7e73",
+            "published_at": "2026-10-22T11:26:41.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000069/ex991-q32026earningsrelease.htm",
+            "evidence_sha256": "320791cee0f2c4b502b440fe307eba3c72c346d1fffbe8ca9e37a4680093c456",
+            "published_at": "2026-10-22T11:26:41.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000052/tsco-20260723.htm",
+            "evidence_sha256": "d7a9caecb6c55e51411ebbb899812b6ca82250089534fe23d5550e61b8ad008e",
+            "published_at": "2026-07-23T11:03:12.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000052/ex991-q22026earningsrelease.htm",
+            "evidence_sha256": "9a470c6e25def55fd930f5e5618a37c3d782dde09eb189c86d1d613544d37710",
+            "published_at": "2026-07-23T11:03:12.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000079/tsco-20260926.htm",
+            "evidence_sha256": "e973ec3bb58d6db664e35c588f8c6907b48255744b9308cbea531a020e8d7bf4",
+            "published_at": "2026-11-05T21:15:45.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000059/tsco-20260627.htm",
+            "evidence_sha256": "df94bd9bb44e9f16231a4784153f10f935f3a79b15a6502f609abc24c22403be",
+            "published_at": "2026-08-06T20:31:54.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000076/tsco-20261104.htm",
+            "evidence_sha256": "7c428e8f171893506696c976269537017d52f976b77e842ecfb4facbed4d83c7",
+            "published_at": "2026-11-05T14:07:25.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/916365/000091636526000076/a1152026tsco-ex991.htm",
+            "evidence_sha256": "54a6b758093d1d5cdf3126c452979e476e2e967163a704b505e12667d918cef3",
+            "published_at": "2026-11-05T14:07:25.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "TSCO",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "65c64bca9f57d13851883248ca0067f81f7266d8dc0ade747cd64ff104e89385",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "WY",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526437799/wy-20261029.htm",
+          "evidence_sha256": "151312d5171047dedc2091c5c993be4690b6132c5f33ae0a6bdaa890c775ae6c",
+          "published_at": "2026-10-29T20:09:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526437799/wy-ex99_1.htm",
+          "evidence_sha256": "3863f9af7c3f7908ada8accaf6fdf36f0a587d9658303f8ca6be92c263d63dd8",
+          "published_at": "2026-10-29T20:09:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526437799/wy-ex99_2.htm",
+          "evidence_sha256": "5e4c0a3d5e94a48b8ac3077764b23f1c38fe23983ad80854fcd206d0bcad7f54",
+          "published_at": "2026-10-29T20:09:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526326124/wy-20260730.htm",
+          "evidence_sha256": "c7036e1334d7cd4da22edb95e589e6d0054fa51bba05da0eb2e82647abe5bc49",
+          "published_at": "2026-07-30T20:10:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526326124/wy-ex99_1.htm",
+          "evidence_sha256": "d3ed598d13183f08b0a646b20685a21eea04ea0a15706df06a9dfce541c0c3f2",
+          "published_at": "2026-07-30T20:10:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526326124/wy-ex99_2.htm",
+          "evidence_sha256": "59cc96ebcf69be3322b48e9b1d76f8c4ef80aea71c929bc3e43e7c8aa52141f3",
+          "published_at": "2026-07-30T20:10:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526441693/wy-20260930.htm",
+          "evidence_sha256": "86902d23ed3ecdd34e7046b8ddf0360dd2fedcaeae8d3695a04271dfd271f599",
+          "published_at": "2026-10-30T20:15:54.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526328606/wy-20260630.htm",
+          "evidence_sha256": "f47072f61953bb89d5dab0bbb81b605d67f26a49758210863b4cefdd7b5fd80f",
+          "published_at": "2026-07-31T20:15:56.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526437799/wy-20261029.htm",
+          "evidence_sha256": "23b552f8c99c601bab60c864ca0c9e4dedf19d5b4cb9013d98828be4bc2f5cc7",
+          "published_at": "2026-10-29T20:09:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526437799/wy-ex99_1.htm",
+          "evidence_sha256": "18b97d1023e4bf9596eb3047b3762be0a00854adb1e73c9bd6d43a239e008022",
+          "published_at": "2026-10-29T20:09:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526437799/wy-ex99_2.htm",
+          "evidence_sha256": "4a76783ffb8faba4895648a7b532cf75768161d1d4366d0441567b46ee1456f6",
+          "published_at": "2026-10-29T20:09:01.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526326124/wy-20260730.htm",
+          "evidence_sha256": "ff9eafaa7d6f1b9d7ba0ff5b9bb747034d586d1b9d975c1024a739d3cdd2641d",
+          "published_at": "2026-07-30T20:10:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526326124/wy-ex99_1.htm",
+          "evidence_sha256": "7be4e153149e3380672a97f1604e90a36d2fd7d485cd2a98ed9914605f30e0ec",
+          "published_at": "2026-07-30T20:10:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526326124/wy-ex99_2.htm",
+          "evidence_sha256": "f0fa354a152acdd02e28dd89ce5ce2c2adb0dfcedb8ddd4d9b2c15e900ea5baa",
+          "published_at": "2026-07-30T20:10:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526441693/wy-20260930.htm",
+          "evidence_sha256": "2484d403a3c9e5ee2a061ffc89c236b8a3f685d5820e29e124bad93104f8e594",
+          "published_at": "2026-10-30T20:15:54.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526328606/wy-20260630.htm",
+          "evidence_sha256": "d02e9e3fe5f4f21a84a0ec505a8c9bca55d4af8483ee0a281980c19034cc94e4",
+          "published_at": "2026-07-31T20:15:56.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "WY",
+        "cik": "0000106535",
+        "source": "https://data.sec.gov/submissions/CIK0000106535.json",
+        "submissions_sha256": "cfd5630e9f01af37264609851ce5f3b47b887ba1f28b8088acde93f234251ab6",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526437799/wy-20261029.htm",
+            "evidence_sha256": "23b552f8c99c601bab60c864ca0c9e4dedf19d5b4cb9013d98828be4bc2f5cc7",
+            "published_at": "2026-10-29T20:09:01.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526437799/wy-ex99_1.htm",
+            "evidence_sha256": "18b97d1023e4bf9596eb3047b3762be0a00854adb1e73c9bd6d43a239e008022",
+            "published_at": "2026-10-29T20:09:01.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526437799/wy-ex99_2.htm",
+            "evidence_sha256": "4a76783ffb8faba4895648a7b532cf75768161d1d4366d0441567b46ee1456f6",
+            "published_at": "2026-10-29T20:09:01.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526326124/wy-20260730.htm",
+            "evidence_sha256": "ff9eafaa7d6f1b9d7ba0ff5b9bb747034d586d1b9d975c1024a739d3cdd2641d",
+            "published_at": "2026-07-30T20:10:22.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526326124/wy-ex99_1.htm",
+            "evidence_sha256": "7be4e153149e3380672a97f1604e90a36d2fd7d485cd2a98ed9914605f30e0ec",
+            "published_at": "2026-07-30T20:10:22.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526326124/wy-ex99_2.htm",
+            "evidence_sha256": "f0fa354a152acdd02e28dd89ce5ce2c2adb0dfcedb8ddd4d9b2c15e900ea5baa",
+            "published_at": "2026-07-30T20:10:22.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526441693/wy-20260930.htm",
+            "evidence_sha256": "2484d403a3c9e5ee2a061ffc89c236b8a3f685d5820e29e124bad93104f8e594",
+            "published_at": "2026-10-30T20:15:54.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/106535/000119312526328606/wy-20260630.htm",
+            "evidence_sha256": "d02e9e3fe5f4f21a84a0ec505a8c9bca55d4af8483ee0a281980c19034cc94e4",
+            "published_at": "2026-07-31T20:15:56.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "WY",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "4d9fec830e538ad09dda699e38f26b4b7d67c7e124a32f5321074c221b7e111e",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    },
+    {
+      "symbol": "XFOR",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169725000041/xfor-20251105.htm",
+          "evidence_sha256": "f25014b0af3c41c587adaaf56a50a4b2ff375a61d69077458db99d88d9ea5314",
+          "published_at": "2025-11-05T13:05:51.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169725000041/ex-991pressreleasenovember.htm",
+          "evidence_sha256": "a4582f298389876e45eef6ede26802054658257e7a1357d3d05f5aa8fc7a6b6d",
+          "published_at": "2025-11-05T13:05:51.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000162828025021304/xfor-20250501.htm",
+          "evidence_sha256": "3a14d0357d73bb78622c0ef1774f7bbc2bc3e90c1a1f944b7048c11cfcedcdee",
+          "published_at": "2025-05-01T10:25:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000162828025021304/a991earningsreleasedatedma.htm",
+          "evidence_sha256": "c642f7216ec16788f35647d7930d025cc2eebaf2a461525aac2e3ef00806105a",
+          "published_at": "2025-05-01T10:25:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000089/xfor-20260930.htm",
+          "evidence_sha256": "a1acf4b017713f41e3b8107ea2a94fc309cb7cd90e31954399ae061d8576ba20",
+          "published_at": "2026-11-04T21:06:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000068/xfor-20260630.htm",
+          "evidence_sha256": "a0def083e4c1e7ff4605b2d4f95c06ebc73acbdb7a7db1ba715a064495a1b3c3",
+          "published_at": "2026-08-06T20:08:55.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000084/xfor-20261029.htm",
+          "evidence_sha256": "0ef2c082dfa747de9b721200cf457b5fb5ac8a60b535490475261ec7cef54251",
+          "published_at": "2026-10-29T13:59:45.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000084/ex991_x4presentation.htm",
+          "evidence_sha256": "d3e9ab737509e9fb9663ecfa272d531b937dc784e78f34292f17a93dc6bb7e17",
+          "published_at": "2026-10-29T13:59:45.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169725000041/xfor-20251105.htm",
+          "evidence_sha256": "0c80fe310775bf64b551918e0ad71222d6a61e7d0f46da688601f0d1ff54a36c",
+          "published_at": "2025-11-05T13:05:51.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169725000041/ex-991pressreleasenovember.htm",
+          "evidence_sha256": "3b6a2842452878d18d4bf1b0c8e1f2d9bc2b14e28500f3cea528004032547ff1",
+          "published_at": "2025-11-05T13:05:51.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000162828025021304/xfor-20250501.htm",
+          "evidence_sha256": "8d958b0dfc052fb1d5cf58e9f83516d423a590c207964f70e0eec427df74903d",
+          "published_at": "2025-05-01T10:25:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000162828025021304/a991earningsreleasedatedma.htm",
+          "evidence_sha256": "980ebc4773780611181d162e1dcaa3828dcbaa6ce717e65f38eb359f923ca04c",
+          "published_at": "2025-05-01T10:25:29.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000089/xfor-20260930.htm",
+          "evidence_sha256": "9e541de115d297c8e6aeaba486de85d777e0af158b336da9d259760f84803fbf",
+          "published_at": "2026-11-04T21:06:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000068/xfor-20260630.htm",
+          "evidence_sha256": "8f5f68619c7191320c64a76ba07c3d4d944a4b4ea27cd2fbb296a72b59a856c3",
+          "published_at": "2026-08-06T20:08:55.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000084/xfor-20261029.htm",
+          "evidence_sha256": "acf4ca3337481464b45e8ed2c8305849f82edf0e52f075532db62ed599e8f2a9",
+          "published_at": "2026-10-29T13:59:45.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000084/ex991_x4presentation.htm",
+          "evidence_sha256": "bf023e94592d0fec1605b3e498266371af45d64c7eb97aa8f769087d2f0acc38",
+          "published_at": "2026-10-29T13:59:45.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "status": "DEFERRED_SOURCE_BUDGET"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "XFOR",
+        "cik": "0001501697",
+        "source": "https://data.sec.gov/submissions/CIK0001501697.json",
+        "submissions_sha256": "f007401b38a5356391c426bb9216ccf94b6608d34282ce87dffaf7036c442324",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169725000041/xfor-20251105.htm",
+            "evidence_sha256": "0c80fe310775bf64b551918e0ad71222d6a61e7d0f46da688601f0d1ff54a36c",
+            "published_at": "2025-11-05T13:05:51.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169725000041/ex-991pressreleasenovember.htm",
+            "evidence_sha256": "3b6a2842452878d18d4bf1b0c8e1f2d9bc2b14e28500f3cea528004032547ff1",
+            "published_at": "2025-11-05T13:05:51.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1501697/000162828025021304/xfor-20250501.htm",
+            "evidence_sha256": "8d958b0dfc052fb1d5cf58e9f83516d423a590c207964f70e0eec427df74903d",
+            "published_at": "2025-05-01T10:25:29.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1501697/000162828025021304/a991earningsreleasedatedma.htm",
+            "evidence_sha256": "980ebc4773780611181d162e1dcaa3828dcbaa6ce717e65f38eb359f923ca04c",
+            "published_at": "2025-05-01T10:25:29.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000089/xfor-20260930.htm",
+            "evidence_sha256": "9e541de115d297c8e6aeaba486de85d777e0af158b336da9d259760f84803fbf",
+            "published_at": "2026-11-04T21:06:28.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000068/xfor-20260630.htm",
+            "evidence_sha256": "8f5f68619c7191320c64a76ba07c3d4d944a4b4ea27cd2fbb296a72b59a856c3",
+            "published_at": "2026-08-06T20:08:55.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000084/xfor-20261029.htm",
+            "evidence_sha256": "acf4ca3337481464b45e8ed2c8305849f82edf0e52f075532db62ed599e8f2a9",
+            "published_at": "2026-10-29T13:59:45.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1501697/000150169726000084/ex991_x4presentation.htm",
+            "evidence_sha256": "bf023e94592d0fec1605b3e498266371af45d64c7eb97aa8f769087d2f0acc38",
+            "published_at": "2026-10-29T13:59:45.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "status": "DEFERRED_SOURCE_BUDGET"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "XFOR",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [],
+        "audit": [],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_SOURCE_NOT_CONFIGURED"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "1af42136ec6703f1d8fd2c4b7febc0e6ecf9ef6c2df26d26ea22805fd4709f6e",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_NOT_CONFIGURED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    }
+  ],
+  "completed_at": "2026-11-27T04:21:17.043559+09:00",
+  "financial_pass_count": 17,
+  "financial_collection_gaps": [
+    {
+      "symbol": "IVR",
+      "status": "UNVERIFIED",
+      "reason": "KeyError"
+    },
+    {
+      "symbol": "FLNC",
+      "status": "UNVERIFIED",
+      "reason": "KeyError"
+    },
+    {
+      "symbol": "BGSI",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "VERA",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "HY",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "RCKT",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "SPRB",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "SYM",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "INBX",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "TEX",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "MDWD",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "ASR",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "TXR",
+      "status": "UNVERIFIED",
+      "reason": "HTTPError"
+    },
+    {
+      "symbol": "BCSF",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "DKS",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "BZ",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "SCZM",
+      "status": "UNVERIFIED",
+      "reason": "HTTPError"
+    },
+    {
+      "symbol": "WIT",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "STLA",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "ARCO",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "HDB",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "PFLT",
+      "status": "UNVERIFIED",
+      "reason": "KeyError"
+    },
+    {
+      "symbol": "IBM",
+      "status": "UNVERIFIED",
+      "reason": "KeyError"
+    },
+    {
+      "symbol": "ASTS",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "LEN",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "HUN",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "CCAP",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "B",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "OGC",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "TCMD",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "ARES",
+      "status": "UNVERIFIED",
+      "reason": "KeyError"
+    },
+    {
+      "symbol": "IFS",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    }
+  ],
+  "human_review_required": true,
+  "next_checkpoint_jst": "2026-11-27T23:45:00+09:00"
+}
