@@ -4,25 +4,28 @@
   "rules_version": "nexus_rules_20261105_v3",
   "research_sha256": "3ae7f44f96267269e2be41246b21fb034cf2ff4f36a20d62ac00edfd84c2ff98",
   "financial_evidence_sha256": "6d87f1eb9904277d4d4841b615b54a0750f79c7f0af653460ba944ef27fd2500",
-  "reviewed_at": null,
-  "generated_at": "2026-11-27T04:19:54.536749+09:00",
-  "reviewer_id": "unassigned",
+  "reviewer_id": "gemini-delegated",
+  "delegation_id": "owner_20261120_official_paper_automation",
+  "reviewed_at": "2026-11-27T07:17:02.887306+09:00",
+  "approval_scope": "US_REGULAR_SESSION",
+  "decision_time_jst": "2026-11-28T02:45:00+09:00",
+  "automated_evidence_sha256": "1c9d0e98e9655ef13ea106b421a065f9101b162b77dc6012ca07e43497e3b156",
   "assertions": {
     "guidance_not_lowered": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The supplied documents provide EPS guidance (e.g., raising 2026 core EPS outlook to $7.80 to $7.90 in Q2 2026), but do not contain explicit numerical forward-looking guidance for revenue. Therefore, revenue guidance status cannot be confirmed. / verifier: While the company raised its 2026 Core EPS outlook in Q2 2026, there is no explicit official quantitative revenue guidance provided or reaffirmed in the provided documents."
     },
     "decline_explanation_verified": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The provided documents do not contain disclosures explaining a specific market/sector or temporary cause for a stock price decline. / verifier: The provided documents do not mention or provide verified explanations for a stock price decline."
     },
     "no_material_business_impairment": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "The available documents do not contain explicit management disclosures or auditor statements regarding going-concern, bankruptcy, or overall business impairment evaluations, making the scope inadequate to conclusively verify the absence of material business impairment. / verifier: The supplied documents provide an incomplete scope to rule out all potential material business impairments, going concern issues, or major accounting problems across all operations."
     },
     "next_earnings": {
       "value": null,
-      "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+      "rationale": "None of the provided documents state an explicit future earnings release date for the next quarter. / verifier: No specific future earnings release date (YYYY-MM-DD) is explicitly announced in the provided documents."
     }
   }
 }

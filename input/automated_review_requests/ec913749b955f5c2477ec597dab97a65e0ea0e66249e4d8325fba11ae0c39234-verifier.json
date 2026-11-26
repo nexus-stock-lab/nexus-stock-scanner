@@ -1,0 +1,37 @@
+{
+  "assessment": {
+    "symbol": "CBRE",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "UNKNOWN",
+        "rationale": "While the company raised its 2026 Core EPS outlook in Q2 2026, there is no explicit official quantitative revenue guidance provided or reaffirmed in the provided documents.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not mention or provide verified explanations for a stock price decline.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents provide an incomplete scope to rule out all potential material business impairments, going concern issues, or major accounting problems across all operations.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "No specific future earnings release date (YYYY-MM-DD) is explicitly announced in the provided documents.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "f36a388763bc7bf74de8aadb77703d8a0b03f4e4ad9062ae28baa9295a7bbdd1",
+  "model": "gemini-3.6-flash"
+}

@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "3ae7f44f96267269e2be41246b21fb034cf2ff4f36a20d62ac00edfd84c2ff98",
   "decision_time_jst": "2026-11-27T23:45:00+09:00",
-  "observed_at": "2026-11-27T04:22:46.145093+09:00",
+  "observed_at": "2026-11-27T07:17:15.608375+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -10,27 +10,27 @@
       "status": "INSUFFICIENT_EVIDENCE",
       "financial_evidence_sha256": "6d87f1eb9904277d4d4841b615b54a0750f79c7f0af653460ba944ef27fd2500",
       "reasons": [
-        "guidance_not_lowered: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "decline_explanation_verified: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "no_material_business_impairment: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。",
-        "next_earnings: 公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+        "guidance_not_lowered: The supplied documents provide EPS guidance (e.g., raising 2026 core EPS outlook to $7.80 to $7.90 in Q2 2026), but do not contain explicit numerical forward-looking guidance for revenue. Therefore, revenue guidance status cannot be confirmed. / verifier: While the company raised its 2026 Core EPS outlook in Q2 2026, there is no explicit official quantitative revenue guidance provided or reaffirmed in the provided documents.",
+        "decline_explanation_verified: The provided documents do not contain disclosures explaining a specific market/sector or temporary cause for a stock price decline. / verifier: The provided documents do not mention or provide verified explanations for a stock price decline.",
+        "no_material_business_impairment: The available documents do not contain explicit management disclosures or auditor statements regarding going-concern, bankruptcy, or overall business impairment evaluations, making the scope inadequate to conclusively verify the absence of material business impairment. / verifier: The supplied documents provide an incomplete scope to rule out all potential material business impairments, going concern issues, or major accounting problems across all operations.",
+        "next_earnings: None of the provided documents state an explicit future earnings release date for the next quarter. / verifier: No specific future earnings release date (YYYY-MM-DD) is explicitly announced in the provided documents."
       ],
       "assertions": {
         "guidance_not_lowered": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The supplied documents provide EPS guidance (e.g., raising 2026 core EPS outlook to $7.80 to $7.90 in Q2 2026), but do not contain explicit numerical forward-looking guidance for revenue. Therefore, revenue guidance status cannot be confirmed. / verifier: While the company raised its 2026 Core EPS outlook in Q2 2026, there is no explicit official quantitative revenue guidance provided or reaffirmed in the provided documents."
         },
         "decline_explanation_verified": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The provided documents do not contain disclosures explaining a specific market/sector or temporary cause for a stock price decline. / verifier: The provided documents do not mention or provide verified explanations for a stock price decline."
         },
         "no_material_business_impairment": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "The available documents do not contain explicit management disclosures or auditor statements regarding going-concern, bankruptcy, or overall business impairment evaluations, making the scope inadequate to conclusively verify the absence of material business impairment. / verifier: The supplied documents provide an incomplete scope to rule out all potential material business impairments, going concern issues, or major accounting problems across all operations."
         },
         "next_earnings": {
           "value": null,
-          "rationale": "公式資料の明示的な定性審査が未完了。収集だけでは承認しない。"
+          "rationale": "None of the provided documents state an explicit future earnings release date for the next quarter. / verifier: No specific future earnings release date (YYYY-MM-DD) is explicitly announced in the provided documents."
         }
       },
       "official_documents": [
@@ -1622,28 +1622,24 @@
   "financial_pass_count": 17,
   "automated_review": {
     "kind": "AUTOMATED_SEMANTIC_REVIEW",
-    "observed_at": "2026-11-27T04:19:49.181214+09:00",
+    "observed_at": "2026-11-27T07:16:51.187657+09:00",
     "reviewer_id": "gemini-delegated",
     "model": "gemini-3.8-flash",
     "results": [
       {
         "symbol": "CBRE",
-        "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
-        "attempted_roles": [
-          "primary",
-          "primary",
-          "verifier"
-        ],
-        "provider_diagnostics": {
-          "retry_after_seconds": 27
-        }
+        "status": "INSUFFICIENT_EVIDENCE"
       },
       {
         "symbol": "CSGP",
         "status": "HELD",
         "reason": "GEMINI_HTTP_429",
-        "attempted_roles": []
+        "attempted_roles": [
+          "primary"
+        ],
+        "provider_diagnostics": {
+          "retry_after_seconds": 56
+        }
       },
       {
         "symbol": "CTRI",
