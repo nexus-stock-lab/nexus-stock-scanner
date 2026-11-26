@@ -1,0 +1,37 @@
+{
+  "assessment": {
+    "symbol": "CBRE",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents provide EPS guidance (e.g., raising 2026 core EPS outlook to $7.80 to $7.90 in Q2 2026), but do not contain explicit numerical forward-looking guidance for revenue. Therefore, revenue guidance status cannot be confirmed.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The provided documents do not contain disclosures explaining a specific market/sector or temporary cause for a stock price decline.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The available documents do not contain explicit management disclosures or auditor statements regarding going-concern, bankruptcy, or overall business impairment evaluations, making the scope inadequate to conclusively verify the absence of material business impairment.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "None of the provided documents state an explicit future earnings release date for the next quarter.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "6ae413feff3e98f651aa3a43ef263cca2d62ce21a7f27c7eb842a13367a64841",
+  "model": "gemini-3.6-flash"
+}
