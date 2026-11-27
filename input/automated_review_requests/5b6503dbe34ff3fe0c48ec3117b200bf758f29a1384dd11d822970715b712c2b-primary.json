@@ -1,0 +1,59 @@
+{
+  "assessment": {
+    "symbol": "LINC",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "SUPPORTED",
+        "rationale": "In the Q3 2026 earnings release (Exhibit 99.1 to Form 8-K filed November 9, 2026), the Company explicitly stated it was raising its full-year 2026 revenue guidance to $600.0 - $605.0 million from the prior full-year guidance range of $590.0 - $600.0 million reported in the Q2 2026 earnings release.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "28e1f4bd63a1ff999357f516464f37c37d6b29fb6af18df716ada3cc1ed9fe6d",
+            "excerpt": "Based on the 2026 year-to-date operating and financial results, as well as the outlook for the remainder of the year, the Company is raising its full-year 2026 revenue guidance, narrowing its student start guidance, and reiterating its guidance for adjusted EBITDA, net income, diluted EPS and capital expenditures as follows: 2026 Guidance (In millions, except for student starts and diluted EPS) Low High Revenue $ 600.0 - $ 605.0"
+          },
+          {
+            "document_id": "f95cb42dc7fa9fe39dbc1b379356f5cb1c4981caeb5567cea0d717c588c2cb4d",
+            "excerpt": "2026 Guidance (In millions, except for student starts and diluted EPS) Low High Revenue $ 590.0 - $ 600.0"
+          }
+        ]
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents do not contain any discussion or verification of market, sector, or temporary factors explaining a stock price decline.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "SUPPORTED",
+        "rationale": "The latest disclosures (Q3 2026 Form 10-Q and 8-K/press releases) demonstrate ongoing business growth without guidance cuts (revenue guidance was raised), no bankruptcy or going-concern issues, and an event of default regarding share repurchases was formally waived by lenders with the credit facility amended. There were no impairments of goodwill or long-lived assets recorded.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "28e1f4bd63a1ff999357f516464f37c37d6b29fb6af18df716ada3cc1ed9fe6d",
+            "excerpt": "Based on the 2026 year-to-date operating and financial results, as well as the outlook for the remainder of the year, the Company is raising its full-year 2026 revenue guidance, narrowing its student start guidance, and reiterating its guidance for adjusted EBITDA, net income, diluted EPS and capital expenditures as follows:"
+          },
+          {
+            "document_id": "47d9a5274cc7955343c47ce4e275f1f95236eee1b854062b3605a524f4ba2c2d",
+            "excerpt": "During the nine months ended September 30, 2026 and 2025, there were no impairments of goodwill or long-lived assets."
+          },
+          {
+            "document_id": "47d9a5274cc7955343c47ce4e275f1f95236eee1b854062b3605a524f4ba2c2d",
+            "excerpt": "On November 6, 2026, the Company entered into the First Amendment to Amended and Restated Credit Agreement and Waiver (the “Amendment and Waiver”) under which, among other things, the Lenders waived such event of default."
+          }
+        ]
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents do not announce a specific future date for the next earnings release.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "b55ea4c265073d1edebdfa94fc7adf27ffbdb94675787a43b67681de122f9113",
+  "model": "gemini-3.8-flash"
+}

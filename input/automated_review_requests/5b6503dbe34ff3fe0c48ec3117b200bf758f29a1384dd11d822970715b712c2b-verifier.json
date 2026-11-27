@@ -1,0 +1,46 @@
+{
+  "assessment": {
+    "symbol": "LINC",
+    "assertions": [
+      {
+        "name": "guidance_not_lowered",
+        "verdict": "SUPPORTED",
+        "rationale": "In the Q3 2026 earnings release dated November 9, 2026, the company explicitly raised its full-year 2026 revenue guidance from $590.0 - $600.0 million (reported in Q2 2026) to $600.0 - $605.0 million.",
+        "date": "",
+        "citations": [
+          {
+            "document_id": "28e1f4bd63a1ff999357f516464f37c37d6b29fb6af18df716ada3cc1ed9fe6d",
+            "excerpt": "Based on the 2026 year-to-date operating and financial results, as well as the outlook for the remainder of the year, the Company is raising its full-year 2026 revenue guidance, narrowing its student start guidance, and reiterating its guidance for adjusted EBITDA, net income, diluted EPS and capital expenditures as follows: 2026 Guidance (In millions, except for student starts and diluted EPS) Low High Revenue $ 600.0 - $ 605.0"
+          },
+          {
+            "document_id": "f95cb42dc7fa9fe39dbc1b379356f5cb1c4981caeb5567cea0d717c588c2cb4d",
+            "excerpt": "2026 Guidance (In millions, except for student starts and diluted EPS) Low High Revenue $ 590.0 - $ 600.0"
+          }
+        ]
+      },
+      {
+        "name": "decline_explanation_verified",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents do not evaluate, discuss, or verify market/sector or temporary factors as the cause of a stock price decline.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "no_material_business_impairment",
+        "verdict": "UNKNOWN",
+        "rationale": "The supplied documents do not contain comprehensive disclosures covering going-concern, bankruptcy, or absence of major accounting problems across the required scope.",
+        "date": "",
+        "citations": []
+      },
+      {
+        "name": "next_earnings",
+        "verdict": "UNKNOWN",
+        "rationale": "The documents do not explicitly announce the date of the next earnings release.",
+        "date": "",
+        "citations": []
+      }
+    ]
+  },
+  "provider_response_sha256": "50f2a7ad9621387c9295bf38a83bd179d33c069c4621cb28e5c5c963de2ff9a9",
+  "model": "gemini-3.8-flash"
+}
