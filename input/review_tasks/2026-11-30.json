@@ -1,0 +1,321 @@
+{
+  "kind": "SOURCE_REVIEW_QUEUE",
+  "research_sha256": "ff461a9278ed5f98cca7afb40b29833367effd5f61b9fdd73da3622177051d1f",
+  "decision_time_jst": "2026-11-30T23:45:00+09:00",
+  "started_at": "2026-11-28T04:09:25.650166+09:00",
+  "may_register": false,
+  "reference_only": false,
+  "collection_deadline_jst": "2026-12-01T05:45:00+09:00",
+  "results": [
+    {
+      "symbol": "LINC",
+      "documents": [
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_8k.htm",
+          "evidence_sha256": "987b5f7e68d2ed6b8b91737dbc24665d6caf1e5b0cfa0cf255e8a1f2cb111e91",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "28e1f4bd63a1ff999357f516464f37c37d6b29fb6af18df716ada3cc1ed9fe6d",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_8k.htm",
+          "evidence_sha256": "75f85411b2ce680c2488258faf2c369b2bb16c25dadcbe27edac61f052b288f3",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+          "evidence_sha256": "f95cb42dc7fa9fe39dbc1b379356f5cb1c4981caeb5567cea0d717c588c2cb4d",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+          "evidence_sha256": "47d9a5274cc7955343c47ce4e275f1f95236eee1b854062b3605a524f4ba2c2d",
+          "published_at": "2026-11-09T21:58:46.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031995/ef20075880_10q.htm",
+          "evidence_sha256": "3731ae76f751d2b5aeb489789815346a29bcf90e62f3ee8302605e16946cb21e",
+          "published_at": "2026-08-10T18:57:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126028230/ef20077785_8k.htm",
+          "evidence_sha256": "9a6d15291444519e6fc057b8d567c1f8528510d5c8892b0579ee0d057d97b4ba",
+          "published_at": "2026-07-10T20:55:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126021084/ef20073367_8k.htm",
+          "evidence_sha256": "d0fd7a88f99d9b6de059d08cf670a5cba360604b2798e941b261bcacfcf691af",
+          "published_at": "2026-05-13T20:50:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_8k.htm",
+          "evidence_sha256": "9ca4a9edc912212f1fe04d03a447697e8870fb0ce548dcf68382fb60d5af5e47",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+          "evidence_sha256": "a3de53bdb75bc74228b43fe843fe3677c89a012540252f3463306b670e11d46c",
+          "published_at": "2026-11-09T21:18:52.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_8k.htm",
+          "evidence_sha256": "a74ed2efd1026aa4131724456b67d19e609b791a332ca0607bb74e3752f5631a",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+          "evidence_sha256": "df16d1e4af8febb6408522fde8bbd43a5f5a739b414149d9b41a17aeb486acd6",
+          "published_at": "2026-08-10T19:09:21.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+          "evidence_sha256": "3bfdf6528b182f68ca992d0b64e5ad76cec6101c9ec7ee4df7a2bb6b7f13a5a5",
+          "published_at": "2026-11-09T21:58:46.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031995/ef20075880_10q.htm",
+          "evidence_sha256": "badd90a729b553d1220ae4e34b7a4a196b5a8689634a782f9cd8f7b037e936e5",
+          "published_at": "2026-08-10T18:57:43.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126028230/ef20077785_8k.htm",
+          "evidence_sha256": "ec5331ed6754194b7aefb0e134d9afca59bb647de90e042f0cdd370084f1bb75",
+          "published_at": "2026-07-10T20:55:28.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126021084/ef20073367_8k.htm",
+          "evidence_sha256": "5aed142075832ae383ed3e531596df327a006492f0af84f32851c96312d43ade",
+          "published_at": "2026-05-13T20:50:22.000Z",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-techs-houston-campus-recognized-excellence-design-and",
+          "published_at": "2026-11-10T12:00:41-05:00",
+          "evidence_sha256": "eb64da943e27f86d5f5a3d3a1efef084551e4347fa4e8e1a780a2f09a61facd4",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-educational-services-reports-strong-third-quarter-0",
+          "published_at": "2026-11-09T08:01:04-05:00",
+          "evidence_sha256": "4aea563addfaaa42aaf98b3ab8cdf64f18b18ed1f836feb02fd5622b56075834",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-tech-expands-career-training-program-address-new-jerseys",
+          "published_at": "2026-10-29T10:35:20-04:00",
+          "evidence_sha256": "6d27d9b3fb6daa97cd27bd7daa328d8031555e1b3af830c2ebb9808f68bf4380",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        },
+        {
+          "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-tech-and-abb-establish-strategic-technician-talent",
+          "published_at": "2026-10-22T11:33:01-04:00",
+          "evidence_sha256": "7855e963c33cca862f40959f163f6e24ddcad8330b4c754489db90db85371e32",
+          "status": "ARCHIVED_NOT_REVIEWED"
+        }
+      ],
+      "errors": [],
+      "sec": {
+        "symbol": "LINC",
+        "cik": "0001286613",
+        "source": "https://data.sec.gov/submissions/CIK0001286613.json",
+        "submissions_sha256": "e754c05c5313bcf0fc5dd64d9b3f8ce70230e4ae773cdc5e8486d0ca71068f75",
+        "financial_status": "NOT_EVALUATED_SOURCE_REVIEW_ONLY",
+        "official_documents": [
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_8k.htm",
+            "evidence_sha256": "9ca4a9edc912212f1fe04d03a447697e8870fb0ce548dcf68382fb60d5af5e47",
+            "published_at": "2026-11-09T21:18:52.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042792/ef20085242_ex99-1.htm",
+            "evidence_sha256": "a3de53bdb75bc74228b43fe843fe3677c89a012540252f3463306b670e11d46c",
+            "published_at": "2026-11-09T21:18:52.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_8k.htm",
+            "evidence_sha256": "a74ed2efd1026aa4131724456b67d19e609b791a332ca0607bb74e3752f5631a",
+            "published_at": "2026-08-10T19:09:21.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031997/ef20079845_ex99-1.htm",
+            "evidence_sha256": "df16d1e4af8febb6408522fde8bbd43a5f5a739b414149d9b41a17aeb486acd6",
+            "published_at": "2026-08-10T19:09:21.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126042810/ef20080572_10q.htm",
+            "evidence_sha256": "3bfdf6528b182f68ca992d0b64e5ad76cec6101c9ec7ee4df7a2bb6b7f13a5a5",
+            "published_at": "2026-11-09T21:58:46.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126031995/ef20075880_10q.htm",
+            "evidence_sha256": "badd90a729b553d1220ae4e34b7a4a196b5a8689634a782f9cd8f7b037e936e5",
+            "published_at": "2026-08-10T18:57:43.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126028230/ef20077785_8k.htm",
+            "evidence_sha256": "ec5331ed6754194b7aefb0e134d9afca59bb647de90e042f0cdd370084f1bb75",
+            "published_at": "2026-07-10T20:55:28.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://www.sec.gov/Archives/edgar/data/1286613/000114036126021084/ef20073367_8k.htm",
+            "evidence_sha256": "5aed142075832ae383ed3e531596df327a006492f0af84f32851c96312d43ade",
+            "published_at": "2026-05-13T20:50:22.000Z",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          }
+        ]
+      },
+      "issuer_ir": {
+        "symbol": "LINC",
+        "kind": "IR_RESEARCH_ONLY",
+        "may_register": false,
+        "coverage_complete": false,
+        "documents": [
+          {
+            "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-techs-houston-campus-recognized-excellence-design-and",
+            "published_at": "2026-11-10T12:00:41-05:00",
+            "evidence_sha256": "eb64da943e27f86d5f5a3d3a1efef084551e4347fa4e8e1a780a2f09a61facd4",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-educational-services-reports-strong-third-quarter-0",
+            "published_at": "2026-11-09T08:01:04-05:00",
+            "evidence_sha256": "4aea563addfaaa42aaf98b3ab8cdf64f18b18ed1f836feb02fd5622b56075834",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-tech-expands-career-training-program-address-new-jerseys",
+            "published_at": "2026-10-29T10:35:20-04:00",
+            "evidence_sha256": "6d27d9b3fb6daa97cd27bd7daa328d8031555e1b3af830c2ebb9808f68bf4380",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          },
+          {
+            "source": "https://investors.lincolneducationalservices.com/news-releases/news-release-details/lincoln-tech-and-abb-establish-strategic-technician-talent",
+            "published_at": "2026-10-22T11:33:01-04:00",
+            "evidence_sha256": "7855e963c33cca862f40959f163f6e24ddcad8330b4c754489db90db85371e32",
+            "status": "ARCHIVED_NOT_REVIEWED"
+          }
+        ],
+        "audit": [
+          {
+            "status": "IR_SOURCE_BUDGET_DEFERRED"
+          }
+        ],
+        "registry_version": "official_ir_20261029_v1",
+        "status": "IR_COLLECTION_ATTEMPTED",
+        "index_evidence_sha256": "3e7543d3709429634ad0282f9866bed5feafa4395aecc7a1788ea46c739896b8"
+      },
+      "assertion_names": [
+        "guidance_not_lowered",
+        "decline_explanation_verified",
+        "no_material_business_impairment",
+        "next_earnings"
+      ],
+      "status": "EXPLICIT_SEMANTIC_REVIEW_REQUIRED",
+      "source_content_sha256": "5f5283d98e34fb67da5643124eaa78aebeb5e9360cc6bc4f656f479747c9ad7a",
+      "source_content_changed": true,
+      "unresolved_items": [
+        {
+          "name": "guidance_not_lowered",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "decline_explanation_verified",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "no_material_business_impairment",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        },
+        {
+          "name": "next_earnings",
+          "reason": "Explicit official-source review required",
+          "action": "WORK_REVIEW_CHANGED_SOURCES"
+        }
+      ],
+      "collection_blockers": [
+        {
+          "status": "IR_SOURCE_BUDGET_DEFERRED"
+        },
+        {
+          "status": "IR_COLLECTION_ATTEMPTED"
+        }
+      ],
+      "requires_revalidation_of_known_items": false,
+      "assessment_status": "PENDING_CREATED"
+    }
+  ],
+  "completed_at": "2026-11-28T04:09:37.625280+09:00",
+  "financial_pass_count": 1,
+  "financial_collection_gaps": [
+    {
+      "symbol": "XP",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "INTR",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "AFYA",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "VERA",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "B",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "AVBP",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "EMBJ",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    },
+    {
+      "symbol": "TGS",
+      "status": "UNVERIFIED",
+      "reason": "ValueError"
+    }
+  ],
+  "human_review_required": true,
+  "next_checkpoint_jst": "2026-11-30T23:45:00+09:00"
+}
