@@ -2,7 +2,7 @@
   "kind": "SOURCE_REVIEW_REPORT",
   "research_sha256": "3ae7f44f96267269e2be41246b21fb034cf2ff4f36a20d62ac00edfd84c2ff98",
   "decision_time_jst": "2026-11-27T23:45:00+09:00",
-  "observed_at": "2026-11-27T07:17:15.608375+09:00",
+  "observed_at": "2026-11-27T13:12:02.165467+09:00",
   "rules_version": "nexus_rules_20261105_v3",
   "results": [
     {
@@ -1622,114 +1622,113 @@
   "financial_pass_count": 17,
   "automated_review": {
     "kind": "AUTOMATED_SEMANTIC_REVIEW",
-    "observed_at": "2026-11-27T07:16:51.187657+09:00",
+    "observed_at": "2026-11-27T13:00:44.093525+09:00",
     "reviewer_id": "gemini-delegated",
     "model": "gemini-3.8-flash",
     "results": [
       {
-        "symbol": "CBRE",
-        "status": "INSUFFICIENT_EVIDENCE"
-      },
-      {
         "symbol": "CSGP",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_TIMEOUT_UNVERIFIED",
         "attempted_roles": [
           "primary"
-        ],
-        "provider_diagnostics": {
-          "retry_after_seconds": 56
-        }
+        ]
       },
       {
         "symbol": "CTRI",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
-        "attempted_roles": []
+        "reason": "GEMINI_TIMEOUT_UNVERIFIED",
+        "attempted_roles": [
+          "primary"
+        ]
       },
       {
         "symbol": "EXE",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "FND",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "GTY",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "HCC",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "HSY",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "LINC",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "MKC",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "MLI",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "PATH",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "PINS",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "QXO",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "TSCO",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "WY",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
       },
       {
         "symbol": "XFOR",
         "status": "HELD",
-        "reason": "GEMINI_HTTP_429",
+        "reason": "GEMINI_PROVIDER_DEFERRED",
         "attempted_roles": []
+      },
+      {
+        "symbol": "CBRE",
+        "status": "INSUFFICIENT_EVIDENCE"
       }
     ],
     "may_register": false,
